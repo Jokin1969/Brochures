@@ -34,12 +34,10 @@
             flex-direction: column;
         }
 
-        /* ── Header ── */
         .header {
             padding: 72px 48px 52px;
             text-align: center;
         }
-
         .header-title {
             font-family: 'Lora', serif;
             font-size: clamp(3rem, 7vw, 5rem);
@@ -49,14 +47,12 @@
             line-height: 1;
             margin-bottom: 14px;
         }
-
         .header-subtitle {
             font-size: 1rem;
             color: var(--text-2);
             font-weight: 400;
         }
 
-        /* ── Main ── */
         main {
             flex: 1;
             max-width: 1100px;
@@ -64,7 +60,6 @@
             width: 100%;
             padding: 8px 48px 80px;
         }
-
         .section-label {
             font-size: 0.72rem;
             font-weight: 600;
@@ -74,13 +69,11 @@
             margin-bottom: 24px;
         }
 
-        /* ── Cards ── */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 24px;
         }
-
         .card {
             border-radius: var(--r);
             overflow: hidden;
@@ -92,28 +85,21 @@
             min-height: 280px;
             position: relative;
         }
-
         .card:not(.card--soon):hover {
             transform: translateY(-6px);
             box-shadow: var(--shadow-lg);
         }
-
         .card--priones {
             background: linear-gradient(145deg, #7c3aed 0%, #4f46e5 45%, #3b82f6 100%);
         }
-
         .card--nha {
             background: linear-gradient(145deg, #0369a1 0%, #0ea5e9 55%, #22d3ee 100%);
         }
-
         .card--soon {
             cursor: default;
             opacity: 0.65;
         }
-
-        /* Decorative circles on cards */
-        .card::before,
-        .card::after {
+        .card::before, .card::after {
             content: '';
             position: absolute;
             border-radius: 50%;
@@ -131,7 +117,6 @@
             position: relative;
             z-index: 1;
         }
-
         .card-badge {
             display: inline-flex;
             align-self: flex-start;
@@ -144,7 +129,6 @@
             text-transform: uppercase;
             margin-bottom: 16px;
         }
-
         .card-icon {
             width: 52px; height: 52px;
             background: rgba(255,255,255,0.18);
@@ -154,7 +138,6 @@
             justify-content: center;
             margin-bottom: 20px;
         }
-
         .card-title {
             font-family: 'Lora', serif;
             font-size: 1.3rem;
@@ -162,14 +145,12 @@
             line-height: 1.3;
             margin-bottom: 10px;
         }
-
         .card-desc {
             font-size: 0.875rem;
             opacity: 0.85;
             line-height: 1.65;
             flex: 1;
         }
-
         .card-cta {
             display: inline-flex;
             align-items: center;
@@ -178,11 +159,9 @@
             font-size: 0.875rem;
             font-weight: 600;
         }
-
         .cta-arrow { transition: transform 0.2s ease; }
         .card:hover .cta-arrow { transform: translateX(4px); }
 
-        /* ── Footer ── */
         footer {
             text-align: center;
             padding: 22px;
@@ -210,7 +189,6 @@
     <p class="section-label">Proyectos</p>
     <div class="grid">
 
-        <!-- Portadores asintomáticos -->
         <a href="/portadores.html" class="card card--priones">
             <div class="card-inner">
                 <div class="card-icon">
@@ -220,7 +198,7 @@
                     </svg>
                 </div>
                 <h2 class="card-title">Portadores asintomáticos</h2>
-                <p class="card-desc">Información y seguimiento para portadores de mutaciones en genes de proteínas priónicas que aún no han desarrollado síntomas.</p>
+                <p class="card-desc">Programa de seguimiento preclínico para portadores de mutaciones en el gen de la proteína del prion.</p>
                 <span class="card-cta">
                     Acceder al programa
                     <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -230,7 +208,6 @@
             </div>
         </a>
 
-        <!-- Natural History App (próximamente) -->
         <div class="card card--nha card--soon">
             <div class="card-inner">
                 <span class="card-badge">Próximamente</span>
