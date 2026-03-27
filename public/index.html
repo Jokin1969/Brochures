@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brochures</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #f0f4f8;
+            --white: #ffffff;
+            --text: #0f172a;
+            --text-2: #475569;
+            --text-3: #94a3b8;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 16px 48px rgba(0,0,0,0.14);
+            --r: 24px;
+        }
+
+        html { -webkit-font-smoothing: antialiased; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            padding: 72px 48px 52px;
+            text-align: center;
+        }
+        .header-title {
+            font-family: 'Lora', serif;
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+        .header-subtitle {
+            font-size: 1rem;
+            color: var(--text-2);
+            font-weight: 400;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 8px 48px 80px;
+        }
+        .section-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 24px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            border-radius: var(--r);
+            overflow: hidden;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 280px;
+            position: relative;
+        }
+        .card:not(.card--soon):hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .card--priones {
+            background: linear-gradient(145deg, #7c3aed 0%, #4f46e5 45%, #3b82f6 100%);
+        }
+        .card--nha {
+            background: linear-gradient(145deg, #0369a1 0%, #0ea5e9 55%, #22d3ee 100%);
+        }
+        .card--soon {
+            cursor: default;
+            opacity: 0.65;
+        }
+        .card::before, .card::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.07);
+            pointer-events: none;
+        }
+        .card::before { width: 220px; height: 220px; top: -70px; right: -70px; }
+        .card::after  { width: 140px; height: 140px; bottom: -40px; left: 10px; }
+
+        .card-inner {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+        .card-badge {
+            display: inline-flex;
+            align-self: flex-start;
+            background: rgba(255,255,255,0.2);
+            border-radius: 100px;
+            padding: 4px 12px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .card-icon {
+            width: 52px; height: 52px;
+            background: rgba(255,255,255,0.18);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .card-title {
+            font-family: 'Lora', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+        .card-desc {
+            font-size: 0.875rem;
+            opacity: 0.85;
+            line-height: 1.65;
+            flex: 1;
+        }
+        .card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 24px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        .cta-arrow { transition: transform 0.2s ease; }
+        .card:hover .cta-arrow { transform: translateX(4px); }
+
+        footer {
+            text-align: center;
+            padding: 22px;
+            font-size: 0.8rem;
+            color: var(--text-3);
+            border-top: 1px solid var(--border);
+            background: var(--white);
+        }
+
+        @media (max-width: 600px) {
+            .header { padding: 48px 24px 36px; }
+            main { padding: 8px 24px 60px; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <h1 class="header-title">Brochures</h1>
+    <p class="header-subtitle">Recursos informativos para pacientes y profesionales</p>
+</header>
+
+<main>
+    <p class="section-label">Proyectos</p>
+    <div class="grid">
+
+        <a href="/portadores.html" class="card card--priones">
+            <div class="card-inner">
+                <div class="card-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">Portadores asintomáticos</h2>
+                <p class="card-desc">Programa de seguimiento preclínico para portadores de mutaciones en el gen de la proteína del prion.</p>
+                <span class="card-cta">
+                    Acceder al programa
+                    <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 8h10M9 4l4 4-4 4"/>
+                    </svg>
+                </span>
+            </div>
+        </a>
+
+        <div class="card card--nha card--soon">
+            <div class="card-inner">
+                <span class="card-badge">Próximamente</span>
+                <div class="card-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2"/>
+                        <path d="M8 21h8M12 17v4"/>
+                        <path d="M7 8l3 3 2-2 3 3.5"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">Natural History App</h2>
+                <p class="card-desc">Guía para profesionales sobre el seguimiento longitudinal de pacientes con la aplicación de historia natural.</p>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <p>&copy; Joaquín Castilla 2026</p>
+</footer>
+
+</body>
+</html>
