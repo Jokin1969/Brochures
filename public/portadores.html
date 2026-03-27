@@ -238,6 +238,16 @@
             </a>
         </div>
 
+        <!-- Transición a portadores-programa.html -->
+        <div class="next-step">
+            <h2 class="next-step-title">¿Quieres dar el siguiente paso?</h2>
+            <p class="next-step-text">Si has leído el programa y quieres explorar tu participación, continúa aquí.</p>
+            <button id="btn-siguiente" class="btn-siguiente" onclick="irAPrograma()">
+                Explorar mi participación
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </button>
+        </div>
+
         <!-- Píldoras de información -->
         <section class="pildoras" id="pildoras">
             <p class="pildoras-eyebrow">Actualizaciones</p>
@@ -258,5 +268,17 @@
     </footer>
 
     <script src="/js/portadores.js"></script>
+    <link rel="stylesheet" href="/css/portadores-programa.css">
+    <script>
+    function irAPrograma() {
+        var btn = document.getElementById('btn-siguiente');
+        if (btn) btn.disabled = true;
+        document.body.style.transition = 'opacity 0.45s ease';
+        document.body.style.opacity   = '0';
+        setTimeout(function () {
+            window.location.href = '/portadores-programa.html';
+        }, 460);
+    }
+    </script>
 </body>
 </html>
