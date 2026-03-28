@@ -1,8 +1,8 @@
 /* portadores-programa.css — Styles specific to portadores-programa.html */
 
-/* ---- Page fade-in ---- */
-body { opacity: 0; transition: opacity 0.55s ease; }
-body.loaded { opacity: 1; }
+/* ---- Page fade-in (solo para portadores-programa.html, vía clase en <body>) ---- */
+body.pg-fade-in { opacity: 0; transition: opacity 0.55s ease; }
+body.pg-fade-in.loaded { opacity: 1; }
 
 /* ---- Main layout ---- */
 .pg-main {
