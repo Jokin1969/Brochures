@@ -1,9 +1,10 @@
 require('dotenv').config();
 
-const express  = require('express');
-const path     = require('path');
-const fs       = require('fs').promises;
-const cron     = require('node-cron');
+const express    = require('express');
+const path       = require('path');
+const fs         = require('fs').promises;
+const cron       = require('node-cron');
+const nodemailer = require('nodemailer');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -46,11 +47,84 @@ function requireAdmin(req, res, next) {
   next();
 }
 
+/* ================================================================== */
+/* NODEMAILER — transporte SMTP                                         */
+/* ================================================================== */
+
+let _transporter = null;
+
+function getTransporter() {
+  if (_transporter) return _transporter;
+  _transporter = nodemailer.createTransport({
+    host:   process.env.SMTP_HOST,
+    port:   parseInt(process.env.SMTP_PORT || '587', 10),
+    secure: process.env.SMTP_SECURE === 'true',
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
+  return _transporter;
+}
+
+function fmtDateEmail(iso) {
+  if (!iso) return '';
+  const d   = new Date(iso);
+  const pad = n => String(n).padStart(2, '0');
+  return `${pad(d.getDate())}/${pad(d.getMonth()+1)}/${d.getFullYear()} `
+       + `${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+
+async function sendMail(options) {
+  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    throw new Error('Credenciales SMTP no configuradas (SMTP_USER / SMTP_PASS)');
+  }
+  return getTransporter().sendMail({
+    from: `"Programa Portadores" <${process.env.SMTP_USER}>`,
+    ...options,
+  });
+}
+
+/* Email 1: notificación interna al investigador */
+function buildNotificationHTML(p) {
+  const fecha = fmtDateEmail(p.fechaAceptacion);
+  return `<!DOCTYPE html><html lang="es"><body style="font-family:Arial,sans-serif;color:#0f172a;max-width:560px;margin:0 auto;padding:24px;">
+<h2 style="color:#7c3aed;">Nuevo portador ha confirmado su participación</h2>
+<p>Un portador ha completado el programa de seguimiento y ha confirmado su deseo de participar.</p>
+<table style="width:100%;border-collapse:collapse;margin:20px 0;">
+  <tr><td style="padding:8px 12px;background:#f8fafc;font-weight:600;width:40%;">Nombre</td><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;">${p.nombre}</td></tr>
+  <tr><td style="padding:8px 12px;background:#f8fafc;font-weight:600;">Apellidos</td><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;">${p.apellidos}</td></tr>
+  <tr><td style="padding:8px 12px;background:#f8fafc;font-weight:600;">DNI</td><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;">${p.dni}</td></tr>
+  <tr><td style="padding:8px 12px;background:#f8fafc;font-weight:600;">Confirmación</td><td style="padding:8px 12px;">${fecha}</td></tr>
+</table>
+<p>Este portador ha sido registrado automáticamente en el panel de administración con estado: <strong>Aceptado ✓</strong></p>
+<p style="color:#64748b;font-size:0.875em;">Puedes consultar su ficha completa en el panel de administración.</p>
+</body></html>`;
+}
+
+/* Email 2: email inicial al portador — HTML para el envío desde el servidor */
+function buildPortadorEmailHTML(bodyText) {
+  /* Convierte texto plano a HTML respetando saltos de línea */
+  const html = bodyText
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .split('\n')
+    .map(line => line.trim() === '' ? '<br>' : `<p style="margin:0 0 6px;">${line}</p>`)
+    .join('\n');
+  return `<!DOCTYPE html><html lang="es"><body style="font-family:Arial,sans-serif;color:#0f172a;max-width:560px;margin:0 auto;padding:24px;">${html}</body></html>`;
+}
+
 /* ------------------------------------------------------------------ */
 /* Parsers y archivos estáticos                                         */
 /* ------------------------------------------------------------------ */
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+/* Ruta para la página de composición de correo */
+app.get('/admin/correo/:id', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'admin', 'correo.html'));
+});
 
 /* ------------------------------------------------------------------ */
 /* GET /api/admin/portadores  — lista completa (requiere auth)          */
@@ -159,7 +233,20 @@ app.post('/api/portadores/aceptar', async (req, res) => {
     data.portadores[idx].fechaAceptacion = new Date().toISOString();
     await writeData(data);
 
-    res.json({ ok: true, id: data.portadores[idx].id });
+    const p = data.portadores[idx];
+    res.json({ ok: true, id: p.id });
+
+    /* Notificación interna al investigador (no bloquea la respuesta) */
+    if (process.env.CONTACT_EMAIL) {
+      const nombre = [p.nombre, p.apellidos].filter(Boolean).join(' ') || p.id;
+      sendMail({
+        to:      process.env.CONTACT_EMAIL,
+        subject: `Nuevo portador ha confirmado su participación — ${nombre}`,
+        html:    buildNotificationHTML(p),
+      }).catch(err => {
+        console.error(`[email ${nowISO()}] Error notificación aceptación: ${err.message}`);
+      });
+    }
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -170,6 +257,42 @@ app.post('/api/portadores/aceptar', async (req, res) => {
 /* ------------------------------------------------------------------ */
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+/* ------------------------------------------------------------------ */
+/* POST /api/admin/correo/:id  — enviar email inicial al portador      */
+/* ------------------------------------------------------------------ */
+app.post('/api/admin/correo/:id', requireAdmin, async (req, res) => {
+  try {
+    const data = await readData();
+    const idx  = data.portadores.findIndex(p => p.id === req.params.id);
+    if (idx === -1) return res.status(404).json({ error: 'Portador no encontrado' });
+
+    const p       = data.portadores[idx];
+    const subject = req.body.subject || '';
+    const body    = req.body.body    || '';
+
+    if (!p.email) return res.status(400).json({ error: 'El portador no tiene email registrado' });
+    if (!subject) return res.status(400).json({ error: 'El asunto no puede estar vacío' });
+    if (!body)    return res.status(400).json({ error: 'El cuerpo del mensaje no puede estar vacío' });
+
+    await sendMail({
+      to:      p.email,
+      subject,
+      text:    body,
+      html:    buildPortadorEmailHTML(body),
+    });
+
+    /* Registrar envío solo si el SMTP no lanzó error */
+    data.portadores[idx].emailEnviado    = true;
+    data.portadores[idx].fechaEnvioEmail = new Date().toISOString();
+    await writeData(data);
+
+    res.json({ ok: true, fechaEnvioEmail: data.portadores[idx].fechaEnvioEmail });
+  } catch (err) {
+    console.error(`[email ${nowISO()}] Error envío portador ${req.params.id}: ${err.message}`);
+    res.status(500).json({ error: err.message });
+  }
 });
 
 /* ================================================================== */
