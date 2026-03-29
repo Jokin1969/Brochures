@@ -459,6 +459,56 @@ body.pg-fade-in.loaded { opacity: 1; }
 .momento .prose p:last-child { margin-bottom: 0; }
 .momento .prose strong { color: var(--text); font-weight: 600; }
 
+/* ---- Formulario de aceptación (final-form-step) ---- */
+.aceptar-form {
+    max-width: 440px;
+    margin: 0 auto 8px;
+    text-align: left;
+}
+.aceptar-field {
+    margin-bottom: 16px;
+}
+.aceptar-field label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-2);
+    margin-bottom: 6px;
+    letter-spacing: 0.03em;
+}
+.aceptar-field input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-sm);
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: white;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.aceptar-field input:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+}
+.aceptar-field-hint {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-3);
+    margin-top: 5px;
+}
+.aceptar-error {
+    font-size: 0.875rem;
+    color: #dc2626;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: var(--r-sm);
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    line-height: 1.55;
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 700px) {
     .pg-main { padding: 60px 24px 80px; }

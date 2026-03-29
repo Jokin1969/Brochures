@@ -323,7 +323,47 @@
 
             <!-- Bloque final (aparece tras confirmar las 4) -->
             <div id="final-block" class="final-block">
-                <div class="final-inner">
+
+                <!-- PASO 1: Formulario de confirmación de datos -->
+                <div id="final-form-step" class="final-inner">
+                    <p class="final-eyebrow" data-i18n="final.form.eyebrow">Siguiente paso</p>
+                    <h2 class="final-title" data-i18n="final.form.title">Un último paso para que podamos contactarte</h2>
+                    <p class="final-text" data-i18n="final.form.text">Si deseas que el equipo del programa se ponga en contacto contigo, indícanos tu DNI. Esto nos permitirá identificarte en nuestro sistema y confirmar tu deseo de participar. Tus datos están protegidos y solo serán accesibles para el equipo investigador.</p>
+
+                    <form id="form-aceptar" class="aceptar-form" novalidate>
+                        <div class="aceptar-field">
+                            <label for="aceptar-nombre" data-i18n="final.form.label.nombre">Nombre</label>
+                            <input type="text" id="aceptar-nombre" placeholder="Tu nombre" autocomplete="given-name">
+                        </div>
+                        <div class="aceptar-field">
+                            <label for="aceptar-apellidos" data-i18n="final.form.label.apellidos">Apellidos</label>
+                            <input type="text" id="aceptar-apellidos" placeholder="Tus apellidos" autocomplete="family-name">
+                        </div>
+                        <div class="aceptar-field">
+                            <label for="aceptar-dni" data-i18n="final.form.label.dni">DNI</label>
+                            <input type="text" id="aceptar-dni" placeholder="12345678A" maxlength="9" autocomplete="off" style="text-transform:uppercase;">
+                            <span class="aceptar-field-hint" data-i18n="final.form.dni.hint">8 dígitos seguidos de una letra</span>
+                        </div>
+                        <p id="aceptar-error" class="aceptar-error" style="display:none;"></p>
+                        <div class="btn-center">
+                            <button type="submit" class="btn-primary" id="btn-aceptar">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span data-i18n="final.form.btn">Confirmar mi deseo de participar</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- PASO 2a: DNI no encontrado en el sistema -->
+                <div id="final-notfound-step" class="final-inner" style="display:none;">
+                    <h2 class="final-title" data-i18n="final.notfound.title">No hemos encontrado tu DNI</h2>
+                    <p class="final-text" data-i18n="final.notfound.text">No hemos encontrado tu DNI en nuestro sistema. Es posible que aún no hayas sido registrado/a. Por favor, contacta directamente con el equipo para que podamos incorporarte.</p>
+                    <p class="closure-contacts-title" data-i18n="final.contacts.label">Cómo encontrarnos</p>
+                    <div class="contact-cards" id="contacts-notfound"></div>
+                </div>
+
+                <!-- PASO 2b: Aceptación registrada correctamente -->
+                <div id="final-thanks-step" class="final-inner" style="display:none;">
                     <p class="final-eyebrow" data-i18n="final.eyebrow">Siguiente paso</p>
                     <h2 class="final-title" data-i18n="final.title">Gracias por llegar hasta aquí</h2>
                     <p class="final-text" data-i18n="final.text">Has dado un paso importante — no solo hacia el programa, sino hacia ti mismo/a. El equipo se pondrá en contacto contigo en breve para explicarte los siguientes pasos con calma y sin prisa. Si mientras tanto tienes cualquier pregunta, aquí tienes cómo encontrarnos.</p>
@@ -334,6 +374,7 @@
                     <p class="closure-contacts-title" data-i18n="final.contacts.label">Cómo encontrarnos</p>
                     <div class="contact-cards" id="contacts-final"></div>
                 </div>
+
             </div>
 
         </div><!-- /momento-3 -->
@@ -375,7 +416,7 @@
                 '<!-- TODO: Añadir frase breve de presentación -->' +
             '</div>';
 
-        ['contacts-B', 'contacts-C', 'contacts-final'].forEach(function (id) {
+        ['contacts-B', 'contacts-C', 'contacts-notfound', 'contacts-final'].forEach(function (id) {
             var el = document.getElementById(id);
             if (el) el.innerHTML = contactHTML;
         });

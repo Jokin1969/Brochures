@@ -101,7 +101,21 @@ const TRANSLATIONS = {
 
     'm3.confirmed': '✓ Confirmado',
 
-    /* ---- Bloque final ---- */
+    /* ---- Bloque final — formulario de aceptación ---- */
+    'final.form.eyebrow':         'Siguiente paso',
+    'final.form.title':           'Un último paso para que podamos contactarte',
+    'final.form.text':            'Si deseas que el equipo del programa se ponga en contacto contigo, indícanos tu DNI. Esto nos permitirá identificarte en nuestro sistema y confirmar tu deseo de participar. Tus datos están protegidos y solo serán accesibles para el equipo investigador.',
+    'final.form.label.nombre':    'Nombre',
+    'final.form.label.apellidos': 'Apellidos',
+    'final.form.label.dni':       'DNI',
+    'final.form.dni.hint':        '8 dígitos seguidos de una letra',
+    'final.form.btn':             'Confirmar mi deseo de participar',
+
+    /* ---- Bloque final — DNI no encontrado ---- */
+    'final.notfound.title': 'No hemos encontrado tu DNI',
+    'final.notfound.text':  'No hemos encontrado tu DNI en nuestro sistema. Es posible que aún no hayas sido registrado/a. Por favor, contacta directamente con el equipo para que podamos incorporarte.',
+
+    /* ---- Bloque final — agradecimiento ---- */
     'final.eyebrow': 'Siguiente paso',
     'final.title':   'Gracias por llegar hasta aquí',
     'final.text':    'Has dado un paso importante — no solo hacia el programa, sino hacia ti mismo/a. El equipo se pondrá en contacto contigo en breve para explicarte los siguientes pasos con calma y sin prisa. Si mientras tanto tienes cualquier pregunta, aquí tienes cómo encontrarnos.',

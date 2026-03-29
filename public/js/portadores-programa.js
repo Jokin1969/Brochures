@@ -225,6 +225,106 @@
     setTimeout(function () {
       fb.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 80);
+    initAceptarForm();
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Formulario de aceptación (paso previo al bloque de gracias)         */
+  /* ------------------------------------------------------------------ */
+  function initAceptarForm() {
+    var form = document.getElementById('form-aceptar');
+    if (!form || form.dataset.initialized) return;
+    form.dataset.initialized = 'true';
+
+    /* Forzar mayúsculas en DNI al escribir */
+    var dniInput = document.getElementById('aceptar-dni');
+    if (dniInput) {
+      dniInput.addEventListener('input', function () {
+        var pos = this.selectionStart;
+        this.value = this.value.toUpperCase();
+        this.setSelectionRange(pos, pos);
+      });
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      handleAceptar();
+    });
+  }
+
+  function handleAceptar() {
+    var nombre    = (document.getElementById('aceptar-nombre').value    || '').trim();
+    var apellidos = (document.getElementById('aceptar-apellidos').value || '').trim();
+    var dni       = (document.getElementById('aceptar-dni').value       || '').trim().toUpperCase();
+    var btn       = document.getElementById('btn-aceptar');
+
+    /* Validación */
+    if (!nombre || !apellidos || !dni) {
+      showAceptarError('Por favor, completa todos los campos antes de continuar.');
+      return;
+    }
+    if (!/^\d{8}[A-Z]$/.test(dni)) {
+      showAceptarError('El DNI debe tener 8 dígitos seguidos de una letra (por ejemplo: 12345678A).');
+      return;
+    }
+
+    hideAceptarError();
+    btn.disabled = true;
+    var btnSpan = btn.querySelector('span[data-i18n]');
+    if (btnSpan) btnSpan.textContent = 'Enviando…';
+
+    fetch('/api/portadores/aceptar', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ dni: dni })
+    })
+    .then(function (r) {
+      if (r.ok)             return r.json().then(function () { showThanksStep(); });
+      if (r.status === 404) { showNotFoundStep(); return; }
+      throw new Error('server-error');
+    })
+    .catch(function () {
+      showAceptarError('Ha ocurrido un error de conexión. Por favor, contacta directamente con el equipo.');
+      btn.disabled = false;
+      if (btnSpan) btnSpan.textContent = 'Confirmar mi deseo de participar';
+    });
+  }
+
+  function showAceptarError(msg) {
+    var el = document.getElementById('aceptar-error');
+    if (!el) return;
+    el.textContent = msg;
+    el.style.display = 'block';
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function hideAceptarError() {
+    var el = document.getElementById('aceptar-error');
+    if (el) el.style.display = 'none';
+  }
+
+  function showThanksStep() {
+    var formStep   = document.getElementById('final-form-step');
+    var thanksStep = document.getElementById('final-thanks-step');
+    if (formStep)   formStep.style.display = 'none';
+    if (!thanksStep) return;
+    thanksStep.style.display   = 'block';
+    thanksStep.style.animation = 'momentoReveal 0.55s ease';
+    setTimeout(function () {
+      thanksStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 80);
+  }
+
+  function showNotFoundStep() {
+    var formStep     = document.getElementById('final-form-step');
+    var notFoundStep = document.getElementById('final-notfound-step');
+    if (formStep)     formStep.style.display = 'none';
+    if (!notFoundStep) return;
+    notFoundStep.style.display   = 'block';
+    notFoundStep.style.animation = 'momentoReveal 0.55s ease';
+    setTimeout(function () {
+      notFoundStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 80);
   }
 
   /* ------------------------------------------------------------------ */
