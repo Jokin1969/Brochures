@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — Portadores · Brochures</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<!-- ================================================================ -->
+<!-- VIEW: Login                                                        -->
+<!-- ================================================================ -->
+<div id="view-login" style="display:none;">
+    <div class="login-box">
+        <p class="login-logo">Brochures</p>
+        <h1 class="login-title">Panel de administración</h1>
+        <p class="login-sub">Acceso restringido al equipo del programa</p>
+        <form id="form-login" autocomplete="off">
+            <input type="password" id="input-password" placeholder="Contraseña de acceso" autocomplete="current-password">
+            <button type="submit" class="btn-login">Acceder</button>
+        </form>
+        <p id="login-error" class="login-error">Contraseña incorrecta. Vuelve a intentarlo.</p>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- VIEW: Panel                                                        -->
+<!-- ================================================================ -->
+<div id="view-panel">
+
+    <!-- Topbar -->
+    <header class="admin-topbar">
+        <div class="admin-topbar-left">
+            <a href="/" class="admin-back">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
+                Inicio
+            </a>
+            <span class="admin-title">Panel de administración — Portadores</span>
+        </div>
+        <div class="admin-topbar-right">
+            <span class="count-badge" id="count-badge">— portadores registrados</span>
+            <button class="btn btn-primary" id="btn-nuevo">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Nuevo portador
+            </button>
+            <button class="btn btn-secondary" id="btn-filter-email" title="Portadores a los que no se ha enviado correo">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Pendientes de correo
+            </button>
+            <button class="btn btn-secondary" id="btn-filter-response" title="Correo enviado pero sin aceptación registrada">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5" fill="currentColor"/></svg>
+                Pendientes de respuesta
+            </button>
+            <button class="btn btn-secondary" id="btn-export">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Exportar CSV
+            </button>
+            <button class="btn btn-secondary" id="btn-logout" title="Cerrar sesión">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                Salir
+            </button>
+        </div>
+    </header>
+
+    <!-- Tabla -->
+    <div class="table-container">
+        <table id="portadores-table">
+            <thead>
+                <tr>
+                    <th class="col-drag"></th>
+                    <th class="col-id sortable" data-sort="id">ID <span class="sort-arrow"></span></th>
+                    <th class="col-txpr sortable" data-sort="codigoTXPR">TXPR <span class="sort-arrow"></span></th>
+                    <th class="col-nombre sortable" data-sort="nombre">Nombre <span class="sort-arrow"></span></th>
+                    <th class="col-apellidos sortable" data-sort="apellidos">Apellidos <span class="sort-arrow"></span></th>
+                    <th class="col-dni sortable" data-sort="dni">DNI <span class="sort-arrow"></span></th>
+                    <th class="col-email sortable" data-sort="email">Email <span class="sort-arrow"></span></th>
+                    <th class="col-mail" title="Estado de correo">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </th>
+                    <th class="col-accept" title="Estado de aceptación">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                    </th>
+                    <th class="col-notas">Notas</th>
+                    <th class="col-delete"></th>
+                </tr>
+            </thead>
+            <tbody id="portadores-tbody">
+                <tr>
+                    <td colspan="11" class="table-empty">Cargando...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div><!-- /view-panel -->
+
+<!-- ================================================================ -->
+<!-- MODAL: Nuevo portador                                             -->
+<!-- ================================================================ -->
+<div id="modal-nuevo" class="modal-overlay" style="display:none;">
+    <div class="modal-box">
+        <h2 class="modal-title">Nuevo portador</h2>
+        <p class="modal-sub">El ID se asigna automáticamente y no puede modificarse.</p>
+        <form id="form-nuevo" autocomplete="off">
+            <div class="form-row">
+                <label>ID (automático)</label>
+                <input type="text" id="new-id-preview" disabled placeholder="—">
+            </div>
+            <div class="form-row">
+                <label>Código TXPR</label>
+                <input type="text" id="new-txpr" placeholder="TCPR001">
+            </div>
+            <div class="form-row">
+                <label>Nombre</label>
+                <input type="text" id="new-nombre" placeholder="Nombre">
+            </div>
+            <div class="form-row">
+                <label>Apellidos</label>
+                <input type="text" id="new-apellidos" placeholder="Apellidos">
+            </div>
+            <div class="form-row">
+                <label>DNI</label>
+                <input type="text" id="new-dni" placeholder="12345678X">
+            </div>
+            <div class="form-row">
+                <label>Email</label>
+                <input type="email" id="new-email" placeholder="correo@ejemplo.com">
+                <span class="field-hint">Se validará el formato al guardar.</span>
+            </div>
+        </form>
+        <div class="modal-actions">
+            <button class="btn btn-secondary" id="btn-cancel-nuevo">Cancelar</button>
+            <button class="btn btn-primary"   id="btn-save-nuevo">Guardar</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- MODAL: Confirmar eliminar                                          -->
+<!-- ================================================================ -->
+<div id="modal-delete" class="modal-overlay" style="display:none;">
+    <div class="modal-box">
+        <h2 class="modal-title">Eliminar portador</h2>
+        <p class="modal-confirm-text">
+            ¿Eliminar a <strong id="delete-name"></strong>?<br>
+            Esta acción no se puede deshacer.
+        </p>
+        <div class="modal-actions">
+            <button class="btn btn-secondary" id="btn-cancel-delete">Cancelar</button>
+            <button class="btn btn-danger"    id="btn-confirm-delete">Eliminar</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- MODAL: Confirmar toggle aceptado                                  -->
+<!-- ================================================================ -->
+<div id="modal-toggle" class="modal-overlay" style="display:none;">
+    <div class="modal-box">
+        <h2 class="modal-title">Cambiar estado de aceptación</h2>
+        <p class="modal-confirm-text">
+            ¿Cambiar el estado de <strong id="toggle-name"></strong> a <strong id="toggle-state"></strong>?
+        </p>
+        <div class="modal-actions">
+            <button class="btn btn-secondary" id="btn-cancel-toggle">Cancelar</button>
+            <button class="btn btn-primary"   id="btn-confirm-toggle">Confirmar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Toast container -->
+<div id="toast"></div>
+
+<script src="/js/admin.js"></script>
+</body>
+</html>
