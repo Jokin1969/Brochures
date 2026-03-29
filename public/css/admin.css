@@ -499,6 +499,8 @@ tr:hover .drag-handle { opacity: 1; }
 }
 .toast-item--success { background: #166534; }
 .toast-item--error   { background: #991b1b; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
 @keyframes toastIn {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }

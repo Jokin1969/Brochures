@@ -668,6 +668,42 @@
   }
 
   /* ------------------------------------------------------------------ */
+  /* Backup en Dropbox (manual desde el panel)                           */
+  /* ------------------------------------------------------------------ */
+  function triggerBackup() {
+    var btn     = document.getElementById('btn-backup');
+    var origHTML = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML =
+      '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 1s linear infinite"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>' +
+      ' Subiendo…';
+
+    fetch('/api/admin/backup', { method: 'POST', headers: getHeaders() })
+      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
+      .then(function (res) {
+        if (res.ok) {
+          btn.innerHTML =
+            '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' +
+            ' Backup realizado';
+          btn.style.color = 'var(--green)';
+          toast('Backup en Dropbox completado — ' + (res.data.filename || ''), 'success');
+          setTimeout(function () {
+            btn.innerHTML    = origHTML;
+            btn.style.color  = '';
+            btn.disabled     = false;
+          }, 4000);
+        } else {
+          throw new Error(res.data.error || 'Error desconocido');
+        }
+      })
+      .catch(function (err) {
+        btn.innerHTML = origHTML;
+        btn.disabled  = false;
+        toast('Error en backup: ' + err.message, 'error');
+      });
+  }
+
+  /* ------------------------------------------------------------------ */
   /* Exportar CSV                                                         */
   /* ------------------------------------------------------------------ */
   function exportCSV() {
@@ -713,6 +749,7 @@
     document.getElementById('btn-filter-email').addEventListener('click', function () { setFilter('pendingEmail'); });
     document.getElementById('btn-filter-response').addEventListener('click', function () { setFilter('pendingResponse'); });
     document.getElementById('btn-export').addEventListener('click', exportCSV);
+    document.getElementById('btn-backup').addEventListener('click', triggerBackup);
 
     /* ---- Cabeceras ordenables ---- */
     document.querySelectorAll('thead th.sortable').forEach(function (th) {
