@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El valor de saber — Programa de portadores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/portadores.css">
+    <link rel="stylesheet" href="/css/portadores-programa.css">
+    <style>
+        /* ---- Layout ---- */
+        .reflexion-wrap {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        /* ---- Hero ---- */
+        .reflexion-hero {
+            text-align: center;
+            margin-bottom: 44px;
+        }
+        .reflexion-hero-title {
+            font-family: 'Lora', Georgia, serif;
+            font-size: clamp(1.6rem, 4vw, 2.1rem);
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+        .reflexion-hero-sub {
+            font-size: 0.975rem;
+            color: var(--text-2);
+            line-height: 1.65;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* ---- Accordion card ---- */
+        .accordion-card {
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 4px rgba(0,0,0,.07);
+        }
+
+        .accordion-card--inactive {
+            background: #f0f7f0;
+            border-left: 4px solid #4caf7d;
+        }
+        .accordion-card--active {
+            background: #f0f4fa;
+            border-left: 4px solid #6b8fcf;
+        }
+
+        .accordion-header {
+            width: 100%;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 22px 24px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            text-align: left;
+            font-family: inherit;
+        }
+        .accordion-header:hover {
+            filter: brightness(0.97);
+        }
+
+        .accordion-header-inner {
+            flex: 1;
+        }
+
+        .accordion-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border-radius: 100px;
+            margin-bottom: 10px;
+        }
+        .accordion-card--inactive .accordion-label {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+        .accordion-card--active .accordion-label {
+            background: #c5cae9;
+            color: #3949ab;
+        }
+
+        .accordion-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+
+        .accordion-sub {
+            font-size: 0.85rem;
+            color: var(--text-3);
+            line-height: 1.5;
+        }
+
+        .accordion-arrow {
+            flex-shrink: 0;
+            color: var(--text-3);
+            margin-top: 4px;
+            transition: transform 0.3s ease;
+        }
+        .accordion-card--open .accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* ---- Accordion body ---- */
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .accordion-body-inner {
+            padding: 0 24px 24px;
+        }
+        .accordion-divider {
+            height: 1px;
+            background: rgba(0,0,0,.08);
+            margin: 0 24px 20px;
+        }
+
+        /* ---- Situation mini-card ---- */
+        .sit-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .sit-item {
+            display: flex;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(0,0,0,.06);
+        }
+        .sit-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .sit-num {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            font-size: 0.72rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+        }
+        .accordion-card--inactive .sit-num {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+        .accordion-card--active .sit-num {
+            background: #c5cae9;
+            color: #3949ab;
+        }
+        .sit-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+        .sit-body {
+            font-size: 0.83rem;
+            color: var(--text-2);
+            line-height: 1.6;
+        }
+
+        /* ---- Closing quote ---- */
+        .reflexion-closing-wrap {
+            background: #faf8f5;
+            border-radius: var(--r-lg);
+            padding: 28px 32px;
+            margin-bottom: 40px;
+            text-align: center;
+            border: 1px solid #e8e0d8;
+        }
+        .reflexion-closing-text {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 0.975rem;
+            font-style: italic;
+            color: var(--text-2);
+            line-height: 1.75;
+        }
+
+        /* ---- Actions ---- */
+        .reflexion-actions {
+            text-align: center;
+        }
+
+        /* ---- Teaser block (used in portadores.html & portadores-paso-2.html) ---- */
+        .reflexion-teaser {
+            margin: 28px 0;
+            padding: 18px 22px;
+            background: #f5f3ff;
+            border-radius: var(--r-lg);
+            border: 1px solid #e0d7ff;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .reflexion-teaser-texts {
+            flex: 1;
+        }
+        .reflexion-teaser-main {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #5b21b6;
+            margin-bottom: 3px;
+        }
+        .reflexion-teaser-sub {
+            font-size: 0.78rem;
+            color: #7c5bc2;
+            line-height: 1.4;
+        }
+        .reflexion-teaser-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #7c3aed;
+            color: white;
+            border: none;
+            border-radius: 100px;
+            padding: 9px 18px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            font-family: inherit;
+            transition: background 0.2s, transform 0.15s;
+            white-space: nowrap;
+        }
+        .reflexion-teaser-btn:hover {
+            background: #6d28d9;
+            transform: translateY(-1px);
+        }
+
+        @media (min-width: 520px) {
+            .reflexion-teaser {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body class="pg-fade-in">
+
+    <nav class="lang-switcher" aria-label="Idioma">
+        <button class="lang-btn lang-btn--active" data-lang="es">🇪🇸 ES</button>
+        <button class="lang-btn" data-lang="eu">🏴 EU</button>
+        <button class="lang-btn" data-lang="ca">🏴 CA</button>
+        <button class="lang-btn" data-lang="gl">🏴 GL</button>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow" data-i18n="hero.eyebrow">Programa de seguimiento preclínico</p>
+            <h1 class="hero-title" data-i18n="reflexion.hero.title">El valor de saber</h1>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 88" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;">
+                <path d="M0 88 L0 44 Q360 0 720 44 Q1080 88 1440 44 L1440 88 Z" fill="#fafbff"/>
+            </svg>
+        </div>
+    </section>
+
+    <main class="reflexion-wrap">
+
+        <!-- Subtítulo hero -->
+        <p class="reflexion-hero-sub" style="text-align:center;margin-bottom:36px;" data-i18n="reflexion.hero.sub">
+            No hay una respuesta correcta. Pero hay situaciones concretas que pueden ayudarte a decidir si quieres conocer en qué momento estás.
+        </p>
+
+        <!-- Tarjeta 1 — Fase Inactiva -->
+        <div class="accordion-card accordion-card--inactive" id="card1">
+            <button class="accordion-header" aria-expanded="false" id="card1-btn" onclick="toggleCard('card1')">
+                <div class="accordion-header-inner">
+                    <span class="accordion-label" data-i18n="reflexion.c1.label">Seguimiento estándar</span>
+                    <h2 class="accordion-title" data-i18n="reflexion.c1.title">Si el seguimiento te sitúa en fase inactiva</h2>
+                    <p class="accordion-sub" data-i18n="reflexion.c1.sub">15 situaciones en las que esta información puede marcar una diferencia real en tu vida cotidiana.</p>
+                </div>
+                <svg class="accordion-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-body" id="card1-body">
+                <div class="accordion-divider"></div>
+                <div class="accordion-body-inner">
+                    <div class="sit-list">
+                        <div class="sit-item"><span class="sit-num">1</span><div><p class="sit-title" data-i18n="reflexion.c1.s1.h">Estás pensando en aceptar un trabajo exigente o un cambio de ciudad.</p><p class="sit-body" data-i18n="reflexion.c1.s1.b">Saber que no hay actividad detectable puede darte más tranquilidad para aceptar ese proyecto sin sentir que estás comprometiendo una ventana crítica.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">2</span><div><p class="sit-title" data-i18n="reflexion.c1.s2.h">Quieres formar una familia o ampliar la que ya tienes.</p><p class="sit-body" data-i18n="reflexion.c1.s2.b">Puede ayudarte a vivir esa etapa con menos sensación de urgencia y más espacio para decidir con calma.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">3</span><div><p class="sit-title" data-i18n="reflexion.c1.s3.h">Llevas años interpretando cualquier olvido o despiste como una señal.</p><p class="sit-body" data-i18n="reflexion.c1.s3.b">Tener datos objetivos puede rebajar la hipervigilancia y devolverte confianza en tu vida diaria.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">4</span><div><p class="sit-title" data-i18n="reflexion.c1.s4.h">Te cuesta hacer planes a medio o largo plazo.</p><p class="sit-body" data-i18n="reflexion.c1.s4.b">Esta información puede darte permiso emocional para volver a pensar en años, no solo en meses.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">5</span><div><p class="sit-title" data-i18n="reflexion.c1.s5.h">Tienes una personalidad muy ansiosa y evitas pensar en el tema.</p><p class="sit-body" data-i18n="reflexion.c1.s5.b">Saber que estás en una fase sin actividad puede convertir el seguimiento en una fuente de alivio, no de amenaza.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">6</span><div><p class="sit-title" data-i18n="reflexion.c1.s6.h">Has pospuesto decisiones económicas importantes.</p><p class="sit-body" data-i18n="reflexion.c1.s6.b">Comprar una casa, montar un negocio o reorganizar ahorros puede sentirse más viable cuando el escenario no apunta a inmediatez.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">7</span><div><p class="sit-title" data-i18n="reflexion.c1.s7.h">Tu familia vive con miedo constante por antecedentes previos.</p><p class="sit-body" data-i18n="reflexion.c1.s7.b">Esta clasificación puede bajar la tensión colectiva y ayudar a separar tu situación actual de historias familiares pasadas.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">8</span><div><p class="sit-title" data-i18n="reflexion.c1.s8.h">Quieres seguir cuidando a otros sin sentirte «al borde».</p><p class="sit-body" data-i18n="reflexion.c1.s8.b">Si eres cuidador, madre, padre o sostén familiar, puede darte más serenidad para seguir ocupando ese papel.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">9</span><div><p class="sit-title" data-i18n="reflexion.c1.s9.h">Te planteas viajar, mudarte fuera o vivir una experiencia larga en el extranjero.</p><p class="sit-body" data-i18n="reflexion.c1.s9.b">Estar en fase inactiva puede darte más libertad para hacerlo sin la sensación de que te alejas justo cuando no deberías.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">10</span><div><p class="sit-title" data-i18n="reflexion.c1.s10.h">Necesitas recuperar una identidad que no gire solo en torno al riesgo genético.</p><p class="sit-body" data-i18n="reflexion.c1.s10.b">Puede ayudarte a pasar de ser alguien en espera a ser alguien que está viviendo.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">11</span><div><p class="sit-title" data-i18n="reflexion.c1.s11.h">Te preocupa entrar en un programa y salir más angustiado.</p><p class="sit-body" data-i18n="reflexion.c1.s11.b">Para algunas personas, una clasificación de inactividad confirma que el seguimiento no las encierra, sino que las acompaña.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">12</span><div><p class="sit-title" data-i18n="reflexion.c1.s12.h">Te cuesta explicar tu situación a la pareja o a los hijos.</p><p class="sit-body" data-i18n="reflexion.c1.s12.b">Tener una forma concreta y menos alarmante de describir tu momento puede facilitar conversaciones más serenas.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">13</span><div><p class="sit-title" data-i18n="reflexion.c1.s13.h">Sientes culpa por pensar en proyectos personales.</p><p class="sit-body" data-i18n="reflexion.c1.s13.b">Esta información puede ayudarte a permitirte opositar, emprender, estudiar o disfrutar sin sentir que estás mirando hacia otro lado.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">14</span><div><p class="sit-title" data-i18n="reflexion.c1.s14.h">Necesitas diferenciar riesgo genético de enfermedad real.</p><p class="sit-body" data-i18n="reflexion.c1.s14.b">Quedar en fase inactiva refuerza de forma muy tangible esa diferencia.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">15</span><div><p class="sit-title" data-i18n="reflexion.c1.s15.h">Quieres estar dentro del sistema, pero sin vivir en alerta máxima.</p><p class="sit-body" data-i18n="reflexion.c1.s15.b">Esta situación permite sentir que estás protegido, informado y acompañado, sin que todo pase a leerse en clave de urgencia.</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta 2 — Fase Activa Silente -->
+        <div class="accordion-card accordion-card--active" id="card2">
+            <button class="accordion-header" aria-expanded="false" id="card2-btn" onclick="toggleCard('card2')">
+                <div class="accordion-header-inner">
+                    <span class="accordion-label" data-i18n="reflexion.c2.label">Seguimiento de alerta</span>
+                    <h2 class="accordion-title" data-i18n="reflexion.c2.title">Si el seguimiento te sitúa en fase activa silente</h2>
+                    <p class="accordion-sub" data-i18n="reflexion.c2.sub">18 situaciones en las que esta información puede marcar una diferencia real en tu vida cotidiana.</p>
+                </div>
+                <svg class="accordion-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-body" id="card2-body">
+                <div class="accordion-divider"></div>
+                <div class="accordion-body-inner">
+                    <div class="sit-list">
+                        <div class="sit-item"><span class="sit-num">1</span><div><p class="sit-title" data-i18n="reflexion.c2.s1.h">Prefieres una verdad incómoda a una incertidumbre eterna.</p><p class="sit-body" data-i18n="reflexion.c2.s1.b">Aunque sea una noticia más difícil, te da un mapa claro desde el que actuar.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">2</span><div><p class="sit-title" data-i18n="reflexion.c2.s2.h">Quieres maximizar tus opciones de acceder a ensayos preventivos.</p><p class="sit-body" data-i18n="reflexion.c2.s2.b">Esta situación puede colocarte precisamente en el grupo con más probabilidad de beneficiarse antes de que aparezcan síntomas.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">3</span><div><p class="sit-title" data-i18n="reflexion.c2.s3.h">Te angustia la idea de enterarte tarde.</p><p class="sit-body" data-i18n="reflexion.c2.s3.b">Saberlo ahora puede ser duro, pero evita llegar a un punto en el que ya se hayan perdido oportunidades.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">4</span><div><p class="sit-title" data-i18n="reflexion.c2.s4.h">Necesitas priorizar decisiones familiares importantes.</p><p class="sit-body" data-i18n="reflexion.c2.s4.b">Puede ayudarte a adelantar conversaciones, organizar apoyos y decidir qué asuntos no quieres dejar pendientes.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">5</span><div><p class="sit-title" data-i18n="reflexion.c2.s5.h">Estás bien clínicamente y justamente por eso quieres actuar mientras estás bien.</p><p class="sit-body" data-i18n="reflexion.c2.s5.b">La parte positiva es poder prepararte desde la fortaleza y no desde el deterioro.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">6</span><div><p class="sit-title" data-i18n="reflexion.c2.s6.h">Vives lejos de un centro experto.</p><p class="sit-body" data-i18n="reflexion.c2.s6.b">Esta información puede justificar acercarte antes, reorganizar visitas o facilitar logística sin esperar a que surjan problemas evidentes.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">7</span><div><p class="sit-title" data-i18n="reflexion.c2.s7.h">Tu trabajo exige mucha planificación.</p><p class="sit-body" data-i18n="reflexion.c2.s7.b">Puedes anticipar proyectos, delegaciones, relevos o cambios de ritmo de forma ordenada y no precipitada.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">8</span><div><p class="sit-title" data-i18n="reflexion.c2.s8.h">Te preocupa dejar cargas administrativas o económicas sin resolver.</p><p class="sit-body" data-i18n="reflexion.c2.s8.b">Tener información más precisa puede ayudarte a ordenar documentos, seguros, patrimonio o decisiones legales con tiempo y claridad.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">9</span><div><p class="sit-title" data-i18n="reflexion.c2.s9.h">Tu pareja necesita entender mejor el momento que estáis viviendo.</p><p class="sit-body" data-i18n="reflexion.c2.s9.b">La clasificación puede dar un lenguaje común para hablar del presente sin entrar todavía en un escenario de síntomas.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">10</span><div><p class="sit-title" data-i18n="reflexion.c2.s10.h">Sientes que llevas tiempo viviendo en una niebla de sospechas.</p><p class="sit-body" data-i18n="reflexion.c2.s10.b">Para algunas personas, poner nombre a la situación reduce el sufrimiento de la ambigüedad, aunque el contenido no sea el deseado.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">11</span><div><p class="sit-title" data-i18n="reflexion.c2.s11.h">Quieres participar activamente en investigación con sentido inmediato.</p><p class="sit-body" data-i18n="reflexion.c2.s11.b">Estar en esta fase puede convertir tu seguimiento en una contribución especialmente valiosa para acelerar terapias preventivas.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">12</span><div><p class="sit-title" data-i18n="reflexion.c2.s12.h">Necesitas reorganizar prioridades vitales.</p><p class="sit-body" data-i18n="reflexion.c2.s12.b">Puede ayudarte a decidir qué quieres hacer ahora: pasar más tiempo con ciertas personas, viajar, cerrar etapas o abrir otras.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">13</span><div><p class="sit-title" data-i18n="reflexion.c2.s13.h">Tu familia ha vivido casos previos y teméis repetir la historia de llegar tarde.</p><p class="sit-body" data-i18n="reflexion.c2.s13.b">La parte positiva es romper ese patrón mediante vigilancia y preparación tempranas.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">14</span><div><p class="sit-title" data-i18n="reflexion.c2.s14.h">Te resulta más fácil afrontar lo difícil cuando sabes qué hacer después.</p><p class="sit-body" data-i18n="reflexion.c2.s14.b">La utilidad de esta información está en que activa pasos concretos: más seguimiento, más foco y más preparación.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">15</span><div><p class="sit-title" data-i18n="reflexion.c2.s15.h">Quieres estar en primera línea de las novedades terapéuticas.</p><p class="sit-body" data-i18n="reflexion.c2.s15.b">El seguimiento es la vía para recibir información personalizada sobre opciones disponibles o próximas.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">16</span><div><p class="sit-title" data-i18n="reflexion.c2.s16.h">Temes que no hacer nada sea peor que saber.</p><p class="sit-body" data-i18n="reflexion.c2.s16.b">En este grupo, conocer tu situación puede transformar la sensación de pasividad en una de acción informada.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">17</span><div><p class="sit-title" data-i18n="reflexion.c2.s17.h">Necesitas decidir a quién contárselo y cómo.</p><p class="sit-body" data-i18n="reflexion.c2.s17.b">Saber dónde estás puede ayudarte a comunicarte de forma más honesta y concreta con quienes formen parte de tu red de apoyo.</p></div></div>
+                        <div class="sit-item"><span class="sit-num">18</span><div><p class="sit-title" data-i18n="reflexion.c2.s18.h">Quieres aprovechar el tiempo útil, no reaccionar tarde.</p><p class="sit-body" data-i18n="reflexion.c2.s18.b">Ese es quizá el valor más positivo de esta situación: todavía estás asintomático, pero ya no estás a ciegas.</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cierre -->
+        <div class="reflexion-closing-wrap">
+            <p class="reflexion-closing-text" data-i18n="reflexion.closing">
+                Estar en uno u otro grupo no cambia quién eres, pero puede cambiar de forma importante cómo planificas, cómo decides y cómo aprovechas las oportunidades de seguimiento, apoyo y acceso temprano a nuevas terapias.
+            </p>
+        </div>
+
+        <!-- Botón de retorno -->
+        <div class="reflexion-actions">
+            <button id="btn-back" class="btn-primary" onclick="goBack()">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
+                <span data-i18n="reflexion.back">Volver al programa</span>
+            </button>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p><a href="/">Brochures</a> &nbsp;&middot;&nbsp; <span data-i18n="footer.text">&copy; Joaquín Castilla 2026</span></p>
+        <p class="footer-ethics" data-i18n="footer.ethics">Programa aprobado por el Comité de Ética de la Investigación del País Vasco · Código PI2025164</p>
+    </footer>
+
+    <script src="/js/translations.js"></script>
+    <script>
+    (function () {
+        'use strict';
+
+        /* ---- Lang switcher ---- */
+        document.addEventListener('DOMContentLoaded', function () {
+            requestAnimationFrame(function () { document.body.classList.add('loaded'); });
+
+            if (typeof applyTranslations === 'function') applyTranslations();
+
+            document.querySelectorAll('.lang-btn').forEach(function (btn) {
+                btn.classList.toggle('lang-btn--active', btn.dataset.lang === (localStorage.getItem('pg-lang') || 'es'));
+                btn.addEventListener('click', function () {
+                    if (typeof setLang === 'function') setLang(btn.dataset.lang);
+                });
+            });
+        });
+
+        /* ---- Accordion ---- */
+        window.toggleCard = function (id) {
+            var card = document.getElementById(id);
+            var body = document.getElementById(id + '-body');
+            var btn  = document.getElementById(id + '-btn');
+            var isOpen = card.classList.contains('accordion-card--open');
+
+            if (isOpen) {
+                /* Collapsing: set explicit height first, then animate to 0 */
+                body.style.maxHeight = body.scrollHeight + 'px';
+                requestAnimationFrame(function () {
+                    body.style.maxHeight = '0';
+                });
+                card.classList.remove('accordion-card--open');
+                btn.setAttribute('aria-expanded', 'false');
+            } else {
+                /* Expanding */
+                card.classList.add('accordion-card--open');
+                btn.setAttribute('aria-expanded', 'true');
+                body.style.maxHeight = body.scrollHeight + 'px';
+                /* After transition, remove fixed height so content can reflow */
+                body.addEventListener('transitionend', function handler() {
+                    if (card.classList.contains('accordion-card--open')) {
+                        body.style.maxHeight = 'none';
+                    }
+                    body.removeEventListener('transitionend', handler);
+                });
+            }
+        };
+
+        /* ---- Back navigation ---- */
+        window.goBack = function () {
+            var params = new URLSearchParams(window.location.search);
+            var from   = params.get('from');
+
+            if (from === 'paso2') {
+                /* Return to portadores-paso-2.html, scroll to answer area */
+                sessionStorage.setItem('reflexion-return', 'paso2');
+                window.location.href = '/portadores-paso-2.html';
+            } else {
+                /* Default: return to portadores.html, scroll to section 03 */
+                sessionStorage.setItem('reflexion-return', 'portadores');
+                window.location.href = '/portadores.html#section-03';
+            }
+        };
+
+    })();
+    </script>
+
+</body>
+</html>

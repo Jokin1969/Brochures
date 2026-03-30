@@ -136,6 +136,95 @@ const TRANSLATIONS = {
 
     /* ---- Botón siguientes pasos (portadores-compromiso.html) ---- */
     'btn.siguientes-pasos': '¿Cuáles son los siguientes pasos?',
+
+    /* ---- portadores-reflexion.html — teaser de entrada ---- */
+    'reflexion.teaser.text': '¿Te preguntas si vale la pena saber en qué grupo estás?',
+    'reflexion.teaser.sub':  'Hemos pensado en situaciones concretas que pueden ayudarte a reflexionarlo.',
+    'reflexion.teaser.btn':  'Quiero reflexionar sobre esto',
+
+    /* ---- portadores-reflexion.html — cabecera ---- */
+    'reflexion.hero.title': 'El valor de saber',
+    'reflexion.hero.sub':   'No hay una respuesta correcta. Pero hay situaciones concretas que pueden ayudarte a decidir si quieres conocer en qué momento estás.',
+
+    /* ---- portadores-reflexion.html — tarjeta 1: Fase Inactiva ---- */
+    'reflexion.c1.label': 'Seguimiento estándar',
+    'reflexion.c1.title': 'Si el seguimiento te sitúa en fase inactiva',
+    'reflexion.c1.sub':   '15 situaciones en las que esta información puede marcar una diferencia real en tu vida cotidiana.',
+    'reflexion.c1.s1.h':  'Estás pensando en aceptar un trabajo exigente o un cambio de ciudad.',
+    'reflexion.c1.s1.b':  'Saber que no hay actividad detectable puede darte más tranquilidad para aceptar ese proyecto sin sentir que estás comprometiendo una ventana crítica.',
+    'reflexion.c1.s2.h':  'Quieres formar una familia o ampliar la que ya tienes.',
+    'reflexion.c1.s2.b':  'Puede ayudarte a vivir esa etapa con menos sensación de urgencia y más espacio para decidir con calma.',
+    'reflexion.c1.s3.h':  'Llevas años interpretando cualquier olvido o despiste como una señal.',
+    'reflexion.c1.s3.b':  'Tener datos objetivos puede rebajar la hipervigilancia y devolverte confianza en tu vida diaria.',
+    'reflexion.c1.s4.h':  'Te cuesta hacer planes a medio o largo plazo.',
+    'reflexion.c1.s4.b':  'Esta información puede darte permiso emocional para volver a pensar en años, no solo en meses.',
+    'reflexion.c1.s5.h':  'Tienes una personalidad muy ansiosa y evitas pensar en el tema.',
+    'reflexion.c1.s5.b':  'Saber que estás en una fase sin actividad puede convertir el seguimiento en una fuente de alivio, no de amenaza.',
+    'reflexion.c1.s6.h':  'Has pospuesto decisiones económicas importantes.',
+    'reflexion.c1.s6.b':  'Comprar una casa, montar un negocio o reorganizar ahorros puede sentirse más viable cuando el escenario no apunta a inmediatez.',
+    'reflexion.c1.s7.h':  'Tu familia vive con miedo constante por antecedentes previos.',
+    'reflexion.c1.s7.b':  'Esta clasificación puede bajar la tensión colectiva y ayudar a separar tu situación actual de historias familiares pasadas.',
+    'reflexion.c1.s8.h':  'Quieres seguir cuidando a otros sin sentirte «al borde».',
+    'reflexion.c1.s8.b':  'Si eres cuidador, madre, padre o sostén familiar, puede darte más serenidad para seguir ocupando ese papel.',
+    'reflexion.c1.s9.h':  'Te planteas viajar, mudarte fuera o vivir una experiencia larga en el extranjero.',
+    'reflexion.c1.s9.b':  'Estar en fase inactiva puede darte más libertad para hacerlo sin la sensación de que te alejas justo cuando no deberías.',
+    'reflexion.c1.s10.h': 'Necesitas recuperar una identidad que no gire solo en torno al riesgo genético.',
+    'reflexion.c1.s10.b': 'Puede ayudarte a pasar de ser alguien en espera a ser alguien que está viviendo.',
+    'reflexion.c1.s11.h': 'Te preocupa entrar en un programa y salir más angustiado.',
+    'reflexion.c1.s11.b': 'Para algunas personas, una clasificación de inactividad confirma que el seguimiento no las encierra, sino que las acompaña.',
+    'reflexion.c1.s12.h': 'Te cuesta explicar tu situación a la pareja o a los hijos.',
+    'reflexion.c1.s12.b': 'Tener una forma concreta y menos alarmante de describir tu momento puede facilitar conversaciones más serenas.',
+    'reflexion.c1.s13.h': 'Sientes culpa por pensar en proyectos personales.',
+    'reflexion.c1.s13.b': 'Esta información puede ayudarte a permitirte opositar, emprender, estudiar o disfrutar sin sentir que estás mirando hacia otro lado.',
+    'reflexion.c1.s14.h': 'Necesitas diferenciar riesgo genético de enfermedad real.',
+    'reflexion.c1.s14.b': 'Quedar en fase inactiva refuerza de forma muy tangible esa diferencia.',
+    'reflexion.c1.s15.h': 'Quieres estar dentro del sistema, pero sin vivir en alerta máxima.',
+    'reflexion.c1.s15.b': 'Esta situación permite sentir que estás protegido, informado y acompañado, sin que todo pase a leerse en clave de urgencia.',
+
+    /* ---- portadores-reflexion.html — tarjeta 2: Fase Activa Silente ---- */
+    'reflexion.c2.label': 'Seguimiento de alerta',
+    'reflexion.c2.title': 'Si el seguimiento te sitúa en fase activa silente',
+    'reflexion.c2.sub':   '18 situaciones en las que esta información puede marcar una diferencia real en tu vida cotidiana.',
+    'reflexion.c2.s1.h':  'Prefieres una verdad incómoda a una incertidumbre eterna.',
+    'reflexion.c2.s1.b':  'Aunque sea una noticia más difícil, te da un mapa claro desde el que actuar.',
+    'reflexion.c2.s2.h':  'Quieres maximizar tus opciones de acceder a ensayos preventivos.',
+    'reflexion.c2.s2.b':  'Esta situación puede colocarte precisamente en el grupo con más probabilidad de beneficiarse antes de que aparezcan síntomas.',
+    'reflexion.c2.s3.h':  'Te angustia la idea de enterarte tarde.',
+    'reflexion.c2.s3.b':  'Saberlo ahora puede ser duro, pero evita llegar a un punto en el que ya se hayan perdido oportunidades.',
+    'reflexion.c2.s4.h':  'Necesitas priorizar decisiones familiares importantes.',
+    'reflexion.c2.s4.b':  'Puede ayudarte a adelantar conversaciones, organizar apoyos y decidir qué asuntos no quieres dejar pendientes.',
+    'reflexion.c2.s5.h':  'Estás bien clínicamente y justamente por eso quieres actuar mientras estás bien.',
+    'reflexion.c2.s5.b':  'La parte positiva es poder prepararte desde la fortaleza y no desde el deterioro.',
+    'reflexion.c2.s6.h':  'Vives lejos de un centro experto.',
+    'reflexion.c2.s6.b':  'Esta información puede justificar acercarte antes, reorganizar visitas o facilitar logística sin esperar a que surjan problemas evidentes.',
+    'reflexion.c2.s7.h':  'Tu trabajo exige mucha planificación.',
+    'reflexion.c2.s7.b':  'Puedes anticipar proyectos, delegaciones, relevos o cambios de ritmo de forma ordenada y no precipitada.',
+    'reflexion.c2.s8.h':  'Te preocupa dejar cargas administrativas o económicas sin resolver.',
+    'reflexion.c2.s8.b':  'Tener información más precisa puede ayudarte a ordenar documentos, seguros, patrimonio o decisiones legales con tiempo y claridad.',
+    'reflexion.c2.s9.h':  'Tu pareja necesita entender mejor el momento que estáis viviendo.',
+    'reflexion.c2.s9.b':  'La clasificación puede dar un lenguaje común para hablar del presente sin entrar todavía en un escenario de síntomas.',
+    'reflexion.c2.s10.h': 'Sientes que llevas tiempo viviendo en una niebla de sospechas.',
+    'reflexion.c2.s10.b': 'Para algunas personas, poner nombre a la situación reduce el sufrimiento de la ambigüedad, aunque el contenido no sea el deseado.',
+    'reflexion.c2.s11.h': 'Quieres participar activamente en investigación con sentido inmediato.',
+    'reflexion.c2.s11.b': 'Estar en esta fase puede convertir tu seguimiento en una contribución especialmente valiosa para acelerar terapias preventivas.',
+    'reflexion.c2.s12.h': 'Necesitas reorganizar prioridades vitales.',
+    'reflexion.c2.s12.b': 'Puede ayudarte a decidir qué quieres hacer ahora: pasar más tiempo con ciertas personas, viajar, cerrar etapas o abrir otras.',
+    'reflexion.c2.s13.h': 'Tu familia ha vivido casos previos y teméis repetir la historia de llegar tarde.',
+    'reflexion.c2.s13.b': 'La parte positiva es romper ese patrón mediante vigilancia y preparación tempranas.',
+    'reflexion.c2.s14.h': 'Te resulta más fácil afrontar lo difícil cuando sabes qué hacer después.',
+    'reflexion.c2.s14.b': 'La utilidad de esta información está en que activa pasos concretos: más seguimiento, más foco y más preparación.',
+    'reflexion.c2.s15.h': 'Quieres estar en primera línea de las novedades terapéuticas.',
+    'reflexion.c2.s15.b': 'El seguimiento es la vía para recibir información personalizada sobre opciones disponibles o próximas.',
+    'reflexion.c2.s16.h': 'Temes que no hacer nada sea peor que saber.',
+    'reflexion.c2.s16.b': 'En este grupo, conocer tu situación puede transformar la sensación de pasividad en una de acción informada.',
+    'reflexion.c2.s17.h': 'Necesitas decidir a quién contárselo y cómo.',
+    'reflexion.c2.s17.b': 'Saber dónde estás puede ayudarte a comunicarte de forma más honesta y concreta con quienes formen parte de tu red de apoyo.',
+    'reflexion.c2.s18.h': 'Quieres aprovechar el tiempo útil, no reaccionar tarde.',
+    'reflexion.c2.s18.b': 'Ese es quizá el valor más positivo de esta situación: todavía estás asintomático, pero ya no estás a ciegas.',
+
+    /* ---- portadores-reflexion.html — cierre y retorno ---- */
+    'reflexion.closing': 'Estar en uno u otro grupo no cambia quién eres, pero puede cambiar de forma importante cómo planificas, cómo decides y cómo aprovechas las oportunidades de seguimiento, apoyo y acceso temprano a nuevas terapias.',
+    'reflexion.back':    'Volver al programa',
   },
 
   eu: {
@@ -179,6 +268,21 @@ const TRANSLATIONS = {
 
     /* ---- Botón siguientes pasos ---- */
     'btn.siguientes-pasos': 'Zeintzuk dira hurrengo urratsak?',
+
+    /* ---- portadores-reflexion.html ---- */
+    'reflexion.teaser.text': 'Galdetzen al diozu zeure buruari zein taldetan zauden jakitea merezi ote duen?',
+    'reflexion.teaser.sub':  'Hori hausnartzeko lagun ditzaketen egoera zehatzak pentsatu ditugu.',
+    'reflexion.teaser.btn':  'Horren inguruan hausnartu nahi dut',
+    'reflexion.hero.title':  'Jakitearen balioa',
+    'reflexion.hero.sub':    'Ez dago erantzun zuzen bat. Baina egoera zehatz batzuk daude une honetan non zauden jakin nahi duzun erabakitzen lagun diezazuketenak.',
+    'reflexion.c1.label':    'Jarraimen estandarra',
+    'reflexion.c1.title':    'Jarraipenak fase inaktiboan kokatzen bazaitu',
+    'reflexion.c1.sub':      '15 egoera zure eguneroko bizitzan benetako aldea egin dezakeen informazio horena.',
+    'reflexion.c2.label':    'Alerta jarraipena',
+    'reflexion.c2.title':    'Jarraipenak fase aktibo isilan kokatzen bazaitu',
+    'reflexion.c2.sub':      '18 egoera zure eguneroko bizitzan benetako aldea egin dezakeen informazio horena.',
+    'reflexion.closing':     'Talde batean edo bestean egoteak ez du aldatzen nor zaren, baina garrantzizko aldaketa ekar dezake nola planifikatzen duzun, nola erabakitzen duzun eta jarraipenerako, laguntzarako eta terapia berrietan sarbide goiztiarrerako aukerak nola aprobetxatzen dituzun.',
+    'reflexion.back':        'Programara itzuli',
   },
 
   ca: {
@@ -222,6 +326,21 @@ const TRANSLATIONS = {
 
     /* ---- Botón siguientes pasos ---- */
     'btn.siguientes-pasos': 'Quins són els passos següents?',
+
+    /* ---- portadores-reflexion.html ---- */
+    'reflexion.teaser.text': 'Et preguntes si val la pena saber en quin grup ets?',
+    'reflexion.teaser.sub':  'Hem pensat en situacions concretes que poden ajudar-te a reflexionar-ho.',
+    'reflexion.teaser.btn':  'Vull reflexionar sobre això',
+    'reflexion.hero.title':  'El valor de saber',
+    'reflexion.hero.sub':    'No hi ha una resposta correcta. Però hi ha situacions concretes que poden ajudar-te a decidir si vols conèixer en quin moment ets.',
+    'reflexion.c1.label':    'Seguiment estàndard',
+    'reflexion.c1.title':    'Si el seguiment et situa en fase inactiva',
+    'reflexion.c1.sub':      '15 situacions en les quals aquesta informació pot marcar una diferència real en la teva vida quotidiana.',
+    'reflexion.c2.label':    'Seguiment d\'alerta',
+    'reflexion.c2.title':    'Si el seguiment et situa en fase activa silenciosa',
+    'reflexion.c2.sub':      '18 situacions en les quals aquesta informació pot marcar una diferència real en la teva vida quotidiana.',
+    'reflexion.closing':     'Estar en un grup o l\'altre no canvia qui ets, però pot canviar de forma important com planifiques, com decideixes i com aprofites les oportunitats de seguiment, suport i accés primerenc a noves teràpies.',
+    'reflexion.back':        'Tornar al programa',
   },
 
   gl: {
@@ -265,6 +384,21 @@ const TRANSLATIONS = {
 
     /* ---- Botón siguientes pasos ---- */
     'btn.siguientes-pasos': 'Cales son os seguintes pasos?',
+
+    /* ---- portadores-reflexion.html ---- */
+    'reflexion.teaser.text': 'Preguntas se vale a pena saber en que grupo estás?',
+    'reflexion.teaser.sub':  'Pensamos en situacións concretas que poden axudarte a reflexionalo.',
+    'reflexion.teaser.btn':  'Quero reflexionar sobre isto',
+    'reflexion.hero.title':  'O valor de saber',
+    'reflexion.hero.sub':    'Non hai unha resposta correcta. Pero hai situacións concretas que poden axudarte a decidir se queres coñecer en que momento estás.',
+    'reflexion.c1.label':    'Seguimento estándar',
+    'reflexion.c1.title':    'Se o seguimento te sitúa en fase inactiva',
+    'reflexion.c1.sub':      '15 situacións nas que esta información pode marcar unha diferenza real na túa vida cotiá.',
+    'reflexion.c2.label':    'Seguimento de alerta',
+    'reflexion.c2.title':    'Se o seguimento te sitúa en fase activa silente',
+    'reflexion.c2.sub':      '18 situacións nas que esta información pode marcar unha diferenza real na túa vida cotiá.',
+    'reflexion.closing':     'Estar nun grupo ou noutro non cambia quen es, pero pode cambiar de forma importante como planificas, como decides e como aproveitas as oportunidades de seguimento, apoio e acceso temperán a novas terapias.',
+    'reflexion.back':        'Volver ao programa',
   },
 };
 

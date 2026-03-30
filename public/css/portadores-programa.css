@@ -630,6 +630,54 @@ body.pg-fade-in.loaded { opacity: 1; }
     margin-top: 6px;
 }
 
+/* ---- Reflexion teaser block (portadores.html & portadores-paso-2.html) ---- */
+.reflexion-teaser {
+    margin: 28px 0;
+    padding: 18px 22px;
+    background: #f5f3ff;
+    border-radius: var(--r-lg);
+    border: 1px solid #e0d7ff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+.reflexion-teaser-main {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #5b21b6;
+    margin-bottom: 3px;
+}
+.reflexion-teaser-sub {
+    font-size: 0.78rem;
+    color: #7c5bc2;
+    line-height: 1.4;
+}
+.reflexion-teaser-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #7c3aed;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 9px 18px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
+}
+.reflexion-teaser-btn:hover {
+    background: #6d28d9;
+    transform: translateY(-1px);
+}
+@media (min-width: 520px) {
+    .reflexion-teaser { flex-direction: row; align-items: center; }
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 700px) {
     .pg-main { padding: 60px 24px 80px; }

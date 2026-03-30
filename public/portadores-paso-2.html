@@ -52,6 +52,18 @@
             <p data-i18n-html="m2.c2.prose.p3"><strong>Si estás en fase activa silente:</strong> los marcadores muestran señales tempranas de actividad, aunque tu vida cotidiana no lo refleja en absoluto. Lejos de ser solo una mala noticia, es la información más valiosa que puedes tener hoy — porque te sitúa exactamente en el grupo para el que se están diseñando los primeros ensayos clínicos preventivos. El momento de actuar es ahora, y el programa está aquí para cada paso.</p>
         </div>
 
+        <!-- Teaser reflexión -->
+        <div class="reflexion-teaser" style="margin-bottom:28px;">
+            <div class="reflexion-teaser-texts">
+                <p class="reflexion-teaser-main" data-i18n="reflexion.teaser.text">¿Te preguntas si vale la pena saber en qué grupo estás?</p>
+                <p class="reflexion-teaser-sub" data-i18n="reflexion.teaser.sub">Hemos pensado en situaciones concretas que pueden ayudarte a reflexionarlo.</p>
+            </div>
+            <a href="/portadores-reflexion.html?from=paso2" class="reflexion-teaser-btn">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v.5"/></svg>
+                <span data-i18n="reflexion.teaser.btn">Quiero reflexionar sobre esto</span>
+            </a>
+        </div>
+
         <div class="check-block">
             <p class="check-question-text" data-i18n="m2.c2.question">¿Comprendes la diferencia entre ambas situaciones y lo que podría implicar para tu caso concreto?</p>
             <div class="check-options">
@@ -95,10 +107,20 @@
         requestAnimationFrame(function () { document.body.classList.add('loaded'); });
         if (typeof applyTranslations === 'function') applyTranslations();
 
-        setTimeout(function () {
-            var main = document.querySelector('.pg-main');
-            if (main) main.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 150);
+        /* If returning from reflexion page, scroll to the answer area */
+        var reflexionReturn = sessionStorage.getItem('reflexion-return');
+        if (reflexionReturn === 'paso2') {
+            sessionStorage.removeItem('reflexion-return');
+            setTimeout(function () {
+                var checkBlock = document.querySelector('.check-block');
+                if (checkBlock) checkBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 150);
+        } else {
+            setTimeout(function () {
+                var main = document.querySelector('.pg-main');
+                if (main) main.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 150);
+        }
 
         var answered = false;
         var btnNext  = document.getElementById('btn-next');
