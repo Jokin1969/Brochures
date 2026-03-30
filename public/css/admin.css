@@ -321,7 +321,8 @@ tr:hover .drag-handle { opacity: 1; }
 }
 .mail-icon--pending { background: var(--bg); color: var(--text-3); }
 .mail-icon--pending:not(.mail-icon--disabled):hover { background: var(--blue-pale); color: var(--blue); }
-.mail-icon--sent    { background: #dcfce7; color: var(--green); cursor: default; }
+.mail-icon--sent    { background: #dcfce7; color: var(--green); cursor: pointer; }
+.mail-icon--sent.mail-icon--resend:hover { background: #bbf7d0; }
 .mail-icon--disabled { opacity: 0.35; cursor: not-allowed; }
 .mail-date { font-size: 0.68rem; color: var(--text-3); text-align: center; }
 .mail-read-icon {

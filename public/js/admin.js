@@ -441,7 +441,11 @@
     }
 
     if (p.emailEnviado) {
-      icon.setAttribute('data-tooltip', 'Correo enviado el ' + fmtDate(p.fechaEnvioEmail));
+      icon.setAttribute('data-tooltip', 'Enviado el ' + fmtDate(p.fechaEnvioEmail) + ' — clic para reenviar');
+      icon.classList.add('mail-icon--resend');
+      icon.addEventListener('click', function () {
+        window.location.href = '/admin/correo/' + p.id;
+      });
       icon.innerHTML =
         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
         '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>' +
