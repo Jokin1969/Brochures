@@ -9,7 +9,14 @@ const nodemailer = require('nodemailer');
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
-const DATA_FILE = path.join(__dirname, 'data', 'portadores.json');
+const DATA_DIR  = '/app/data';
+const DATA_FILE = path.join(DATA_DIR, 'portadores.json');
+
+/* Crear directorio de datos al arrancar si no existe */
+const fsSync = require('fs');
+if (!fsSync.existsSync(DATA_DIR)) {
+  fsSync.mkdirSync(DATA_DIR, { recursive: true });
+}
 
 /* ------------------------------------------------------------------ */
 /* Helpers de datos                                                     */
