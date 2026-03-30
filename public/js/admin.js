@@ -155,7 +155,7 @@
     if (list.length === 0) {
       var tr = document.createElement('tr');
       var td = document.createElement('td');
-      td.colSpan = 11;
+      td.colSpan = 12;
       td.className = 'table-empty';
       td.textContent = filterMode === 'all'
         ? 'No hay portadores registrados todavía. Usa "Nuevo portador" para añadir el primero.'
@@ -209,6 +209,9 @@
 
     /* ---- Email (editable) ---- */
     tr.appendChild(editableCell('col-email', p, 'email'));
+
+    /* ---- Género (editable select) ---- */
+    tr.appendChild(generoCell(p));
 
     /* ---- Email status ---- */
     tr.appendChild(mailStatusCell(p));
@@ -354,6 +357,67 @@
     return td;
   }
 
+  /* ---- Celda Género (doble clic → select) ---- */
+  function generoCell(p) {
+    var td = document.createElement('td');
+    td.className = 'col-genero cell-editable';
+
+    function generoLabel(val) {
+      if (val === 'masculino') return 'Masculino';
+      if (val === 'femenino')  return 'Femenino';
+      return '—';
+    }
+
+    td.textContent = generoLabel(p.genero);
+
+    td.addEventListener('dblclick', function () {
+      if (td.querySelector('select')) return;
+      var prev = p.genero || '';
+      td.textContent = '';
+      var sel = document.createElement('select');
+      sel.className = 'cell-input';
+      [['', '— Sin especificar —'], ['masculino', 'Masculino'], ['femenino', 'Femenino']].forEach(function (opt) {
+        var o = document.createElement('option');
+        o.value = opt[0];
+        o.textContent = opt[1];
+        if (opt[0] === prev) o.selected = true;
+        sel.appendChild(o);
+      });
+      td.appendChild(sel);
+      sel.focus();
+
+      function save() {
+        var val = sel.value;
+        if (val === prev) { td.textContent = generoLabel(prev); return; }
+        fetch(API + '/' + p.id, {
+          method: 'PUT',
+          headers: getHeaders(),
+          body: JSON.stringify({ genero: val })
+        })
+        .then(function (r) { return r.json(); })
+        .then(function (updated) {
+          p.genero = updated.genero;
+          td.textContent = generoLabel(p.genero);
+          td.classList.add('cell-saved');
+          setTimeout(function () { td.classList.remove('cell-saved'); }, 700);
+        })
+        .catch(function () {
+          td.textContent = generoLabel(prev);
+          toast('Error al guardar', 'error');
+        });
+      }
+
+      sel.addEventListener('change', function () { sel.blur(); });
+      sel.addEventListener('blur', save);
+      sel.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') { e.preventDefault(); sel.blur(); }
+        if (e.key === 'Escape') { td.textContent = generoLabel(prev); }
+      });
+    });
+
+    return td;
+  }
+
   /* ---- Celda estado correo ---- */
   function mailStatusCell(p) {
     var td = document.createElement('td');
@@ -439,13 +503,13 @@
     return td;
   }
 
-  /* ---- Celda Notas (clic para editar) ---- */
+  /* ---- Celda Notas (doble clic para editar) ---- */
   function notasCell(p) {
     var td = document.createElement('td');
-    td.className = 'col-notas notas-cell';
+    td.className = 'col-notas notas-cell cell-editable';
     td.textContent = p.notas || '';
 
-    td.addEventListener('click', function () {
+    td.addEventListener('dblclick', function () {
       if (td.querySelector('textarea')) return;
       var prev = p.notas || '';
       td.textContent = '';
@@ -497,6 +561,7 @@
       document.getElementById('new-apellidos').value = '';
       document.getElementById('new-dni').value       = '';
       document.getElementById('new-email').value     = '';
+      document.getElementById('new-genero').value    = '';
       document.getElementById('modal-nuevo').style.display = 'flex';
       document.getElementById('new-txpr').focus();
     });
@@ -513,6 +578,7 @@
       apellidos:  document.getElementById('new-apellidos').value.trim(),
       dni:        document.getElementById('new-dni').value.trim(),
       email:      document.getElementById('new-email').value.trim(),
+      genero:     document.getElementById('new-genero').value,
     };
 
     fetch(API, {
@@ -707,11 +773,12 @@
   /* Exportar CSV                                                         */
   /* ------------------------------------------------------------------ */
   function exportCSV() {
-    var headers = ['ID','TXPR','Nombre','Apellidos','DNI','Email',
+    var headers = ['ID','TXPR','Nombre','Apellidos','DNI','Email','Género',
                    'Email Enviado','Fecha Envío','Aceptado','Fecha Aceptación','Notas','Orden'];
     var rows = portadores.map(function (p) {
       return [
         p.id, p.codigoTXPR, p.nombre, p.apellidos, p.dni, p.email,
+        p.genero || '',
         p.emailEnviado ? 'Sí' : 'No',
         fmtDate(p.fechaEnvioEmail),
         p.aceptado ? 'Sí' : 'No',

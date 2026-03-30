@@ -154,6 +154,7 @@ app.post('/api/admin/portadores', requireAdmin, async (req, res) => {
       apellidos:        req.body.apellidos         || '',
       dni:              req.body.dni               || '',
       email:            req.body.email             || '',
+      genero:           req.body.genero            || '',
       emailEnviado:     false,
       fechaEnvioEmail:  null,
       aceptado:         false,
@@ -181,7 +182,7 @@ app.put('/api/admin/portadores/:id', requireAdmin, async (req, res) => {
 
     /* Campos editables; id y contadores de fecha se gestionan internamente */
     const allowed = [
-      'codigoTXPR', 'nombre', 'apellidos', 'dni', 'email',
+      'codigoTXPR', 'nombre', 'apellidos', 'dni', 'email', 'genero',
       'emailEnviado', 'fechaEnvioEmail',
       'aceptado', 'fechaAceptacion',
       'notas', 'orden'
@@ -234,7 +235,7 @@ app.post('/api/portadores/aceptar', async (req, res) => {
     await writeData(data);
 
     const p = data.portadores[idx];
-    res.json({ ok: true, id: p.id });
+    res.json({ ok: true, id: p.id, nombre: p.nombre || '', genero: p.genero || '' });
 
     /* Notificación interna al investigador (no bloquea la respuesta) */
     if (process.env.CONTACT_EMAIL) {
@@ -319,11 +320,12 @@ function generateCSV(portadores) {
          + `${pad(d.getHours())}:${pad(d.getMinutes())}`;
   };
   const headers = [
-    'ID','TXPR','Nombre','Apellidos','DNI','Email',
+    'ID','TXPR','Nombre','Apellidos','DNI','Email','Género',
     'Email Enviado','Fecha Envío','Aceptado','Fecha Aceptación','Notas','Orden'
   ];
   const rows = portadores.map(p => [
     p.id, p.codigoTXPR, p.nombre, p.apellidos, p.dni, p.email,
+    p.genero || '',
     p.emailEnviado ? 'Sí' : 'No',
     fmtDate(p.fechaEnvioEmail),
     p.aceptado ? 'Sí' : 'No',

@@ -63,7 +63,7 @@
                 es una conversación contigo mismo/a sobre algo importante
             </p>
 
-            <div class="paso-nav paso-nav--end">
+            <div class="paso-nav paso-nav--center">
                 <button id="btn-m0-continuar" class="btn-primary">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                     <span data-i18n="m0.btn">He leído el programa y quiero continuar</span>
@@ -111,7 +111,7 @@
             </div>
 
             <div class="paso-nav">
-                <button class="btn-paso-prev" onclick="showMomento(0)">
+                <button class="btn-paso-prev" id="btn-m1-prev">
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
                     Anterior
                 </button>
@@ -125,7 +125,7 @@
                     <p class="closure-text" data-i18n="closure.b.text">No hay ninguna prisa. Lo importante es que sepas que esta información seguirá aquí cuando la necesites, y que el equipo del programa está disponible si en algún momento quieres retomar esta conversación. Cuidarte también significa darte el tiempo que necesitas.</p>
                     <p class="closure-contacts-title" data-i18n="closure.contacts.label">Cómo encontrarnos</p>
                     <div class="contact-cards" id="contacts-B">
-                        <!-- Contactos insertados por JS o estáticos -->
+                        <!-- Contactos insertados por JS -->
                     </div>
                 </div>
             </div>
@@ -143,280 +143,6 @@
 
         </div><!-- /momento-1 -->
 
-        <!-- ============================================================ -->
-        <!-- MOMENTO 2 — Verificación de comprensión                      -->
-        <!-- ============================================================ -->
-        <div id="momento-2" class="momento">
-
-            <div class="section-header">
-                <div class="section-num num-blue">02</div>
-                <div>
-                    <h2 class="section-title" data-i18n="m2.title">Verificación de comprensión</h2>
-                    <p class="section-sub" data-i18n="m2.sub">Tres preguntas breves para asegurarnos de que partimos del mismo punto.</p>
-                </div>
-            </div>
-
-            <!-- CHECK 2.1 -->
-            <div id="check-21" class="check-section">
-
-                <h3 class="section-title" style="font-size:1.25rem;margin-bottom:12px;" data-i18n="m2.c1.title">Algo importante que queremos confirmar contigo</h3>
-
-                <div class="prose">
-                    <p data-i18n="m2.c1.prose">Dentro del grupo de portadores asintomáticos — personas que, como tú, conviven con una mutación genética sin haber desarrollado síntomas — la investigación actual ha permitido identificar dos situaciones claramente distintas. Esto es relativamente reciente y no todo el mundo que llega aquí lo sabe todavía. Por eso queremos preguntarte:</p>
-                </div>
-
-                <div class="check-block">
-                    <p class="check-question-text" data-i18n="m2.c1.question">¿Sabías que existen dos tipos de portadores asintomáticos, con situaciones biológicas diferentes aunque ambos estén sin síntomas?</p>
-                    <div class="check-options check-options--col1">
-                        <button class="check-btn check-btn--yes" data-check="1" data-answer="yes">Sí, lo sabía</button>
-                        <button class="check-btn check-btn--yes" data-check="1" data-answer="yes">No, no lo sabía pero ahora lo he entendido al leer el programa, y lo tengo claro</button>
-                        <button class="check-btn"                data-check="1" data-answer="no">No, no lo sabía y aún no lo tengo claro</button>
-                    </div>
-                </div>
-
-                <!-- Explicación (aparece al responder NO) -->
-                <div id="exp-21" class="explanation-block">
-                    <p data-i18n-html="m2.c1.exp.p1"><strong>Los portadores en fase inactiva:</strong> el proceso biológico asociado a la mutación no muestra señales de actividad detectable hoy. Esto se asocia con un horizonte temporal más amplio. El reloj biológico, por así decirlo, todavía no ha arrancado de forma medible.</p>
-                    <p data-i18n-html="m2.c1.exp.p2"><strong>Los portadores en fase activa silente:</strong> existe una actividad biológica incipiente que las técnicas especializadas pueden comenzar a detectar, aunque la persona no sienta absolutamente nada. El proceso ha comenzado de forma muy silenciosa, y precisamente por eso es tan valioso saberlo: porque este grupo es el que con mayor probabilidad podrá acceder a los primeros ensayos clínicos preventivos.</p>
-                    <p data-i18n="m2.c1.exp.p3">Conocer en cuál de los dos grupos te encuentras es voluntario, posible, y algo que el programa puede ayudarte a descubrir.</p>
-                    <div class="explanation-retry">
-                        <p class="explanation-retry-label" data-i18n="m2.c1.exp.retry">Vuelve a la pregunta cuando quieras:</p>
-                        <div class="check-options check-options--col1">
-                            <button class="check-btn check-btn--yes" data-check="1" data-answer="yes">Sí, lo sabía</button>
-                            <button class="check-btn check-btn--yes" data-check="1" data-answer="yes">No, no lo sabía pero ahora lo he entendido al leer el programa, y lo tengo claro</button>
-                            <button class="check-btn"                data-check="1" data-answer="no">No, no lo sabía y aún no lo tengo claro</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div><!-- /check-21 -->
-
-            <!-- CHECK 2.2 (oculto hasta que 2.1 se complete) -->
-            <div id="check-22" class="check-section" style="display:none;">
-
-                <h3 class="section-title" style="font-size:1.25rem;margin-bottom:12px;" data-i18n="m2.c2.title">La diferencia entre los dos tipos, y lo que significa para ti</h3>
-
-                <div class="prose">
-                    <p data-i18n="m2.c2.prose.p1">Saber que existen dos tipos es un primer paso. Pero queremos asegurarnos de que la diferencia entre ellos tiene sentido real para ti, no solo como concepto abstracto.</p>
-                    <p data-i18n-html="m2.c2.prose.p2"><strong>Si estás en fase inactiva:</strong> los marcadores biológicos no muestran actividad detectable hoy. Eso no significa que el proceso no vaya a comenzar en algún momento, pero sí que probablemente dispongas de un margen de tiempo amplio. Este margen es precisamente lo que hace posible planificar y estar en primera línea cuando lleguen las terapias.</p>
-                    <p data-i18n-html="m2.c2.prose.p3"><strong>Si estás en fase activa silente:</strong> los marcadores muestran señales tempranas de actividad, aunque tu vida cotidiana no lo refleja en absoluto. Lejos de ser solo una mala noticia, es la información más valiosa que puedes tener hoy — porque te sitúa exactamente en el grupo para el que se están diseñando los primeros ensayos clínicos preventivos. El momento de actuar es ahora, y el programa está aquí para cada paso.</p>
-                </div>
-
-                <div class="check-block">
-                    <p class="check-question-text" data-i18n="m2.c2.question">¿Comprendes la diferencia entre ambas situaciones y lo que podría implicar para tu caso concreto?</p>
-                    <div class="check-options">
-                        <button class="check-btn check-btn--yes" data-check="2" data-answer="yes" data-i18n="m2.c2.yes">Sí, comprendo la diferencia y lo que implica</button>
-                        <button class="check-btn"                data-check="2" data-answer="no"  data-i18n="m2.c2.no">Necesito releerlo o no me ha quedado del todo claro</button>
-                    </div>
-                </div>
-
-                <div id="exp-22" class="explanation-block">
-                    <p data-i18n="m2.c2.exp.p1">No pasa nada. Tómate el tiempo que necesites. Aquí tienes de nuevo los dos perfiles de forma resumida:</p>
-                    <p data-i18n-html="m2.c2.exp.p2"><strong>Fase inactiva:</strong> marcadores sin actividad detectable hoy. Horizonte temporal amplio. Tiempo para planificar.</p>
-                    <p data-i18n-html="m2.c2.exp.p3"><strong>Fase activa silente:</strong> señales tempranas de actividad biológica, sin síntomas. El grupo prioritario para los primeros ensayos preventivos.</p>
-                    <div class="explanation-retry">
-                        <p class="explanation-retry-label" data-i18n="m2.c2.exp.retry">Cuando lo tengas claro:</p>
-                        <div class="check-options">
-                            <button class="check-btn check-btn--yes" data-check="2" data-answer="yes" data-i18n="m2.c2.yes">Sí, comprendo la diferencia y lo que implica</button>
-                            <button class="check-btn"                data-check="2" data-answer="no"  data-i18n="m2.c2.no">Necesito releerlo o no me ha quedado del todo claro</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div><!-- /check-22 -->
-
-            <!-- CHECK 2.3 (oculto hasta que 2.2 se complete) -->
-            <div id="check-23" class="check-section" style="display:none;">
-
-                <h3 class="section-title" style="font-size:1.25rem;margin-bottom:12px;" data-i18n="m2.c3.title">Las pruebas que hacen posible saberlo</h3>
-
-                <div class="prose">
-                    <p data-i18n="m2.c3.prose.p1">Determinar en cuál de los dos grupos te encuentras no es sencillo. No existe hoy ninguna prueba única, rápida y definitiva que lo responda. Lo que tenemos son herramientas especializadas — algunas de ellas requieren muestras biológicas que no son las habituales, como determinados análisis de líquido cefalorraquídeo u otras que permiten detectar señales de actividad priónica con mayor sensibilidad.</p>
-                    <p data-i18n="m2.c3.prose.p2">Esto significa que el proceso requiere tiempo, visitas, y en algunos casos procedimientos que merecen ser explicados con detalle antes de realizarlos. El equipo del programa te acompañará en cada decisión, y nada se hará sin tu comprensión y tu consentimiento.</p>
-                </div>
-
-                <div class="check-block">
-                    <p class="check-question-text" data-i18n="m2.c3.question">¿Entiendes que conocer tu situación requiere pruebas especializadas, que no siempre son sencillas, y que el resultado puede tener implicaciones reales en tu vida?</p>
-                    <div class="check-options">
-                        <button class="check-btn check-btn--yes" data-check="3" data-answer="yes" data-i18n="m2.c3.yes">Sí, lo entiendo y quiero continuar</button>
-                        <button class="check-btn"                data-check="3" data-answer="no"  data-i18n="m2.c3.no">Necesito pensarlo o entender mejor esto antes de seguir</button>
-                    </div>
-                </div>
-
-                <div id="exp-23" class="explanation-block">
-                    <p data-i18n="m2.c3.exp.p1">Es una decisión que merece reflexión, y está muy bien reconocerlo. Lo importante es que nadie te va a pedir que hagas ninguna prueba sin haberte explicado antes en detalle en qué consiste, qué información da, y qué puede suponer para ti conocer ese resultado.</p>
-                    <p data-i18n="m2.c3.exp.p2">El consentimiento informado no es un formulario — es una conversación real con el equipo. Cuando sientas que estás listo/a, la pregunta sigue aquí.</p>
-                    <div class="explanation-retry">
-                        <p class="explanation-retry-label" data-i18n="m2.c3.exp.retry">Cuando estés listo/a:</p>
-                        <div class="check-options">
-                            <button class="check-btn check-btn--yes" data-check="3" data-answer="yes" data-i18n="m2.c3.yes">Sí, lo entiendo y quiero continuar</button>
-                            <button class="check-btn"                data-check="3" data-answer="no"  data-i18n="m2.c3.no">Necesito pensarlo o entender mejor esto antes de seguir</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div><!-- /check-23 -->
-
-            <div class="paso-nav">
-                <button class="btn-paso-prev" onclick="showMomento(1)">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
-                    Anterior
-                </button>
-                <button class="btn-primary" id="btn-next-m2" onclick="showMomento(3)" disabled>
-                    Siguiente
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                </button>
-            </div>
-
-        </div><!-- /momento-2 -->
-
-        <!-- ============================================================ -->
-        <!-- MOMENTO 3 — Compromisos y ventajas                           -->
-        <!-- ============================================================ -->
-        <div id="momento-3" class="momento">
-
-            <div class="section-header">
-                <div class="section-num num-teal">03</div>
-                <div>
-                    <h2 class="section-title" data-i18n="m3.title">Lo que esto significa en la práctica</h2>
-                    <p class="section-sub" data-i18n="m3.sub">Cuatro cosas que queremos que sepas antes de continuar.</p>
-                </div>
-            </div>
-
-            <div class="affirmation-cards">
-
-                <!-- Afirmación 1 -->
-                <div class="affirmation-card">
-                    <div class="affirmation-header" data-i18n="m3.a1.header">Tu participación es completamente voluntaria</div>
-                    <div class="affirmation-text" data-i18n="m3.a1.text">Nada de lo que ocurra dentro del programa está sujeto a ninguna obligación. Puedes decidir en cualquier momento dejar de participar, sin que eso afecte a tu atención médica ni a tu relación con el equipo. Aquí nadie te debe nada, y nosotros tampoco te exigimos nada.</div>
-                    <button class="btn-confirm">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        <span data-i18n="m3.a1.btn">Entendido, y lo acepto</span>
-                    </button>
-                    <div class="affirmation-confirmed-msg">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        <span data-i18n="m3.confirmed">✓ Confirmado</span>
-                    </div>
-                </div>
-
-                <!-- Afirmación 2 -->
-                <div class="affirmation-card">
-                    <div class="affirmation-header" data-i18n="m3.a2.header">Tendrás acceso a la App de seguimiento</div>
-                    <div class="affirmation-text" data-i18n="m3.a2.text">Como participante en el programa, tendrás acceso a una aplicación diseñada específicamente para portadores asintomáticos. Te permitirá registrar de forma longitudinal aspectos como la calidad del sueño, el estado de ánimo, la función cognitiva y otros indicadores relevantes — con la posibilidad de que tu pareja de convivencia, si la tienes, colabore también en ese registro. Esta información no es solo útil para el equipo: es tuya, y puede ayudarte a entender mejor cómo estás a lo largo del tiempo.</div>
-                    <button class="btn-confirm">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        <span data-i18n="m3.a2.btn">Entendido, y me interesa</span>
-                    </button>
-                    <div class="affirmation-confirmed-msg">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        <span data-i18n="m3.confirmed">✓ Confirmado</span>
-                    </div>
-                </div>
-
-                <!-- Afirmación 3 -->
-                <div class="affirmation-card">
-                    <div class="affirmation-header" data-i18n="m3.a3.header">Tu participación te sitúa en una posición favorable</div>
-                    <div class="affirmation-text" data-i18n="m3.a3.text">Las personas que forman parte del programa de seguimiento son las que mejor conocemos, las que tenemos más datos y las que antes podremos contactar cuando se abran nuevos ensayos clínicos. No podemos garantizarte el acceso — los criterios de cada ensayo los define el propio ensayo — pero sí podemos decirte que estar aquí es la mejor forma de estar preparado/a para cuando llegue ese momento.</div>
-                    <button class="btn-confirm">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        <span data-i18n="m3.a3.btn">Entendido</span>
-                    </button>
-                    <div class="affirmation-confirmed-msg">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        <span data-i18n="m3.confirmed">✓ Confirmado</span>
-                    </div>
-                </div>
-
-                <!-- Afirmación 4 -->
-                <div class="affirmation-card">
-                    <div class="affirmation-header" data-i18n="m3.a4.header">Esta es una relación a largo plazo</div>
-                    <div class="affirmation-text" data-i18n="m3.a4.text">El programa no es una visita puntual ni un cuestionario que se responde una vez. Es un acompañamiento continuado — con visitas periódicas, actualizaciones de información, Píldoras de conocimiento y contacto humano real. Nos comprometemos a estar presentes mientras tú quieras que lo estemos.</div>
-                    <button class="btn-confirm">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        <span data-i18n="m3.a4.btn">Entendido, y quiero formar parte</span>
-                    </button>
-                    <div class="affirmation-confirmed-msg">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        <span data-i18n="m3.confirmed">✓ Confirmado</span>
-                    </div>
-                </div>
-
-            </div><!-- /affirmation-cards -->
-
-            <div class="paso-nav">
-                <button class="btn-paso-prev" onclick="showMomento(2)">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
-                    Anterior
-                </button>
-                <button class="btn-primary" id="btn-next-m3" onclick="showMomento(4)" disabled>
-                    Siguiente
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                </button>
-            </div>
-
-        </div><!-- /momento-3 -->
-
-        <!-- ============================================================ -->
-        <!-- MOMENTO 4 — Confirmación DNI                                  -->
-        <!-- ============================================================ -->
-        <div id="momento-4" class="momento">
-
-            <!-- Formulario DNI -->
-            <div id="final-form-step" class="final-inner">
-                <p class="final-eyebrow" data-i18n="final.form.eyebrow">Siguiente paso</p>
-                <h2 class="final-title" data-i18n="final.form.title">Un último paso para que podamos contactarte</h2>
-                <p class="final-text" data-i18n="final.form.text">Si deseas que el equipo del programa se ponga en contacto contigo, indícanos tu DNI. Esto nos permitirá identificarte en nuestro sistema y confirmar tu deseo de participar. Tus datos están protegidos y solo serán accesibles para el equipo investigador.</p>
-
-                <form id="form-aceptar" class="aceptar-form" novalidate>
-                    <div class="aceptar-field">
-                        <label for="aceptar-dni" data-i18n="final.form.label.dni">DNI</label>
-                        <input type="text" id="aceptar-dni" placeholder="12345678A" maxlength="9" autocomplete="off" style="text-transform:uppercase;">
-                        <span class="aceptar-field-hint" data-i18n="final.form.dni.hint">8 dígitos seguidos de una letra</span>
-                    </div>
-                    <p id="aceptar-error" class="aceptar-error" style="display:none;"></p>
-                    <div class="btn-center">
-                        <button type="submit" class="btn-primary" id="btn-aceptar">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span data-i18n="final.form.btn">Confirmar mi deseo de participar</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- DNI no encontrado -->
-            <div id="final-notfound-step" class="final-inner" style="display:none;">
-                <h2 class="final-title" data-i18n="final.notfound.title">No hemos encontrado tu DNI</h2>
-                <p class="final-text" data-i18n="final.notfound.text">No hemos encontrado tu DNI en nuestro sistema. Es posible que aún no hayas sido registrado/a. Por favor, contacta directamente con el equipo para que podamos incorporarte.</p>
-                <p class="closure-contacts-title" data-i18n="final.contacts.label">Cómo encontrarnos</p>
-                <div class="contact-cards" id="contacts-notfound"></div>
-            </div>
-
-            <div class="paso-nav">
-                <button class="btn-paso-prev" id="btn-prev-m4" onclick="showMomento(3)">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
-                    Anterior
-                </button>
-                <div></div>
-            </div>
-
-        </div><!-- /momento-4 -->
-
-        <!-- ============================================================ -->
-        <!-- MOMENTO 5 — Bienvenida                                        -->
-        <!-- ============================================================ -->
-        <div id="momento-5" class="momento">
-
-            <div class="final-inner">
-                <h2 class="thanks-big-title">Bienvenido/a al programa<br>de seguimiento</h2>
-                <p class="final-text">El programa no es una visita puntual. Es un acompañamiento continuado — con visitas periódicas, actualizaciones de información y contacto humano real. Nos comprometemos a estar presentes mientras tú quieras que lo estemos. El equipo se pondrá en contacto contigo en breve para explicarte los siguientes pasos con calma y sin prisa.</p>
-                <div class="btn-center">
-                    <button class="btn-coming-soon" disabled>¿Cuáles son los siguientes pasos?</button>
-                    <span class="coming-soon-label">Próximamente disponible</span>
-                </div>
-            </div>
-
-        </div><!-- /momento-5 -->
-
     </main>
 
     <footer class="footer">
@@ -425,7 +151,7 @@
 
     <script src="/js/translations.js"></script>
     <script>
-    /* Inyectar tarjetas de contacto en todos los contenedores */
+    /* Inyectar tarjetas de contacto */
     (function () {
         var contactHTML =
             '<div class="contact-card">' +
@@ -454,7 +180,7 @@
                 '</div>' +
             '</div>';
 
-        ['contacts-B', 'contacts-C', 'contacts-notfound', 'contacts-final'].forEach(function (id) {
+        ['contacts-B', 'contacts-C'].forEach(function (id) {
             var el = document.getElementById(id);
             if (el) el.innerHTML = contactHTML;
         });

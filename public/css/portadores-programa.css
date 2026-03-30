@@ -519,7 +519,8 @@ body.pg-fade-in.loaded { opacity: 1; }
     border-top: 1px solid var(--border);
     gap: 12px;
 }
-.paso-nav--end { justify-content: flex-end; }
+.paso-nav--end    { justify-content: flex-end; }
+.paso-nav--center { justify-content: center; }
 .btn-paso-prev {
     display: inline-flex;
     align-items: center;

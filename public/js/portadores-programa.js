@@ -108,6 +108,13 @@
         handleM1Choice(this.dataset.choice);
       });
     });
+
+    var prevBtn = document.getElementById('btn-m1-prev');
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        showMomento(0);
+      });
+    }
   }
 
   function handleM1Choice(choice) {
@@ -120,7 +127,7 @@
     });
 
     if (choice === 'A') {
-      setTimeout(function () { showMomento(2); }, 380);
+      setTimeout(function () { window.location.href = '/portadores-paso-1.html'; }, 380);
     } else {
       setTimeout(function () { showClosure(choice); }, 380);
     }
