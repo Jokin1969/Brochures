@@ -84,6 +84,7 @@
     var prevBtn = document.getElementById('btn-prev-m4');
     if (prevBtn) {
       prevBtn.addEventListener('click', function () {
+        sessionStorage.clear();
         var stepForm         = document.getElementById('step-form');
         var stepAffirmations = document.getElementById('step-affirmations');
         if (stepForm)         stepForm.style.display         = 'none';

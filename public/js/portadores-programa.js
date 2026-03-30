@@ -112,6 +112,7 @@
     var prevBtn = document.getElementById('btn-m1-prev');
     if (prevBtn) {
       prevBtn.addEventListener('click', function () {
+        sessionStorage.clear();
         showMomento(0);
       });
     }
