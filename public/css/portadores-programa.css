@@ -509,6 +509,97 @@ body.pg-fade-in.loaded { opacity: 1; }
     line-height: 1.55;
 }
 
+/* ---- Paso navigation ---- */
+.paso-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    gap: 12px;
+}
+.paso-nav--end { justify-content: flex-end; }
+.btn-paso-prev {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1.5px solid var(--border);
+    color: var(--text-2);
+    border-radius: 100px;
+    padding: 11px 22px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.btn-paso-prev:hover { border-color: var(--text-2); background: white; box-shadow: var(--shadow-sm); }
+.btn-primary:disabled { opacity: 0.38; cursor: not-allowed; transform: none !important; pointer-events: none; }
+
+/* ---- Check options single-column modifier ---- */
+.check-options--col1 { grid-template-columns: 1fr; }
+
+/* ---- Contact photo ---- */
+.contact-photo {
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 12px;
+    border: 2px solid var(--border);
+}
+.contact-role {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--purple);
+    margin-bottom: 1px;
+}
+.contact-role-sub {
+    font-size: 0.76rem;
+    color: var(--text-3);
+    margin-bottom: 2px;
+}
+.contact-institution {
+    font-size: 0.76rem;
+    color: var(--text-3);
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+/* ---- Thanks step (momento-5) ---- */
+.thanks-big-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 24px;
+}
+.btn-coming-soon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #7c3aed, #3b82f6);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 15px 32px;
+    font-size: 0.975rem;
+    font-weight: 600;
+    opacity: 0.38;
+    cursor: not-allowed;
+    font-family: inherit;
+}
+.coming-soon-label {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: var(--text-3);
+    font-style: italic;
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 700px) {
     .pg-main { padding: 60px 24px 80px; }
@@ -520,4 +611,6 @@ body.pg-fade-in.loaded { opacity: 1; }
     .momento-intro { padding: 20px 22px; }
     .choice-card { padding: 22px 22px; }
     .affirmation-card { padding: 22px 22px; }
+    .paso-nav { flex-direction: column-reverse; align-items: stretch; }
+    .btn-paso-prev { justify-content: center; }
 }
