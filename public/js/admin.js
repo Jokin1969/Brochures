@@ -448,13 +448,12 @@
         '<polyline points="22,6 12,13 2,6"/>' +
         '<polyline points="9 11 4 16 9 21" style="stroke:#10b981"/>' +
         '</svg>';
-      var dateEl = document.createElement('div');
-      dateEl.className = 'mail-date';
-      dateEl.textContent = fmtDate(p.fechaEnvioEmail);
-      wrap.appendChild(icon);
-      wrap.appendChild(dateEl);
 
-      /* Icono de lectura */
+      /* Fila de iconos: carta + ojo en la misma línea */
+      var iconsRow = document.createElement('div');
+      iconsRow.className = 'mail-icons-row';
+      iconsRow.appendChild(icon);
+
       if (p.emailLeido) {
         var readIcon = document.createElement('div');
         readIcon.className = 'mail-read-icon';
@@ -464,8 +463,14 @@
           '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>' +
           '<circle cx="12" cy="12" r="3"/>' +
           '</svg>';
-        wrap.appendChild(readIcon);
+        iconsRow.appendChild(readIcon);
       }
+
+      var dateEl = document.createElement('div');
+      dateEl.className = 'mail-date';
+      dateEl.textContent = fmtDate(p.fechaEnvioEmail);
+      wrap.appendChild(iconsRow);
+      wrap.appendChild(dateEl);
     } else {
       icon.innerHTML =
         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +

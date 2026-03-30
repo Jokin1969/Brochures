@@ -240,25 +240,60 @@ function buildInitialEmailHTML(p) {
           <tr><td style="border-top:1px solid #e2e8f0;font-size:0;line-height:0;">&nbsp;</td></tr>
         </table>
 
-        <!-- Firma -->
+        <!-- Firma con fotos -->
         <table width="100%" cellpadding="0" cellspacing="0" border="0">
-          <tr>
-            <td>
-              <p style="margin:0 0 3px;font-family:Inter,Arial,sans-serif;font-size:14px;
+          <tr valign="top">
+
+            <!-- Columna 1: Dr. Joaquín Castilla -->
+            <td width="48%" style="padding-right:16px;">
+              <img src="${SITE_URL}/assests/foto_Joaquin.png" alt="Dr. Joaquín Castilla" width="80" height="80"
+                   style="display:block;width:80px;height:80px;border-radius:50%;
+                          object-fit:cover;border:2px solid #e2e8f0;margin-bottom:12px;"
+                   onerror="this.style.display='none'">
+              <p style="margin:0 0 2px;font-family:Lora,Georgia,serif;font-size:14px;
                         font-weight:600;color:#0f172a;">Dr. Joaquín Castilla</p>
-              <p style="margin:0 0 20px;font-family:Inter,Arial,sans-serif;font-size:13px;color:#64748b;">
+              <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:12px;
+                        font-weight:600;color:#7c3aed;">Profesor de investigación</p>
+              <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:11px;color:#94a3b8;">
+                Responsable del laboratorio de priones</p>
+              <p style="margin:0 0 12px;font-family:Inter,Arial,sans-serif;font-size:11px;
+                        color:#94a3b8;font-style:italic;">CIC bioGUNE</p>
+              <p style="margin:0 0 4px;font-family:Inter,Arial,sans-serif;font-size:12px;color:#64748b;">
+                ✉&nbsp;
                 <a href="mailto:jcastilla@cicbiogune.es"
                    style="color:#7c3aed;text-decoration:none;">jcastilla@cicbiogune.es</a>
-                &nbsp;&middot;&nbsp;
-                <a href="tel:+34618682920" style="color:#64748b;text-decoration:none;">+34 618 68 29 20</a>
               </p>
-              <p style="margin:0 0 3px;font-family:Inter,Arial,sans-serif;font-size:14px;
+              <p style="margin:0;font-family:Inter,Arial,sans-serif;font-size:12px;color:#64748b;">
+                ☎&nbsp;
+                <a href="tel:+34618682920"
+                   style="color:#64748b;text-decoration:none;">+34 618 68 29 20</a>
+              </p>
+            </td>
+
+            <!-- Separador vertical -->
+            <td width="4%" style="border-left:1px solid #e2e8f0;">&nbsp;</td>
+
+            <!-- Columna 2: Dra. Izaro Kortazar -->
+            <td width="48%" style="padding-left:16px;">
+              <img src="${SITE_URL}/assests/foto_Izaro.png" alt="Dra. Izaro Kortazar" width="80" height="80"
+                   style="display:block;width:80px;height:80px;border-radius:50%;
+                          object-fit:cover;border:2px solid #e2e8f0;margin-bottom:12px;"
+                   onerror="this.style.display='none'">
+              <p style="margin:0 0 2px;font-family:Lora,Georgia,serif;font-size:14px;
                         font-weight:600;color:#0f172a;">Dra. Izaro Kortazar</p>
-              <p style="margin:0;font-family:Inter,Arial,sans-serif;font-size:13px;color:#64748b;">
+              <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:12px;
+                        font-weight:600;color:#7c3aed;">Jefa de servicio de Neurología</p>
+              <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:11px;color:#94a3b8;">
+                Hospital Universitario Araba</p>
+              <p style="margin:0 0 12px;font-family:Inter,Arial,sans-serif;font-size:11px;
+                        color:#94a3b8;font-style:italic;">(Txagorritxu)</p>
+              <p style="margin:0;font-family:Inter,Arial,sans-serif;font-size:12px;color:#64748b;">
+                ✉&nbsp;
                 <a href="mailto:izaro.kortazarzubizarreta@osakidetza.eus"
                    style="color:#7c3aed;text-decoration:none;">izaro.kortazarzubizarreta@osakidetza.eus</a>
               </p>
             </td>
+
           </tr>
         </table>
 

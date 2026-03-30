@@ -310,6 +310,7 @@ tr:hover .drag-handle { opacity: 1; }
 
 /* ---- Email status column ---- */
 .mail-status { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.mail-icons-row { display: flex; align-items: center; gap: 4px; }
 .mail-icon {
     width: 30px; height: 30px;
     border-radius: 8px;
