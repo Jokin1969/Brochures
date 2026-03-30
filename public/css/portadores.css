@@ -73,14 +73,21 @@ body {
     border: 1px solid rgba(255,255,255,0.6);
     color: var(--text-2);
     text-decoration: none;
-    padding: 6px 12px;
-    border-radius: 100px;
+    padding: 6px 8px;
+    border-radius: 8px;
     font-size: 0.78rem;
     font-weight: 500;
     box-shadow: var(--shadow-sm);
     transition: all 0.2s ease;
     cursor: pointer;
     white-space: nowrap;
+}
+.lang-btn img {
+    display: block;
+    width: 24px;
+    height: 16px;
+    border-radius: 2px;
+    object-fit: cover;
 }
 .lang-btn:hover { background: white; box-shadow: var(--shadow-md); color: var(--text); }
 .lang-btn--active {
