@@ -47,6 +47,7 @@
             <div class="pg-dot"></div>
             <div class="pg-dot"></div>
             <div class="pg-dot"></div>
+            <div class="pg-dot"></div>
         </div>
 
         <!-- ============================================================ -->
@@ -57,12 +58,12 @@
             <h2 class="momento-title">Antes de continuar</h2>
 
             <p class="momento-intro" data-i18n="m0.intro">
-                Antes de continuar, queremos asegurarnos de que has tenido la oportunidad de leer
-                con calma toda la información del programa. Lo que viene a continuación no es un
-                trámite — es una conversación contigo mismo/a sobre algo importante.
+                Queremos asegurarnos de que has tenido la oportunidad de leer con calma toda
+                la información del programa. Lo que viene a continuación no es un trámite —
+                es una conversación contigo mismo/a sobre algo importante
             </p>
 
-            <div class="btn-center">
+            <div class="paso-nav paso-nav--end">
                 <button id="btn-m0-continuar" class="btn-primary">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                     <span data-i18n="m0.btn">He leído el programa y quiero continuar</span>
@@ -107,6 +108,14 @@
                     <div class="choice-body" data-i18n="m1.c.body">Antes de tomar cualquier decisión, me gustaría poder hablar con el equipo del programa. Tengo preguntas que no sé cómo responderme solo/a, y necesito escuchar una voz humana antes de continuar.</div>
                 </button>
 
+            </div>
+
+            <div class="paso-nav">
+                <button class="btn-paso-prev" onclick="showMomento(0)">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
+                    Anterior
+                </button>
+                <div></div>
             </div>
 
             <!-- Cierre B -->
@@ -158,9 +167,10 @@
 
                 <div class="check-block">
                     <p class="check-question-text" data-i18n="m2.c1.question">¿Sabías que existen dos tipos de portadores asintomáticos, con situaciones biológicas diferentes aunque ambos estén sin síntomas?</p>
-                    <div class="check-options">
-                        <button class="check-btn check-btn--yes" data-check="1" data-answer="yes" data-i18n="m2.c1.yes">Sí, lo sabía o lo he entendido al leer el programa</button>
-                        <button class="check-btn"                data-check="1" data-answer="no"  data-i18n="m2.c1.no">No lo sabía o no lo tenía claro</button>
+                    <div class="check-options check-options--col1">
+                        <button class="check-btn check-btn--yes" data-check="1" data-answer="yes">Sí, lo sabía</button>
+                        <button class="check-btn check-btn--yes" data-check="1" data-answer="yes">No, no lo sabía pero ahora lo he entendido al leer el programa, y lo tengo claro</button>
+                        <button class="check-btn"                data-check="1" data-answer="no">No, no lo sabía y aún no lo tengo claro</button>
                     </div>
                 </div>
 
@@ -171,9 +181,10 @@
                     <p data-i18n="m2.c1.exp.p3">Conocer en cuál de los dos grupos te encuentras es voluntario, posible, y algo que el programa puede ayudarte a descubrir.</p>
                     <div class="explanation-retry">
                         <p class="explanation-retry-label" data-i18n="m2.c1.exp.retry">Vuelve a la pregunta cuando quieras:</p>
-                        <div class="check-options">
-                            <button class="check-btn check-btn--yes" data-check="1" data-answer="yes" data-i18n="m2.c1.yes">Sí, lo sabía o lo he entendido al leer el programa</button>
-                            <button class="check-btn"                data-check="1" data-answer="no"  data-i18n="m2.c1.no">No lo sabía o no lo tenía claro</button>
+                        <div class="check-options check-options--col1">
+                            <button class="check-btn check-btn--yes" data-check="1" data-answer="yes">Sí, lo sabía</button>
+                            <button class="check-btn check-btn--yes" data-check="1" data-answer="yes">No, no lo sabía pero ahora lo he entendido al leer el programa, y lo tengo claro</button>
+                            <button class="check-btn"                data-check="1" data-answer="no">No, no lo sabía y aún no lo tengo claro</button>
                         </div>
                     </div>
                 </div>
@@ -245,6 +256,17 @@
                 </div>
 
             </div><!-- /check-23 -->
+
+            <div class="paso-nav">
+                <button class="btn-paso-prev" onclick="showMomento(1)">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
+                    Anterior
+                </button>
+                <button class="btn-primary" id="btn-next-m2" onclick="showMomento(3)" disabled>
+                    Siguiente
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </button>
+            </div>
 
         </div><!-- /momento-2 -->
 
@@ -321,63 +343,79 @@
 
             </div><!-- /affirmation-cards -->
 
-            <!-- Bloque final (aparece tras confirmar las 4) -->
-            <div id="final-block" class="final-block">
-
-                <!-- PASO 1: Formulario de confirmación de datos -->
-                <div id="final-form-step" class="final-inner">
-                    <p class="final-eyebrow" data-i18n="final.form.eyebrow">Siguiente paso</p>
-                    <h2 class="final-title" data-i18n="final.form.title">Un último paso para que podamos contactarte</h2>
-                    <p class="final-text" data-i18n="final.form.text">Si deseas que el equipo del programa se ponga en contacto contigo, indícanos tu DNI. Esto nos permitirá identificarte en nuestro sistema y confirmar tu deseo de participar. Tus datos están protegidos y solo serán accesibles para el equipo investigador.</p>
-
-                    <form id="form-aceptar" class="aceptar-form" novalidate>
-                        <div class="aceptar-field">
-                            <label for="aceptar-nombre" data-i18n="final.form.label.nombre">Nombre</label>
-                            <input type="text" id="aceptar-nombre" placeholder="Tu nombre" autocomplete="given-name">
-                        </div>
-                        <div class="aceptar-field">
-                            <label for="aceptar-apellidos" data-i18n="final.form.label.apellidos">Apellidos</label>
-                            <input type="text" id="aceptar-apellidos" placeholder="Tus apellidos" autocomplete="family-name">
-                        </div>
-                        <div class="aceptar-field">
-                            <label for="aceptar-dni" data-i18n="final.form.label.dni">DNI</label>
-                            <input type="text" id="aceptar-dni" placeholder="12345678A" maxlength="9" autocomplete="off" style="text-transform:uppercase;">
-                            <span class="aceptar-field-hint" data-i18n="final.form.dni.hint">8 dígitos seguidos de una letra</span>
-                        </div>
-                        <p id="aceptar-error" class="aceptar-error" style="display:none;"></p>
-                        <div class="btn-center">
-                            <button type="submit" class="btn-primary" id="btn-aceptar">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                <span data-i18n="final.form.btn">Confirmar mi deseo de participar</span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- PASO 2a: DNI no encontrado en el sistema -->
-                <div id="final-notfound-step" class="final-inner" style="display:none;">
-                    <h2 class="final-title" data-i18n="final.notfound.title">No hemos encontrado tu DNI</h2>
-                    <p class="final-text" data-i18n="final.notfound.text">No hemos encontrado tu DNI en nuestro sistema. Es posible que aún no hayas sido registrado/a. Por favor, contacta directamente con el equipo para que podamos incorporarte.</p>
-                    <p class="closure-contacts-title" data-i18n="final.contacts.label">Cómo encontrarnos</p>
-                    <div class="contact-cards" id="contacts-notfound"></div>
-                </div>
-
-                <!-- PASO 2b: Aceptación registrada correctamente -->
-                <div id="final-thanks-step" class="final-inner" style="display:none;">
-                    <p class="final-eyebrow" data-i18n="final.eyebrow">Siguiente paso</p>
-                    <h2 class="final-title" data-i18n="final.title">Gracias por llegar hasta aquí</h2>
-                    <p class="final-text" data-i18n="final.text">Has dado un paso importante — no solo hacia el programa, sino hacia ti mismo/a. El equipo se pondrá en contacto contigo en breve para explicarte los siguientes pasos con calma y sin prisa. Si mientras tanto tienes cualquier pregunta, aquí tienes cómo encontrarnos.</p>
-
-                    <!-- TODO: Añadir aquí el flujo de decisión sobre candidatura a
-                         ensayos clínicos y opciones de seguimiento especial. Wording pendiente. -->
-
-                    <p class="closure-contacts-title" data-i18n="final.contacts.label">Cómo encontrarnos</p>
-                    <div class="contact-cards" id="contacts-final"></div>
-                </div>
-
+            <div class="paso-nav">
+                <button class="btn-paso-prev" onclick="showMomento(2)">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
+                    Anterior
+                </button>
+                <button class="btn-primary" id="btn-next-m3" onclick="showMomento(4)" disabled>
+                    Siguiente
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </button>
             </div>
 
         </div><!-- /momento-3 -->
+
+        <!-- ============================================================ -->
+        <!-- MOMENTO 4 — Confirmación DNI                                  -->
+        <!-- ============================================================ -->
+        <div id="momento-4" class="momento">
+
+            <!-- Formulario DNI -->
+            <div id="final-form-step" class="final-inner">
+                <p class="final-eyebrow" data-i18n="final.form.eyebrow">Siguiente paso</p>
+                <h2 class="final-title" data-i18n="final.form.title">Un último paso para que podamos contactarte</h2>
+                <p class="final-text" data-i18n="final.form.text">Si deseas que el equipo del programa se ponga en contacto contigo, indícanos tu DNI. Esto nos permitirá identificarte en nuestro sistema y confirmar tu deseo de participar. Tus datos están protegidos y solo serán accesibles para el equipo investigador.</p>
+
+                <form id="form-aceptar" class="aceptar-form" novalidate>
+                    <div class="aceptar-field">
+                        <label for="aceptar-dni" data-i18n="final.form.label.dni">DNI</label>
+                        <input type="text" id="aceptar-dni" placeholder="12345678A" maxlength="9" autocomplete="off" style="text-transform:uppercase;">
+                        <span class="aceptar-field-hint" data-i18n="final.form.dni.hint">8 dígitos seguidos de una letra</span>
+                    </div>
+                    <p id="aceptar-error" class="aceptar-error" style="display:none;"></p>
+                    <div class="btn-center">
+                        <button type="submit" class="btn-primary" id="btn-aceptar">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span data-i18n="final.form.btn">Confirmar mi deseo de participar</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- DNI no encontrado -->
+            <div id="final-notfound-step" class="final-inner" style="display:none;">
+                <h2 class="final-title" data-i18n="final.notfound.title">No hemos encontrado tu DNI</h2>
+                <p class="final-text" data-i18n="final.notfound.text">No hemos encontrado tu DNI en nuestro sistema. Es posible que aún no hayas sido registrado/a. Por favor, contacta directamente con el equipo para que podamos incorporarte.</p>
+                <p class="closure-contacts-title" data-i18n="final.contacts.label">Cómo encontrarnos</p>
+                <div class="contact-cards" id="contacts-notfound"></div>
+            </div>
+
+            <div class="paso-nav">
+                <button class="btn-paso-prev" id="btn-prev-m4" onclick="showMomento(3)">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
+                    Anterior
+                </button>
+                <div></div>
+            </div>
+
+        </div><!-- /momento-4 -->
+
+        <!-- ============================================================ -->
+        <!-- MOMENTO 5 — Bienvenida                                        -->
+        <!-- ============================================================ -->
+        <div id="momento-5" class="momento">
+
+            <div class="final-inner">
+                <h2 class="thanks-big-title">Bienvenido/a al programa<br>de seguimiento</h2>
+                <p class="final-text">El programa no es una visita puntual. Es un acompañamiento continuado — con visitas periódicas, actualizaciones de información y contacto humano real. Nos comprometemos a estar presentes mientras tú quieras que lo estemos. El equipo se pondrá en contacto contigo en breve para explicarte los siguientes pasos con calma y sin prisa.</p>
+                <div class="btn-center">
+                    <button class="btn-coming-soon" disabled>¿Cuáles son los siguientes pasos?</button>
+                    <span class="coming-soon-label">Próximamente disponible</span>
+                </div>
+            </div>
+
+        </div><!-- /momento-5 -->
 
     </main>
 
@@ -391,8 +429,11 @@
     (function () {
         var contactHTML =
             '<div class="contact-card">' +
-                '<div class="contact-avatar">JC</div>' +
+                '<img class="contact-photo" src="/assets/foto_joaquin.png" alt="Dr. Joaquín Castilla" onerror="this.style.display=\'none\'">' +
                 '<div class="contact-name">Dr. Joaquín Castilla</div>' +
+                '<div class="contact-role">Profesor de investigación</div>' +
+                '<div class="contact-role-sub">Responsable del laboratorio de priones</div>' +
+                '<div class="contact-institution">CIC bioGUNE</div>' +
                 '<div class="contact-item">' +
                     '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>' +
                     '<a href="mailto:jcastilla@cicbiogune.es">jcastilla@cicbiogune.es</a>' +
@@ -401,19 +442,16 @@
                     '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>' +
                     '<a href="tel:+34618682920">+34 618 68 29 20</a>' +
                 '</div>' +
-                '<!-- TODO: Añadir foto, cargo e institución cuando estén disponibles -->' +
-                '<!-- TODO: Añadir frase breve de presentación -->' +
             '</div>' +
             '<div class="contact-card">' +
-                '<div class="contact-avatar">IK</div>' +
+                '<img class="contact-photo" src="/assets/foto_Izaro.png" alt="Dra. Izaro Kortazar" onerror="this.style.display=\'none\'">' +
                 '<div class="contact-name">Dra. Izaro Kortazar</div>' +
+                '<div class="contact-role">Jefa de servicio de Neurología</div>' +
+                '<div class="contact-institution">Hospital Universitario Araba (Txagorritxu)</div>' +
                 '<div class="contact-item">' +
                     '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>' +
                     '<a href="mailto:izaro.kortazarzubizarreta@osakidetza.eus">izaro.kortazarzubizarreta@osakidetza.eus</a>' +
                 '</div>' +
-                '<!-- TODO: Añadir teléfono cuando esté disponible -->' +
-                '<!-- TODO: Añadir foto, cargo e institución cuando estén disponibles -->' +
-                '<!-- TODO: Añadir frase breve de presentación -->' +
             '</div>';
 
         ['contacts-B', 'contacts-C', 'contacts-notfound', 'contacts-final'].forEach(function (id) {

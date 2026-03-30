@@ -30,41 +30,62 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /* Progress dots                                                        */
+  /* Progress dots  (5 dots → momentos 0-4, momento-5 es terminal)       */
   /* ------------------------------------------------------------------ */
   function updateProgress(active) {
     var dots = document.querySelectorAll('.pg-dot');
     dots.forEach(function (dot, i) {
       dot.classList.remove('pg-dot--active', 'pg-dot--done');
-      if (i < active)      dot.classList.add('pg-dot--done');
+      if (i < active)       dot.classList.add('pg-dot--done');
       else if (i === active) dot.classList.add('pg-dot--active');
     });
   }
 
   /* ------------------------------------------------------------------ */
-  /* Reveal un momento                                                    */
+  /* showMomento — muestra un único paso ocultando los demás             */
   /* ------------------------------------------------------------------ */
-  function revealMomento(n) {
+  window.showMomento = function (n) {
+    document.querySelectorAll('.momento').forEach(function (el) {
+      el.classList.remove('momento--active');
+    });
+
     var el = document.getElementById('momento-' + n);
     if (!el) return;
     el.classList.add('momento--active');
-    setTimeout(function () {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 80);
-  }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  /* ------------------------------------------------------------------ */
-  /* Reveal un elemento oculto con animación                             */
-  /* ------------------------------------------------------------------ */
-  function revealEl(el) {
-    if (!el) return;
-    el.style.display = 'block';
-    el.style.animation = 'none';
-    el.offsetHeight; // reflow
-    el.style.animation = 'momentoReveal 0.5s ease forwards';
-    setTimeout(function () {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 80);
+    var state = getState();
+    state.momento = n;
+    saveState(state);
+
+    /* Actualizar dots: 0→0, 1→1, 2→2, 3→3, 4→3, 5→all done */
+    var dotIndex = Math.min(n, 3);
+    if (n === 5) {
+      updateProgress(99); /* todos done */
+    } else {
+      updateProgress(dotIndex);
+    }
+
+    /* Sincronizar estado de botones Siguiente */
+    syncNextButtons(state);
+
+    /* Restaurar cierre si volvemos a momento-1 */
+    if (n === 1 && state.m1choice) {
+      document.querySelectorAll('#momento-1 .choice-card').forEach(function (c) {
+        c.classList.toggle('choice-card--selected', c.dataset.choice === state.m1choice);
+      });
+      if (state.m1choice === 'B' || state.m1choice === 'C') {
+        showClosure(state.m1choice);
+      }
+    }
+  };
+
+  function syncNextButtons(state) {
+    var btn2 = document.getElementById('btn-next-m2');
+    if (btn2) btn2.disabled = !state.m2checks.every(Boolean);
+
+    var btn3 = document.getElementById('btn-next-m3');
+    if (btn3) btn3.disabled = !state.m3confirmed.every(Boolean);
   }
 
   /* ------------------------------------------------------------------ */
@@ -74,11 +95,7 @@
     var btn = document.getElementById('btn-m0-continuar');
     if (!btn) return;
     btn.addEventListener('click', function () {
-      var state = getState();
-      state.momento = 1;
-      saveState(state);
-      revealMomento(1);
-      updateProgress(1);
+      showMomento(1);
     });
   }
 
@@ -88,8 +105,7 @@
   function initMomento1() {
     document.querySelectorAll('#momento-1 .choice-card').forEach(function (card) {
       card.addEventListener('click', function () {
-        var choice = this.dataset.choice;
-        handleM1Choice(choice);
+        handleM1Choice(this.dataset.choice);
       });
     });
   }
@@ -99,23 +115,14 @@
     state.m1choice = choice;
     saveState(state);
 
-    /* Marcar seleccionada */
     document.querySelectorAll('#momento-1 .choice-card').forEach(function (c) {
       c.classList.toggle('choice-card--selected', c.dataset.choice === choice);
     });
 
     if (choice === 'A') {
-      setTimeout(function () {
-        state.momento = 2;
-        saveState(state);
-        revealMomento(2);
-        updateProgress(2);
-      }, 380);
+      setTimeout(function () { showMomento(2); }, 380);
     } else {
-      /* B o C → mostrar cierre correspondiente */
-      setTimeout(function () {
-        showClosure(choice);
-      }, 380);
+      setTimeout(function () { showClosure(choice); }, 380);
     }
   }
 
@@ -130,7 +137,6 @@
 
   /* ------------------------------------------------------------------ */
   /* MOMENTO 2 — Verificación de comprensión                             */
-  /* Usa data-check y data-answer para evitar IDs duplicados en el bucle */
   /* ------------------------------------------------------------------ */
   function initMomento2() {
     var m2 = document.getElementById('momento-2');
@@ -146,7 +152,6 @@
 
   function handleCheck(checkN, answer) {
     if (answer) {
-      /* Ocultar explicación si estaba visible */
       var exp = document.getElementById('exp-2' + checkN);
       if (exp) exp.classList.remove('explanation-block--show');
 
@@ -155,20 +160,19 @@
       saveState(state);
 
       if (checkN < 3) {
-        /* Revelar siguiente check */
         var nextEl = document.getElementById('check-2' + (checkN + 1));
         if (nextEl) revealEl(nextEl);
       } else {
-        /* Todos los checks OK → Momento 3 */
-        setTimeout(function () {
-          state.momento = 3;
-          saveState(state);
-          revealMomento(3);
-          updateProgress(3);
-        }, 300);
+        /* Todos los checks OK → habilitar Siguiente */
+        var btn = document.getElementById('btn-next-m2');
+        if (btn) {
+          btn.disabled = false;
+          setTimeout(function () {
+            btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 200);
+        }
       }
     } else {
-      /* Mostrar explicación y bucle */
       var expBlock = document.getElementById('exp-2' + checkN);
       if (expBlock) {
         expBlock.classList.add('explanation-block--show');
@@ -184,7 +188,6 @@
   /* ------------------------------------------------------------------ */
   function initMomento3() {
     var cards = document.querySelectorAll('#momento-3 .affirmation-card');
-
     cards.forEach(function (card, i) {
       var btn = card.querySelector('.btn-confirm');
       if (!btn) return;
@@ -204,7 +207,6 @@
     var confirmed = state.m3confirmed.filter(Boolean).length;
 
     if (confirmed < cards.length) {
-      /* Desbloquear siguiente tarjeta */
       var next = cards[confirmed];
       if (next) {
         next.classList.add('affirmation-card--unlocked');
@@ -213,30 +215,39 @@
         }, 200);
       }
     } else {
-      /* Todas confirmadas → bloque final */
-      setTimeout(showFinalBlock, 400);
+      /* Todas confirmadas → habilitar Siguiente */
+      var btn = document.getElementById('btn-next-m3');
+      if (btn) {
+        btn.disabled = false;
+        setTimeout(function () {
+          btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 300);
+      }
     }
   }
 
-  function showFinalBlock() {
-    var fb = document.getElementById('final-block');
-    if (!fb) return;
-    fb.classList.add('final-block--show');
+  /* ------------------------------------------------------------------ */
+  /* Reveal un elemento oculto con animación                             */
+  /* ------------------------------------------------------------------ */
+  function revealEl(el) {
+    if (!el) return;
+    el.style.display = 'block';
+    el.style.animation = 'none';
+    el.offsetHeight; // reflow
+    el.style.animation = 'momentoReveal 0.5s ease forwards';
     setTimeout(function () {
-      fb.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 80);
-    initAceptarForm();
   }
 
   /* ------------------------------------------------------------------ */
-  /* Formulario de aceptación (paso previo al bloque de gracias)         */
+  /* MOMENTO 4 — Formulario de aceptación (solo DNI)                     */
   /* ------------------------------------------------------------------ */
   function initAceptarForm() {
     var form = document.getElementById('form-aceptar');
     if (!form || form.dataset.initialized) return;
     form.dataset.initialized = 'true';
 
-    /* Forzar mayúsculas en DNI al escribir */
     var dniInput = document.getElementById('aceptar-dni');
     if (dniInput) {
       dniInput.addEventListener('input', function () {
@@ -253,14 +264,11 @@
   }
 
   function handleAceptar() {
-    var nombre    = (document.getElementById('aceptar-nombre').value    || '').trim();
-    var apellidos = (document.getElementById('aceptar-apellidos').value || '').trim();
-    var dni       = (document.getElementById('aceptar-dni').value       || '').trim().toUpperCase();
-    var btn       = document.getElementById('btn-aceptar');
+    var dni = (document.getElementById('aceptar-dni').value || '').trim().toUpperCase();
+    var btn = document.getElementById('btn-aceptar');
 
-    /* Validación */
-    if (!nombre || !apellidos || !dni) {
-      showAceptarError('Por favor, completa todos los campos antes de continuar.');
+    if (!dni) {
+      showAceptarError('Por favor, introduce tu DNI antes de continuar.');
       return;
     }
     if (!/^\d{8}[A-Z]$/.test(dni)) {
@@ -279,7 +287,7 @@
       body:    JSON.stringify({ dni: dni })
     })
     .then(function (r) {
-      if (r.ok)             return r.json().then(function () { showThanksStep(); });
+      if (r.ok)             return r.json().then(function () { showMomento(5); });
       if (r.status === 404) { showNotFoundStep(); return; }
       throw new Error('server-error');
     })
@@ -303,22 +311,12 @@
     if (el) el.style.display = 'none';
   }
 
-  function showThanksStep() {
-    var formStep   = document.getElementById('final-form-step');
-    var thanksStep = document.getElementById('final-thanks-step');
-    if (formStep)   formStep.style.display = 'none';
-    if (!thanksStep) return;
-    thanksStep.style.display   = 'block';
-    thanksStep.style.animation = 'momentoReveal 0.55s ease';
-    setTimeout(function () {
-      thanksStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 80);
-  }
-
   function showNotFoundStep() {
     var formStep     = document.getElementById('final-form-step');
     var notFoundStep = document.getElementById('final-notfound-step');
-    if (formStep)     formStep.style.display = 'none';
+    var prevBtn      = document.getElementById('btn-prev-m4');
+    if (formStep)     formStep.style.display   = 'none';
+    if (prevBtn)      prevBtn.style.display    = 'none';
     if (!notFoundStep) return;
     notFoundStep.style.display   = 'block';
     notFoundStep.style.animation = 'momentoReveal 0.55s ease';
@@ -333,19 +331,8 @@
   function restoreState() {
     var state = getState();
 
-    /* Revelar hasta el momento guardado */
-    for (var m = 0; m <= state.momento; m++) {
-      var el = document.getElementById('momento-' + m);
-      if (el) el.classList.add('momento--active');
-    }
-    updateProgress(state.momento);
-
-    /* Momento 1: restaurar selección si existe */
-    if (state.m1choice) {
-      var selected = document.querySelector('[data-choice="' + state.m1choice + '"]');
-      if (selected) selected.classList.add('choice-card--selected');
-      if (state.m1choice === 'B' || state.m1choice === 'C') showClosure(state.m1choice);
-    }
+    /* Mostrar solo el paso guardado */
+    showMomento(state.momento);
 
     /* Momento 2: restaurar checks */
     state.m2checks.forEach(function (done, idx) {
@@ -356,17 +343,13 @@
 
     /* Momento 3: restaurar afirmaciones */
     var cards = document.querySelectorAll('#momento-3 .affirmation-card');
-    var firstUnconfirmed = -1;
     state.m3confirmed.forEach(function (done, idx) {
       if (done && cards[idx]) cards[idx].classList.add('affirmation-card--confirmed');
-      if (!done && firstUnconfirmed === -1) firstUnconfirmed = idx;
     });
     var confirmed = state.m3confirmed.filter(Boolean).length;
-    if (confirmed === cards.length && cards.length > 0) {
-      showFinalBlock();
-    } else if (cards[confirmed]) {
+    if (confirmed < cards.length && cards[confirmed]) {
       cards[confirmed].classList.add('affirmation-card--unlocked');
-    } else if (cards[0]) {
+    } else if (cards[0] && confirmed === 0) {
       cards[0].classList.add('affirmation-card--unlocked');
     }
   }
@@ -375,32 +358,28 @@
   /* Inicialización                                                       */
   /* ------------------------------------------------------------------ */
   document.addEventListener('DOMContentLoaded', function () {
-    /* Fade-in de la página (viene de portadores.html con fade-out) */
     requestAnimationFrame(function () {
       document.body.classList.add('loaded');
     });
 
-    /* Aplicar traducciones */
     if (typeof applyTranslations === 'function') applyTranslations();
 
-    /* Selector de idioma */
     document.querySelectorAll('.lang-btn[data-lang]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         if (typeof setLang === 'function') setLang(this.dataset.lang);
       });
     });
 
-    /* Desbloquear primera tarjeta de momento 3 por defecto */
+    /* Desbloquear primera tarjeta del momento 3 */
     var firstCard = document.querySelector('#momento-3 .affirmation-card');
     if (firstCard) firstCard.classList.add('affirmation-card--unlocked');
 
-    /* Restaurar estado guardado */
     restoreState();
 
-    /* Iniciar handlers de cada momento */
     initMomento0();
     initMomento1();
     initMomento2();
     initMomento3();
+    initAceptarForm();
   });
 })();
