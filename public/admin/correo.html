@@ -12,7 +12,7 @@
         body { background: #f1f5f9; }
 
         .correo-wrap {
-            max-width: 720px;
+            max-width: 760px;
             margin: 0 auto;
             padding: 40px 28px 80px;
         }
@@ -83,20 +83,23 @@
             background: transparent;
         }
 
-        .correo-body-area {
-            padding: 20px 24px;
+        /* Preview iframe area */
+        .correo-preview-label {
+            padding: 12px 24px 10px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-3);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border);
+            background: #f8fafc;
         }
-        .correo-body-area textarea {
+        .correo-preview-frame {
             width: 100%;
-            min-height: 360px;
             border: none;
-            outline: none;
-            font-size: 0.875rem;
-            font-family: 'Inter', monospace;
-            color: var(--text);
-            line-height: 1.7;
-            resize: vertical;
-            background: transparent;
+            display: block;
+            background: #f5f3ff;
+            min-height: 640px;
         }
 
         .correo-actions {
@@ -170,10 +173,10 @@
                 <input type="text" id="field-subject">
             </div>
 
-            <!-- Cuerpo -->
-            <div class="correo-body-area">
-                <textarea id="field-body" spellcheck="true"></textarea>
-            </div>
+            <!-- Previsualización -->
+            <div class="correo-preview-label">Vista previa del correo</div>
+            <iframe id="preview-frame" class="correo-preview-frame"
+                    title="Vista previa del correo" sandbox="allow-same-origin"></iframe>
 
             <!-- Acciones -->
             <div class="correo-actions">
@@ -196,51 +199,19 @@
 (function () {
   'use strict';
 
-  /* Extraer ID de la URL: /admin/correo/001 */
   var portadorId = window.location.pathname.split('/').filter(Boolean).pop();
   var pwd        = sessionStorage.getItem('admin-pwd') || '';
 
-  if (!pwd) {
-    window.location.href = '/admin.html';
-    return;
-  }
+  if (!pwd) { window.location.href = '/admin.html'; return; }
   if (!portadorId) {
     document.getElementById('loading-state').textContent = 'ID de portador no válido.';
     return;
   }
 
-  /* Plantilla por defecto del cuerpo del email */
-  var SUBJECT_DEFAULT = 'Programa de seguimiento para portadores asintomáticos — Cuidar el presente, preparar el futuro';
-  function buildBodyTemplate(nombre) {
-    var programUrl = window.location.origin + '/portadores.html';
-    return [
-      'Estimado/a ' + nombre + ',',
-      '',
-      'Me dirijo a usted porque, como portador/a de una mutación en el gen de la proteína del prion, puede ser candidato/a a participar en un programa de seguimiento preclínico que estamos poniendo en marcha.',
-      '',
-      'Este programa está diseñado para acompañarle, informarle y prepararle para las oportunidades terapéuticas que se esperan en los próximos años.',
-      '',
-      'Le invitamos a conocer el programa accediendo a través del siguiente enlace:',
-      '',
-      programUrl,
-      '',
-      'Si tiene cualquier pregunta, no dude en contactarnos directamente.',
-      '',
-      'Dr. Joaquín Castilla',
-      'jcastilla@cicbiogune.es | +34 618 68 29 20',
-      '',
-      'Dra. Izaro Kortazar',
-      'izaro.kortazarzubizarreta@osakidetza.eus',
-      '',
-      '---',
-      'Programa aprobado por el Comité de Ética de la Investigación del País Vasco · Código PI2025164',
-    ].join('\n');
-  }
+  var SUBJECT_DEFAULT = 'Algo está cambiando. Queremos contártelo.';
 
   /* Cargar datos del portador */
-  fetch('/api/admin/portadores', {
-    headers: { 'Authorization': 'Bearer ' + pwd }
-  })
+  fetch('/api/admin/portadores', { headers: { 'Authorization': 'Bearer ' + pwd } })
   .then(function (r) {
     if (r.status === 401) { window.location.href = '/admin.html'; return null; }
     return r.json();
@@ -253,13 +224,27 @@
       return;
     }
 
-    /* Rellenar UI */
+    /* Rellenar cabecera */
     var nombre = [p.nombre, p.apellidos].filter(Boolean).join(' ') || 'Portador ' + p.id;
     document.getElementById('correo-portador-label').textContent = nombre + ' · ' + (p.email || 'sin email');
     document.getElementById('to-name').textContent  = nombre;
     document.getElementById('to-email').textContent = p.email || '';
     document.getElementById('field-subject').value  = SUBJECT_DEFAULT;
-    document.getElementById('field-body').value     = buildBodyTemplate(p.nombre || nombre);
+
+    /* Cargar preview en el iframe */
+    var previewUrl = '/api/admin/correo-preview/' + portadorId + '?password=' + encodeURIComponent(pwd);
+    var frame = document.getElementById('preview-frame');
+    frame.src = previewUrl;
+
+    /* Ajustar altura del iframe al contenido cuando cargue */
+    frame.addEventListener('load', function () {
+      try {
+        var h = frame.contentDocument && frame.contentDocument.body
+              ? frame.contentDocument.body.scrollHeight
+              : 640;
+        if (h > 200) frame.style.minHeight = (h + 32) + 'px';
+      } catch (e) { /* cross-origin: dejar la altura mínima */ }
+    });
 
     document.getElementById('loading-state').style.display = 'none';
     document.getElementById('correo-panel').style.display   = 'block';
@@ -274,47 +259,45 @@
   });
 
   function sendEmail(id) {
-    var btn     = document.getElementById('btn-send');
-    var subject = document.getElementById('field-subject').value.trim();
-    var body    = document.getElementById('field-body').value.trim();
+    var btn      = document.getElementById('btn-send');
+    var subject  = document.getElementById('field-subject').value.trim();
     var statusEl = document.getElementById('correo-status');
 
     statusEl.className = 'correo-status';
     statusEl.style.display = 'none';
 
-    if (!subject || !body) {
-      showStatus('El asunto y el cuerpo son obligatorios.', 'error');
-      return;
-    }
+    if (!subject) { showStatus('El asunto no puede estar vacío.', 'error'); return; }
 
-    btn.disabled   = true;
-    btn.innerHTML  = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 1s linear infinite"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> Enviando…';
+    btn.disabled  = true;
+    btn.innerHTML =
+      '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 1s linear infinite"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> Enviando…';
 
     fetch('/api/admin/correo/' + id, {
       method:  'POST',
-      headers: {
-        'Authorization': 'Bearer ' + pwd,
-        'Content-Type':  'application/json',
-      },
-      body: JSON.stringify({ subject: subject, body: body }),
+      headers: { 'Authorization': 'Bearer ' + pwd, 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ subject: subject }),
     })
     .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
     .then(function (res) {
       if (res.ok) {
         showStatus('✓ Correo enviado correctamente.', 'success');
-        btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Enviado';
-        /* Mantener desactivado — ya no se puede reenviar desde aquí */
+        btn.innerHTML =
+          '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Enviado';
       } else {
         showStatus('Error al enviar: ' + (res.data.error || 'Error desconocido.'), 'error');
         btn.disabled  = false;
-        btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Enviar';
+        btn.innerHTML = resetBtnHTML();
       }
     })
     .catch(function (err) {
       showStatus('Error de conexión: ' + err.message, 'error');
       btn.disabled  = false;
-      btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Enviar';
+      btn.innerHTML = resetBtnHTML();
     });
+  }
+
+  function resetBtnHTML() {
+    return '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Enviar';
   }
 
   function showStatus(msg, type) {
@@ -323,7 +306,6 @@
     el.className   = 'correo-status correo-status--' + type;
   }
 
-  /* Atajos de teclado: Ctrl/Cmd+Enter envía */
   document.addEventListener('keydown', function (e) {
     if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
       var btn = document.getElementById('btn-send');

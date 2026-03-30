@@ -109,17 +109,180 @@ function buildNotificationHTML(p) {
 </body></html>`;
 }
 
-/* Email 2: email inicial al portador — HTML para el envío desde el servidor */
-function buildPortadorEmailHTML(bodyText) {
-  /* Convierte texto plano a HTML respetando saltos de línea */
-  const html = bodyText
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .split('\n')
-    .map(line => line.trim() === '' ? '<br>' : `<p style="margin:0 0 6px;">${line}</p>`)
-    .join('\n');
-  return `<!DOCTYPE html><html lang="es"><body style="font-family:Arial,sans-serif;color:#0f172a;max-width:560px;margin:0 auto;padding:24px;">${html}</body></html>`;
+/* Email 2: email inicial al portador — plantilla HTML completa */
+function buildInitialEmailHTML(p) {
+  const SITE_URL = (process.env.SITE_URL || 'https://brochures-production-5c8c.up.railway.app').replace(/\/$/, '');
+  const ctaUrl   = `${SITE_URL}/portadores.html?ref=email&id=${encodeURIComponent(p.id)}`;
+
+  let saludo;
+  if (p.genero === 'femenino')       saludo = `Estimada ${p.nombre || 'portadora'},`;
+  else if (p.genero === 'masculino') saludo = `Estimado ${p.nombre || 'portador'},`;
+  else                               saludo = `Estimado/a ${p.nombre || 'portador/a'},`;
+
+  return `<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Cuidar el presente, preparar el futuro</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body,table,td,p,a{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
+  table,td{mso-table-lspace:0pt;mso-table-rspace:0pt}
+  img{-ms-interpolation-mode:bicubic;border:0;outline:none;text-decoration:none}
+  body{margin:0;padding:0;background:#f5f3ff}
+  @media only screen and (max-width:620px){
+    .email-container{width:100%!important}
+    .email-body{padding:32px 24px!important}
+    .email-header{padding:36px 24px 32px!important}
+    .email-footer{padding:20px 24px!important}
+    .cta-btn{padding:14px 28px!important;font-size:15px!important}
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f3ff;font-family:Inter,Arial,sans-serif;">
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f5f3ff;">
+<tr><td align="center" style="padding:40px 16px 48px;">
+
+  <table class="email-container" width="600" cellpadding="0" cellspacing="0" border="0"
+         style="max-width:600px;width:100%;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(124,58,237,0.10);">
+
+    <!-- ═══════════════ HEADER ═══════════════ -->
+    <tr>
+      <td class="email-header" align="center"
+          style="background:#7c3aed;background-image:linear-gradient(135deg,#7c3aed 0%,#3b82f6 100%);
+                 padding:52px 48px 48px;text-align:center;">
+        <p style="margin:0 0 14px;font-family:Inter,Arial,sans-serif;font-size:11px;font-weight:600;
+                  letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.70);">
+          Programa de seguimiento preclínico
+        </p>
+        <h1 style="margin:0;font-family:Lora,Georgia,'Times New Roman',serif;font-size:28px;
+                   font-weight:600;color:#ffffff;line-height:1.30;">
+          Cuidar el presente,<br>preparar el futuro
+        </h1>
+      </td>
+    </tr>
+
+    <!-- ═══════════════ BODY ═══════════════ -->
+    <tr>
+      <td class="email-body"
+          style="background:#ffffff;padding:48px 48px 44px;color:#0f172a;">
+
+        <!-- Saludo -->
+        <p style="margin:0 0 28px;font-family:Lora,Georgia,'Times New Roman',serif;
+                  font-size:19px;font-weight:400;color:#0f172a;line-height:1.4;">
+          ${saludo}
+        </p>
+
+        <!-- Párrafo 1 -->
+        <p style="margin:0 0 18px;font-family:Inter,Arial,sans-serif;font-size:15px;
+                  color:#334155;line-height:1.78;">
+          Nos ponemos en contacto contigo porque creemos que hay algo que mereces saber.
+        </p>
+
+        <!-- Párrafo 2 -->
+        <p style="margin:0 0 18px;font-family:Inter,Arial,sans-serif;font-size:15px;
+                  color:#334155;line-height:1.78;">
+          Durante años, ser portador o portadora de una mutación en el gen de la proteína del prion
+          ha significado, para muchas personas, vivir con una incertidumbre difícil de nombrar.
+          Saber sin poder hacer nada. Esperar sin saber cuándo.
+        </p>
+
+        <!-- Párrafo 3 — destacado -->
+        <p style="margin:0 0 18px;font-family:Lora,Georgia,'Times New Roman',serif;
+                  font-size:17px;font-weight:600;font-style:italic;color:#7c3aed;line-height:1.5;">
+          Eso está cambiando.
+        </p>
+
+        <!-- Párrafo 4 -->
+        <p style="margin:0 0 18px;font-family:Inter,Arial,sans-serif;font-size:15px;
+                  color:#334155;line-height:1.78;">
+          No de golpe, no con promesas vacías — sino con ciencia real, con investigación que avanza
+          más rápido que nunca y con ensayos clínicos que, por primera vez, están pensados también
+          para personas como tú: personas que aún no tienen síntomas, pero que quieren estar
+          preparadas cuando llegue el momento de actuar.
+        </p>
+
+        <!-- Párrafo 5 -->
+        <p style="margin:0 0 18px;font-family:Inter,Arial,sans-serif;font-size:15px;
+                  color:#334155;line-height:1.78;">
+          Hemos puesto en marcha un programa de seguimiento preclínico. No es un estudio más.
+          Es un acompañamiento — tuyo, a tu ritmo, con información real y con un equipo que lleva
+          años dedicado a esto y que estará contigo en cada paso.
+        </p>
+
+        <!-- Párrafo 6 -->
+        <p style="margin:0 0 36px;font-family:Inter,Arial,sans-serif;font-size:15px;
+                  color:#334155;line-height:1.78;">
+          No te pedimos nada todavía. Solo que le eches un vistazo.
+        </p>
+
+        <!-- CTA button — tabla para Outlook -->
+        <table cellpadding="0" cellspacing="0" border="0" style="margin:0 auto 44px;">
+          <tr>
+            <td align="center"
+                style="background:#7c3aed;background-image:linear-gradient(135deg,#7c3aed,#3b82f6);
+                       border-radius:100px;">
+              <a href="${ctaUrl}" class="cta-btn"
+                 style="display:inline-block;padding:16px 36px;font-family:Inter,Arial,sans-serif;
+                        font-size:16px;font-weight:600;color:#ffffff;text-decoration:none;
+                        border-radius:100px;letter-spacing:0.01em;">
+                Quiero conocer el programa &rarr;
+              </a>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Separador -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
+          <tr><td style="border-top:1px solid #e2e8f0;font-size:0;line-height:0;">&nbsp;</td></tr>
+        </table>
+
+        <!-- Firma -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td>
+              <p style="margin:0 0 3px;font-family:Inter,Arial,sans-serif;font-size:14px;
+                        font-weight:600;color:#0f172a;">Dr. Joaquín Castilla</p>
+              <p style="margin:0 0 20px;font-family:Inter,Arial,sans-serif;font-size:13px;color:#64748b;">
+                <a href="mailto:jcastilla@cicbiogune.es"
+                   style="color:#7c3aed;text-decoration:none;">jcastilla@cicbiogune.es</a>
+                &nbsp;&middot;&nbsp;
+                <a href="tel:+34618682920" style="color:#64748b;text-decoration:none;">+34 618 68 29 20</a>
+              </p>
+              <p style="margin:0 0 3px;font-family:Inter,Arial,sans-serif;font-size:14px;
+                        font-weight:600;color:#0f172a;">Dra. Izaro Kortazar</p>
+              <p style="margin:0;font-family:Inter,Arial,sans-serif;font-size:13px;color:#64748b;">
+                <a href="mailto:izaro.kortazarzubizarreta@osakidetza.eus"
+                   style="color:#7c3aed;text-decoration:none;">izaro.kortazarzubizarreta@osakidetza.eus</a>
+              </p>
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <tr>
+      <td class="email-footer" align="center"
+          style="background:#1e293b;padding:24px 48px;text-align:center;">
+        <p style="margin:0;font-family:Inter,Arial,sans-serif;font-size:11px;
+                  color:#94a3b8;line-height:1.6;">
+          Programa aprobado por el Comité de Ética de la Investigación del País Vasco
+          &nbsp;&middot;&nbsp; Código PI2025164
+        </p>
+      </td>
+    </tr>
+
+  </table>
+
+</td></tr>
+</table>
+</body>
+</html>`;
 }
 
 /* ------------------------------------------------------------------ */
@@ -164,6 +327,8 @@ app.post('/api/admin/portadores', requireAdmin, async (req, res) => {
       genero:           req.body.genero            || '',
       emailEnviado:     false,
       fechaEnvioEmail:  null,
+      emailLeido:       false,
+      fechaLectura:     null,
       aceptado:         false,
       fechaAceptacion:  null,
       notas:            req.body.notas             || '',
@@ -191,6 +356,7 @@ app.put('/api/admin/portadores/:id', requireAdmin, async (req, res) => {
     const allowed = [
       'codigoTXPR', 'nombre', 'apellidos', 'dni', 'email', 'genero',
       'emailEnviado', 'fechaEnvioEmail',
+      'emailLeido', 'fechaLectura',
       'aceptado', 'fechaAceptacion',
       'notas', 'orden'
     ];
@@ -268,6 +434,21 @@ app.get('/', (req, res) => {
 });
 
 /* ------------------------------------------------------------------ */
+/* GET /api/admin/correo-preview/:id  — HTML del email para preview   */
+/* ------------------------------------------------------------------ */
+app.get('/api/admin/correo-preview/:id', requireAdmin, async (req, res) => {
+  try {
+    const data = await readData();
+    const p    = data.portadores.find(p => p.id === req.params.id);
+    if (!p) return res.status(404).send('<p style="font-family:sans-serif;color:#dc2626;">Portador no encontrado</p>');
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.send(buildInitialEmailHTML(p));
+  } catch (err) {
+    res.status(500).send('<p style="font-family:sans-serif;color:#dc2626;">Error: ' + err.message + '</p>');
+  }
+});
+
+/* ------------------------------------------------------------------ */
 /* POST /api/admin/correo/:id  — enviar email inicial al portador      */
 /* ------------------------------------------------------------------ */
 app.post('/api/admin/correo/:id', requireAdmin, async (req, res) => {
@@ -278,17 +459,14 @@ app.post('/api/admin/correo/:id', requireAdmin, async (req, res) => {
 
     const p       = data.portadores[idx];
     const subject = req.body.subject || '';
-    const body    = req.body.body    || '';
 
-    if (!p.email) return res.status(400).json({ error: 'El portador no tiene email registrado' });
-    if (!subject) return res.status(400).json({ error: 'El asunto no puede estar vacío' });
-    if (!body)    return res.status(400).json({ error: 'El cuerpo del mensaje no puede estar vacío' });
+    if (!p.email)  return res.status(400).json({ error: 'El portador no tiene email registrado' });
+    if (!subject)  return res.status(400).json({ error: 'El asunto no puede estar vacío' });
 
     await sendMail({
       to:      p.email,
       subject,
-      text:    body,
-      html:    buildPortadorEmailHTML(body),
+      html:    buildInitialEmailHTML(p),
     });
 
     /* Registrar envío solo si el SMTP no lanzó error */
@@ -300,6 +478,26 @@ app.post('/api/admin/correo/:id', requireAdmin, async (req, res) => {
   } catch (err) {
     console.error(`[email ${nowISO()}] Error envío portador ${req.params.id}: ${err.message}`);
     res.status(500).json({ error: err.message });
+  }
+});
+
+/* ------------------------------------------------------------------ */
+/* GET /api/portadores/leido/:id  — tracking de lectura (público)     */
+/* ------------------------------------------------------------------ */
+app.get('/api/portadores/leido/:id', async (req, res) => {
+  try {
+    const data = await readData();
+    const idx  = data.portadores.findIndex(p => p.id === req.params.id);
+    if (idx === -1) return res.status(404).json({ ok: false });
+
+    if (!data.portadores[idx].emailLeido) {
+      data.portadores[idx].emailLeido   = true;
+      data.portadores[idx].fechaLectura = new Date().toISOString();
+      await writeData(data);
+    }
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ ok: false });
   }
 });
 
@@ -328,13 +526,16 @@ function generateCSV(portadores) {
   };
   const headers = [
     'ID','TXPR','Nombre','Apellidos','DNI','Email','Género',
-    'Email Enviado','Fecha Envío','Aceptado','Fecha Aceptación','Notas','Orden'
+    'Email Enviado','Fecha Envío','Email Leído','Fecha Lectura',
+    'Aceptado','Fecha Aceptación','Notas','Orden'
   ];
   const rows = portadores.map(p => [
     p.id, p.codigoTXPR, p.nombre, p.apellidos, p.dni, p.email,
     p.genero || '',
     p.emailEnviado ? 'Sí' : 'No',
     fmtDate(p.fechaEnvioEmail),
+    p.emailLeido ? 'Sí' : 'No',
+    fmtDate(p.fechaLectura),
     p.aceptado ? 'Sí' : 'No',
     fmtDate(p.fechaAceptacion),
     (p.notas || '').replace(/"/g, '""'),

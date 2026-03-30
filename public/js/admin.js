@@ -453,6 +453,19 @@
       dateEl.textContent = fmtDate(p.fechaEnvioEmail);
       wrap.appendChild(icon);
       wrap.appendChild(dateEl);
+
+      /* Icono de lectura */
+      if (p.emailLeido) {
+        var readIcon = document.createElement('div');
+        readIcon.className = 'mail-read-icon';
+        readIcon.setAttribute('data-tooltip', 'Leído el ' + fmtDate(p.fechaLectura));
+        readIcon.innerHTML =
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+          '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>' +
+          '<circle cx="12" cy="12" r="3"/>' +
+          '</svg>';
+        wrap.appendChild(readIcon);
+      }
     } else {
       icon.innerHTML =
         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
@@ -774,13 +787,16 @@
   /* ------------------------------------------------------------------ */
   function exportCSV() {
     var headers = ['ID','TXPR','Nombre','Apellidos','DNI','Email','Género',
-                   'Email Enviado','Fecha Envío','Aceptado','Fecha Aceptación','Notas','Orden'];
+                   'Email Enviado','Fecha Envío','Email Leído','Fecha Lectura',
+                   'Aceptado','Fecha Aceptación','Notas','Orden'];
     var rows = portadores.map(function (p) {
       return [
         p.id, p.codigoTXPR, p.nombre, p.apellidos, p.dni, p.email,
         p.genero || '',
         p.emailEnviado ? 'Sí' : 'No',
         fmtDate(p.fechaEnvioEmail),
+        p.emailLeido ? 'Sí' : 'No',
+        fmtDate(p.fechaLectura),
         p.aceptado ? 'Sí' : 'No',
         fmtDate(p.fechaAceptacion),
         (p.notas || '').replace(/"/g, '""'),

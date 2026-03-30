@@ -260,6 +260,16 @@
 
     <script src="/js/portadores.js"></script>
     <script>
+    /* Tracking de lectura — si viene desde el email, registrar silenciosamente */
+    (function () {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('ref') === 'email' && params.get('id')) {
+            fetch('/api/portadores/leido/' + encodeURIComponent(params.get('id')))
+              .catch(function () { /* silencioso */ });
+        }
+    })();
+    </script>
+    <script>
     function irAPrograma() {
         var btn = document.getElementById('btn-siguiente');
         if (btn) btn.disabled = true;
