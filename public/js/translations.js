@@ -1,5 +1,5 @@
 /* translations.js — Cadenas de texto para portadores-programa.html */
-/* Por ahora: español (es). Añadir eu / ca cuando estén disponibles.  */
+/* Idiomas: es (Español), eu (Euskera), ca (Català), gl (Galego) */
 
 const TRANSLATIONS = {
   es: {
@@ -126,13 +126,146 @@ const TRANSLATIONS = {
     'contact.phone.label': 'Teléfono',
 
     /* ---- Footer ---- */
-    'footer.text': '© Joaquín Castilla 2026',
+    'footer.text':   '© Joaquín Castilla 2026',
+    'footer.ethics': 'Programa aprobado por el Comité de Ética de la Investigación del País Vasco · Código PI2025164',
 
     /* ---- Botón de transición en portadores.html ---- */
     'transition.title': '¿Quieres dar el siguiente paso?',
     'transition.text':  'Si has leído el programa y quieres explorar tu participación, continúa aquí.',
     'transition.btn':   'Explorar mi participación',
-  }
+
+    /* ---- Botón siguientes pasos (portadores-compromiso.html) ---- */
+    'btn.siguientes-pasos': '¿Cuáles son los siguientes pasos?',
+  },
+
+  eu: {
+    /* ---- Navegación ---- */
+    'nav.back': 'Itzuli',
+
+    /* ---- Hero ---- */
+    'hero.eyebrow': 'Aurre-kliniko jarraipen programa',
+    'hero.title':   'Zure parte-hartzea\nhemen hasten da',
+    'hero.sub':     'Zuretzat pentsatutako prozesua, zure erritmoan eta presarik gabe.',
+
+    /* ---- Momento 0 ---- */
+    'm0.intro': 'Jarraitu aurretik, ziurtatu nahi dugu programako informazio guztia lasai irakurtzeko aukera izan duzula. Datorrena ez da tramite bat — zure buruarekin elkarrizketa bat da, gauza garrantzitsu bati buruz.',
+    'm0.btn':   'Programa irakurri dut eta jarraitu nahi dut',
+
+    /* ---- Momento 1 ---- */
+    'm1.title': 'Lehen galdera bat, presarik gabe',
+    'm1.sub':   'Ez dago erantzun zuzen edo okerrik. Eskatzen dizuguna da une honetan nola sentitzen zaren hobeto islatzen duen aukera hautatzea. Noiznahi aldatu dezakezu iritzia.',
+
+    'm1.a.header': 'Bai, nire parte-hartzea aztertu nahi dut',
+    'm1.a.body':   'Informazioa arretaz irakurri dut eta, agian oraindik galderak izan arren, urrats hau eman nahi dudala sentitzen dut. Ulertzen dut hau ez dela behin betiko konpromiso bat — taldearekin eta nire buruarekin elkarrizketa sakonago baten hasiera baizik.',
+
+    'm1.b.header': 'Oraindik ez naiz prest sentitzen',
+    'm1.b.body':   'Informazio hau barneratzeko denbora gehiago behar dut. Ez da ixten den ate bat — badakit nahi dudanean itzuli naitekeela. Oraingoz, nire erritmoan jarraitzea nahiago dut.',
+
+    'm1.c.header': 'Zalantzak ditut eta lehenengo norbaitrekin hitz egin nahiago dut',
+    'm1.c.body':   'Edozein erabaki hartu aurretik, programako taldearekin hitz egin nahi nuke. Galderak ditut erantzuten ez dakidanak, eta jarraitu aurretik giza ahotsa entzutea behar dut.',
+
+    /* ---- Cierres momento 1 ---- */
+    'closure.b.title': 'Zure erritmoa da erritu egokia',
+    'closure.b.text':  'Ez dago presarik. Garrantzitsua da jakitea informazio hau hemen egongo dela behar duzunean, eta programako taldea eskuragarri dagoela elkarrizketari berriro heldu nahi diozunean. Zure burua zaintzeak denbora ematea ere esan nahi du.',
+
+    'closure.c.title': 'Hitz egitea beti da lehen urrats ona',
+    'closure.c.text':  'Zalantzak izateak ez du esan nahi galduta zaudenik — esan nahi du hau serioski hartzen ari zarela. Programako taldea horrexetarako dago hemen. Ez zalantzatu erosoen iruditzen zaizun bidea erabiliz harremanetan jartzeko.',
+
+    'closure.contacts.label': 'Nola aurkitu gaituzun',
+
+    /* ---- Footer ---- */
+    'footer.text':   '© Joaquín Castilla 2026',
+    'footer.ethics': 'Programa Euskadiko Ikerketa Etika Batzordeak onartuta · PI2025164 kodea',
+
+    /* ---- Botón siguientes pasos ---- */
+    'btn.siguientes-pasos': 'Zeintzuk dira hurrengo urratsak?',
+  },
+
+  ca: {
+    /* ---- Navegación ---- */
+    'nav.back': 'Tornar',
+
+    /* ---- Hero ---- */
+    'hero.eyebrow': 'Programa de seguiment preclínic',
+    'hero.title':   'La teva participació\ncomença aquí',
+    'hero.sub':     'Un procés pensat per a tu, al teu ritme i sense pressa.',
+
+    /* ---- Momento 0 ---- */
+    'm0.intro': 'Abans de continuar, volem assegurar-nos que has tingut l\'oportunitat de llegir amb calma tota la informació del programa. El que ve a continuació no és un tràmit — és una conversa amb tu mateix/a sobre alguna cosa important.',
+    'm0.btn':   'He llegit el programa i vull continuar',
+
+    /* ---- Momento 1 ---- */
+    'm1.title': 'Una primera pregunta, sense pressa',
+    'm1.sub':   'No hi ha resposta correcta ni incorrecta. L\'únic que et demanem és que triïs la que millor reflecteix com et sents ara mateix. Pots canviar d\'opinió en qualsevol moment.',
+
+    'm1.a.header': 'Sí, vull explorar la meva participació',
+    'm1.a.body':   'He llegit la informació amb atenció i, tot i que potser encara tinc preguntes, sento que vull fer aquest pas. Entenc que això no és un compromís definitiu — és el començament d\'una conversa més profunda amb l\'equip i amb mi mateix/a.',
+
+    'm1.b.header': 'Encara no em sento preparat/da',
+    'm1.b.body':   'Necessito més temps per assimilar aquesta informació. No és una porta que es tanci — sé que puc tornar quan ho senti. Per ara, prefereixo seguir al meu propi ritme.',
+
+    'm1.c.header': 'Tinc dubtes i prefereixo parlar amb algú primer',
+    'm1.c.body':   'Abans de prendre cap decisió, m\'agradaria poder parlar amb l\'equip del programa. Tinc preguntes que no sé com respondre'm sol/a, i necessito escoltar una veu humana abans de continuar.',
+
+    /* ---- Cierres momento 1 ---- */
+    'closure.b.title': 'El teu ritme és el ritme correcte',
+    'closure.b.text':  'No hi ha cap pressa. El que importa és que sàpigues que aquesta informació estarà aquí quan la necessitis, i que l\'equip del programa està disponible si en algun moment vols reprendre aquesta conversa. Cuidar-te també significa donar-te el temps que necessites.',
+
+    'closure.c.title': 'Parlar sempre és un bon primer pas',
+    'closure.c.text':  'Tenir dubtes no significa estar perdut/da — significa que t\'estàs prenent això seriosament. L\'equip del programa és aquí precisament per a això. No dubtis a contactar pel canal que et sigui més còmode.',
+
+    'closure.contacts.label': 'Com trobar-nos',
+
+    /* ---- Footer ---- */
+    'footer.text':   '© Joaquín Castilla 2026',
+    'footer.ethics': 'Programa aprovat pel Comitè d\'Ètica de la Investigació del País Basc · Codi PI2025164',
+
+    /* ---- Botón siguientes pasos ---- */
+    'btn.siguientes-pasos': 'Quins són els passos següents?',
+  },
+
+  gl: {
+    /* ---- Navegación ---- */
+    'nav.back': 'Volver',
+
+    /* ---- Hero ---- */
+    'hero.eyebrow': 'Programa de seguimento preclínico',
+    'hero.title':   'A túa participación\ncomeza aquí',
+    'hero.sub':     'Un proceso pensado para ti, ao teu ritmo e sen présa.',
+
+    /* ---- Momento 0 ---- */
+    'm0.intro': 'Antes de continuar, queremos asegurarnos de que tiveches a oportunidade de ler con calma toda a información do programa. O que vén a continuación non é un trámite — é unha conversa contigo mesmo/a sobre algo importante.',
+    'm0.btn':   'Lin o programa e quero continuar',
+
+    /* ---- Momento 1 ---- */
+    'm1.title': 'Unha primeira pregunta, sen présa',
+    'm1.sub':   'Non hai resposta correcta nin incorrecta. O único que che pedimos é que escollas a que mellor reflicte como te sentes agora mesmo. Podes cambiar de opinión en calquera momento.',
+
+    'm1.a.header': 'Si, quero explorar a miña participación',
+    'm1.a.body':   'Lin a información con atención e, aínda que pode que todavía teña preguntas, sinto que quero dar este paso. Entendo que isto non é un compromiso definitivo — é o comezo dunha conversa máis profunda co equipo e comigo mesmo/a.',
+
+    'm1.b.header': 'Aínda non me sinto preparado/a',
+    'm1.b.body':   'Necesito máis tempo para asimilar esta información. Non é unha porta que se peche — sei que podo volver cando o sinta. Por agora, prefiro seguir ao meu propio ritmo.',
+
+    'm1.c.header': 'Teño dúbidas e prefiro falar con alguén primeiro',
+    'm1.c.body':   'Antes de tomar calquera decisión, gustaríame poder falar co equipo do programa. Teño preguntas que non sei como responderme só/a, e necesito escoitar unha voz humana antes de continuar.',
+
+    /* ---- Cierres momento 1 ---- */
+    'closure.b.title': 'O teu ritmo é o ritmo correcto',
+    'closure.b.text':  'Non hai ningunha présa. O importante é que saibas que esta información seguirá aquí cando a necesites, e que o equipo do programa está dispoñible se nalgún momento queres retomar esta conversa. Coidarte tamén significa darte o tempo que precisas.',
+
+    'closure.c.title': 'Falar sempre é un bo primeiro paso',
+    'closure.c.text':  'Ter dúbidas non significa estar perdido/a — significa que estás tomándote isto en serio. O equipo do programa está aquí precisamente para isto. Non dubides en contactar polo canle que che resulte máis cómodo.',
+
+    'closure.contacts.label': 'Como atoparnos',
+
+    /* ---- Footer ---- */
+    'footer.text':   '© Joaquín Castilla 2026',
+    'footer.ethics': 'Programa aprobado polo Comité de Ética da Investigación do País Vasco · Código PI2025164',
+
+    /* ---- Botón siguientes pasos ---- */
+    'btn.siguientes-pasos': 'Cales son os seguintes pasos?',
+  },
 };
 
 /* Idioma activo (por defecto español) */

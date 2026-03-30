@@ -52,7 +52,9 @@
     var el = document.getElementById('momento-' + n);
     if (!el) return;
     el.classList.add('momento--active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(function () {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 50);
 
     var state = getState();
     state.momento = n;
@@ -129,8 +131,10 @@
 
     if (choice === 'A') {
       setTimeout(function () { window.location.href = '/portadores-paso-1.html'; }, 380);
-    } else {
-      setTimeout(function () { showClosure(choice); }, 380);
+    } else if (choice === 'B') {
+      setTimeout(function () { window.location.href = '/portadores-no-preparado.html'; }, 380);
+    } else if (choice === 'C') {
+      setTimeout(function () { window.location.href = '/portadores-dudas.html'; }, 380);
     }
   }
 

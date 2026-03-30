@@ -602,6 +602,34 @@ body.pg-fade-in.loaded { opacity: 1; }
     font-style: italic;
 }
 
+/* ---- Siguientes pasos button (muted amber/gold) ---- */
+.btn-siguientes-pasos {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 15px 32px;
+    font-size: 0.975rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+    font-family: inherit;
+    opacity: 0.65;
+    margin-top: 28px;
+}
+.btn-siguientes-pasos:hover  { opacity: 0.82; transform: translateY(-1px); }
+.btn-siguientes-pasos:active { transform: translateY(0); }
+
+/* ---- Ethics footer line ---- */
+.footer-ethics {
+    font-size: 0.75rem;
+    color: var(--text-3);
+    margin-top: 6px;
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 700px) {
     .pg-main { padding: 60px 24px 80px; }
