@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lo que esto significa en la práctica — Compromiso</title>
+    <title>Mis compromisos — Programa de portadores</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -13,20 +13,20 @@
 <body class="pg-fade-in">
 
     <nav class="lang-switcher" aria-label="Idioma">
-        <button class="lang-btn lang-btn--active" data-lang="es">ES</button>
+        <button class="lang-btn lang-btn--active" data-lang="es">🇪🇸 ES</button>
     </nav>
 
-    <a href="/portadores-paso-3.html" class="back" id="back-link">
+    <a href="/portadores.html" class="back">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M10 4l-4 4 4 4"/>
         </svg>
-        Volver
+        <span>Volver</span>
     </a>
 
     <section class="hero">
         <div class="hero-content">
             <p class="hero-eyebrow">Programa de seguimiento preclínico</p>
-            <h1 class="hero-title">Lo que esto significa<br>en la práctica</h1>
+            <h1 class="hero-title">Tu participación<br>empieza aquí</h1>
             <p class="hero-subtitle">Un proceso pensado para ti, a tu ritmo y sin presión.</p>
         </div>
         <div class="hero-wave">
@@ -46,139 +46,165 @@
             <div class="pg-dot pg-dot--active"></div>
         </div>
 
-        <div id="momento-compromiso" class="momento momento--active">
+        <!-- ============================================================ -->
+        <!-- PASO — Afirmaciones                                           -->
+        <!-- ============================================================ -->
+        <div id="step-affirmations">
 
             <div class="section-header">
-                <div class="section-num num-green">04</div>
+                <div class="section-num num-purple">04</div>
                 <div>
-                    <h2 class="section-title">Lo que esto significa en la práctica</h2>
+                    <h2 class="section-title" data-i18n="m3.title">Lo que esto significa en la práctica</h2>
+                    <p class="momento-sub" data-i18n="m3.sub">Cuatro cosas que queremos que sepas antes de continuar.</p>
                 </div>
             </div>
 
-            <div class="prose">
-                <p>Antes de confirmar tu participación, queremos que reflexiones sobre lo que implica. Lee cada punto con calma y confírmalo cuando te sientas listo/a.</p>
-            </div>
-
-            <div class="affirmation-cards" id="affirmation-cards">
+            <div class="affirmation-cards">
 
                 <div class="affirmation-card affirmation-card--unlocked">
-                    <p class="affirmation-header">Entiendo que participar implica compromiso con el seguimiento</p>
-                    <p class="affirmation-text">El programa requiere visitas periódicas en un centro especializado. Me comprometo a hacer lo posible por asistir a estas visitas y a comunicar al equipo si en algún momento necesito pausar o discontinuar mi participación.</p>
-                    <button class="btn-confirm" data-affirm="0">
+                    <div class="affirmation-header" data-i18n="m3.a1.header">Tu participación es completamente voluntaria</div>
+                    <p class="affirmation-text" data-i18n="m3.a1.text">Nada de lo que ocurra dentro del programa está sujeto a ninguna obligación. Puedes decidir en cualquier momento dejar de participar, sin que eso afecte a tu atención médica ni a tu relación con el equipo. Aquí nadie te debe nada, y nosotros tampoco te exigimos nada.</p>
+                    <button class="btn-confirm">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        Lo confirmo
+                        <span data-i18n="m3.a1.btn">Entendido, y lo acepto</span>
                     </button>
                     <div class="affirmation-confirmed-msg">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        Confirmado
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span data-i18n="m3.confirmed">✓ Confirmado</span>
                     </div>
                 </div>
 
                 <div class="affirmation-card">
-                    <p class="affirmation-header">Entiendo que puede haber información difícil de recibir</p>
-                    <p class="affirmation-text">El seguimiento puede revelar cambios en biomarcadores u otros indicadores que tienen implicaciones para mi salud futura. Aunque el programa incluye apoyo psicológico especializado, soy consciente de que recibir esta información puede ser emocionalmente exigente.</p>
-                    <button class="btn-confirm" data-affirm="1">
+                    <div class="affirmation-header" data-i18n="m3.a2.header">Tendrás acceso a la App de seguimiento</div>
+                    <p class="affirmation-text" data-i18n="m3.a2.text">Como participante en el programa, tendrás acceso a una aplicación diseñada específicamente para portadores asintomáticos. Te permitirá registrar de forma longitudinal aspectos como la calidad del sueño, el estado de ánimo, la función cognitiva y otros indicadores relevantes — con la posibilidad de que tu pareja de convivencia, si la tienes, colabore también en ese registro.</p>
+                    <button class="btn-confirm">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        Lo confirmo
+                        <span data-i18n="m3.a2.btn">Entendido, y me interesa</span>
                     </button>
                     <div class="affirmation-confirmed-msg">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        Confirmado
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span data-i18n="m3.confirmed">✓ Confirmado</span>
                     </div>
                 </div>
 
                 <div class="affirmation-card">
-                    <p class="affirmation-header">Entiendo que mi participación contribuye a la investigación</p>
-                    <p class="affirmation-text">Los datos anonimizados de mi seguimiento contribuyen a la comprensión científica de la enfermedad y al desarrollo de terapias preventivas. Mi participación no es solo para mí — es también para quienes vendrán después.</p>
-                    <button class="btn-confirm" data-affirm="2">
+                    <div class="affirmation-header" data-i18n="m3.a3.header">Tu participación te sitúa en una posición favorable</div>
+                    <p class="affirmation-text" data-i18n="m3.a3.text">Las personas que forman parte del programa de seguimiento son las que mejor conocemos, las que tenemos más datos y las que antes podremos contactar cuando se abran nuevos ensayos clínicos. No podemos garantizarte el acceso — los criterios de cada ensayo los define el propio ensayo — pero sí podemos decirte que estar aquí es la mejor forma de estar preparado/a para cuando llegue ese momento.</p>
+                    <button class="btn-confirm">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        Lo confirmo
+                        <span data-i18n="m3.a3.btn">Entendido</span>
                     </button>
                     <div class="affirmation-confirmed-msg">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        Confirmado
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span data-i18n="m3.confirmed">✓ Confirmado</span>
                     </div>
                 </div>
 
                 <div class="affirmation-card">
-                    <p class="affirmation-header">Quiero dar este paso</p>
-                    <p class="affirmation-text">He leído el programa, he reflexionado sobre lo que implica, y siento que quiero participar. No es una decisión tomada por presión ni por obligación — es una decisión informada y libre.</p>
-                    <button class="btn-confirm" data-affirm="3">
+                    <div class="affirmation-header" data-i18n="m3.a4.header">Esta es una relación a largo plazo</div>
+                    <p class="affirmation-text" data-i18n="m3.a4.text">El programa no es una visita puntual ni un cuestionario que se responde una vez. Es un acompañamiento continuado — con visitas periódicas, actualizaciones de información, Píldoras de conocimiento y contacto humano real. Nos comprometemos a estar presentes mientras tú quieras que lo estemos.</p>
+                    <button class="btn-confirm">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        Lo confirmo
+                        <span data-i18n="m3.a4.btn">Entendido, y quiero formar parte</span>
                     </button>
                     <div class="affirmation-confirmed-msg">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        Confirmado
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span data-i18n="m3.confirmed">✓ Confirmado</span>
                     </div>
                 </div>
 
+            </div><!-- /affirmation-cards -->
+
+            <div class="paso-nav">
+                <a href="/portadores-paso-3.html" class="btn-paso-prev">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
+                    Anterior
+                </a>
+                <button id="btn-next-m3" class="btn-primary" disabled>
+                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12l4-4-4-4"/></svg>
+                    Continuar
+                </button>
             </div>
 
-            <div class="paso-nav" id="prev-nav">
-                <button class="btn-paso-prev" onclick="window.location.href='/portadores-paso-3.html'">
+        </div><!-- /step-affirmations -->
+
+        <!-- ============================================================ -->
+        <!-- FORMULARIO DE ACEPTACIÓN                                      -->
+        <!-- ============================================================ -->
+        <div id="step-form" style="display:none;">
+
+            <div class="final-block final-block--show">
+                <div class="final-inner">
+                    <p class="final-eyebrow" data-i18n="final.form.eyebrow">Siguiente paso</p>
+                    <h2 class="final-title" data-i18n="final.form.title">Un último paso para que podamos contactarte</h2>
+                    <p class="final-text" data-i18n="final.form.text">Si deseas que el equipo del programa se ponga en contacto contigo, indícanos tus datos. Esto nos permitirá identificarte en nuestro sistema y confirmar tu deseo de participar. Tus datos están protegidos y solo serán accesibles para el equipo investigador.</p>
+
+                    <form id="form-aceptar" class="aceptar-form" autocomplete="off" novalidate>
+                        <div class="aceptar-field">
+                            <label for="aceptar-nombre" data-i18n="final.form.label.nombre">Nombre</label>
+                            <input type="text" id="aceptar-nombre" autocomplete="given-name" placeholder="Tu nombre">
+                        </div>
+                        <div class="aceptar-field">
+                            <label for="aceptar-apellidos" data-i18n="final.form.label.apellidos">Apellidos</label>
+                            <input type="text" id="aceptar-apellidos" autocomplete="family-name" placeholder="Tus apellidos">
+                        </div>
+                        <div class="aceptar-field">
+                            <label for="aceptar-dni" data-i18n="final.form.label.dni">DNI</label>
+                            <input type="text" id="aceptar-dni" autocomplete="off" placeholder="12345678A" maxlength="9">
+                            <span class="aceptar-field-hint" data-i18n="final.form.dni.hint">8 dígitos seguidos de una letra</span>
+                        </div>
+                        <div id="aceptar-error" class="aceptar-error" style="display:none;"></div>
+                        <button type="submit" id="btn-aceptar" class="btn-primary" style="width:100%;justify-content:center;margin-top:8px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span data-i18n="final.form.btn">Confirmar mi deseo de participar</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="paso-nav">
+                <button class="btn-paso-prev" id="btn-prev-m4">
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
                     Anterior
                 </button>
                 <div></div>
             </div>
 
-            <!-- FORMULARIO DE ACEPTACION -->
-            <div id="final-form-step" style="display:none; margin-top: 48px;">
-                <div class="final-inner" style="background: linear-gradient(135deg, var(--purple-pale), var(--blue-pale)); border-radius: var(--r-lg); padding: 48px; text-align: center;">
-                    <p class="final-eyebrow">ULTIMO PASO</p>
-                    <h2 class="final-title">Confirmar mi participacion</h2>
-                    <p class="final-text">Para registrar tu deseo de participar, introduce tus datos. Usaremos tu DNI para localizar tu ficha en nuestro sistema.</p>
-                    <form id="form-aceptar" class="aceptar-form" style="text-align:left;">
-                        <div class="aceptar-field">
-                            <label for="aceptar-nombre">Nombre</label>
-                            <input type="text" id="aceptar-nombre" placeholder="Tu nombre" autocomplete="given-name">
-                        </div>
-                        <div class="aceptar-field">
-                            <label for="aceptar-apellidos">Apellidos</label>
-                            <input type="text" id="aceptar-apellidos" placeholder="Tus apellidos" autocomplete="family-name">
-                        </div>
-                        <div class="aceptar-field">
-                            <label for="aceptar-dni">DNI</label>
-                            <input type="text" id="aceptar-dni" placeholder="12345678A" autocomplete="off" maxlength="9">
-                            <span class="aceptar-field-hint">8 digitos seguidos de una letra. Ejemplo: 12345678A</span>
-                        </div>
-                        <div id="aceptar-error" class="aceptar-error" style="display:none;"></div>
-                        <div style="text-align:center; margin-top: 8px;">
-                            <button type="submit" id="btn-aceptar" class="btn-primary">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                <span>Confirmar mi deseo de participar</span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+        </div><!-- /step-form -->
 
-            <!-- DNI NO ENCONTRADO -->
-            <div id="final-notfound-step" style="display:none; margin-top: 28px;">
-                <div class="closure-inner">
-                    <h2 class="closure-title">No hemos encontrado tu DNI</h2>
-                    <p class="closure-text">No hemos podido localizar tu DNI en nuestro sistema. Es posible que tu ficha todavia no haya sido registrada, o que haya un error tipografico. Contacta directamente con el equipo.</p>
-                    <p class="closure-contacts-title">Como encontrarnos</p>
+        <!-- ============================================================ -->
+        <!-- DNI NO ENCONTRADO                                             -->
+        <!-- ============================================================ -->
+        <div id="step-notfound" style="display:none;">
+            <div class="final-block final-block--show">
+                <div class="final-inner">
+                    <h2 class="final-title" data-i18n="final.notfound.title">No hemos encontrado tu DNI</h2>
+                    <p class="final-text" data-i18n="final.notfound.text">No hemos encontrado tu DNI en nuestro sistema. Es posible que aún no hayas sido registrado/a. Por favor, contacta directamente con el equipo para que podamos incorporarte.</p>
+                    <p class="closure-contacts-title" data-i18n="closure.contacts.label">Cómo encontrarnos</p>
                     <div class="contact-cards" id="contacts-notfound"></div>
                 </div>
             </div>
+        </div>
 
-            <!-- BIENVENIDA -->
-            <div id="final-welcome-step" style="display:none; margin-top: 28px;">
+        <!-- ============================================================ -->
+        <!-- BIENVENIDA PERSONALIZADA                                      -->
+        <!-- ============================================================ -->
+        <div id="step-welcome" style="display:none;">
+            <div class="final-block final-block--show">
                 <div class="final-inner">
-                    <p class="final-eyebrow">YA FORMAS PARTE DEL PROGRAMA</p>
-                    <h2 class="final-title" id="welcome-title">Bienvenido/a</h2>
-                    <p class="final-text">Tu deseo de participar ha quedado registrado. El equipo del programa se pondra en contacto contigo para coordinar los proximos pasos. Gracias por dar este paso.</p>
+                    <p class="final-eyebrow" data-i18n="final.eyebrow">Siguiente paso</p>
+                    <h2 class="thanks-big-title" id="welcome-title">Bienvenido/a</h2>
+                    <p class="final-text" data-i18n="final.text">Has dado un paso importante — no solo hacia el programa, sino hacia ti mismo/a. El equipo se pondrá en contacto contigo en breve para explicarte los siguientes pasos con calma y sin prisa. Si mientras tanto tienes cualquier pregunta, aquí tienes cómo encontrarnos.</p>
+                    <p class="closure-contacts-title" data-i18n="final.contacts.label">Cómo encontrarnos</p>
+                    <div class="contact-cards" id="contacts-welcome"></div>
                 </div>
             </div>
-
         </div>
 
     </main>
 
     <footer class="footer">
-        <p><a href="/">Brochures</a> &nbsp;&middot;&nbsp; &copy; Joaquin Castilla 2026</p>
+        <p><a href="/">Brochures</a> &nbsp;&middot;&nbsp; <span data-i18n="footer.text">&copy; Joaquín Castilla 2026</span></p>
     </footer>
 
     <script src="/js/translations.js"></script>
@@ -186,9 +212,9 @@
     (function () {
         var contactHTML =
             '<div class="contact-card">' +
-                '<img class="contact-photo" src="/assests/foto_Joaquin.png" alt="Dr. Joaquin Castilla" onerror="this.style.display=\'none\'">' +
-                '<div class="contact-name">Dr. Joaquin Castilla</div>' +
-                '<div class="contact-role">Profesor de investigacion</div>' +
+                '<img class="contact-photo" src="/assests/foto_Joaquin.png" alt="Dr. Joaquín Castilla" onerror="this.style.display=\'none\'">' +
+                '<div class="contact-name">Dr. Joaquín Castilla</div>' +
+                '<div class="contact-role">Profesor de investigación</div>' +
                 '<div class="contact-role-sub">Responsable del laboratorio de priones</div>' +
                 '<div class="contact-institution">CIC bioGUNE</div>' +
                 '<div class="contact-item">' +
@@ -203,7 +229,7 @@
             '<div class="contact-card">' +
                 '<img class="contact-photo" src="/assests/foto_Izaro.png" alt="Dra. Izaro Kortazar" onerror="this.style.display=\'none\'">' +
                 '<div class="contact-name">Dra. Izaro Kortazar</div>' +
-                '<div class="contact-role">Jefa de servicio de Neurologia</div>' +
+                '<div class="contact-role">Jefa de servicio de Neurología</div>' +
                 '<div class="contact-institution">Hospital Universitario Araba (Txagorritxu)</div>' +
                 '<div class="contact-item">' +
                     '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>' +
@@ -211,169 +237,13 @@
                 '</div>' +
             '</div>';
 
-        var el = document.getElementById('contacts-notfound');
-        if (el) el.innerHTML = contactHTML;
+        ['contacts-notfound', 'contacts-welcome'].forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el) el.innerHTML = contactHTML;
+        });
     })();
     </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        requestAnimationFrame(function () {
-            document.body.classList.add('loaded');
-        });
-
-        var main = document.querySelector('.pg-main');
-        if (main) {
-            setTimeout(function () {
-                main.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 100);
-        }
-
-        var confirmed = [false, false, false, false];
-        var cards = document.querySelectorAll('.affirmation-card');
-
-        cards.forEach(function (card, i) {
-            var btn = card.querySelector('.btn-confirm');
-            if (!btn) return;
-            btn.addEventListener('click', function () {
-                confirmAffirmation(i);
-            });
-        });
-
-        function confirmAffirmation(i) {
-            confirmed[i] = true;
-            cards[i].classList.add('affirmation-card--confirmed');
-            var totalConfirmed = confirmed.filter(Boolean).length;
-            if (totalConfirmed < cards.length) {
-                var next = cards[totalConfirmed];
-                if (next) {
-                    next.classList.add('affirmation-card--unlocked');
-                    setTimeout(function () {
-                        next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    }, 200);
-                }
-            } else {
-                showForm();
-            }
-        }
-
-        function showForm() {
-            var prevNav = document.getElementById('prev-nav');
-            if (prevNav) prevNav.style.display = 'none';
-            var formStep = document.getElementById('final-form-step');
-            if (!formStep) return;
-            formStep.style.display = 'block';
-            formStep.style.animation = 'momentoReveal 0.55s ease';
-            setTimeout(function () {
-                formStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 80);
-        }
-
-        var dniInput = document.getElementById('aceptar-dni');
-        if (dniInput) {
-            dniInput.addEventListener('input', function () {
-                var pos = this.selectionStart;
-                this.value = this.value.toUpperCase();
-                this.setSelectionRange(pos, pos);
-            });
-        }
-
-        var form = document.getElementById('form-aceptar');
-        if (form) {
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                handleAceptar();
-            });
-        }
-
-        function handleAceptar() {
-            var dni = (document.getElementById('aceptar-dni').value || '').trim().toUpperCase();
-            var btn = document.getElementById('btn-aceptar');
-            if (!dni) { showAceptarError('Por favor, introduce tu DNI antes de continuar.'); return; }
-            if (!/^\d{8}[A-Z]$/.test(dni)) {
-                showAceptarError('El DNI debe tener 8 digitos seguidos de una letra (por ejemplo: 12345678A).');
-                return;
-            }
-            hideAceptarError();
-            btn.disabled = true;
-            var btnSpan = btn.querySelector('span');
-            if (btnSpan) btnSpan.textContent = 'Enviando...';
-
-            fetch('/api/portadores/aceptar', {
-                method:  'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body:    JSON.stringify({ dni: dni })
-            })
-            .then(function (r) {
-                if (r.ok)             return r.json().then(function (data) { showWelcome(data); });
-                if (r.status === 404) { showNotFound(); return; }
-                throw new Error('server-error');
-            })
-            .catch(function () {
-                showAceptarError('Ha ocurrido un error de conexion. Por favor, contacta directamente con el equipo.');
-                btn.disabled = false;
-                if (btnSpan) btnSpan.textContent = 'Confirmar mi deseo de participar';
-            });
-        }
-
-        function showWelcome(data) {
-            var formStep    = document.getElementById('final-form-step');
-            var welcomeStep = document.getElementById('final-welcome-step');
-            var prevNav     = document.getElementById('prev-nav');
-            if (formStep) formStep.style.display = 'none';
-            if (prevNav)  prevNav.style.display  = 'none';
-
-            var nombre = data.nombre || '';
-            var genero = data.genero || '';
-            var greeting;
-            if (genero === 'femenino') {
-                greeting = 'Bienvenida, ' + nombre;
-            } else if (genero === 'masculino') {
-                greeting = 'Bienvenido, ' + nombre;
-            } else {
-                greeting = 'Bienvenido/a' + (nombre ? ', ' + nombre : '');
-            }
-
-            var titleEl = document.getElementById('welcome-title');
-            if (titleEl) titleEl.textContent = greeting;
-
-            if (!welcomeStep) return;
-            welcomeStep.style.display = 'block';
-            welcomeStep.style.animation = 'momentoReveal 0.65s ease';
-            setTimeout(function () {
-                welcomeStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 80);
-        }
-
-        function showNotFound() {
-            var formStep     = document.getElementById('final-form-step');
-            var notFoundStep = document.getElementById('final-notfound-step');
-            var prevNav      = document.getElementById('prev-nav');
-            if (formStep) formStep.style.display = 'none';
-            if (prevNav)  prevNav.style.display  = 'none';
-            if (!notFoundStep) return;
-            notFoundStep.style.display   = 'block';
-            notFoundStep.style.animation = 'momentoReveal 0.55s ease';
-            setTimeout(function () {
-                notFoundStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 80);
-        }
-
-        function showAceptarError(msg) {
-            var el = document.getElementById('aceptar-error');
-            if (!el) return;
-            el.textContent = msg;
-            el.style.display = 'block';
-            el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
-        function hideAceptarError() {
-            var el = document.getElementById('aceptar-error');
-            if (el) el.style.display = 'none';
-        }
-
-        if (typeof applyTranslations === 'function') applyTranslations();
-    });
-    </script>
+    <script src="/js/portadores-compromiso.js"></script>
 
 </body>
 </html>

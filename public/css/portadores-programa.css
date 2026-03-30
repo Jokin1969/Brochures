@@ -214,6 +214,7 @@ body.pg-fade-in.loaded { opacity: 1; }
 }
 .check-btn:hover { border-color: var(--purple); color: var(--text); }
 .check-btn--yes:hover { border-color: var(--green); }
+.check-btn--selected { border-color: var(--green); background: var(--green-pale, #f0fdf4); color: var(--text); }
 
 /* ---- Explanation block (NO loop) ---- */
 .explanation-block {

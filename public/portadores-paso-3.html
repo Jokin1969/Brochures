@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificación de comprensión — Paso 3</title>
+    <title>Comprobación 2.3 — Programa de portadores</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -13,20 +13,20 @@
 <body class="pg-fade-in">
 
     <nav class="lang-switcher" aria-label="Idioma">
-        <button class="lang-btn lang-btn--active" data-lang="es">ES</button>
+        <button class="lang-btn lang-btn--active" data-lang="es">🇪🇸 ES</button>
     </nav>
 
-    <a href="/portadores-paso-2.html" class="back">
+    <a href="/portadores.html" class="back">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M10 4l-4 4 4 4"/>
         </svg>
-        Volver
+        <span>Volver</span>
     </a>
 
     <section class="hero">
         <div class="hero-content">
             <p class="hero-eyebrow">Programa de seguimiento preclínico</p>
-            <h1 class="hero-title">Verificación de<br>comprensión</h1>
+            <h1 class="hero-title">Tu participación<br>empieza aquí</h1>
             <p class="hero-subtitle">Un proceso pensado para ti, a tu ritmo y sin presión.</p>
         </div>
         <div class="hero-wave">
@@ -46,111 +46,87 @@
             <div class="pg-dot"></div>
         </div>
 
-        <div id="momento-paso3" class="momento momento--active">
+        <div class="section-header">
+            <div class="section-num num-purple">03</div>
+            <div>
+                <h2 class="section-title" data-i18n="m2.c3.title">Las pruebas que hacen posible saberlo</h2>
+            </div>
+        </div>
 
-            <div class="section-header">
-                <div class="section-num num-teal">03</div>
-                <div>
-                    <h2 class="section-title">Las pruebas que hacen posible saberlo</h2>
+        <div class="prose">
+            <p data-i18n="m2.c3.prose.p1">Determinar en cuál de los dos grupos te encuentras no es sencillo. No existe hoy ninguna prueba única, rápida y definitiva que lo responda. Lo que tenemos son herramientas especializadas — algunas de ellas requieren muestras biológicas que no son las habituales, como determinados análisis de líquido cefalorraquídeo u otras que permiten detectar señales de actividad priónica con mayor sensibilidad.</p>
+            <p data-i18n="m2.c3.prose.p2">Esto significa que el proceso requiere tiempo, visitas, y en algunos casos procedimientos que merecen ser explicados con detalle antes de realizarlos. El equipo del programa te acompañará en cada decisión, y nada se hará sin tu comprensión y tu consentimiento.</p>
+        </div>
+
+        <div class="check-block">
+            <p class="check-question-text" data-i18n="m2.c3.question">¿Entiendes que conocer tu situación requiere pruebas especializadas, que no siempre son sencillas, y que el resultado puede tener implicaciones reales en tu vida?</p>
+            <div class="check-options">
+                <button class="check-btn check-btn--yes" data-answer="yes" data-i18n="m2.c3.yes">Sí, lo entiendo y quiero continuar</button>
+                <button class="check-btn" data-answer="no" data-i18n="m2.c3.no">Necesito pensarlo o entender mejor esto antes de seguir</button>
+            </div>
+        </div>
+
+        <div class="explanation-block" id="explanation">
+            <p data-i18n="m2.c3.exp.p1">Es una decisión que merece reflexión, y está muy bien reconocerlo. Lo importante es que nadie te va a pedir que hagas ninguna prueba sin haberte explicado antes en detalle en qué consiste, qué información da, y qué puede suponer para ti conocer ese resultado.</p>
+            <p data-i18n="m2.c3.exp.p2">El consentimiento informado no es un formulario — es una conversación real con el equipo. Cuando sientas que estás listo/a, la pregunta sigue aquí.</p>
+            <div class="explanation-retry">
+                <p class="explanation-retry-label" data-i18n="m2.c3.exp.retry">Cuando estés listo/a:</p>
+                <div class="check-options check-options--col1">
+                    <button class="check-btn check-btn--yes" data-answer="yes" data-i18n="m2.c3.yes">Sí, lo entiendo y quiero continuar</button>
                 </div>
             </div>
+        </div>
 
-            <div class="prose">
-                <p>El programa de seguimiento incluye una serie de pruebas periódicas que permiten detectar cambios antes de que sean clínicamente visibles.</p>
-                <p>Algunas de estas pruebas, como la punción lumbar o la microbiopsia de piel, son procedimientos médicos que implican cierta incomodidad y, en casos muy infrecuentes, pequeños riesgos. Siempre se realizan con tu consentimiento explícito y acompañamiento especializado.</p>
-            </div>
-
-            <div class="check-section">
-                <div id="check-23" class="check-block">
-                    <p class="check-question-text">
-                        ¿Entiendes que participar en el programa de seguimiento puede implicar
-                        someterse a pruebas médicas que van más allá de un análisis de sangre rutinario,
-                        y que siempre tendrás la opción de aceptar o rechazar cada una de ellas?
-                    </p>
-                    <div class="check-options">
-                        <button class="check-btn check-btn--yes" data-check="23" data-answer="yes">
-                            Sí, lo entiendo y quiero continuar
-                        </button>
-                        <button class="check-btn" data-check="23" data-answer="no">
-                            Necesito más información antes de decidir
-                        </button>
-                    </div>
-
-                    <div id="exp-23" class="explanation-block">
-                        <p><strong>Por supuesto — aquí tienes más detalle.</strong></p>
-                        <p>Las pruebas que forman parte del seguimiento pueden incluir:</p>
-                        <p><strong>Análisis de sangre</strong> — Sin riesgo relevante, permiten medir biomarcadores como proteínas específicas en plasma.</p>
-                        <p><strong>Resonancia magnética nuclear (RMN)</strong> — Prueba de imagen sin radiación ionizante, muy segura.</p>
-                        <p><strong>Punción lumbar</strong> — Procedimiento médico que permite obtener líquido cefalorraquídeo. Implica cierta incomodidad y, raramente, puede causar dolor de cabeza posterior.</p>
-                        <p><strong>Microbiopsia de piel</strong> — Pequeña muestra de tejido cutáneo tomada con anestesia local. Procedimiento breve con riesgos mínimos.</p>
-                        <p>Siempre podrás decidir qué pruebas aceptas y cuáles no. Tu participación en el programa no depende de aceptarlas todas.</p>
-                        <div class="explanation-retry">
-                            <p class="explanation-retry-label">¿Tienes ahora suficiente información para continuar?</p>
-                            <div class="check-options">
-                                <button class="check-btn check-btn--yes" data-check="23" data-answer="yes">
-                                    Sí, lo entiendo y quiero continuar
-                                </button>
-                                <button class="check-btn" data-check="23" data-answer="no">
-                                    Necesito más información antes de decidir
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="paso-nav">
-                <button class="btn-paso-prev" onclick="window.location.href='/portadores-paso-2.html'">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
-                    Anterior
-                </button>
-                <div></div>
-            </div>
-
+        <div class="paso-nav">
+            <a href="/portadores-paso-2.html" class="btn-paso-prev">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
+                Anterior
+            </a>
+            <button id="btn-next" class="btn-primary" disabled>
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12l4-4-4-4"/></svg>
+                Siguiente
+            </button>
         </div>
 
     </main>
 
     <footer class="footer">
-        <p><a href="/">Brochures</a> &nbsp;&middot;&nbsp; &copy; Joaquín Castilla 2026</p>
+        <p><a href="/">Brochures</a> &nbsp;&middot;&nbsp; <span data-i18n="footer.text">&copy; Joaquín Castilla 2026</span></p>
     </footer>
 
     <script src="/js/translations.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-        requestAnimationFrame(function () {
-            document.body.classList.add('loaded');
-        });
+        requestAnimationFrame(function () { document.body.classList.add('loaded'); });
+        if (typeof applyTranslations === 'function') applyTranslations();
 
-        var main = document.querySelector('.pg-main');
-        if (main) {
-            setTimeout(function () {
-                main.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 100);
-        }
+        setTimeout(function () {
+            var main = document.querySelector('.pg-main');
+            if (main) main.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 150);
 
-        document.querySelectorAll('[data-check="23"]').forEach(function (btn) {
+        var answered = false;
+        var btnNext  = document.getElementById('btn-next');
+        var expBlock = document.getElementById('explanation');
+
+        document.querySelectorAll('.check-btn').forEach(function (btn) {
             btn.addEventListener('click', function () {
-                handleCheck23(this.dataset.answer);
+                if (btn.dataset.answer === 'yes') {
+                    answered = true;
+                    expBlock.classList.remove('explanation-block--show');
+                    document.querySelectorAll('.check-btn').forEach(function (b) { b.classList.remove('check-btn--selected'); });
+                    btn.classList.add('check-btn--selected');
+                    btnNext.disabled = false;
+                } else {
+                    expBlock.classList.add('explanation-block--show');
+                    setTimeout(function () { expBlock.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
+                }
             });
         });
 
-        function handleCheck23(answer) {
-            var exp = document.getElementById('exp-23');
-            if (answer === 'yes') {
-                if (exp) exp.classList.remove('explanation-block--show');
-                window.location.href = '/portadores-compromiso.html';
-            } else {
-                if (exp) {
-                    exp.classList.add('explanation-block--show');
-                    setTimeout(function () {
-                        exp.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 80);
-                }
-            }
-        }
-
-        if (typeof applyTranslations === 'function') applyTranslations();
+        btnNext.addEventListener('click', function () {
+            if (answered) window.location.href = '/portadores-compromiso.html';
+        });
     });
     </script>
 
