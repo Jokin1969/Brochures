@@ -671,6 +671,13 @@ app.post('/api/portadores/aceptar', async (req, res) => {
 });
 
 /* ------------------------------------------------------------------ */
+/* Health check — Railway lo usa para verificar que el servicio vive   */
+/* ------------------------------------------------------------------ */
+app.get('/healthz', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
+/* ------------------------------------------------------------------ */
 /* Ruta raíz                                                            */
 /* ------------------------------------------------------------------ */
 app.get('/', (req, res) => {
@@ -1021,4 +1028,14 @@ process.on('unhandledRejection', (reason) => {
   console.error(`[fatal] unhandledRejection: ${reason instanceof Error ? reason.message : reason}`);
   if (reason instanceof Error) console.error(reason.stack);
   process.exit(1);
+});
+
+process.on('SIGTERM', () => {
+  console.log('[signal] SIGTERM recibido — Railway está deteniendo el contenedor');
+  process.exit(0);
+});
+
+process.on('SIGINT', () => {
+  console.log('[signal] SIGINT recibido');
+  process.exit(0);
 });
