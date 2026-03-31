@@ -3,6 +3,7 @@ require('dotenv').config();
 const express    = require('express');
 const path       = require('path');
 const fs         = require('fs').promises;
+const crypto     = require('crypto');
 const cron       = require('node-cron');
 const nodemailer = require('nodemailer');
 
@@ -321,14 +322,218 @@ function buildInitialEmailHTML(p) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Token de baja de píldoras (hash HMAC-SHA256 truncado a 16 hex)      */
+/* ------------------------------------------------------------------ */
+function generateUnsubToken(id) {
+  const secret = process.env.UNSUB_SECRET || 'default-unsub-secret';
+  return crypto.createHmac('sha256', secret).update(String(id)).digest('hex').substring(0, 16);
+}
+
+/* Email 3: nueva píldora disponible — plantilla HTML */
+function buildPildorasEmailHTML(p) {
+  const SITE_URL  = (process.env.SITE_URL || 'https://brochures-production-5c8c.up.railway.app').replace(/\/$/, '');
+  const ctaUrl    = `${SITE_URL}/portadores-pildoras.html?ref=email&id=${encodeURIComponent(p.id)}`;
+  const unsubUrl  = `${SITE_URL}/api/pildoras/desactivar?id=${encodeURIComponent(p.id)}&token=${generateUnsubToken(p.id)}`;
+
+  let saludo;
+  if (p.genero === 'femenino')       saludo = `Estimada ${p.nombre || 'portadora'},`;
+  else if (p.genero === 'masculino') saludo = `Estimado ${p.nombre || 'portador'},`;
+  else                               saludo = `Estimado/a ${p.nombre || 'portador/a'},`;
+
+  return `<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Nueva píldora de información disponible</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body,table,td,p,a{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
+  table,td{mso-table-lspace:0pt;mso-table-rspace:0pt}
+  img{-ms-interpolation-mode:bicubic;border:0;outline:none;text-decoration:none}
+  body{margin:0;padding:0;background:#f5f3ff}
+  @media only screen and (max-width:620px){
+    .email-container{width:100%!important}
+    .email-body{padding:32px 24px!important}
+    .email-header{padding:36px 24px 32px!important}
+    .email-footer{padding:20px 24px!important}
+    .cta-btn{padding:14px 28px!important;font-size:15px!important}
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f3ff;font-family:Inter,Arial,sans-serif;">
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f5f3ff;">
+<tr><td align="center" style="padding:40px 16px 48px;">
+
+  <table class="email-container" width="600" cellpadding="0" cellspacing="0" border="0"
+         style="max-width:600px;width:100%;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(124,58,237,0.10);">
+
+    <!-- HEADER -->
+    <tr>
+      <td class="email-header" align="center"
+          style="background:#7c3aed;background-image:linear-gradient(135deg,#7c3aed 0%,#3b82f6 100%);
+                 padding:52px 48px 48px;text-align:center;">
+        <p style="margin:0 0 14px;font-family:Inter,Arial,sans-serif;font-size:11px;font-weight:600;
+                  letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.70);">
+          Programa de seguimiento preclínico
+        </p>
+        <h1 style="margin:0 0 10px;font-family:Lora,Georgia,'Times New Roman',serif;font-size:28px;
+                   font-weight:600;color:#ffffff;line-height:1.30;">
+          Cuidar el presente,<br>preparar el futuro
+        </h1>
+        <p style="margin:0;font-family:Inter,Arial,sans-serif;font-size:13px;
+                  color:rgba(255,255,255,0.80);letter-spacing:0.04em;">
+          Nueva píldora de información disponible
+        </p>
+      </td>
+    </tr>
+
+    <!-- BODY -->
+    <tr>
+      <td class="email-body"
+          style="background:#ffffff;padding:48px 48px 44px;color:#0f172a;">
+
+        <!-- Saludo -->
+        <p style="margin:0 0 28px;font-family:Lora,Georgia,'Times New Roman',serif;
+                  font-size:19px;font-weight:400;color:#0f172a;line-height:1.4;">
+          ${saludo}
+        </p>
+
+        <p style="margin:0 0 18px;font-family:Inter,Arial,sans-serif;font-size:15px;
+                  color:#334155;line-height:1.78;">
+          Tenemos una nueva actualización para ti.
+        </p>
+
+        <p style="margin:0 0 18px;font-family:Inter,Arial,sans-serif;font-size:15px;
+                  color:#334155;line-height:1.78;">
+          En el programa de seguimiento publicamos periódicamente <strong>Píldoras de información</strong>
+          &mdash; actualizaciones breves, claras y rigurosas sobre ensayos clínicos, nuevas terapias
+          y hallazgos científicos relevantes para personas como tú.
+        </p>
+
+        <p style="margin:0 0 36px;font-family:Inter,Arial,sans-serif;font-size:15px;
+                  color:#334155;line-height:1.78;">
+          Hay una nueva píldora disponible. Entra cuando quieras y léela a tu ritmo.
+        </p>
+
+        <!-- CTA -->
+        <table cellpadding="0" cellspacing="0" border="0" style="margin:0 auto 44px;">
+          <tr>
+            <td align="center"
+                style="background:#7c3aed;background-image:linear-gradient(135deg,#7c3aed,#3b82f6);
+                       border-radius:100px;">
+              <a href="${ctaUrl}" class="cta-btn"
+                 style="display:inline-block;padding:16px 36px;font-family:Inter,Arial,sans-serif;
+                        font-size:16px;font-weight:600;color:#ffffff;text-decoration:none;
+                        border-radius:100px;letter-spacing:0.01em;">
+                Ver la nueva píldora &rarr;
+              </a>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Separador -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
+          <tr><td style="border-top:1px solid #e2e8f0;font-size:0;line-height:0;">&nbsp;</td></tr>
+        </table>
+
+        <!-- Nota de privacidad -->
+        <p style="margin:0 0 10px;font-family:Inter,Arial,sans-serif;font-size:12px;
+                  color:#94a3b8;line-height:1.65;">
+          Recibes este email porque en su momento solicitaste expresamente ser informado/a cuando
+          hubiera nuevas píldoras de información disponibles. Si ya no deseas recibir este tipo
+          de comunicaciones, puedes indicárnoslo aquí:
+        </p>
+        <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:36px;">
+          <tr>
+            <td style="border:1px solid #e2e8f0;border-radius:100px;">
+              <a href="${unsubUrl}"
+                 style="display:inline-block;padding:7px 16px;font-family:Inter,Arial,sans-serif;
+                        font-size:11px;color:#94a3b8;text-decoration:none;border-radius:100px;">
+                No deseo seguir recibiendo estas notificaciones
+              </a>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Separador firma -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
+          <tr><td style="border-top:1px solid #e2e8f0;font-size:0;line-height:0;">&nbsp;</td></tr>
+        </table>
+
+        <!-- Firma con fotos -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr valign="top">
+            <td width="48%" style="padding-right:16px;">
+              <img src="${SITE_URL}/assests/foto_Joaquin.png" alt="Dr. Joaquín Castilla" width="80" height="80"
+                   style="display:block;width:80px;height:80px;border-radius:50%;
+                          object-fit:cover;border:2px solid #e2e8f0;margin-bottom:12px;"
+                   onerror="this.style.display='none'">
+              <p style="margin:0 0 2px;font-family:Lora,Georgia,serif;font-size:14px;font-weight:600;color:#0f172a;">Dr. Joaquín Castilla</p>
+              <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:600;color:#7c3aed;">Profesor de investigación</p>
+              <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:11px;color:#94a3b8;">Responsable del laboratorio de priones</p>
+              <p style="margin:0 0 12px;font-family:Inter,Arial,sans-serif;font-size:11px;color:#94a3b8;font-style:italic;">CIC bioGUNE</p>
+              <p style="margin:0 0 4px;font-family:Inter,Arial,sans-serif;font-size:12px;color:#64748b;">
+                ✉&nbsp;<a href="mailto:jcastilla@cicbiogune.es" style="color:#7c3aed;text-decoration:none;">jcastilla@cicbiogune.es</a>
+              </p>
+              <p style="margin:0;font-family:Inter,Arial,sans-serif;font-size:12px;color:#64748b;">
+                ☎&nbsp;<a href="tel:+34618682920" style="color:#64748b;text-decoration:none;">+34 618 68 29 20</a>
+              </p>
+            </td>
+            <td width="4%" style="border-left:1px solid #e2e8f0;">&nbsp;</td>
+            <td width="48%" style="padding-left:16px;">
+              <img src="${SITE_URL}/assests/foto_Izaro.png" alt="Dra. Izaro Kortazar" width="80" height="80"
+                   style="display:block;width:80px;height:80px;border-radius:50%;
+                          object-fit:cover;border:2px solid #e2e8f0;margin-bottom:12px;"
+                   onerror="this.style.display='none'">
+              <p style="margin:0 0 2px;font-family:Lora,Georgia,serif;font-size:14px;font-weight:600;color:#0f172a;">Dra. Izaro Kortazar</p>
+              <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:600;color:#7c3aed;">Jefa de servicio de Neurología</p>
+              <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:11px;color:#94a3b8;">Hospital Universitario Araba</p>
+              <p style="margin:0 0 12px;font-family:Inter,Arial,sans-serif;font-size:11px;color:#94a3b8;font-style:italic;">(Txagorritxu)</p>
+              <p style="margin:0;font-family:Inter,Arial,sans-serif;font-size:12px;color:#64748b;">
+                ✉&nbsp;<a href="mailto:izaro.kortazarzubizarreta@osakidetza.eus" style="color:#7c3aed;text-decoration:none;">izaro.kortazarzubizarreta@osakidetza.eus</a>
+              </p>
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+
+    <!-- FOOTER -->
+    <tr>
+      <td class="email-footer" align="center"
+          style="background:#1e293b;padding:24px 48px;text-align:center;">
+        <p style="margin:0;font-family:Inter,Arial,sans-serif;font-size:11px;
+                  color:#94a3b8;line-height:1.6;">
+          Programa aprobado por el Comité de Ética de la Investigación del País Vasco
+          &nbsp;&middot;&nbsp; Código PI2025164
+        </p>
+      </td>
+    </tr>
+
+  </table>
+
+</td></tr>
+</table>
+</body>
+</html>`;
+}
+
+/* ------------------------------------------------------------------ */
 /* Parsers y archivos estáticos                                         */
 /* ------------------------------------------------------------------ */
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-/* Ruta para la página de composición de correo */
+/* Rutas para páginas de composición de correo */
 app.get('/admin/correo/:id', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'admin', 'correo.html'));
+});
+app.get('/admin/pildora-email/:id', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'admin', 'pildora-email.html'));
 });
 
 /* ------------------------------------------------------------------ */
@@ -360,14 +565,17 @@ app.post('/api/admin/portadores', requireAdmin, async (req, res) => {
       dni:              req.body.dni               || '',
       email:            req.body.email             || '',
       genero:           req.body.genero            || '',
-      emailEnviado:     false,
-      fechaEnvioEmail:  null,
-      emailLeido:       false,
-      fechaLectura:     null,
-      aceptado:         false,
-      fechaAceptacion:  null,
-      notas:            req.body.notas             || '',
-      orden:            data.portadores.length,
+      emailEnviado:          false,
+      fechaEnvioEmail:       null,
+      emailLeido:            false,
+      fechaLectura:          null,
+      aceptado:              false,
+      fechaAceptacion:       null,
+      pildorasActivo:        false,
+      fechaUltimasPildoras:  null,
+      pildorasEmailEnviado:  false,
+      notas:                 req.body.notas             || '',
+      orden:                 data.portadores.length,
     };
 
     data.portadores.push(nuevo);
@@ -393,6 +601,7 @@ app.put('/api/admin/portadores/:id', requireAdmin, async (req, res) => {
       'emailEnviado', 'fechaEnvioEmail',
       'emailLeido', 'fechaLectura',
       'aceptado', 'fechaAceptacion',
+      'pildorasActivo', 'fechaUltimasPildoras', 'pildorasEmailEnviado',
       'notas', 'orden'
     ];
     allowed.forEach(k => {
@@ -536,6 +745,119 @@ app.get('/api/portadores/leido/:id', async (req, res) => {
   }
 });
 
+/* ------------------------------------------------------------------ */
+/* POST /api/admin/portadores/:id/pildoras-toggle  — toggle pildoras  */
+/* ------------------------------------------------------------------ */
+app.post('/api/admin/portadores/:id/pildoras-toggle', requireAdmin, async (req, res) => {
+  try {
+    const data = await readData();
+    const idx  = data.portadores.findIndex(p => p.id === req.params.id);
+    if (idx === -1) return res.status(404).json({ error: 'Portador no encontrado' });
+
+    data.portadores[idx].pildorasActivo = !data.portadores[idx].pildorasActivo;
+    await writeData(data);
+    res.json({ ok: true, pildorasActivo: data.portadores[idx].pildorasActivo });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/* ------------------------------------------------------------------ */
+/* GET /api/admin/pildora-preview/:id  — HTML del email para preview  */
+/* ------------------------------------------------------------------ */
+app.get('/api/admin/pildora-preview/:id', requireAdmin, async (req, res) => {
+  try {
+    const data = await readData();
+    const p    = data.portadores.find(p => p.id === req.params.id);
+    if (!p) return res.status(404).send('<p style="font-family:sans-serif;color:#dc2626;">Portador no encontrado</p>');
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.send(buildPildorasEmailHTML(p));
+  } catch (err) {
+    res.status(500).send('<p style="font-family:sans-serif;color:#dc2626;">Error: ' + err.message + '</p>');
+  }
+});
+
+/* ------------------------------------------------------------------ */
+/* POST /api/admin/pildora-email/:id  — enviar email de píldora       */
+/* ------------------------------------------------------------------ */
+app.post('/api/admin/pildora-email/:id', requireAdmin, async (req, res) => {
+  try {
+    const data = await readData();
+    const idx  = data.portadores.findIndex(p => p.id === req.params.id);
+    if (idx === -1) return res.status(404).json({ error: 'Portador no encontrado' });
+
+    const p       = data.portadores[idx];
+    const subject = req.body.subject || '';
+
+    if (!p.email)  return res.status(400).json({ error: 'El portador no tiene email registrado' });
+    if (!subject)  return res.status(400).json({ error: 'El asunto no puede estar vacío' });
+
+    await sendMail({
+      to:      p.email,
+      subject,
+      html:    buildPildorasEmailHTML(p),
+    });
+
+    data.portadores[idx].pildorasEmailEnviado = true;
+    data.portadores[idx].fechaUltimasPildoras = new Date().toISOString();
+    await writeData(data);
+
+    res.json({ ok: true, fechaUltimasPildoras: data.portadores[idx].fechaUltimasPildoras });
+  } catch (err) {
+    console.error(`[email ${nowISO()}] Error envío píldora ${req.params.id}: ${err.message}`);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/* ------------------------------------------------------------------ */
+/* POST /api/pildoras/activar  — activar notificaciones por DNI (público) */
+/* ------------------------------------------------------------------ */
+app.post('/api/pildoras/activar', async (req, res) => {
+  try {
+    const { dni } = req.body;
+    if (!dni) return res.status(400).json({ error: 'Falta el campo dni' });
+
+    const data = await readData();
+    const idx  = data.portadores.findIndex(
+      p => p.dni.trim().toUpperCase() === dni.trim().toUpperCase()
+    );
+    if (idx === -1) return res.status(404).json({ error: 'Portador no encontrado' });
+
+    data.portadores[idx].pildorasActivo = true;
+    await writeData(data);
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/* ------------------------------------------------------------------ */
+/* GET /api/pildoras/desactivar  — baja por link del email (público)  */
+/* ------------------------------------------------------------------ */
+app.get('/api/pildoras/desactivar', async (req, res) => {
+  try {
+    const { id, token } = req.query;
+    if (!id || !token) {
+      return res.redirect('/portadores-baja-pildoras.html?error=1');
+    }
+
+    /* Verificar token */
+    if (token !== generateUnsubToken(id)) {
+      return res.redirect('/portadores-baja-pildoras.html?error=1');
+    }
+
+    const data = await readData();
+    const idx  = data.portadores.findIndex(p => p.id === id);
+    if (idx === -1) return res.redirect('/portadores-baja-pildoras.html?error=1');
+
+    data.portadores[idx].pildorasActivo = false;
+    await writeData(data);
+    res.redirect('/portadores-baja-pildoras.html');
+  } catch (err) {
+    res.redirect('/portadores-baja-pildoras.html?error=1');
+  }
+});
+
 /* ================================================================== */
 /* BACKUP EN DROPBOX                                                    */
 /* ================================================================== */
@@ -562,7 +884,9 @@ function generateCSV(portadores) {
   const headers = [
     'ID','TXPR','Nombre','Apellidos','DNI','Email','Género',
     'Email Enviado','Fecha Envío','Email Leído','Fecha Lectura',
-    'Aceptado','Fecha Aceptación','Notas','Orden'
+    'Aceptado','Fecha Aceptación',
+    'Píldoras Activo','Fecha Últimas Píldoras',
+    'Notas','Orden'
   ];
   const rows = portadores.map(p => [
     p.id, p.codigoTXPR, p.nombre, p.apellidos, p.dni, p.email,
@@ -573,6 +897,8 @@ function generateCSV(portadores) {
     fmtDate(p.fechaLectura),
     p.aceptado ? 'Sí' : 'No',
     fmtDate(p.fechaAceptacion),
+    p.pildorasActivo ? 'Sí' : 'No',
+    fmtDate(p.fechaUltimasPildoras),
     (p.notas || '').replace(/"/g, '""'),
     p.orden
   ].map(v => `"${v != null ? String(v) : ''}"`).join(','));

@@ -155,7 +155,7 @@
     if (list.length === 0) {
       var tr = document.createElement('tr');
       var td = document.createElement('td');
-      td.colSpan = 12;
+      td.colSpan = 13;
       td.className = 'table-empty';
       td.textContent = filterMode === 'all'
         ? 'No hay portadores registrados todavía. Usa "Nuevo portador" para añadir el primero.'
@@ -218,6 +218,9 @@
 
     /* ---- Acceptance status ---- */
     tr.appendChild(acceptStatusCell(p));
+
+    /* ---- Píldoras ---- */
+    tr.appendChild(pildorasCell(p));
 
     /* ---- Notas (click to edit) ---- */
     tr.appendChild(notasCell(p));
@@ -525,6 +528,57 @@
     return td;
   }
 
+  /* ---- Celda Píldoras ---- */
+  function pildorasCell(p) {
+    var td = document.createElement('td');
+    td.className = 'col-pildoras';
+    var wrap = document.createElement('div');
+    wrap.className = 'pildoras-status';
+
+    /* Pill icon — toggle on click */
+    var pillIcon = document.createElement('div');
+    pillIcon.className = 'pildoras-pill-icon ' + (p.pildorasActivo ? 'pildoras-pill-icon--active' : 'pildoras-pill-icon--inactive');
+    pillIcon.setAttribute('data-tooltip', p.pildorasActivo ? 'Desea recibir píldoras de información' : 'No desea recibir píldoras');
+    pillIcon.innerHTML =
+      '<svg width="20" height="11" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect x="0.75" y="0.75" width="18.5" height="9.5" rx="4.75" stroke="currentColor" stroke-width="1.5"/>' +
+      '<line x1="10" y1="1" x2="10" y2="10" stroke="currentColor" stroke-width="1.5"/>' +
+      '</svg>';
+    pillIcon.style.cursor = 'pointer';
+    pillIcon.addEventListener('click', function () { confirmTogglePildoras(p); });
+    wrap.appendChild(pillIcon);
+
+    if (p.pildorasActivo) {
+      /* Email icon — send pildora email */
+      var mailIcon = document.createElement('div');
+      mailIcon.className = 'pildoras-mail-icon';
+      mailIcon.setAttribute('data-tooltip', 'Enviar email de nueva píldora');
+      mailIcon.innerHTML =
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+        '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>' +
+        '<polyline points="22,6 12,13 2,6"/>' +
+        '</svg>';
+      mailIcon.addEventListener('click', function () {
+        window.location.href = '/admin/pildora-email/' + p.id;
+      });
+      wrap.appendChild(mailIcon);
+
+      if (p.fechaUltimasPildoras) {
+        var dateEl = document.createElement('div');
+        dateEl.className = 'pildoras-date';
+        dateEl.textContent = fmtDate(p.fechaUltimasPildoras);
+        var labelEl = document.createElement('div');
+        labelEl.className = 'pildoras-date-label';
+        labelEl.textContent = 'Último envío';
+        wrap.appendChild(dateEl);
+        wrap.appendChild(labelEl);
+      }
+    }
+
+    td.appendChild(wrap);
+    return td;
+  }
+
   /* ---- Celda Notas (doble clic para editar) ---- */
   function notasCell(p) {
     var td = document.createElement('td');
@@ -684,6 +738,37 @@
   }
 
   /* ------------------------------------------------------------------ */
+  /* Modal — Toggle píldoras                                             */
+  /* ------------------------------------------------------------------ */
+  function confirmTogglePildoras(p) {
+    var name = [p.nombre, p.apellidos].filter(Boolean).join(' ') || 'ID ' + p.id;
+    document.getElementById('pildoras-toggle-name').textContent  = name;
+    document.getElementById('pildoras-toggle-state').textContent = p.pildorasActivo
+      ? 'no desea recibir píldoras'
+      : 'sí desea recibir píldoras';
+    document.getElementById('modal-pildoras').style.display = 'flex';
+    document.getElementById('btn-confirm-pildoras').onclick = function () {
+      doTogglePildoras(p);
+    };
+  }
+
+  function doTogglePildoras(p) {
+    fetch(API + '/' + p.id + '/pildoras-toggle', {
+      method: 'POST',
+      headers: getHeaders(),
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (result) {
+      var idx = portadores.findIndex(function (x) { return x.id === p.id; });
+      if (idx !== -1) portadores[idx].pildorasActivo = result.pildorasActivo;
+      document.getElementById('modal-pildoras').style.display = 'none';
+      renderTable();
+      toast('Preferencia de píldoras actualizada', 'success');
+    })
+    .catch(function (e) { toast('Error: ' + e.message, 'error'); });
+  }
+
+  /* ------------------------------------------------------------------ */
   /* Drag & drop para reordenación                                        */
   /* ------------------------------------------------------------------ */
   function initDragDrop() {
@@ -797,7 +882,9 @@
   function exportCSV() {
     var headers = ['ID','TXPR','Nombre','Apellidos','DNI','Email','Género',
                    'Email Enviado','Fecha Envío','Email Leído','Fecha Lectura',
-                   'Aceptado','Fecha Aceptación','Notas','Orden'];
+                   'Aceptado','Fecha Aceptación',
+                   'Píldoras Activo','Fecha Últimas Píldoras',
+                   'Notas','Orden'];
     var rows = portadores.map(function (p) {
       return [
         p.id, p.codigoTXPR, p.nombre, p.apellidos, p.dni, p.email,
@@ -808,6 +895,8 @@
         fmtDate(p.fechaLectura),
         p.aceptado ? 'Sí' : 'No',
         fmtDate(p.fechaAceptacion),
+        p.pildorasActivo ? 'Sí' : 'No',
+        fmtDate(p.fechaUltimasPildoras),
         (p.notas || '').replace(/"/g, '""'),
         p.orden
       ].map(function (v) { return '"' + (v != null ? String(v) : '') + '"'; }).join(',');
@@ -871,6 +960,14 @@
       document.getElementById('modal-toggle').style.display = 'none';
     });
     document.getElementById('modal-toggle').addEventListener('click', function (e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+
+    /* ---- Modal píldoras ---- */
+    document.getElementById('btn-cancel-pildoras').addEventListener('click', function () {
+      document.getElementById('modal-pildoras').style.display = 'none';
+    });
+    document.getElementById('modal-pildoras').addEventListener('click', function (e) {
       if (e.target === this) this.style.display = 'none';
     });
 
