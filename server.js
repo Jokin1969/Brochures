@@ -1007,3 +1007,18 @@ if (process.env.DROPBOX_REFRESH_TOKEN) {
 app.listen(PORT, () => {
   console.log(`Brochures running on port ${PORT}`);
 });
+
+/* ------------------------------------------------------------------ */
+/* Capturar errores fatales para que Railway los registre en el log    */
+/* ------------------------------------------------------------------ */
+process.on('uncaughtException', (err) => {
+  console.error(`[fatal] uncaughtException: ${err.message}`);
+  console.error(err.stack);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason) => {
+  console.error(`[fatal] unhandledRejection: ${reason instanceof Error ? reason.message : reason}`);
+  if (reason instanceof Error) console.error(reason.stack);
+  process.exit(1);
+});
