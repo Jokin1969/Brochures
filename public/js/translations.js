@@ -84,11 +84,11 @@ const TRANSLATIONS = {
     'm3.sub':   'Cuatro cosas que queremos que sepas antes de continuar.',
 
     'm3.a1.header': 'Tu participación es completamente voluntaria',
-    'm3.a1.text':   'Nada de lo que ocurra dentro del programa está sujeto a ninguna obligación. Puedes decidir en cualquier momento dejar de participar, sin que eso afecte a tu atención médica ni a tu relación con el equipo. Aquí nadie te debe nada, y nosotros tampoco te exigimos nada.',
+    'm3.a1.text':   'Nada de lo que ocurra dentro del programa está sujeto a ninguna obligación. Puedes decidir en cualquier momento dejar de participar, sin que eso afecte a tu atención médica ni a tu relación con el equipo. Aquí no debes nada a nadie, y nosotros tampoco te exigimos nada.',
     'm3.a1.btn':    'Entendido, y lo acepto',
 
     'm3.a2.header': 'Tendrás acceso a la App de seguimiento',
-    'm3.a2.text':   'Como participante en el programa, tendrás acceso a una aplicación diseñada específicamente para portadores asintomáticos. Te permitirá registrar de forma longitudinal aspectos como la calidad del sueño, el estado de ánimo, la función cognitiva y otros indicadores relevantes — con la posibilidad de que tu pareja de convivencia, si la tienes, colabore también en ese registro. Esta información no es solo útil para el equipo: es tuya, y puede ayudarte a entender mejor cómo estás a lo largo del tiempo.',
+    'm3.a2.text':   'Como participante en el programa, tendrás acceso a una aplicación diseñada específicamente para portadores asintomáticos. Te permitirá ir anotando, a lo largo del tiempo y si así lo deseas, aspectos como la calidad del sueño, el estado de ánimo, la función cognitiva y otros indicadores relevantes — con la posibilidad de que tu pareja de convivencia, si la tienes, colabore también en ese registro. Esta información no es solo útil para el equipo: es tuya, y puede ayudarte a entender mejor cómo estás a lo largo del tiempo.',
     'm3.a2.btn':    'Entendido, y me interesa',
 
     'm3.a3.header': 'Tu participación te sitúa en una posición favorable',
@@ -131,7 +131,7 @@ const TRANSLATIONS = {
 
     /* ---- Sección 05 portadores.html — pasos de seguimiento ---- */
     'seguimiento.sueno.title': 'Estudio del sueño',
-    'seguimiento.sueno.text':  'Mediante polisomnografía, registramos lo que ocurre durante el sueño: movimientos, respiración, actividad cerebral y comportamiento. Algunas alteraciones del sueño — en particular las relacionadas con la fase REM — pueden aparecer de forma sutil antes de que cualquier otro signo sea detectable, y su seguimiento longitudinal forma parte del protocolo de detección precoz.',
+    'seguimiento.sueno.text':  'Mediante polisomnografía, registramos lo que ocurre durante el sueño: movimientos, respiración, actividad cerebral y comportamiento. Algunas alteraciones del sueño — en particular las relacionadas con la fase REM — pueden aparecer de forma sutil antes de que cualquier otro signo sea detectable, y su seguimiento en el tiempo forma parte del protocolo de detección precoz.',
 
     /* ---- Botón de transición en portadores.html ---- */
     'transition.title': '¿Quieres dar el siguiente paso?',
@@ -322,8 +322,10 @@ const TRANSLATIONS = {
     'pildoras.modal.label':     'NAN',
     'pildoras.modal.btn':       'Aktibatu',
     'pildoras.modal.notfound':  'Ez dugu zure NAN aurkitu programan. Akatsa dela uste baduzu, jarri harremanetan taldearekin.',
+    'm3.a1.text':   'Programaren barruan gertatzen dena ez dago inongo obligaziori lotuta. Nahi duzun unean parte-hartzea uztea erabaki dezakezu, eta horrek ez dio eragingo zure arreta medikoari ez taldearekiko harremanari. Hemen ez diozu inori ezer zor, eta guk ere ez dizugu ezer eskatzen.',
+    'm3.a2.text':   'Programako parte-hartzaile gisa, portadore asintomatikoentzat bereziki diseinatutako aplikazio batera sartuko duzu. Denboran zehar eta nahi baduzu, lo-kalitatearen, ongizate emozionalaren, funtzio kognitiboaren eta bestelako adierazle garrantzitsuei buruzko aspektuak apuntatzeko aukera emango dizu — zure bizikideak, baleuka, ere erregistro horretan lagundu ahal izango du. Informazio hau ez da soilik taldeari baliagarria: zurea da, eta denborarekin nola zauden hobeto ulertzen lagundu diezazuke.',
     'seguimiento.sueno.title': 'Lo-azterlana',
-    'seguimiento.sueno.text':  'Polisomnografia bidez, loa bitartean gertatzen dena erregistratzen dugu: mugimenduak, arnasketa, garuneko jarduera eta portaera. Lo-asaldaketa batzuk — bereziki REM fasearekin erlazionatutakoak — modu sotilean ager daitezke beste edozein seinale detektatu baino lehen, eta haien jarraipen longitudinala detekzio goiztiarreko protokoloaren parte da.',
+    'seguimiento.sueno.text':  'Polisomnografia bidez, loa bitartean gertatzen dena erregistratzen dugu: mugimenduak, arnasketa, garuneko jarduera eta portaera. Lo-asaldaketa batzuk — bereziki REM fasearekin erlazionatutakoak — modu sotilean ager daitezke beste edozein seinale detektatu baino lehen, eta haien denboran zeharreko jarraipena detekzio goiztiarreko protokoloaren parte da.',
     'baja.title':       'Zure lehentasuna erregistratu dugu',
     'baja.text':        'Hemendik aurrera ez duzu informazio píldora berrien inguruko emailik jasoko. Iritzia aldatzen baduzu, programako Informazio Píldorak atalean berriro aktibatu ditzakezu.',
     'baja.link':        'Informazio Píldoretara joan',
@@ -400,8 +402,10 @@ const TRANSLATIONS = {
     'pildoras.modal.label':     'DNI',
     'pildoras.modal.btn':       'Activar',
     'pildoras.modal.notfound':  'No hem trobat el teu DNI al programa. Si creus que hi ha un error, contacta amb l\'equip.',
+    'm3.a1.text':   'Res del que passi dins del programa està subjecte a cap obligació. Pots decidir en qualsevol moment deixar de participar, sense que això afecti la teva atenció mèdica ni la teva relació amb l\'equip. Aquí no deus res a ningú, i nosaltres tampoc no t\'exigim res.',
+    'm3.a2.text':   'Com a participant en el programa, tindràs accés a una aplicació dissenyada específicament per a portadors asimptomàtics. Et permetrà anar anotant, al llarg del temps i si així ho desitges, aspectes com la qualitat del son, l\'estat d\'ànim, la funció cognitiva i altres indicadors rellevants — amb la possibilitat que la teva parella de convivència, si en tens, col·labori també en aquest registre. Aquesta informació no és només útil per a l\'equip: és teva, i pot ajudar-te a entendre millor com estàs al llarg del temps.',
     'seguimiento.sueno.title': 'Estudi del son',
-    'seguimiento.sueno.text':  'Mitjançant polisomnografia, registrem el que passa durant el son: moviments, respiració, activitat cerebral i comportament. Algunes alteracions del son — en particular les relacionades amb la fase REM — poden aparèixer de forma subtil abans que qualsevol altre signe sigui detectable, i el seu seguiment longitudinal forma part del protocol de detecció precoç.',
+    'seguimiento.sueno.text':  'Mitjançant polisomnografia, registrem el que passa durant el son: moviments, respiració, activitat cerebral i comportament. Algunes alteracions del son — en particular les relacionades amb la fase REM — poden aparèixer de forma subtil abans que qualsevol altre signe sigui detectable, i el seu seguiment en el temps forma part del protocol de detecció precoç.',
     'baja.title':       'Hem registrat la teva preferència',
     'baja.text':        'A partir d\'ara no tornaràs a rebre emails sobre noves píndoles d\'informació. Si en algun moment canvies d\'opinió, pots tornar a activar-les des de la secció de Píndoles d\'informació del programa.',
     'baja.link':        'Anar a les Píndoles d\'informació',
@@ -478,8 +482,10 @@ const TRANSLATIONS = {
     'pildoras.modal.label':     'DNI',
     'pildoras.modal.btn':       'Activar',
     'pildoras.modal.notfound':  'Non atopamos o teu DNI no programa. Se cres que hai un erro, contacta co equipo.',
+    'm3.a1.text':   'Nada do que ocorra dentro do programa está suxeito a ningunha obrigación. Podes decidir en calquera momento deixar de participar, sen que iso afecte á túa atención médica nin á túa relación co equipo. Aquí non debes nada a ninguén, e nós tampouco che esiximos nada.',
+    'm3.a2.text':   'Como participante no programa, terás acceso a unha aplicación deseñada específicamente para portadores asintomáticos. Permitirache ir anotando, ao longo do tempo e se así o desexas, aspectos como a calidade do sono, o estado de ánimo, a función cognitiva e outros indicadores relevantes — coa posibilidade de que a túa parella de convivencia, se a tes, colabore tamén nese rexistro. Esta información non é só útil para o equipo: é túa, e pode axudarche a entender mellor como estás ao longo do tempo.',
     'seguimiento.sueno.title': 'Estudo do sono',
-    'seguimiento.sueno.text':  'Mediante polisomnografía, rexistramos o que ocorre durante o sono: movementos, respiración, actividade cerebral e comportamento. Algunhas alteracións do sono — en particular as relacionadas coa fase REM — poden aparecer de forma sutil antes de que calquera outro signo sexa detectable, e o seu seguimento lonxitudinal forma parte do protocolo de detección precoz.',
+    'seguimiento.sueno.text':  'Mediante polisomnografía, rexistramos o que ocorre durante o sono: movementos, respiración, actividade cerebral e comportamento. Algunhas alteracións do sono — en particular as relacionadas coa fase REM — poden aparecer de forma sutil antes de que calquera outro signo sexa detectable, e o seu seguimento ao longo do tempo forma parte do protocolo de detección precoz.',
     'baja.title':       'Rexistramos a túa preferencia',
     'baja.text':        'A partir de agora non volverás recibir emails sobre novas píldoras de información. Se nalgún momento cambias de opinión, podes volver a activalas desde a sección de Píldoras de información do programa.',
     'baja.link':        'Ir ás Píldoras de información',
