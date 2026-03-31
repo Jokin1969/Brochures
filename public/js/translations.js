@@ -129,6 +129,10 @@ const TRANSLATIONS = {
     'footer.text':   '© Joaquín Castilla 2026',
     'footer.ethics': 'Programa aprobado por el Comité de Ética de la Investigación del País Vasco · Código PI2025164',
 
+    /* ---- Sección 05 portadores.html — pasos de seguimiento ---- */
+    'seguimiento.sueno.title': 'Estudio del sueño',
+    'seguimiento.sueno.text':  'Mediante polisomnografía, registramos lo que ocurre durante el sueño: movimientos, respiración, actividad cerebral y comportamiento. Algunas alteraciones del sueño — en particular las relacionadas con la fase REM — pueden aparecer de forma sutil antes de que cualquier otro signo sea detectable, y su seguimiento longitudinal forma parte del protocolo de detección precoz.',
+
     /* ---- Botón de transición en portadores.html ---- */
     'transition.title': '¿Quieres dar el siguiente paso?',
     'transition.text':  'Si has leído el programa y quieres explorar tu participación, continúa aquí.',
@@ -318,6 +322,8 @@ const TRANSLATIONS = {
     'pildoras.modal.label':     'NAN',
     'pildoras.modal.btn':       'Aktibatu',
     'pildoras.modal.notfound':  'Ez dugu zure NAN aurkitu programan. Akatsa dela uste baduzu, jarri harremanetan taldearekin.',
+    'seguimiento.sueno.title': 'Lo-azterlana',
+    'seguimiento.sueno.text':  'Polisomnografia bidez, loa bitartean gertatzen dena erregistratzen dugu: mugimenduak, arnasketa, garuneko jarduera eta portaera. Lo-asaldaketa batzuk — bereziki REM fasearekin erlazionatutakoak — modu sotilean ager daitezke beste edozein seinale detektatu baino lehen, eta haien jarraipen longitudinala detekzio goiztiarreko protokoloaren parte da.',
     'baja.title':       'Zure lehentasuna erregistratu dugu',
     'baja.text':        'Hemendik aurrera ez duzu informazio píldora berrien inguruko emailik jasoko. Iritzia aldatzen baduzu, programako Informazio Píldorak atalean berriro aktibatu ditzakezu.',
     'baja.link':        'Informazio Píldoretara joan',
@@ -394,6 +400,8 @@ const TRANSLATIONS = {
     'pildoras.modal.label':     'DNI',
     'pildoras.modal.btn':       'Activar',
     'pildoras.modal.notfound':  'No hem trobat el teu DNI al programa. Si creus que hi ha un error, contacta amb l\'equip.',
+    'seguimiento.sueno.title': 'Estudi del son',
+    'seguimiento.sueno.text':  'Mitjançant polisomnografia, registrem el que passa durant el son: moviments, respiració, activitat cerebral i comportament. Algunes alteracions del son — en particular les relacionades amb la fase REM — poden aparèixer de forma subtil abans que qualsevol altre signe sigui detectable, i el seu seguiment longitudinal forma part del protocol de detecció precoç.',
     'baja.title':       'Hem registrat la teva preferència',
     'baja.text':        'A partir d\'ara no tornaràs a rebre emails sobre noves píndoles d\'informació. Si en algun moment canvies d\'opinió, pots tornar a activar-les des de la secció de Píndoles d\'informació del programa.',
     'baja.link':        'Anar a les Píndoles d\'informació',
@@ -470,6 +478,8 @@ const TRANSLATIONS = {
     'pildoras.modal.label':     'DNI',
     'pildoras.modal.btn':       'Activar',
     'pildoras.modal.notfound':  'Non atopamos o teu DNI no programa. Se cres que hai un erro, contacta co equipo.',
+    'seguimiento.sueno.title': 'Estudo do sono',
+    'seguimiento.sueno.text':  'Mediante polisomnografía, rexistramos o que ocorre durante o sono: movementos, respiración, actividade cerebral e comportamento. Algunhas alteracións do sono — en particular as relacionadas coa fase REM — poden aparecer de forma sutil antes de que calquera outro signo sexa detectable, e o seu seguimento lonxitudinal forma parte do protocolo de detección precoz.',
     'baja.title':       'Rexistramos a túa preferencia',
     'baja.text':        'A partir de agora non volverás recibir emails sobre novas píldoras de información. Se nalgún momento cambias de opinión, podes volver a activalas desde a sección de Píldoras de información do programa.',
     'baja.link':        'Ir ás Píldoras de información',
