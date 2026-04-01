@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu ritmo es el ritmo correcto — Programa de portadores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/portadores.css">
+    <link rel="stylesheet" href="/css/portadores-programa.css">
+</head>
+<body class="pg-fade-in">
+
+    <nav class="lang-switcher" aria-label="Idioma">
+        <button class="lang-btn lang-btn--active" data-lang="es">🇪🇸 ES</button>
+        <button class="lang-btn" data-lang="eu">EU</button>
+        <button class="lang-btn" data-lang="ca">CA</button>
+        <button class="lang-btn" data-lang="gl">GL</button>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow" data-i18n="hero.eyebrow">Programa de seguimiento preclínico</p>
+            <h1 class="hero-title" data-i18n="hero.title">Tu participación<br>empieza aquí</h1>
+            <p class="hero-subtitle" data-i18n="hero.sub">Un proceso pensado para ti, a tu ritmo y sin presión.</p>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 88" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;">
+                <path d="M0 88 L0 44 Q360 0 720 44 Q1080 88 1440 44 L1440 88 Z" fill="#fafbff"/>
+            </svg>
+        </div>
+    </section>
+
+    <main class="pg-main">
+
+        <div class="closure-block closure-block--show">
+            <div class="closure-inner">
+                <h2 class="closure-title" data-i18n="closure.b.title">Tu ritmo es el ritmo correcto</h2>
+                <p class="closure-text" data-i18n="closure.b.text">No hay ninguna prisa. Lo importante es que sepas que esta información seguirá aquí cuando la necesites, y que el equipo del programa está disponible si en algún momento quieres retomar esta conversación. Cuidarte también significa darte el tiempo que necesitas.</p>
+                <p class="closure-contacts-title" data-i18n="closure.contacts.label">Cómo encontrarnos</p>
+                <div class="contact-cards" id="contacts-block"></div>
+            </div>
+        </div>
+
+        <div class="paso-nav">
+            <button class="btn-paso-prev" onclick="sessionStorage.setItem('pg-state', JSON.stringify({momento:1,m1choice:null,m2checks:[false,false,false],m3confirmed:[false,false,false,false]})); window.location.href='/portadores-programa.html';">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
+                Anterior
+            </button>
+            <div></div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p><a href="/">Brochures</a> &nbsp;&middot;&nbsp; <span data-i18n="footer.text">&copy; Joaquín Castilla 2026</span></p>
+        <p class="footer-ethics" data-i18n="footer.ethics">Programa aprobado por el Comité de Ética de la Investigación del País Vasco · Código PI2025164</p>
+    </footer>
+
+    <script src="/js/translations.js"></script>
+    <script>
+    (function () {
+        var contactHTML =
+            '<div class="contact-card">' +
+                '<img class="contact-photo" src="/assests/foto_Joaquin.png" alt="Dr. Joaquín Castilla" onerror="this.style.display=\'none\'">' +
+                '<div class="contact-name">Dr. Joaquín Castilla</div>' +
+                '<div class="contact-role">Profesor de investigación</div>' +
+                '<div class="contact-role-sub">Responsable del laboratorio de priones</div>' +
+                '<div class="contact-institution">CIC bioGUNE</div>' +
+                '<div class="contact-item">' +
+                    '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>' +
+                    '<a href="mailto:jcastilla@cicbiogune.es">jcastilla@cicbiogune.es</a>' +
+                '</div>' +
+                '<div class="contact-item">' +
+                    '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>' +
+                    '<a href="tel:+34618682920">+34 618 68 29 20</a>' +
+                '</div>' +
+            '</div>' +
+            '<div class="contact-card">' +
+                '<img class="contact-photo" src="/assests/foto_Izaro.png" alt="Dra. Izaro Kortazar" onerror="this.style.display=\'none\'">' +
+                '<div class="contact-name">Dra. Izaro Kortazar</div>' +
+                '<div class="contact-role">Jefa de servicio de Neurología</div>' +
+                '<div class="contact-institution">Hospital Universitario Araba (Txagorritxu)</div>' +
+                '<div class="contact-item">' +
+                    '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>' +
+                    '<a href="mailto:izaro.kortazarzubizarreta@osakidetza.eus">izaro.kortazarzubizarreta@osakidetza.eus</a>' +
+                '</div>' +
+            '</div>';
+
+        var el = document.getElementById('contacts-block');
+        if (el) el.innerHTML = contactHTML;
+    })();
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        requestAnimationFrame(function () { document.body.classList.add('loaded'); });
+        if (typeof applyTranslations === 'function') applyTranslations();
+
+        document.querySelectorAll('.lang-btn[data-lang]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                if (typeof setLang === 'function') setLang(this.dataset.lang);
+            });
+        });
+
+        setTimeout(function () {
+            var main = document.querySelector('.pg-main');
+            if (main) main.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 150);
+    });
+    </script>
+
+</body>
+</html>

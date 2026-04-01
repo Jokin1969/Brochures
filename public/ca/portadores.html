@@ -11,10 +11,11 @@
 </head>
 <body>
 
-    <nav class="lang-switcher">
-        <a href="/portadores.html" class="lang-btn">🇪🇸 ES</a>
-        <a href="/eu/portadores.html" class="lang-btn">🏴󠁥󠁳󠁰󠁶󠁿 EU</a>
-        <span class="lang-btn lang-btn--active">🏴󠁥󠁳󠁰󠁣󠁴󠁿 CA</span>
+    <nav class="lang-switcher" aria-label="Idioma">
+        <a href="/portadores.html" class="lang-btn" title="Español"><img src="/assests/flags/es.png" alt="ES"></a>
+        <a href="/eu/portadores.html" class="lang-btn" title="Euskera"><img src="/assests/flags/eu.png" alt="EU"></a>
+        <span class="lang-btn lang-btn--active" title="Català"><img src="/assests/flags/ca.png" alt="CA"></span>
+        <a href="/gl/portadores.html" class="lang-btn" title="Galego"><img src="/assests/flags/gl.png" alt="GL"></a>
     </nav>
 
     <a href="/" class="back">
@@ -121,7 +122,7 @@
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                     </div>
                     <h3>Informació real</h3>
-                    <p>El seguiment regular proporciona dades objectives sobre la teva salut cerebral, substituint la incertesa per coneixement fonamentat.</p>
+                    <p>El seguiment regular proporciona dades objectives sobre la teva salut cerebral, substituint la incertesa per coneixement fonamentat. És una informació a la qual pots accedir o decidir no conèixer encara.</p>
                 </div>
                 <div class="benefit">
                     <div class="benefit-icon bi-green">
@@ -147,17 +148,15 @@
             </div>
             <div class="profile-cards">
                 <div class="profile-card profile-card--inactive">
-                    <span class="profile-badge profile-badge--stable">Seguiment estàndard</span>
-                    <h3>Portador/a en fase inactiva</h3>
+                    <h3 class="profile-badge profile-badge--stable">Portador/a en fase inactiva</h3>
                     <p>El procés biològic associat a la mutació no mostra senyals d'activitat detectable amb les tècniques actuals. Això s'associa amb un horitzó temporal més ampli abans que puguin aparèixer els primers símptomes.</p>
                 </div>
                 <div class="profile-card profile-card--active">
-                    <span class="profile-badge profile-badge--alert">Seguiment d'alerta</span>
-                    <h3>Portador/a en fase activa silenciosa</h3>
+                    <h3 class="profile-badge profile-badge--alert">Portador/a en fase activa silenciosa</h3>
                     <p>Hi ha una activitat biològica incipient &mdash;sense símptomes clínics&mdash; que les tècniques especialitzades poden començar a detectar. Aquest perfil s'associa amb un horitzó temporal més proper i és el grup que amb més probabilitat podrà accedir als primers assaigs clínics preventius.</p>
                 </div>
             </div>
-            <p class="profile-note">Conèixer en quina situació et trobes és voluntari. El programa de seguiment t'oferirà la possibilitat de saber-ho &mdash; i també la de no saber-ho &mdash; sempre amb acompanyament i sense pressió.</p>
+            <p class="profile-note">Conèixer en quina situació et trobes és voluntari. El programa de seguiment t'oferirà la possibilitat de saber-ho, sempre amb acompanyament i sense pressió.</p>
         </section>
 
         <!-- 04 -->
