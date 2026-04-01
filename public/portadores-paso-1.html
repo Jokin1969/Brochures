@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprobación 2.1 — Programa de portadores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/portadores.css">
+    <link rel="stylesheet" href="/css/portadores-programa.css">
+</head>
+<body class="pg-fade-in">
+
+    <nav class="lang-switcher" aria-label="Idioma">
+        <button class="lang-btn lang-btn--active" data-lang="es">🇪🇸 ES</button>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow">Programa de seguimiento preclínico</p>
+            <h1 class="hero-title">Tu participación<br>empieza aquí</h1>
+            <p class="hero-subtitle">Un proceso pensado para ti, a tu ritmo y sin presión.</p>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 88" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;">
+                <path d="M0 88 L0 44 Q360 0 720 44 Q1080 88 1440 44 L1440 88 Z" fill="#fafbff"/>
+            </svg>
+        </div>
+    </section>
+
+    <main class="pg-main">
+
+        <div class="pg-progress" aria-hidden="true">
+            <div class="pg-dot pg-dot--done"></div>
+            <div class="pg-dot pg-dot--active"></div>
+            <div class="pg-dot"></div>
+            <div class="pg-dot"></div>
+            <div class="pg-dot"></div>
+        </div>
+
+        <div class="section-header">
+            <div class="section-num num-purple">01</div>
+            <div>
+                <h2 class="section-title" data-i18n="m2.c1.title">Algo importante que queremos confirmar contigo</h2>
+            </div>
+        </div>
+
+        <div class="prose">
+            <p data-i18n="m2.c1.prose">Dentro del grupo de portadores asintomáticos — personas que, como tú, conviven con una mutación genética sin haber desarrollado síntomas — la investigación actual ha permitido identificar dos situaciones claramente distintas. Esto es relativamente reciente y no todo el mundo que llega aquí lo sabe todavía. Por eso queremos preguntarte:</p>
+        </div>
+
+        <div class="check-block">
+            <p class="check-question-text" data-i18n="m2.c1.question">¿Sabías que existen dos tipos de portadores asintomáticos, con situaciones biológicas diferentes aunque ambos estén sin síntomas?</p>
+            <div class="check-options check-options--col1">
+                <button class="check-btn check-btn--yes" data-answer="yes">Sí, lo sabía</button>
+                <button class="check-btn check-btn--yes" data-answer="yes">No, no lo sabía pero ahora lo he entendido al leer el programa, y lo tengo claro</button>
+                <button class="check-btn" data-answer="no">No, no lo sabía y aún no lo tengo claro</button>
+            </div>
+        </div>
+
+        <div class="explanation-block" id="explanation">
+            <p data-i18n-html="m2.c1.exp.p1"><strong>Los portadores en fase inactiva:</strong> el proceso biológico asociado a la mutación no muestra señales de actividad detectable hoy. Esto se asocia con un horizonte temporal más amplio. El reloj biológico, por así decirlo, todavía no ha arrancado de forma medible.</p>
+            <p data-i18n-html="m2.c1.exp.p2"><strong>Los portadores en fase activa silente:</strong> existe una actividad biológica incipiente que las técnicas especializadas pueden comenzar a detectar, aunque la persona no sienta absolutamente nada. El proceso ha comenzado de forma muy silenciosa, y precisamente por eso es tan valioso saberlo: porque este grupo es el que con mayor probabilidad podrá acceder a los primeros ensayos clínicos preventivos.</p>
+            <p data-i18n="m2.c1.exp.p3">Conocer en cuál de los dos grupos te encuentras es voluntario, posible, y algo que el programa puede ayudarte a descubrir.</p>
+            <div class="explanation-retry">
+                <p class="explanation-retry-label" data-i18n="m2.c1.exp.retry">Vuelve a la pregunta cuando quieras:</p>
+                <div class="check-options check-options--col1">
+                    <button class="check-btn check-btn--yes" data-answer="yes">Sí, lo sabía</button>
+                    <button class="check-btn check-btn--yes" data-answer="yes">No, no lo sabía pero ahora lo he entendido al leer el programa, y lo tengo claro</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="paso-nav">
+            <a href="/portadores-programa.html" class="btn-paso-prev" onclick="sessionStorage.clear();">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
+                Anterior
+            </a>
+            <button id="btn-next" class="btn-primary" disabled>
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12l4-4-4-4"/></svg>
+                Siguiente
+            </button>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p><a href="/">Brochures</a> &nbsp;&middot;&nbsp; <span data-i18n="footer.text">&copy; Joaquín Castilla 2026</span></p>
+    </footer>
+
+    <script src="/js/translations.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        requestAnimationFrame(function () { document.body.classList.add('loaded'); });
+        if (typeof applyTranslations === 'function') applyTranslations();
+
+        setTimeout(function () {
+            var main = document.querySelector('.pg-main');
+            if (main) main.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 150);
+
+        var answered = false;
+        var btnNext  = document.getElementById('btn-next');
+        var expBlock = document.getElementById('explanation');
+
+        function markAnswered(clickedBtn) {
+            answered = true;
+            expBlock.classList.remove('explanation-block--show');
+            document.querySelectorAll('.check-btn').forEach(function (b) { b.classList.remove('check-btn--selected'); });
+            clickedBtn.classList.add('check-btn--selected');
+            btnNext.disabled = false;
+        }
+
+        document.querySelectorAll('.check-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                if (btn.dataset.answer === 'yes') {
+                    markAnswered(btn);
+                } else {
+                    expBlock.classList.add('explanation-block--show');
+                    setTimeout(function () { expBlock.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
+                }
+            });
+        });
+
+        btnNext.addEventListener('click', function () {
+            if (answered) window.location.href = '/portadores-paso-2.html';
+        });
+    });
+    </script>
+
+</body>
+</html>

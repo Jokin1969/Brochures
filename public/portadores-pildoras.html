@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Píldoras de información — Programa de portadores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/portadores.css">
+    <link rel="stylesheet" href="/css/portadores-programa.css">
+    <style>
+        /* ---- Layout ---- */
+        .pildoras-wrap {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 44px 24px 80px;
+        }
+
+        /* ---- Pill cards ---- */
+        .pill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+
+        .pill-card {
+            background: #ffffff;
+            border-radius: 100px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0,0,0,.06);
+            padding: 22px 32px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            transition: box-shadow 0.2s;
+        }
+        .pill-card:hover { box-shadow: 0 4px 16px rgba(124,58,237,.10); }
+
+        .pill-card--placeholder {
+            opacity: 0.7;
+            background: #fafbff;
+        }
+
+        .pill-meta {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            min-width: 48px;
+        }
+        .pill-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #ede9fe;
+            color: #7c3aed;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pill-card--placeholder .pill-num {
+            background: #f1f5f9;
+            color: #94a3b8;
+        }
+
+        .pill-body { flex: 1; min-width: 0; }
+        .pill-title {
+            font-size: 0.975rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+        .pill-text {
+            font-size: 0.845rem;
+            color: var(--text-2);
+            line-height: 1.6;
+        }
+
+        .pill-action { flex-shrink: 0; }
+        .btn-pill-read {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: none;
+            cursor: not-allowed;
+            font-family: inherit;
+        }
+        .btn-pill-read--disabled {
+            background: #f1f5f9;
+            color: #94a3b8;
+        }
+        .btn-pill-read--active {
+            background: #7c3aed;
+            color: white;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .btn-pill-read--active:hover { background: #6d28d9; transform: translateY(-1px); }
+
+        @media (max-width: 600px) {
+            .pill-card { border-radius: 20px; flex-direction: column; align-items: flex-start; padding: 20px 22px; }
+            .pill-meta { flex-direction: row; }
+            .pill-action { width: 100%; }
+            .btn-pill-read { width: 100%; justify-content: center; }
+        }
+
+        /* ---- Subscription section ---- */
+        .subscribe-block {
+            background: #f5f3ff;
+            border: 1px solid #e0d7ff;
+            border-radius: var(--r-lg);
+            padding: 32px;
+            text-align: center;
+        }
+        .subscribe-title {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+        .subscribe-text {
+            font-size: 0.875rem;
+            color: var(--text-2);
+            line-height: 1.65;
+            max-width: 480px;
+            margin: 0 auto 24px;
+        }
+        .btn-subscribe-pildoras {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #7c3aed;
+            color: white;
+            border: none;
+            border-radius: 100px;
+            padding: 14px 28px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .btn-subscribe-pildoras:hover { background: #6d28d9; transform: translateY(-1px); }
+
+        /* ---- Modal ---- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 24px;
+        }
+        .modal-box {
+            background: #fff;
+            border-radius: var(--r-lg);
+            box-shadow: 0 20px 64px rgba(0,0,0,.18);
+            padding: 36px 32px 28px;
+            width: 100%;
+            max-width: 420px;
+        }
+        .modal-title {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .modal-desc {
+            font-size: 0.855rem;
+            color: var(--text-2);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .modal-field {
+            margin-bottom: 16px;
+        }
+        .modal-field label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-2);
+            margin-bottom: 6px;
+        }
+        .modal-field input {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            outline: none;
+            color: var(--text);
+        }
+        .modal-field input:focus { border-color: #7c3aed; box-shadow: 0 0 0 3px rgba(124,58,237,.12); }
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 8px;
+        }
+        .modal-status {
+            font-size: 0.855rem;
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: none;
+        }
+        .modal-status--success { background: #ecfdf5; color: #065f46; display: block; }
+        .modal-status--error   { background: #fef2f2; color: #991b1b; display: block; }
+
+        /* Contact cards (for 404 state) */
+        .contact-cards-small {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .contact-card-small {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 0.8rem;
+            color: var(--text-2);
+            line-height: 1.5;
+        }
+        .contact-card-small a { color: #7c3aed; text-decoration: none; }
+        .contact-card-small a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body class="pg-fade-in">
+
+    <nav class="lang-switcher" aria-label="Idioma">
+        <button class="lang-btn lang-btn--active" data-lang="es">🇪🇸 ES</button>
+        <button class="lang-btn" data-lang="eu">🏴 EU</button>
+        <button class="lang-btn" data-lang="ca">🏴 CA</button>
+        <button class="lang-btn" data-lang="gl">🏴 GL</button>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow" data-i18n="hero.eyebrow">Programa de seguimiento preclínico</p>
+            <h1 class="hero-title" data-i18n="pildoras.hero.title">Píldoras de<br>información</h1>
+            <p class="hero-subtitle" data-i18n="pildoras.hero.sub">Actualizaciones breves y rigurosas sobre lo que importa</p>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 88" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;">
+                <path d="M0 88 L0 44 Q360 0 720 44 Q1080 88 1440 44 L1440 88 Z" fill="#fafbff"/>
+            </svg>
+        </div>
+    </section>
+
+    <main class="pildoras-wrap">
+
+        <!-- Pill cards -->
+        <div class="pill-list">
+            <div class="pill-card pill-card--placeholder">
+                <div class="pill-meta">
+                    <div class="pill-num">—</div>
+                </div>
+                <div class="pill-body">
+                    <p class="pill-title" data-i18n="pildoras.p1.title">Próximamente</p>
+                    <p class="pill-text" data-i18n="pildoras.p1.text">Las píldoras de información llegarán pronto. Serán actualizaciones breves y rigurosas sobre los avances más relevantes en enfermedades priónicas, ensayos clínicos y nuevas terapias. Vuelve a visitarnos.</p>
+                </div>
+                <div class="pill-action">
+                    <button class="btn-pill-read btn-pill-read--disabled" disabled data-i18n="pildoras.p1.btn">Leer más</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subscription block -->
+        <div class="subscribe-block" id="subscribe-block">
+            <h2 class="subscribe-title" data-i18n="pildoras.subscribe.title">Recibe las píldoras en tu email</h2>
+            <p class="subscribe-text" data-i18n="pildoras.subscribe.text">
+                Si formas parte del programa de seguimiento, puedes activar las notificaciones por email
+                para recibir un aviso cada vez que publiquemos una nueva píldora.
+            </p>
+            <button class="btn-subscribe-pildoras" id="btn-open-modal">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span data-i18n="pildoras.subscribe.btn">Activar mis notificaciones</span>
+            </button>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p><a href="/">Brochures</a> &nbsp;&middot;&nbsp; <span data-i18n="footer.text">&copy; Joaquín Castilla 2026</span></p>
+        <p class="footer-ethics" data-i18n="footer.ethics">Programa aprobado por el Comité de Ética de la Investigación del País Vasco · Código PI2025164</p>
+    </footer>
+
+    <!-- Modal de suscripción -->
+    <div class="modal-overlay" id="modal-subscribe" style="display:none;" role="dialog" aria-modal="true">
+        <div class="modal-box">
+            <h2 class="modal-title" data-i18n="pildoras.modal.title">¿Quién eres?</h2>
+            <p class="modal-desc" data-i18n="pildoras.modal.desc">
+                Introduce tu DNI para activar las notificaciones.
+                Solo los participantes registrados en el programa pueden activarlas.
+            </p>
+
+            <div id="modal-status" class="modal-status"></div>
+
+            <div id="modal-form-area">
+                <div class="modal-field">
+                    <label for="modal-dni" data-i18n="pildoras.modal.label">DNI</label>
+                    <input type="text" id="modal-dni" placeholder="12345678X" maxlength="9" autocomplete="off">
+                </div>
+                <div class="modal-actions">
+                    <button class="btn-paso-prev" id="btn-modal-cancel" style="font-size:0.875rem;padding:9px 18px;">
+                        <span data-i18n="nav.back">Cancelar</span>
+                    </button>
+                    <button class="btn-primary" id="btn-modal-activate">
+                        <span data-i18n="pildoras.modal.btn">Activar</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Resultado 404: DNI no encontrado -->
+            <div id="modal-notfound" style="display:none;">
+                <p style="font-size:0.855rem;color:#334155;line-height:1.6;margin-bottom:12px;" data-i18n="pildoras.modal.notfound">
+                    No hemos encontrado tu DNI en el programa. Si crees que hay un error, contacta con el equipo.
+                </p>
+                <div class="contact-cards-small">
+                    <div class="contact-card-small">
+                        <strong>Dr. Joaquín Castilla</strong><br>
+                        <a href="mailto:jcastilla@cicbiogune.es">jcastilla@cicbiogune.es</a> &nbsp;·&nbsp;
+                        <a href="tel:+34618682920">+34 618 68 29 20</a>
+                    </div>
+                    <div class="contact-card-small">
+                        <strong>Dra. Izaro Kortazar</strong><br>
+                        <a href="mailto:izaro.kortazarzubizarreta@osakidetza.eus">izaro.kortazarzubizarreta@osakidetza.eus</a>
+                    </div>
+                </div>
+                <div class="modal-actions" style="margin-top:16px;">
+                    <button class="btn-paso-prev" id="btn-modal-retry" style="font-size:0.875rem;padding:9px 18px;">Volver a intentar</button>
+                    <button class="btn-primary" onclick="document.getElementById('modal-subscribe').style.display='none';">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/translations.js"></script>
+    <script>
+    (function () {
+        'use strict';
+
+        document.addEventListener('DOMContentLoaded', function () {
+            requestAnimationFrame(function () { document.body.classList.add('loaded'); });
+            if (typeof applyTranslations === 'function') applyTranslations();
+
+            document.querySelectorAll('.lang-btn').forEach(function (btn) {
+                btn.classList.toggle('lang-btn--active', btn.dataset.lang === (localStorage.getItem('pg-lang') || 'es'));
+                btn.addEventListener('click', function () {
+                    if (typeof setLang === 'function') setLang(btn.dataset.lang);
+                });
+            });
+
+            /* Read tracking from email */
+            var params = new URLSearchParams(window.location.search);
+            if (params.get('ref') === 'email' && params.get('id')) {
+                fetch('/api/portadores/leido/' + encodeURIComponent(params.get('id')))
+                  .catch(function () {});
+            }
+        });
+
+        /* ---- Modal ---- */
+        var modal     = document.getElementById('modal-subscribe');
+        var formArea  = document.getElementById('modal-form-area');
+        var notfound  = document.getElementById('modal-notfound');
+        var statusEl  = document.getElementById('modal-status');
+        var dniInput  = document.getElementById('modal-dni');
+
+        document.getElementById('btn-open-modal').addEventListener('click', function () {
+            resetModal();
+            modal.style.display = 'flex';
+            setTimeout(function () { dniInput.focus(); }, 50);
+        });
+
+        document.getElementById('btn-modal-cancel').addEventListener('click', function () {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) modal.style.display = 'none';
+        });
+
+        document.getElementById('btn-modal-retry').addEventListener('click', function () {
+            notfound.style.display = 'none';
+            formArea.style.display = 'block';
+            dniInput.value = '';
+            dniInput.focus();
+        });
+
+        document.getElementById('btn-modal-activate').addEventListener('click', activate);
+
+        dniInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') activate();
+        });
+
+        /* DNI validation: 8 digits + letter */
+        function validDni(val) {
+            return /^\d{8}[A-Za-z]$/.test(val.trim());
+        }
+
+        function resetModal() {
+            formArea.style.display = 'block';
+            notfound.style.display = 'none';
+            statusEl.className = 'modal-status';
+            statusEl.textContent = '';
+            dniInput.value = '';
+        }
+
+        function activate() {
+            var dni = dniInput.value.trim();
+            statusEl.className = 'modal-status';
+            statusEl.textContent = '';
+
+            if (!validDni(dni)) {
+                statusEl.className = 'modal-status modal-status--error';
+                statusEl.textContent = 'Introduce un DNI válido (8 dígitos y una letra).';
+                return;
+            }
+
+            var btn = document.getElementById('btn-modal-activate');
+            btn.disabled = true;
+
+            fetch('/api/pildoras/activar', {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:    JSON.stringify({ dni: dni }),
+            })
+            .then(function (r) { return r.json().then(function (d) { return { status: r.status, data: d }; }); })
+            .then(function (res) {
+                btn.disabled = false;
+                if (res.status === 200) {
+                    statusEl.className = 'modal-status modal-status--success';
+                    statusEl.textContent = '¡Listo! Te avisaremos por email cada vez que haya una nueva píldora disponible.';
+                    formArea.querySelector('.modal-field').style.display = 'none';
+                    formArea.querySelector('.modal-actions').style.display = 'none';
+                } else if (res.status === 404) {
+                    formArea.style.display = 'none';
+                    notfound.style.display = 'block';
+                } else {
+                    statusEl.className = 'modal-status modal-status--error';
+                    statusEl.textContent = res.data.error || 'Error inesperado. Inténtalo de nuevo.';
+                }
+            })
+            .catch(function (err) {
+                btn.disabled = false;
+                statusEl.className = 'modal-status modal-status--error';
+                statusEl.textContent = 'Error de conexión: ' + err.message;
+            });
+        }
+    })();
+    </script>
+
+</body>
+</html>

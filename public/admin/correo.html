@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar correo — Admin · Brochures</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/admin.css">
+    <style>
+        body { background: #f1f5f9; }
+
+        .correo-wrap {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 40px 28px 80px;
+        }
+
+        .correo-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .correo-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .correo-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-3);
+            margin-top: 2px;
+        }
+
+        .correo-card {
+            background: var(--white);
+            border-radius: var(--r-lg);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .correo-to {
+            padding: 18px 24px;
+            background: #f8fafc;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.875rem;
+        }
+        .correo-to-label {
+            font-weight: 600;
+            color: var(--text-3);
+            flex-shrink: 0;
+            width: 60px;
+        }
+        .correo-to-value { color: var(--text-2); }
+        .correo-to-email { color: var(--blue); margin-left: 6px; }
+
+        .correo-field {
+            padding: 14px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .correo-field label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-3);
+            flex-shrink: 0;
+            width: 60px;
+        }
+        .correo-field input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 0.9rem;
+            font-family: inherit;
+            color: var(--text);
+            background: transparent;
+        }
+
+        /* Preview iframe area */
+        .correo-preview-label {
+            padding: 12px 24px 10px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-3);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border);
+            background: #f8fafc;
+        }
+        .correo-preview-frame {
+            width: 100%;
+            border: none;
+            display: block;
+            background: #f5f3ff;
+            min-height: 640px;
+        }
+
+        .correo-actions {
+            padding: 20px 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .correo-status {
+            font-size: 0.875rem;
+            padding: 8px 14px;
+            border-radius: var(--r-sm);
+            display: none;
+            flex: 1;
+        }
+        .correo-status--success {
+            background: var(--green-pale);
+            color: #065f46;
+            font-weight: 500;
+            display: block;
+        }
+        .correo-status--error {
+            background: var(--red-pale);
+            color: #991b1b;
+            display: block;
+        }
+
+        .loading-state {
+            text-align: center;
+            padding: 64px 24px;
+            color: var(--text-3);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="correo-wrap">
+
+    <!-- Cabecera -->
+    <div class="correo-header">
+        <a href="/admin.html" class="admin-back">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
+            Panel
+        </a>
+        <div>
+            <div class="correo-title">Enviar correo inicial</div>
+            <div class="correo-subtitle" id="correo-portador-label">Cargando…</div>
+        </div>
+    </div>
+
+    <!-- Estado de carga / panel de composición -->
+    <div id="loading-state" class="loading-state">Cargando datos del portador…</div>
+
+    <div id="correo-panel" style="display:none;">
+        <div class="correo-card">
+
+            <!-- Para: -->
+            <div class="correo-to">
+                <span class="correo-to-label">Para:</span>
+                <span class="correo-to-value" id="to-name"></span>
+                <span class="correo-to-email" id="to-email"></span>
+            </div>
+
+            <!-- Asunto: -->
+            <div class="correo-field">
+                <label for="field-subject">Asunto:</label>
+                <input type="text" id="field-subject">
+            </div>
+
+            <!-- Previsualización -->
+            <div class="correo-preview-label">Vista previa del correo</div>
+            <iframe id="preview-frame" class="correo-preview-frame"
+                    title="Vista previa del correo" sandbox="allow-same-origin"></iframe>
+
+            <!-- Acciones -->
+            <div class="correo-actions">
+                <span id="correo-status" class="correo-status"></span>
+                <div style="display:flex;gap:8px;flex-shrink:0;">
+                    <a href="/admin.html" class="btn btn-secondary">Cancelar</a>
+                    <button id="btn-send" class="btn btn-primary">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        Enviar
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div><!-- /correo-wrap -->
+
+<script>
+(function () {
+  'use strict';
+
+  var portadorId = window.location.pathname.split('/').filter(Boolean).pop();
+  var pwd        = sessionStorage.getItem('admin-pwd') || '';
+
+  if (!pwd) { window.location.href = '/admin.html'; return; }
+  if (!portadorId) {
+    document.getElementById('loading-state').textContent = 'ID de portador no válido.';
+    return;
+  }
+
+  var SUBJECT_DEFAULT = 'Algo está cambiando. Queremos contártelo.';
+
+  /* Cargar datos del portador */
+  fetch('/api/admin/portadores', { headers: { 'Authorization': 'Bearer ' + pwd } })
+  .then(function (r) {
+    if (r.status === 401) { window.location.href = '/admin.html'; return null; }
+    return r.json();
+  })
+  .then(function (data) {
+    if (!data) return;
+    var p = (data.portadores || []).find(function (x) { return x.id === portadorId; });
+    if (!p) {
+      document.getElementById('loading-state').textContent = 'Portador no encontrado (ID: ' + portadorId + ').';
+      return;
+    }
+
+    /* Rellenar cabecera */
+    var nombre = [p.nombre, p.apellidos].filter(Boolean).join(' ') || 'Portador ' + p.id;
+    document.getElementById('correo-portador-label').textContent = nombre + ' · ' + (p.email || 'sin email');
+    document.getElementById('to-name').textContent  = nombre;
+    document.getElementById('to-email').textContent = p.email || '';
+    document.getElementById('field-subject').value  = SUBJECT_DEFAULT;
+
+    /* Cargar preview en el iframe */
+    var previewUrl = '/api/admin/correo-preview/' + portadorId + '?password=' + encodeURIComponent(pwd);
+    var frame = document.getElementById('preview-frame');
+    frame.src = previewUrl;
+
+    /* Ajustar altura del iframe al contenido cuando cargue */
+    frame.addEventListener('load', function () {
+      try {
+        var h = frame.contentDocument && frame.contentDocument.body
+              ? frame.contentDocument.body.scrollHeight
+              : 640;
+        if (h > 200) frame.style.minHeight = (h + 32) + 'px';
+      } catch (e) { /* cross-origin: dejar la altura mínima */ }
+    });
+
+    document.getElementById('loading-state').style.display = 'none';
+    document.getElementById('correo-panel').style.display   = 'block';
+
+    /* Botón enviar */
+    document.getElementById('btn-send').addEventListener('click', function () {
+      sendEmail(p.id);
+    });
+  })
+  .catch(function (err) {
+    document.getElementById('loading-state').textContent = 'Error al cargar datos: ' + err.message;
+  });
+
+  function sendEmail(id) {
+    var btn      = document.getElementById('btn-send');
+    var subject  = document.getElementById('field-subject').value.trim();
+    var statusEl = document.getElementById('correo-status');
+
+    statusEl.className = 'correo-status';
+    statusEl.style.display = 'none';
+
+    if (!subject) { showStatus('El asunto no puede estar vacío.', 'error'); return; }
+
+    btn.disabled  = true;
+    btn.innerHTML =
+      '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 1s linear infinite"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> Enviando…';
+
+    fetch('/api/admin/correo/' + id, {
+      method:  'POST',
+      headers: { 'Authorization': 'Bearer ' + pwd, 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ subject: subject }),
+    })
+    .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
+    .then(function (res) {
+      if (res.ok) {
+        showStatus('✓ Correo enviado correctamente.', 'success');
+        btn.innerHTML =
+          '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Enviado';
+      } else {
+        showStatus('Error al enviar: ' + (res.data.error || 'Error desconocido.'), 'error');
+        btn.disabled  = false;
+        btn.innerHTML = resetBtnHTML();
+      }
+    })
+    .catch(function (err) {
+      showStatus('Error de conexión: ' + err.message, 'error');
+      btn.disabled  = false;
+      btn.innerHTML = resetBtnHTML();
+    });
+  }
+
+  function resetBtnHTML() {
+    return '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Enviar';
+  }
+
+  function showStatus(msg, type) {
+    var el = document.getElementById('correo-status');
+    el.textContent = msg;
+    el.className   = 'correo-status correo-status--' + type;
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      var btn = document.getElementById('btn-send');
+      if (btn && !btn.disabled) btn.click();
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>
