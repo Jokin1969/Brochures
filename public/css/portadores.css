@@ -230,8 +230,8 @@ body {
 .profile-card--active   { border-left-color: var(--amber); }
 .profile-badge {
     display: inline-flex; padding: 4px 12px; border-radius: 100px;
-    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em;
-    text-transform: uppercase; margin-bottom: 14px;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.02em;
+    margin-bottom: 14px;
 }
 .profile-badge--stable { background: var(--green-pale); color: #065f46; }
 .profile-badge--alert  { background: var(--amber-pale); color: #92400e; }
@@ -248,20 +248,35 @@ body {
 
 .therapies { display: flex; flex-direction: column; gap: 18px; margin-top: 28px; }
 .therapy {
-    display: flex; gap: 20px; align-items: flex-start; background: white;
+    display: flex; flex-direction: column; gap: 10px; align-items: flex-start; background: white;
     border-radius: var(--r-md); padding: 24px 28px;
     box-shadow: var(--shadow-sm); border: 1px solid var(--border);
 }
 .t-badge {
-    flex-shrink: 0; padding: 5px 12px; border-radius: 100px;
-    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em;
-    text-transform: uppercase; white-space: nowrap; align-self: center;
+    display: inline-flex; padding: 4px 12px; border-radius: 100px;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em;
 }
 .tb-adv { background: #dcfce7; color: #166534; }
 .tb-mid { background: #fef9c3; color: #854d0e; }
 .tb-res { background: var(--purple-pale); color: #5b21b6; }
 .therapy h3 { font-weight: 600; font-size: 0.95rem; color: var(--text); margin-bottom: 5px; }
 .therapy p  { font-size: 0.875rem; color: var(--text-3); line-height: 1.65; }
+
+.therapy-legend {
+    margin-top: 24px; padding: 20px 24px;
+    background: #f8fafc; border-radius: var(--r-md); border: 1px solid var(--border);
+}
+.therapy-legend-title {
+    font-size: 0.75rem; font-weight: 700; color: var(--text-2);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;
+}
+.therapy-legend-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 8px;
+}
+.therapy-legend-list li {
+    font-size: 0.85rem; color: var(--text-3); display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap;
+}
 
 .steps { display: flex; flex-direction: column; margin-top: 28px; }
 .step { display: flex; gap: 20px; padding-bottom: 22px; }
