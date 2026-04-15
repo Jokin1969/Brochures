@@ -56,8 +56,8 @@ const TRANSLATIONS = {
     /* Check 2.2 */
     'm2.c2.title':    'La diferencia entre los dos tipos, y lo que significa para ti',
     'm2.c2.prose.p1': 'Saber que existen dos tipos es un primer paso. Pero queremos asegurarnos de que la diferencia entre ellos tiene sentido real para ti, no solo como concepto abstracto.',
-    'm2.c2.prose.p2': '<strong>Si estás en fase inactiva:</strong> los marcadores biológicos no muestran actividad detectable hoy. Eso no significa que el proceso no vaya a comenzar en algún momento, pero sí que probablemente dispongas de un margen de tiempo amplio. Este margen es precisamente lo que hace posible planificar y estar en primera línea cuando lleguen las terapias.',
-    'm2.c2.prose.p3': '<strong>Si estás en fase activa silente:</strong> los marcadores muestran señales tempranas de actividad, aunque tu vida cotidiana no lo refleja en absoluto. Lejos de ser solo una mala noticia, es la información más valiosa que puedes tener hoy — porque te sitúa exactamente en el grupo para el que se están diseñando los primeros ensayos clínicos preventivos. El momento de actuar es ahora, y el programa está aquí para cada paso.',
+    'm2.c2.prose.p2': '<strong>Si estás en fase inactiva:</strong> los marcadores biológicos no muestran actividad detectable hoy. Eso no significa que el proceso no vaya a comenzar en algún momento (puede que en cuestión de días, semanas o meses), pero sí que probablemente dispongas de un margen de tiempo amplio hasta el desarrollo de síntomas visibles de enfermedad. Este margen es precisamente lo que hace posible planificar y estar en primera línea cuando lleguen las terapias.',
+    'm2.c2.prose.p3': '<strong>Si estás en fase activa silente:</strong> los marcadores muestran señales tempranas de actividad, aunque tu vida cotidiana no lo refleja en absoluto. Lejos de ser solo una mala noticia, ya que podría implicar que los síntomas de la enfermedad podrían aparecer en un horizonte temporal más próximo (aunque aún desconocido), es la información más valiosa que puedes tener hoy — porque te sitúa exactamente en el grupo para el que se están tratando de diseñar los primeros ensayos clínicos preventivos. El momento de actuar es ahora, y el programa está aquí para cada paso.',
     'm2.c2.question': '¿Comprendes la diferencia entre ambas situaciones y lo que podría implicar para tu caso concreto?',
     'm2.c2.yes':      'Sí, comprendo la diferencia y lo que implica',
     'm2.c2.no':       'Necesito releerlo o no me ha quedado del todo claro',
@@ -88,7 +88,7 @@ const TRANSLATIONS = {
     'm3.a1.btn':    'Entendido, y lo acepto',
 
     'm3.a2.header': 'Tendrás acceso a la App de seguimiento',
-    'm3.a2.text':   'Como participante en el programa, tendrás acceso a una aplicación diseñada específicamente para portadores asintomáticos. Te permitirá ir anotando, a lo largo del tiempo y si así lo deseas, aspectos como la calidad del sueño, el estado de ánimo, la función cognitiva y otros indicadores relevantes — con la posibilidad de que tu pareja de convivencia, si la tienes, colabore también en ese registro. Esta información no es solo útil para el equipo: es tuya, y puede ayudarte a entender mejor cómo estás a lo largo del tiempo.',
+    'm3.a2.text':   'Como participante en el programa, tendrás acceso a una aplicación diseñada específicamente para portadores asintomáticos. Te permitirá ir anotando, a lo largo del tiempo y si así lo deseas, aspectos como la calidad del sueño, el estado de ánimo, la función cognitiva y otros indicadores relevantes — con la posibilidad de que tus familiares o tu pareja de convivencia, si la tienes, colabore también en ese registro, que busca comprender mejor la fase asintomática, el inicio y/o la progresión de la enfermedad.',
     'm3.a2.btn':    'Entendido, y me interesa',
 
     'm3.a3.header': 'Tu participación te sitúa en una posición favorable',
@@ -131,7 +131,7 @@ const TRANSLATIONS = {
 
     /* ---- Sección 05 portadores.html — pasos de seguimiento ---- */
     'seguimiento.sueno.title': 'Estudio del sueño',
-    'seguimiento.sueno.text':  'Mediante polisomnografía, registramos lo que ocurre durante el sueño: movimientos, respiración, actividad cerebral y comportamiento. Algunas alteraciones del sueño — en particular las relacionadas con la fase REM — pueden aparecer de forma sutil antes de que cualquier otro signo sea detectable, y su seguimiento en el tiempo forma parte del protocolo de detección precoz.',
+    'seguimiento.sueno.text':  'Mediante polisomnografía, registramos lo que ocurre durante el sueño: movimientos, respiración, actividad cerebral y comportamiento. Algunas alteraciones del sueño – en particular las relacionadas con la fase REM – pueden aparecer especialmente en portadores de Insomnio Familiar Fatal, de forma sutil antes de que …',
 
     /* ---- Botón de transición en portadores.html ---- */
     'transition.title': '¿Quieres dar el siguiente paso?',
