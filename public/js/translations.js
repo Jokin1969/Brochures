@@ -251,6 +251,16 @@ const TRANSLATIONS = {
     'baja.link':        'Ir a las Píldoras de información',
     'baja.error.title': 'Enlace no válido',
     'baja.error.text':  'Este enlace no es válido o ya ha sido utilizado. Si deseas gestionar tus preferencias, contacta con el equipo.',
+
+    /* ---- Botones de navegación UI ---- */
+    'btn.anterior':   'Anterior',
+    'btn.siguiente':  'Siguiente',
+    'btn.continuar':  'Continuar',
+    'btn.reintentar': 'Volver a intentar',
+    'btn.cerrar':     'Cerrar',
+
+    /* ---- Bienvenida ---- */
+    'final.welcome.title': 'Bienvenido/a',
   },
 
   eu: {

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis compromisos — Programa de portadores</title>
@@ -111,11 +112,11 @@
             <div class="paso-nav">
                 <a href="/portadores-paso-3.html" class="btn-paso-prev" onclick="sessionStorage.clear();">
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
-                    Anterior
+                    <span data-i18n="btn.anterior">Anterior</span>
                 </a>
                 <button id="btn-next-m3" class="btn-primary" disabled>
                     <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12l4-4-4-4"/></svg>
-                    Continuar
+                    <span data-i18n="btn.continuar">Continuar</span>
                 </button>
             </div>
 
@@ -150,7 +151,7 @@
             <div class="paso-nav">
                 <button class="btn-paso-prev" id="btn-prev-m4">
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4l-4 4 4 4"/></svg>
-                    Anterior
+                    <span data-i18n="btn.anterior">Anterior</span>
                 </button>
                 <div></div>
             </div>
@@ -178,7 +179,7 @@
             <div class="final-block final-block--show">
                 <div class="final-inner">
                     <p class="final-eyebrow" data-i18n="final.eyebrow">Siguiente paso</p>
-                    <h2 class="thanks-big-title" id="welcome-title">Bienvenido/a</h2>
+                    <h2 class="thanks-big-title" id="welcome-title" data-i18n="final.welcome.title">Bienvenido/a</h2>
                     <p class="final-text" data-i18n="final.text">Has dado un paso importante — no solo hacia el programa, sino hacia ti mismo/a. El equipo se pondrá en contacto contigo en breve para explicarte los siguientes pasos con calma y sin prisa. Si mientras tanto tienes cualquier pregunta, aquí tienes cómo encontrarnos.</p>
                     <p class="closure-contacts-title" data-i18n="final.contacts.label">Cómo encontrarnos</p>
                     <div class="contact-cards" id="contacts-welcome"></div>
