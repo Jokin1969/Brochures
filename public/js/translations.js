@@ -792,6 +792,19 @@ const TRANSLATIONS = {
     'm2.c1.exp.p3':   'Finding out which of the two groups you\'re in is voluntary, possible, and something the program can help you discover.',
     'm2.c1.exp.retry': 'Come back to the question whenever you\'d like:',
 
+    /* ---- portadores-paso-2.html (Check 2.2) ---- */
+    'm2.c2.title':    'The difference between the two types, and what it means for you',
+    'm2.c2.prose.p1': 'Knowing there are two types is a first step. But we want to make sure the difference between them has real meaning for you, not just as an abstract concept.',
+    'm2.c2.prose.p2': '<strong>If you\'re in an inactive phase:</strong> the biological markers show no detectable activity today. That doesn\'t mean the process won\'t begin at some point (possibly in a matter of days, weeks, or months), but it does mean you probably have a wide margin of time before visible disease symptoms develop. That margin is precisely what makes it possible to plan ahead and be on the front line when therapies arrive.',
+    'm2.c2.prose.p3': '<strong>If you\'re in a silent active phase:</strong> the markers show early signs of activity, even though your everyday life doesn\'t reflect it at all. Far from being just bad news — since it could mean disease symptoms may appear on a closer (though still unknown) time horizon — it is the most valuable information you can have today, because it places you precisely in the group for which the first preventive clinical trials are being designed. The time to act is now, and the program is here for every step.',
+    'm2.c2.question': 'Do you understand the difference between the two situations and what it could mean for your specific case?',
+    'm2.c2.yes':      'Yes, I understand the difference and what it means',
+    'm2.c2.no':       'I need to read it again or it\'s not fully clear to me',
+    'm2.c2.exp.p1':   'No problem. Take the time you need. Here are the two profiles summarized again:',
+    'm2.c2.exp.p2':   '<strong>Inactive phase:</strong> markers with no detectable activity today. Wide time horizon. Time to plan ahead.',
+    'm2.c2.exp.p3':   '<strong>Silent active phase:</strong> early signs of biological activity, no symptoms. The priority group for the first preventive trials.',
+    'm2.c2.exp.retry': 'When you have it clear:',
+
     /* ---- Moment 1 closures ---- */
     'closure.b.title': 'Your pace is the right pace',
     'closure.b.text':  'There\'s no rush at all. What matters is knowing that this information will be here when you need it, and that the program team is available whenever you\'d like to pick up the conversation. Taking care of yourself also means giving yourself the time you need.',
