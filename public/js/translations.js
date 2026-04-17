@@ -1,5 +1,5 @@
 /* translations.js — Cadenas de texto para portadores-programa.html */
-/* Idiomas: es (Español), eu (Euskera), ca (Català), gl (Galego) */
+/* Idiomas: es (Español), eu (Euskera), ca (Català), gl (Galego), en (English US) */
 
 const TRANSLATIONS = {
   es: {
@@ -689,6 +689,9 @@ const TRANSLATIONS = {
     'baja.link':        'Ir ás Píldoras de información',
     'baja.error.title': 'Ligazón non válida',
     'baja.error.text':  'Esta ligazón non é válida ou xa foi utilizada. Se desexas xestionar as túas preferencias, contacta co equipo.',
+  },
+
+  en: {
   },
 };
 
