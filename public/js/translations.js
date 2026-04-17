@@ -692,6 +692,30 @@ const TRANSLATIONS = {
   },
 
   en: {
+    /* ---- Navigation ---- */
+    'nav.back': 'Back',
+
+    /* ---- Hero ---- */
+    'hero.eyebrow': 'Preclinical follow-up program',
+    'hero.title':   'Your participation\nstarts here',
+    'hero.sub':     'A process designed for you, at your own pace and without pressure.',
+
+    /* ---- Moment 0 ---- */
+    'm0.intro': 'Before continuing, we want to make sure you\'ve had the chance to read through all the program information at your own pace. What comes next isn\'t a formality — it\'s a conversation with yourself about something important.',
+    'm0.btn':   'I\'ve read the program and want to continue',
+
+    /* ---- Moment 1 ---- */
+    'm1.title': 'A first question, no rush',
+    'm1.sub':   'There\'s no right or wrong answer. All we ask is that you choose the one that best reflects how you feel right now. You can change your mind at any time.',
+
+    'm1.a.header': 'Yes, I want to explore my participation',
+    'm1.a.body':   'I\'ve read the information carefully and, although I may still have questions, I feel I want to take this step. I understand this isn\'t a final commitment — it\'s the beginning of a deeper conversation with the team and with myself.',
+
+    'm1.b.header': 'I don\'t feel ready yet',
+    'm1.b.body':   'I need more time to take in this information. This isn\'t a door closing — I know I can come back when I feel ready. For now, I\'d rather move at my own pace.',
+
+    'm1.c.header': 'I have questions and would rather talk to someone first',
+    'm1.c.body':   'Before making any decision, I\'d like to talk with the program team. I have questions I can\'t answer on my own, and I need to hear a human voice before continuing.',
   },
 };
 
