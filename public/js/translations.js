@@ -434,6 +434,15 @@ const TRANSLATIONS = {
     'm1.c.header': 'Tinc dubtes i prefereixo parlar amb algú primer',
     'm1.c.body':   'Abans de prendre cap decisió, m\'agradaria poder parlar amb l\'equip del programa. Tinc preguntes que no sé com respondre\'m sol/a, i necessito escoltar una veu humana abans de continuar.',
 
+    /* ---- portadores-paso-1.html (Check 2.1) ---- */
+    'm2.c1.title':    'Alguna cosa important que volem confirmar amb tu',
+    'm2.c1.prose':    'Dins del grup de portadors asimptomàtics — persones que, com tu, conviuen amb una mutació genètica sense haver desenvolupat símptomes — la investigació actual ha permès identificar dues situacions clarament diferents. Això és relativament recent i no tothom que arriba aquí ho sap encara. Per això volem preguntar-te:',
+    'm2.c1.question': 'Sabies que hi ha dos tipus de portadors asimptomàtics, amb situacions biològiques diferents tot i que tots dos estiguin sense símptomes?',
+    'm2.c1.exp.p1':   '<strong>Els portadors en fase inactiva:</strong> el procés biològic associat a la mutació no mostra senyals d\'activitat detectable avui. Això s\'associa amb un horitzó temporal més ampli. El rellotge biològic, per dir-ho així, encara no s\'ha posat en marxa de manera mesurable.',
+    'm2.c1.exp.p2':   '<strong>Els portadors en fase activa silenciosa:</strong> hi ha una activitat biològica incipient que les tècniques especialitzades poden començar a detectar, tot i que la persona no senti absolutament res. El procés ha començat de manera molt silenciosa, i precisament per això és tan valuós saber-ho: perquè aquest és el grup que amb més probabilitat podrà accedir als primers assaigs clínics preventius.',
+    'm2.c1.exp.p3':   'Conèixer en quin dels dos grups et trobes és voluntari, possible, i una cosa que el programa pot ajudar-te a descobrir.',
+    'm2.c1.exp.retry': 'Torna a la pregunta quan vulguis:',
+
     /* ---- Cierres momento 1 ---- */
     'closure.b.title': 'El teu ritme és el ritme correcte',
     'closure.b.text':  'No hi ha cap pressa. El que importa és que sàpigues que aquesta informació estarà aquí quan la necessitis, i que l\'equip del programa està disponible si en algun moment vols reprendre aquesta conversa. Cuidar-te també significa donar-te el temps que necessites.',
