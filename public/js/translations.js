@@ -288,6 +288,19 @@ const TRANSLATIONS = {
     'm2.c1.exp.p3':   'Bi taldeetatik zeinean zauden jakitea borondatezkoa da, posiblea, eta programak aurkitzen lagun diezazukeen zerbait.',
     'm2.c1.exp.retry': 'Itzuli galderara nahi duzunean:',
 
+    /* ---- portadores-paso-2.html (Check 2.2) ---- */
+    'm2.c2.title':    'Bi moten arteko aldea, eta zuretzat zer esan nahi duen',
+    'm2.c2.prose.p1': 'Bi mota daudela jakitea lehen urrats bat da. Baina haien arteko aldeak zuretzat benetako zentzua duela ziurtatu nahi dugu, kontzeptu abstraktu gisa bakarrik ez.',
+    'm2.c2.prose.p2': '<strong>Fase inaktiboan bazaude:</strong> markatzaile biologikoek ez dute gaur egun jarduera detektagarririk erakusten. Horrek ez du esan nahi prozesua ez denik noizbait hasiko (egun, aste edo hilabete batzuetan hasi liteke), baina ziurrenik denbora-tarte zabala izango duzu gaixotasunaren sintoma ikusgarriak garatu arte. Tarte hori da, hain zuzen ere, planifikatzeko eta terapiak iristen direnean lehen lerroan egoteko aukera ematen duena.',
+    'm2.c2.prose.p3': '<strong>Fase aktibo isilean bazaude:</strong> markatzaileek jarduera biologikoaren hasierako seinaleak erakusten dituzte, nahiz eta zure eguneroko bizitzak inola ere islatzen ez duen. Berri txar soil bat izatetik urrun —gaixotasunaren sintomak denbora-horizonte hurbilagoan ager litezkeelako (oraindik ezezaguna)—, gaur egun izan dezakezun informaziorik baliotsuena da — zehatz-mehatz lehen entsegu kliniko prebentiboak diseinatzen saiatzen ari diren taldean kokatzen zaitulako. Jarduteko unea orain da, eta programa hemen dago urrats bakoitzerako.',
+    'm2.c2.question': 'Ulertzen al duzu bi egoeren arteko aldea eta zure kasu zehatzean zer esan nahi duen?',
+    'm2.c2.yes':      'Bai, aldea eta zer esan nahi duen ulertzen ditut',
+    'm2.c2.no':       'Berriro irakurri behar dut edo ez zait erabat argi geratu',
+    'm2.c2.exp.p1':   'Ez kezkatu. Hartu behar duzun denbora. Hona hemen berriro bi profilak modu laburtuan:',
+    'm2.c2.exp.p2':   '<strong>Fase inaktiboa:</strong> gaur egun jarduera detektagarririk gabeko markatzaileak. Denbora-horizonte zabala. Planifikatzeko denbora.',
+    'm2.c2.exp.p3':   '<strong>Fase aktibo isila:</strong> jarduera biologikoaren hasierako seinaleak, sintomarik gabe. Lehen entsegu prebentiboetarako lehentasunezko taldea.',
+    'm2.c2.exp.retry': 'Argi duzunean:',
+
     /* ---- Cierres momento 1 ---- */
     'closure.b.title': 'Zure erritmoa da erritu egokia',
     'closure.b.text':  'Ez dago presarik. Garrantzitsua da jakitea informazio hau hemen egongo dela behar duzunean, eta programako taldea eskuragarri dagoela elkarrizketari berriro heldu nahi diozunean. Zure burua zaintzeak denbora ematea ere esan nahi du.',
