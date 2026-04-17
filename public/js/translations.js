@@ -762,6 +762,29 @@ const TRANSLATIONS = {
     'baja.link':        'Go to Info updates',
     'baja.error.title': 'Invalid link',
     'baja.error.text':  'This link is invalid or has already been used. If you\'d like to manage your preferences, please contact the team.',
+
+    /* ---- portadores-reflexion.html — entry teaser ---- */
+    'reflexion.teaser.text': 'Wondering whether it\'s worth knowing which group you\'re in?',
+    'reflexion.teaser.sub':  'We\'ve thought through specific situations that may help you reflect.',
+    'reflexion.teaser.btn':  'I want to reflect on this',
+
+    /* ---- portadores-reflexion.html — header ---- */
+    'reflexion.hero.title': 'The value of knowing',
+    'reflexion.hero.sub':   'There\'s no right answer. But there are specific situations that can help you decide whether you want to know where you stand right now.',
+
+    /* ---- portadores-reflexion.html — card 1: inactive phase ---- */
+    'reflexion.c1.label':    'Standard follow-up',
+    'reflexion.c1.title':    'If follow-up places you in an inactive phase',
+    'reflexion.c1.sub':      '15 situations in which this information may make a real difference in your everyday life.',
+
+    /* ---- portadores-reflexion.html — card 2: silent active phase ---- */
+    'reflexion.c2.label':    'Alert follow-up',
+    'reflexion.c2.title':    'If follow-up places you in a silent active phase',
+    'reflexion.c2.sub':      '18 situations in which this information may make a real difference in your everyday life.',
+
+    /* ---- portadores-reflexion.html — closing & back ---- */
+    'reflexion.closing':     'Being in one group or the other doesn\'t change who you are, but it can significantly change how you plan, how you decide, and how you take advantage of the opportunities for follow-up, support, and early access to new therapies.',
+    'reflexion.back':        'Back to the program',
   },
 };
 
