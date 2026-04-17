@@ -4,7 +4,10 @@
 const TRANSLATIONS = {
   es: {
     /* ---- Navegación ---- */
-    'nav.back': 'Volver',
+    'nav.back':     'Volver',
+    'nav.prev':     'Anterior',
+    'nav.next':     'Siguiente',
+    'nav.continue': 'Continuar',
 
     /* ---- Hero ---- */
     'hero.eyebrow': 'Programa de seguimiento preclínico',
@@ -52,6 +55,9 @@ const TRANSLATIONS = {
     'm2.c1.exp.p2': '<strong>Los portadores en fase activa silente:</strong> existe una actividad biológica incipiente que las técnicas especializadas pueden comenzar a detectar, aunque la persona no sienta absolutamente nada. El proceso ha comenzado de forma muy silenciosa, y precisamente por eso es tan valioso saberlo: porque este grupo es el que con mayor probabilidad podrá acceder a los primeros ensayos clínicos preventivos.',
     'm2.c1.exp.p3': 'Conocer en cuál de los dos grupos te encuentras es voluntario, posible, y algo que el programa puede ayudarte a descubrir.',
     'm2.c1.exp.retry': 'Vuelve a la pregunta cuando quieras:',
+    'm2.c1.ans.yes1':  'Sí, lo sabía',
+    'm2.c1.ans.yes2':  'No, no lo sabía pero ahora lo he entendido al leer el programa, y lo tengo claro',
+    'm2.c1.ans.no':    'No, no lo sabía y aún no lo tengo claro',
 
     /* Check 2.2 */
     'm2.c2.title':    'La diferencia entre los dos tipos, y lo que significa para ti',
@@ -255,7 +261,10 @@ const TRANSLATIONS = {
 
   eu: {
     /* ---- Navegación ---- */
-    'nav.back': 'Itzuli',
+    'nav.back':     'Itzuli',
+    'nav.prev':     'Aurrekoa',
+    'nav.next':     'Hurrengoa',
+    'nav.continue': 'Jarraitu',
 
     /* ---- Hero ---- */
     'hero.eyebrow': 'Aurre-kliniko jarraipen programa',
@@ -287,6 +296,9 @@ const TRANSLATIONS = {
     'm2.c1.exp.p2':   '<strong>Fase aktibo isileko eramaileak:</strong> teknika espezializatuak detektatzen hasi ahal diren jarduera biologiko goiztiar bat dago, nahiz eta pertsonak absolutuki ezer ez sentitu. Prozesua oso isilik hasi da, eta hain zuzen horregatik da hain baliotsua jakitea: talde hau baita probabilitate handienaz lehen entsegu kliniko prebentiboetan sartu ahal izango dena.',
     'm2.c1.exp.p3':   'Bi taldeetatik zeinean zauden jakitea borondatezkoa da, posiblea, eta programak aurkitzen lagun diezazukeen zerbait.',
     'm2.c1.exp.retry': 'Itzuli galderara nahi duzunean:',
+    'm2.c1.ans.yes1':  'Bai, banekien',
+    'm2.c1.ans.yes2':  'Ez, ez nekien baina orain programa irakurtzean ulertu dut, eta argi daukat',
+    'm2.c1.ans.no':    'Ez, ez nekien eta oraindik ez daukat argi',
 
     /* ---- portadores-paso-2.html (Check 2.2) ---- */
     'm2.c2.title':    'Bi moten arteko aldea, eta zuretzat zer esan nahi duen',
@@ -461,7 +473,10 @@ const TRANSLATIONS = {
 
   ca: {
     /* ---- Navegación ---- */
-    'nav.back': 'Tornar',
+    'nav.back':     'Tornar',
+    'nav.prev':     'Anterior',
+    'nav.next':     'Següent',
+    'nav.continue': 'Continuar',
 
     /* ---- Hero ---- */
     'hero.eyebrow': 'Programa de seguiment preclínic',
@@ -493,6 +508,9 @@ const TRANSLATIONS = {
     'm2.c1.exp.p2':   '<strong>Els portadors en fase activa silenciosa:</strong> hi ha una activitat biològica incipient que les tècniques especialitzades poden començar a detectar, tot i que la persona no senti absolutament res. El procés ha començat de manera molt silenciosa, i precisament per això és tan valuós saber-ho: perquè aquest és el grup que amb més probabilitat podrà accedir als primers assaigs clínics preventius.',
     'm2.c1.exp.p3':   'Conèixer en quin dels dos grups et trobes és voluntari, possible, i una cosa que el programa pot ajudar-te a descobrir.',
     'm2.c1.exp.retry': 'Torna a la pregunta quan vulguis:',
+    'm2.c1.ans.yes1':  'Sí, ho sabia',
+    'm2.c1.ans.yes2':  'No, no ho sabia però ara ho he entès en llegir el programa, i ho tinc clar',
+    'm2.c1.ans.no':    'No, no ho sabia i encara no ho tinc clar',
 
     /* ---- portadores-paso-2.html (Check 2.2) ---- */
     'm2.c2.title':    'La diferència entre els dos tipus, i el que significa per a tu',
@@ -667,7 +685,10 @@ const TRANSLATIONS = {
 
   gl: {
     /* ---- Navegación ---- */
-    'nav.back': 'Volver',
+    'nav.back':     'Volver',
+    'nav.prev':     'Anterior',
+    'nav.next':     'Seguinte',
+    'nav.continue': 'Continuar',
 
     /* ---- Hero ---- */
     'hero.eyebrow': 'Programa de seguimento preclínico',
@@ -699,6 +720,9 @@ const TRANSLATIONS = {
     'm2.c1.exp.p2':   '<strong>Os portadores en fase activa silente:</strong> existe unha actividade biolóxica incipiente que as técnicas especializadas poden comezar a detectar, aínda que a persoa non sinta absolutamente nada. O proceso comezou de forma moi silandeira, e precisamente por iso é tan valioso sabelo: porque este é o grupo que con maior probabilidade poderá acceder aos primeiros ensaios clínicos preventivos.',
     'm2.c1.exp.p3':   'Coñecer en cal dos dous grupos te atopas é voluntario, posible, e algo que o programa pode axudarche a descubrir.',
     'm2.c1.exp.retry': 'Volve á pregunta cando queiras:',
+    'm2.c1.ans.yes1':  'Si, sabíao',
+    'm2.c1.ans.yes2':  'Non, non o sabía pero agora enténdoo ao ler o programa, e téñoo claro',
+    'm2.c1.ans.no':    'Non, non o sabía e aínda non o teño claro',
 
     /* ---- portadores-paso-2.html (Check 2.2) ---- */
     'm2.c2.title':    'A diferenza entre os dous tipos, e o que significa para ti',
@@ -873,7 +897,10 @@ const TRANSLATIONS = {
 
   en: {
     /* ---- Navigation ---- */
-    'nav.back': 'Back',
+    'nav.back':     'Back',
+    'nav.prev':     'Previous',
+    'nav.next':     'Next',
+    'nav.continue': 'Continue',
 
     /* ---- Hero ---- */
     'hero.eyebrow': 'Preclinical follow-up program',
@@ -905,6 +932,9 @@ const TRANSLATIONS = {
     'm2.c1.exp.p2':   '<strong>Carriers in a silent active phase:</strong> there\'s incipient biological activity that specialized techniques can begin to detect, even though the person feels absolutely nothing. The process has started very quietly, and that\'s precisely why it\'s so valuable to know: because this is the group most likely to be able to access the first preventive clinical trials.',
     'm2.c1.exp.p3':   'Finding out which of the two groups you\'re in is voluntary, possible, and something the program can help you discover.',
     'm2.c1.exp.retry': 'Come back to the question whenever you\'d like:',
+    'm2.c1.ans.yes1':  'Yes, I knew',
+    'm2.c1.ans.yes2':  'No, I didn\'t know, but I\'ve understood it now reading the program, and it\'s clear to me',
+    'm2.c1.ans.no':    'No, I didn\'t know and it\'s not yet clear to me',
 
     /* ---- portadores-paso-2.html (Check 2.2) ---- */
     'm2.c2.title':    'The difference between the two types, and what it means for you',
