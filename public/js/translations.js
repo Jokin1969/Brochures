@@ -659,6 +659,17 @@ const TRANSLATIONS = {
     'm2.c2.exp.p3':   '<strong>Fase activa silente:</strong> sinais temperáns de actividade biolóxica, sen síntomas. O grupo prioritario para os primeiros ensaios preventivos.',
     'm2.c2.exp.retry': 'Cando o teñas claro:',
 
+    /* ---- portadores-paso-3.html (Check 2.3) ---- */
+    'm2.c3.title':    'As probas que fan posible sabelo',
+    'm2.c3.prose.p1': 'Determinar en cal dos dous grupos te atopas non é sinxelo. Non existe hoxe ningunha proba única, rápida e definitiva que o responda. O que temos son ferramentas especializadas — algunhas requiren mostras biolóxicas que non son as habituais, como determinadas análises de líquido cefalorraquídeo ou outras que permiten detectar sinais de actividade priónica con maior sensibilidade.',
+    'm2.c3.prose.p2': 'Isto significa que o proceso require tempo, visitas, e nalgúns casos procedementos que merecen ser explicados con detalle antes de realizalos. O equipo do programa acompañarate en cada decisión, e nada se fará sen a túa comprensión e o teu consentimento.',
+    'm2.c3.question': 'Entendes que coñecer a túa situación require probas especializadas, que non sempre son sinxelas, e que o resultado pode ter implicacións reais na túa vida?',
+    'm2.c3.yes':      'Si, enténdoo e quero continuar',
+    'm2.c3.no':       'Preciso pensalo ou entender mellor isto antes de seguir',
+    'm2.c3.exp.p1':   'É unha decisión que merece reflexión, e está moi ben recoñecelo. O importante é que ninguén che vai pedir que fagas ningunha proba sen explicarche antes con detalle en que consiste, que información dá, e que pode supoñer para ti coñecer ese resultado.',
+    'm2.c3.exp.p2':   'O consentimento informado non é un formulario — é unha conversa real co equipo. Cando sintas que estás listo/a, a pregunta segue aquí.',
+    'm2.c3.exp.retry': 'Cando esteas listo/a:',
+
     /* ---- Cierres momento 1 ---- */
     'closure.b.title': 'O teu ritmo é o ritmo correcto',
     'closure.b.text':  'Non hai ningunha présa. O importante é que saibas que esta información seguirá aquí cando a necesites, e que o equipo do programa está dispoñible se nalgún momento queres retomar esta conversa. Coidarte tamén significa darte o tempo que precisas.',
