@@ -275,7 +275,10 @@ body {
     display: flex; flex-direction: column; gap: 8px;
 }
 .therapy-legend-list li {
-    font-size: 0.85rem; color: var(--text-3); display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap;
+    font-size: 0.85rem; color: var(--text-3); display: block;
+}
+.therapy-legend-list li .t-badge {
+    display: inline-block; margin-bottom: 3px;
 }
 
 .steps { display: flex; flex-direction: column; margin-top: 28px; }
