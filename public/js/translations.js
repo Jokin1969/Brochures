@@ -480,6 +480,17 @@ const TRANSLATIONS = {
     'm2.c2.exp.p3':   '<strong>Fase activa silenciosa:</strong> senyals primerencs d\'activitat biològica, sense símptomes. El grup prioritari per als primers assaigs preventius.',
     'm2.c2.exp.retry': 'Quan ho tinguis clar:',
 
+    /* ---- portadores-paso-3.html (Check 2.3) ---- */
+    'm2.c3.title':    'Les proves que fan possible saber-ho',
+    'm2.c3.prose.p1': 'Determinar en quin dels dos grups et trobes no és senzill. Avui no existeix cap prova única, ràpida i definitiva que ho respongui. El que tenim són eines especialitzades — algunes requereixen mostres biològiques que no són les habituals, com determinats anàlisis de líquid cefaloraquidi o altres que permeten detectar senyals d\'activitat priònica amb més sensibilitat.',
+    'm2.c3.prose.p2': 'Això significa que el procés requereix temps, visites, i en alguns casos procediments que mereixen ser explicats amb detall abans de realitzar-los. L\'equip del programa t\'acompanyarà en cada decisió, i res no es farà sense la teva comprensió i el teu consentiment.',
+    'm2.c3.question': 'Entens que conèixer la teva situació requereix proves especialitzades, que no sempre són senzilles, i que el resultat pot tenir implicacions reals en la teva vida?',
+    'm2.c3.yes':      'Sí, ho entenc i vull continuar',
+    'm2.c3.no':       'Necessito pensar-ho o entendre millor això abans de seguir',
+    'm2.c3.exp.p1':   'És una decisió que mereix reflexió, i està molt bé reconèixer-ho. L\'important és que ningú no et demanarà que facis cap prova sense haver-te explicat abans amb detall en què consisteix, quina informació dóna, i què pot suposar per a tu conèixer aquest resultat.',
+    'm2.c3.exp.p2':   'El consentiment informat no és un formulari — és una conversa real amb l\'equip. Quan sentis que estàs preparat/da, la pregunta continua aquí.',
+    'm2.c3.exp.retry': 'Quan estiguis preparat/da:',
+
     /* ---- Cierres momento 1 ---- */
     'closure.b.title': 'El teu ritme és el ritme correcte',
     'closure.b.text':  'No hi ha cap pressa. El que importa és que sàpigues que aquesta informació estarà aquí quan la necessitis, i que l\'equip del programa està disponible si en algun moment vols reprendre aquesta conversa. Cuidar-te també significa donar-te el temps que necessites.',
