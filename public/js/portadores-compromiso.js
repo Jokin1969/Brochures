@@ -191,6 +191,13 @@
     requestAnimationFrame(function () { document.body.classList.add('loaded'); });
     if (typeof applyTranslations === 'function') applyTranslations();
 
+    document.querySelectorAll('.lang-btn[data-lang]').forEach(function (btn) {
+      btn.classList.toggle('lang-btn--active', btn.dataset.lang === (localStorage.getItem('pg-lang') || 'es'));
+      btn.addEventListener('click', function () {
+        if (typeof setLang === 'function') setLang(this.dataset.lang);
+      });
+    });
+
     /* Scroll center */
     setTimeout(function () {
       var main = document.querySelector('.pg-main');
