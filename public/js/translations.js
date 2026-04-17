@@ -744,6 +744,15 @@ const TRANSLATIONS = {
     'm1.c.header': 'I have questions and would rather talk to someone first',
     'm1.c.body':   'Before making any decision, I\'d like to talk with the program team. I have questions I can\'t answer on my own, and I need to hear a human voice before continuing.',
 
+    /* ---- portadores-paso-1.html (Check 2.1) ---- */
+    'm2.c1.title':    'Something important we want to confirm with you',
+    'm2.c1.prose':    'Within the group of asymptomatic carriers — people who, like you, live with a genetic mutation without having developed symptoms — current research has made it possible to identify two clearly distinct situations. This is relatively recent, and not everyone who gets here knows about it yet. That\'s why we want to ask you:',
+    'm2.c1.question': 'Did you know there are two kinds of asymptomatic carriers, with different biological situations even though both are without symptoms?',
+    'm2.c1.exp.p1':   '<strong>Carriers in an inactive phase:</strong> the biological process associated with the mutation shows no signs of detectable activity today. This is linked to a longer time horizon. The biological clock, so to speak, has not yet started ticking in any measurable way.',
+    'm2.c1.exp.p2':   '<strong>Carriers in a silent active phase:</strong> there\'s incipient biological activity that specialized techniques can begin to detect, even though the person feels absolutely nothing. The process has started very quietly, and that\'s precisely why it\'s so valuable to know: because this is the group most likely to be able to access the first preventive clinical trials.',
+    'm2.c1.exp.p3':   'Finding out which of the two groups you\'re in is voluntary, possible, and something the program can help you discover.',
+    'm2.c1.exp.retry': 'Come back to the question whenever you\'d like:',
+
     /* ---- Moment 1 closures ---- */
     'closure.b.title': 'Your pace is the right pace',
     'closure.b.text':  'There\'s no rush at all. What matters is knowing that this information will be here when you need it, and that the program team is available whenever you\'d like to pick up the conversation. Taking care of yourself also means giving yourself the time you need.',
