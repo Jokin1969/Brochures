@@ -838,6 +838,17 @@ const TRANSLATIONS = {
     'm2.c2.exp.p3':   '<strong>Silent active phase:</strong> early signs of biological activity, no symptoms. The priority group for the first preventive trials.',
     'm2.c2.exp.retry': 'When you have it clear:',
 
+    /* ---- portadores-paso-3.html (Check 2.3) ---- */
+    'm2.c3.title':    'The tests that make knowing possible',
+    'm2.c3.prose.p1': 'Finding out which of the two groups you\'re in isn\'t simple. There\'s no single, fast, definitive test today that answers it. What we have are specialized tools — some of them require biological samples that aren\'t the usual ones, such as certain cerebrospinal fluid analyses, or others that can detect prion activity signals with greater sensitivity.',
+    'm2.c3.prose.p2': 'This means the process takes time, visits, and in some cases procedures that deserve to be explained in detail before being performed. The program team will be with you for every decision, and nothing will be done without your understanding and your consent.',
+    'm2.c3.question': 'Do you understand that finding out your situation requires specialized tests, that aren\'t always simple, and that the result can have real implications in your life?',
+    'm2.c3.yes':      'Yes, I understand and I want to continue',
+    'm2.c3.no':       'I need to think about it or understand this better before moving on',
+    'm2.c3.exp.p1':   'This is a decision that deserves reflection, and it\'s good to recognize that. The important thing is that no one will ask you to do any test without first explaining in detail what it involves, what information it provides, and what learning that result may mean for you.',
+    'm2.c3.exp.p2':   'Informed consent is not a form — it\'s a real conversation with the team. When you feel you\'re ready, the question will still be here.',
+    'm2.c3.exp.retry': 'When you\'re ready:',
+
     /* ---- Moment 1 closures ---- */
     'closure.b.title': 'Your pace is the right pace',
     'closure.b.text':  'There\'s no rush at all. What matters is knowing that this information will be here when you need it, and that the program team is available whenever you\'d like to pick up the conversation. Taking care of yourself also means giving yourself the time you need.',
