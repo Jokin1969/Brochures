@@ -137,6 +137,31 @@
             color: var(--text-3);
             font-size: 0.9rem;
         }
+
+        /* Language pills */
+        .lang-pill {
+            border: 1px solid var(--border);
+            background: var(--white);
+            color: var(--text-2);
+            padding: 5px 11px;
+            font-size: 0.82rem;
+            font-family: inherit;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s, color 0.15s;
+        }
+        .lang-pill:hover {
+            border-color: var(--text-3);
+        }
+        .lang-pill--active {
+            background: var(--blue);
+            color: var(--white);
+            border-color: var(--blue);
+            cursor: default;
+        }
+        .lang-pill--active:hover {
+            border-color: var(--blue);
+        }
     </style>
 </head>
 <body>
@@ -166,6 +191,18 @@
                 <span class="correo-to-label">Para:</span>
                 <span class="correo-to-value" id="to-name"></span>
                 <span class="correo-to-email" id="to-email"></span>
+            </div>
+
+            <!-- Idioma: -->
+            <div class="correo-field">
+                <label>Idioma:</label>
+                <div id="lang-switcher" style="display:flex;gap:6px;flex-wrap:wrap;">
+                    <button type="button" class="lang-pill" data-lang="es">🇪🇸 ES</button>
+                    <button type="button" class="lang-pill" data-lang="eu">🏴 EU</button>
+                    <button type="button" class="lang-pill" data-lang="ca">🏴 CA</button>
+                    <button type="button" class="lang-pill" data-lang="gl">🏴 GL</button>
+                    <button type="button" class="lang-pill" data-lang="en">🇺🇸 EN</button>
+                </div>
             </div>
 
             <!-- Asunto: -->
@@ -209,7 +246,9 @@
     return;
   }
 
-  var SUBJECT_DEFAULT = 'Algo está cambiando. Queremos contártelo.';
+  var currentLang        = 'es';
+  var lastAutoSubject    = '';  /* último asunto que hemos puesto programáticamente */
+  var portadorData       = null;
 
   /* Cargar datos del portador */
   fetch('/api/admin/portadores', { headers: { 'Authorization': 'Bearer ' + pwd } })
@@ -224,20 +263,26 @@
       document.getElementById('loading-state').textContent = 'Portador no encontrado (ID: ' + portadorId + ').';
       return;
     }
+    portadorData = p;
+    currentLang  = p.idioma || 'es';
 
     /* Rellenar cabecera */
     var nombre = [p.nombre, p.apellidos].filter(Boolean).join(' ') || 'Portador ' + p.id;
     document.getElementById('correo-portador-label').textContent = nombre + ' · ' + (p.email || 'sin email');
     document.getElementById('to-name').textContent  = nombre;
     document.getElementById('to-email').textContent = p.email || '';
-    document.getElementById('field-subject').value  = SUBJECT_DEFAULT;
 
-    /* Cargar preview en el iframe */
-    var previewUrl = '/api/admin/correo-preview/' + portadorId + '?password=' + encodeURIComponent(pwd);
-    var frame = document.getElementById('preview-frame');
-    frame.src = previewUrl;
+    /* Pills de idioma: marcar el activo y enganchar click */
+    document.querySelectorAll('#lang-switcher .lang-pill').forEach(function (btn) {
+      btn.classList.toggle('lang-pill--active', btn.dataset.lang === currentLang);
+      btn.addEventListener('click', function () {
+        if (btn.dataset.lang === currentLang) return;
+        changeLang(btn.dataset.lang);
+      });
+    });
 
     /* Ajustar altura del iframe al contenido cuando cargue */
+    var frame = document.getElementById('preview-frame');
     frame.addEventListener('load', function () {
       try {
         var h = frame.contentDocument && frame.contentDocument.body
@@ -246,6 +291,9 @@
         if (h > 200) frame.style.minHeight = (h + 32) + 'px';
       } catch (e) { /* cross-origin: dejar la altura mínima */ }
     });
+
+    /* Cargar preview y asunto en el idioma inicial */
+    applyLang(currentLang);
 
     document.getElementById('loading-state').style.display = 'none';
     document.getElementById('correo-panel').style.display   = 'block';
@@ -258,6 +306,52 @@
   .catch(function (err) {
     document.getElementById('loading-state').textContent = 'Error al cargar datos: ' + err.message;
   });
+
+  /* Cambiar idioma: actualiza pills, recarga preview y asunto, y
+     (si el idioma cambia respecto al del portador) guarda la preferencia. */
+  function changeLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('#lang-switcher .lang-pill').forEach(function (btn) {
+      btn.classList.toggle('lang-pill--active', btn.dataset.lang === lang);
+    });
+    applyLang(lang);
+
+    /* Si difiere del idioma guardado del portador, persistir el cambio */
+    if (portadorData && portadorData.idioma !== lang) {
+      fetch('/api/admin/portadores/' + portadorId, {
+        method:  'PUT',
+        headers: { 'Authorization': 'Bearer ' + pwd, 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ idioma: lang })
+      })
+      .then(function (r) { if (r.ok) { portadorData.idioma = lang; } })
+      .catch(function () { /* silencioso */ });
+    }
+  }
+
+  /* Aplica el idioma actual: recarga iframe + asunto por defecto */
+  function applyLang(lang) {
+    /* Preview */
+    var frame = document.getElementById('preview-frame');
+    frame.src = '/api/admin/correo-preview/' + portadorId
+              + '?password=' + encodeURIComponent(pwd)
+              + '&lang=' + encodeURIComponent(lang);
+
+    /* Asunto por defecto: solo lo sobrescribe si el usuario no lo ha editado */
+    var subjectInp = document.getElementById('field-subject');
+    var userEdited = subjectInp.value !== '' && subjectInp.value !== lastAutoSubject;
+
+    fetch('/api/admin/email-defaults?lang=' + encodeURIComponent(lang),
+          { headers: { 'Authorization': 'Bearer ' + pwd } })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) {
+      if (!d) return;
+      if (!userEdited) {
+        subjectInp.value = d.initial || '';
+        lastAutoSubject  = subjectInp.value;
+      }
+    })
+    .catch(function () { /* silencioso */ });
+  }
 
   function sendEmail(id) {
     var btn      = document.getElementById('btn-send');
@@ -276,7 +370,7 @@
     fetch('/api/admin/correo/' + id, {
       method:  'POST',
       headers: { 'Authorization': 'Bearer ' + pwd, 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ subject: subject }),
+      body:    JSON.stringify({ subject: subject, idioma: currentLang }),
     })
     .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
     .then(function (res) {
