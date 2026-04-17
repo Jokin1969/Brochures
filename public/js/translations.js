@@ -624,6 +624,19 @@ const TRANSLATIONS = {
     'm2.c1.exp.p3':   'Coñecer en cal dos dous grupos te atopas é voluntario, posible, e algo que o programa pode axudarche a descubrir.',
     'm2.c1.exp.retry': 'Volve á pregunta cando queiras:',
 
+    /* ---- portadores-paso-2.html (Check 2.2) ---- */
+    'm2.c2.title':    'A diferenza entre os dous tipos, e o que significa para ti',
+    'm2.c2.prose.p1': 'Saber que existen dous tipos é un primeiro paso. Pero queremos asegurarnos de que a diferenza entre eles ten sentido real para ti, non só como concepto abstracto.',
+    'm2.c2.prose.p2': '<strong>Se estás en fase inactiva:</strong> os marcadores biolóxicos non mostran actividade detectable hoxe. Iso non significa que o proceso non vaia comezar nalgún momento (pode ser en cuestión de días, semanas ou meses), pero si que probablemente dispoñas dunha marxe de tempo ampla ata o desenvolvemento de síntomas visibles de enfermidade. Esta marxe é precisamente o que fai posible planificar e estar en primeira liña cando cheguen as terapias.',
+    'm2.c2.prose.p3': '<strong>Se estás en fase activa silente:</strong> os marcadores mostran sinais temperáns de actividade, aínda que a túa vida cotiá non o reflicte en absoluto. Lonxe de ser só unha mala nova, xa que podería implicar que os síntomas da enfermidade poderían aparecer nun horizonte temporal máis próximo (aínda que aínda descoñecido), é a información máis valiosa que podes ter hoxe — porque te sitúa exactamente no grupo para o que se están tratando de deseñar os primeiros ensaios clínicos preventivos. O momento de actuar é agora, e o programa está aquí para cada paso.',
+    'm2.c2.question': 'Comprendes a diferenza entre ambas situacións e o que podería implicar para o teu caso concreto?',
+    'm2.c2.yes':      'Si, comprendo a diferenza e o que implica',
+    'm2.c2.no':       'Preciso relelo ou non me quedou do todo claro',
+    'm2.c2.exp.p1':   'Non pasa nada. Tómate o tempo que precises. Aquí tes de novo os dous perfís de forma resumida:',
+    'm2.c2.exp.p2':   '<strong>Fase inactiva:</strong> marcadores sen actividade detectable hoxe. Horizonte temporal amplo. Tempo para planificar.',
+    'm2.c2.exp.p3':   '<strong>Fase activa silente:</strong> sinais temperáns de actividade biolóxica, sen síntomas. O grupo prioritario para os primeiros ensaios preventivos.',
+    'm2.c2.exp.retry': 'Cando o teñas claro:',
+
     /* ---- Cierres momento 1 ---- */
     'closure.b.title': 'O teu ritmo é o ritmo correcto',
     'closure.b.text':  'Non hai ningunha présa. O importante é que saibas que esta información seguirá aquí cando a necesites, e que o equipo do programa está dispoñible se nalgún momento queres retomar esta conversa. Coidarte tamén significa darte o tempo que precisas.',
