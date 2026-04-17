@@ -94,6 +94,82 @@ async function sendMail(options) {
 }
 
 /* Email 1: notificación interna al investigador */
+/* ================================================================== */
+/* EMAIL_STRINGS — Cadenas traducibles de los correos a portadores     */
+/* ================================================================== */
+/* Idiomas soportados: es (canónico), eu, ca, gl, en.                 */
+/* Las claves ausentes/vacías en otros idiomas caen a castellano.     */
+/* Las firmas de los investigadores (nombres propios, emails,         */
+/* teléfonos) NO están aquí: se dejan inline en el builder porque     */
+/* son datos invariables.                                             */
+/* ================================================================== */
+const EMAIL_STRINGS = {
+  es: {
+    /* ---- Comunes (ambos correos) ---- */
+    eyebrow:                  'Programa de seguimiento preclínico',
+    h1:                       'Cuidar el presente,<br>preparar el futuro',
+    salute_f:                 'Estimada {nombre},',
+    salute_m:                 'Estimado {nombre},',
+    salute_nb:                'Estimado/a {nombre},',
+    fallback_f:               'portadora',
+    fallback_m:               'portador',
+    fallback_nb:              'portador/a',
+    sig_castilla_role:        'Profesor de investigación',
+    sig_castilla_role_sub:    'Responsable del laboratorio de priones',
+    sig_kortazar_role:        'Jefa de servicio de Neurología',
+    sig_kortazar_institution: 'Hospital Universitario Araba',
+    footer_ethics:            'Programa aprobado por el Comité de Ética de la Investigación del País Vasco &nbsp;&middot;&nbsp; Código PI2025164',
+
+    /* ---- Correo inicial ---- */
+    initial_subject_default:  'Algo está cambiando. Queremos contártelo.',
+    initial_doc_title:        'Cuidar el presente, preparar el futuro',
+    initial_p1: 'Nos ponemos en contacto contigo porque creemos que hay algo que mereces saber.',
+    initial_p2: 'Durante años, ser portador o portadora de una mutación en el gen de la proteína del prion ha significado, para muchas personas, vivir con una incertidumbre difícil de nombrar. Saber sin poder hacer nada. Esperar sin saber cuándo.',
+    initial_p3: 'Eso está cambiando.',
+    initial_p4: 'No de golpe, no con promesas vacías — sino con ciencia real, con investigación que avanza más rápido que nunca y con ensayos clínicos que, por primera vez, están pensados también para personas como tú: personas que aún no tienen síntomas, pero que quieren estar preparadas cuando llegue el momento de actuar.',
+    initial_p5: 'Hemos puesto en marcha un programa de seguimiento preclínico. No es un estudio más. Es un acompañamiento — tuyo, a tu ritmo, con información real y con un equipo que lleva años dedicado a esto y que estará contigo en cada paso.',
+    initial_p6: 'No te pedimos nada todavía. Solo que le eches un vistazo.',
+    initial_cta: 'Quiero conocer el programa &rarr;',
+
+    /* ---- Correo de píldora ---- */
+    pildoras_subject_default: 'Nueva píldora de información disponible',
+    pildoras_doc_title:       'Nueva píldora de información disponible',
+    pildoras_subtitle:        'Nueva píldora de información disponible',
+    pildoras_p1: 'Tenemos una nueva actualización para ti.',
+    pildoras_p2: 'En el programa de seguimiento publicamos periódicamente <strong>Píldoras de información</strong> &mdash; actualizaciones breves, claras y rigurosas sobre ensayos clínicos, nuevas terapias y hallazgos científicos relevantes para personas como tú.',
+    pildoras_p3: 'Hay una nueva píldora disponible. Entra cuando quieras y léela a tu ritmo.',
+    pildoras_cta: 'Ver la nueva píldora &rarr;',
+    pildoras_unsub_note: 'Recibes este email porque en su momento solicitaste expresamente ser informado/a cuando hubiera nuevas píldoras de información disponibles. Si ya no deseas recibir este tipo de comunicaciones, puedes indicárnoslo aquí:',
+    pildoras_unsub_btn:  'No deseo seguir recibiendo estas notificaciones',
+  },
+  eu: {},
+  ca: {},
+  gl: {},
+  en: {},
+};
+
+/* Accede a una cadena con fallback a castellano si falta/está vacía */
+function emailStr(lang, key) {
+  const block    = EMAIL_STRINGS[lang] || {};
+  const esBlock  = EMAIL_STRINGS.es;
+  const val      = block[key];
+  if (val !== undefined && val !== '') return val;
+  return esBlock[key] || '';
+}
+
+/* Construye el saludo según género del portador y idioma */
+function buildSaludo(p, lang) {
+  const key      = p.genero === 'femenino'  ? 'salute_f'
+                 : p.genero === 'masculino' ? 'salute_m'
+                 : 'salute_nb';
+  const fbKey    = p.genero === 'femenino'  ? 'fallback_f'
+                 : p.genero === 'masculino' ? 'fallback_m'
+                 : 'fallback_nb';
+  const template = emailStr(lang, key);
+  const fallback = emailStr(lang, fbKey);
+  return template.replace('{nombre}', p.nombre || fallback);
+}
+
 function buildNotificationHTML(p) {
   const fecha = fmtDateEmail(p.fechaAceptacion);
   return `<!DOCTYPE html><html lang="es"><body style="font-family:Arial,sans-serif;color:#0f172a;max-width:560px;margin:0 auto;padding:24px;">
@@ -111,22 +187,19 @@ function buildNotificationHTML(p) {
 }
 
 /* Email 2: email inicial al portador — plantilla HTML completa */
-function buildInitialEmailHTML(p) {
+function buildInitialEmailHTML(p, lang = 'es') {
   const SITE_URL = (process.env.SITE_URL || 'https://brochures-production-5c8c.up.railway.app').replace(/\/$/, '');
-  const ctaUrl   = `${SITE_URL}/portadores.html?ref=email&id=${encodeURIComponent(p.id)}`;
-
-  let saludo;
-  if (p.genero === 'femenino')       saludo = `Estimada ${p.nombre || 'portadora'},`;
-  else if (p.genero === 'masculino') saludo = `Estimado ${p.nombre || 'portador'},`;
-  else                               saludo = `Estimado/a ${p.nombre || 'portador/a'},`;
+  const ctaUrl   = `${SITE_URL}/portadores.html?ref=email&id=${encodeURIComponent(p.id)}&lang=${encodeURIComponent(lang)}`;
+  const saludo   = buildSaludo(p, lang);
+  const S        = (k) => emailStr(lang, k);
 
   return `<!DOCTYPE html>
-<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="${lang}" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Cuidar el presente, preparar el futuro</title>
+<title>${S('initial_doc_title')}</title>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   body,table,td,p,a{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
@@ -157,11 +230,11 @@ function buildInitialEmailHTML(p) {
                  padding:52px 48px 48px;text-align:center;">
         <p style="margin:0 0 14px;font-family:Inter,Arial,sans-serif;font-size:11px;font-weight:600;
                   letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.70);">
-          Programa de seguimiento preclínico
+          ${S('eyebrow')}
         </p>
         <h1 style="margin:0;font-family:Lora,Georgia,'Times New Roman',serif;font-size:28px;
                    font-weight:600;color:#ffffff;line-height:1.30;">
-          Cuidar el presente,<br>preparar el futuro
+          ${S('h1')}
         </h1>
       </td>
     </tr>
@@ -180,44 +253,37 @@ function buildInitialEmailHTML(p) {
         <!-- Párrafo 1 -->
         <p style="margin:0 0 18px;font-family:Inter,Arial,sans-serif;font-size:15px;
                   color:#334155;line-height:1.78;">
-          Nos ponemos en contacto contigo porque creemos que hay algo que mereces saber.
+          ${S('initial_p1')}
         </p>
 
         <!-- Párrafo 2 -->
         <p style="margin:0 0 18px;font-family:Inter,Arial,sans-serif;font-size:15px;
                   color:#334155;line-height:1.78;">
-          Durante años, ser portador o portadora de una mutación en el gen de la proteína del prion
-          ha significado, para muchas personas, vivir con una incertidumbre difícil de nombrar.
-          Saber sin poder hacer nada. Esperar sin saber cuándo.
+          ${S('initial_p2')}
         </p>
 
         <!-- Párrafo 3 — destacado -->
         <p style="margin:0 0 18px;font-family:Lora,Georgia,'Times New Roman',serif;
                   font-size:17px;font-weight:600;font-style:italic;color:#7c3aed;line-height:1.5;">
-          Eso está cambiando.
+          ${S('initial_p3')}
         </p>
 
         <!-- Párrafo 4 -->
         <p style="margin:0 0 18px;font-family:Inter,Arial,sans-serif;font-size:15px;
                   color:#334155;line-height:1.78;">
-          No de golpe, no con promesas vacías — sino con ciencia real, con investigación que avanza
-          más rápido que nunca y con ensayos clínicos que, por primera vez, están pensados también
-          para personas como tú: personas que aún no tienen síntomas, pero que quieren estar
-          preparadas cuando llegue el momento de actuar.
+          ${S('initial_p4')}
         </p>
 
         <!-- Párrafo 5 -->
         <p style="margin:0 0 18px;font-family:Inter,Arial,sans-serif;font-size:15px;
                   color:#334155;line-height:1.78;">
-          Hemos puesto en marcha un programa de seguimiento preclínico. No es un estudio más.
-          Es un acompañamiento — tuyo, a tu ritmo, con información real y con un equipo que lleva
-          años dedicado a esto y que estará contigo en cada paso.
+          ${S('initial_p5')}
         </p>
 
         <!-- Párrafo 6 -->
         <p style="margin:0 0 36px;font-family:Inter,Arial,sans-serif;font-size:15px;
                   color:#334155;line-height:1.78;">
-          No te pedimos nada todavía. Solo que le eches un vistazo.
+          ${S('initial_p6')}
         </p>
 
         <!-- CTA button — tabla para Outlook -->
@@ -230,7 +296,7 @@ function buildInitialEmailHTML(p) {
                  style="display:inline-block;padding:16px 36px;font-family:Inter,Arial,sans-serif;
                         font-size:16px;font-weight:600;color:#ffffff;text-decoration:none;
                         border-radius:100px;letter-spacing:0.01em;">
-                Quiero conocer el programa &rarr;
+                ${S('initial_cta')}
               </a>
             </td>
           </tr>
@@ -254,9 +320,9 @@ function buildInitialEmailHTML(p) {
               <p style="margin:0 0 2px;font-family:Lora,Georgia,serif;font-size:14px;
                         font-weight:600;color:#0f172a;">Dr. Joaquín Castilla</p>
               <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:12px;
-                        font-weight:600;color:#7c3aed;">Profesor de investigación</p>
+                        font-weight:600;color:#7c3aed;">${S('sig_castilla_role')}</p>
               <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:11px;color:#94a3b8;">
-                Responsable del laboratorio de priones</p>
+                ${S('sig_castilla_role_sub')}</p>
               <p style="margin:0 0 12px;font-family:Inter,Arial,sans-serif;font-size:11px;
                         color:#94a3b8;font-style:italic;">CIC bioGUNE</p>
               <p style="margin:0 0 4px;font-family:Inter,Arial,sans-serif;font-size:12px;color:#64748b;">
@@ -283,9 +349,9 @@ function buildInitialEmailHTML(p) {
               <p style="margin:0 0 2px;font-family:Lora,Georgia,serif;font-size:14px;
                         font-weight:600;color:#0f172a;">Dra. Izaro Kortazar</p>
               <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:12px;
-                        font-weight:600;color:#7c3aed;">Jefa de servicio de Neurología</p>
+                        font-weight:600;color:#7c3aed;">${S('sig_kortazar_role')}</p>
               <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:11px;color:#94a3b8;">
-                Hospital Universitario Araba</p>
+                ${S('sig_kortazar_institution')}</p>
               <p style="margin:0 0 12px;font-family:Inter,Arial,sans-serif;font-size:11px;
                         color:#94a3b8;font-style:italic;">(Txagorritxu)</p>
               <p style="margin:0;font-family:Inter,Arial,sans-serif;font-size:12px;color:#64748b;">
@@ -307,8 +373,7 @@ function buildInitialEmailHTML(p) {
           style="background:#1e293b;padding:24px 48px;text-align:center;">
         <p style="margin:0;font-family:Inter,Arial,sans-serif;font-size:11px;
                   color:#94a3b8;line-height:1.6;">
-          Programa aprobado por el Comité de Ética de la Investigación del País Vasco
-          &nbsp;&middot;&nbsp; Código PI2025164
+          ${S('footer_ethics')}
         </p>
       </td>
     </tr>
@@ -330,23 +395,20 @@ function generateUnsubToken(id) {
 }
 
 /* Email 3: nueva píldora disponible — plantilla HTML */
-function buildPildorasEmailHTML(p) {
+function buildPildorasEmailHTML(p, lang = 'es') {
   const SITE_URL  = (process.env.SITE_URL || 'https://brochures-production-5c8c.up.railway.app').replace(/\/$/, '');
-  const ctaUrl    = `${SITE_URL}/portadores-pildoras.html?ref=email&id=${encodeURIComponent(p.id)}`;
+  const ctaUrl    = `${SITE_URL}/portadores-pildoras.html?ref=email&id=${encodeURIComponent(p.id)}&lang=${encodeURIComponent(lang)}`;
   const unsubUrl  = `${SITE_URL}/api/pildoras/desactivar?id=${encodeURIComponent(p.id)}&token=${generateUnsubToken(p.id)}`;
-
-  let saludo;
-  if (p.genero === 'femenino')       saludo = `Estimada ${p.nombre || 'portadora'},`;
-  else if (p.genero === 'masculino') saludo = `Estimado ${p.nombre || 'portador'},`;
-  else                               saludo = `Estimado/a ${p.nombre || 'portador/a'},`;
+  const saludo    = buildSaludo(p, lang);
+  const S         = (k) => emailStr(lang, k);
 
   return `<!DOCTYPE html>
-<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="${lang}" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Nueva píldora de información disponible</title>
+<title>${S('pildoras_doc_title')}</title>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   body,table,td,p,a{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
@@ -377,15 +439,15 @@ function buildPildorasEmailHTML(p) {
                  padding:52px 48px 48px;text-align:center;">
         <p style="margin:0 0 14px;font-family:Inter,Arial,sans-serif;font-size:11px;font-weight:600;
                   letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.70);">
-          Programa de seguimiento preclínico
+          ${S('eyebrow')}
         </p>
         <h1 style="margin:0 0 10px;font-family:Lora,Georgia,'Times New Roman',serif;font-size:28px;
                    font-weight:600;color:#ffffff;line-height:1.30;">
-          Cuidar el presente,<br>preparar el futuro
+          ${S('h1')}
         </h1>
         <p style="margin:0;font-family:Inter,Arial,sans-serif;font-size:13px;
                   color:rgba(255,255,255,0.80);letter-spacing:0.04em;">
-          Nueva píldora de información disponible
+          ${S('pildoras_subtitle')}
         </p>
       </td>
     </tr>
@@ -403,19 +465,17 @@ function buildPildorasEmailHTML(p) {
 
         <p style="margin:0 0 18px;font-family:Inter,Arial,sans-serif;font-size:15px;
                   color:#334155;line-height:1.78;">
-          Tenemos una nueva actualización para ti.
+          ${S('pildoras_p1')}
         </p>
 
         <p style="margin:0 0 18px;font-family:Inter,Arial,sans-serif;font-size:15px;
                   color:#334155;line-height:1.78;">
-          En el programa de seguimiento publicamos periódicamente <strong>Píldoras de información</strong>
-          &mdash; actualizaciones breves, claras y rigurosas sobre ensayos clínicos, nuevas terapias
-          y hallazgos científicos relevantes para personas como tú.
+          ${S('pildoras_p2')}
         </p>
 
         <p style="margin:0 0 36px;font-family:Inter,Arial,sans-serif;font-size:15px;
                   color:#334155;line-height:1.78;">
-          Hay una nueva píldora disponible. Entra cuando quieras y léela a tu ritmo.
+          ${S('pildoras_p3')}
         </p>
 
         <!-- CTA -->
@@ -428,7 +488,7 @@ function buildPildorasEmailHTML(p) {
                  style="display:inline-block;padding:16px 36px;font-family:Inter,Arial,sans-serif;
                         font-size:16px;font-weight:600;color:#ffffff;text-decoration:none;
                         border-radius:100px;letter-spacing:0.01em;">
-                Ver la nueva píldora &rarr;
+                ${S('pildoras_cta')}
               </a>
             </td>
           </tr>
@@ -442,9 +502,7 @@ function buildPildorasEmailHTML(p) {
         <!-- Nota de privacidad -->
         <p style="margin:0 0 10px;font-family:Inter,Arial,sans-serif;font-size:12px;
                   color:#94a3b8;line-height:1.65;">
-          Recibes este email porque en su momento solicitaste expresamente ser informado/a cuando
-          hubiera nuevas píldoras de información disponibles. Si ya no deseas recibir este tipo
-          de comunicaciones, puedes indicárnoslo aquí:
+          ${S('pildoras_unsub_note')}
         </p>
         <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:36px;">
           <tr>
@@ -452,7 +510,7 @@ function buildPildorasEmailHTML(p) {
               <a href="${unsubUrl}"
                  style="display:inline-block;padding:7px 16px;font-family:Inter,Arial,sans-serif;
                         font-size:11px;color:#94a3b8;text-decoration:none;border-radius:100px;">
-                No deseo seguir recibiendo estas notificaciones
+                ${S('pildoras_unsub_btn')}
               </a>
             </td>
           </tr>
@@ -472,8 +530,8 @@ function buildPildorasEmailHTML(p) {
                           object-fit:cover;border:2px solid #e2e8f0;margin-bottom:12px;"
                    onerror="this.style.display='none'">
               <p style="margin:0 0 2px;font-family:Lora,Georgia,serif;font-size:14px;font-weight:600;color:#0f172a;">Dr. Joaquín Castilla</p>
-              <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:600;color:#7c3aed;">Profesor de investigación</p>
-              <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:11px;color:#94a3b8;">Responsable del laboratorio de priones</p>
+              <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:600;color:#7c3aed;">${S('sig_castilla_role')}</p>
+              <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:11px;color:#94a3b8;">${S('sig_castilla_role_sub')}</p>
               <p style="margin:0 0 12px;font-family:Inter,Arial,sans-serif;font-size:11px;color:#94a3b8;font-style:italic;">CIC bioGUNE</p>
               <p style="margin:0 0 4px;font-family:Inter,Arial,sans-serif;font-size:12px;color:#64748b;">
                 ✉&nbsp;<a href="mailto:jcastilla@cicbiogune.es" style="color:#7c3aed;text-decoration:none;">jcastilla@cicbiogune.es</a>
@@ -489,8 +547,8 @@ function buildPildorasEmailHTML(p) {
                           object-fit:cover;border:2px solid #e2e8f0;margin-bottom:12px;"
                    onerror="this.style.display='none'">
               <p style="margin:0 0 2px;font-family:Lora,Georgia,serif;font-size:14px;font-weight:600;color:#0f172a;">Dra. Izaro Kortazar</p>
-              <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:600;color:#7c3aed;">Jefa de servicio de Neurología</p>
-              <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:11px;color:#94a3b8;">Hospital Universitario Araba</p>
+              <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:600;color:#7c3aed;">${S('sig_kortazar_role')}</p>
+              <p style="margin:0 0 1px;font-family:Inter,Arial,sans-serif;font-size:11px;color:#94a3b8;">${S('sig_kortazar_institution')}</p>
               <p style="margin:0 0 12px;font-family:Inter,Arial,sans-serif;font-size:11px;color:#94a3b8;font-style:italic;">(Txagorritxu)</p>
               <p style="margin:0;font-family:Inter,Arial,sans-serif;font-size:12px;color:#64748b;">
                 ✉&nbsp;<a href="mailto:izaro.kortazarzubizarreta@osakidetza.eus" style="color:#7c3aed;text-decoration:none;">izaro.kortazarzubizarreta@osakidetza.eus</a>
@@ -508,8 +566,7 @@ function buildPildorasEmailHTML(p) {
           style="background:#1e293b;padding:24px 48px;text-align:center;">
         <p style="margin:0;font-family:Inter,Arial,sans-serif;font-size:11px;
                   color:#94a3b8;line-height:1.6;">
-          Programa aprobado por el Comité de Ética de la Investigación del País Vasco
-          &nbsp;&middot;&nbsp; Código PI2025164
+          ${S('footer_ethics')}
         </p>
       </td>
     </tr>
@@ -565,6 +622,7 @@ app.post('/api/admin/portadores', requireAdmin, async (req, res) => {
       dni:              req.body.dni               || '',
       email:            req.body.email             || '',
       genero:           req.body.genero            || '',
+      idioma:           req.body.idioma            || 'es',
       emailEnviado:          false,
       fechaEnvioEmail:       null,
       emailLeido:            false,
@@ -597,7 +655,7 @@ app.put('/api/admin/portadores/:id', requireAdmin, async (req, res) => {
 
     /* Campos editables; id y contadores de fecha se gestionan internamente */
     const allowed = [
-      'codigoTXPR', 'nombre', 'apellidos', 'dni', 'email', 'genero',
+      'codigoTXPR', 'nombre', 'apellidos', 'dni', 'email', 'genero', 'idioma',
       'emailEnviado', 'fechaEnvioEmail',
       'emailLeido', 'fechaLectura',
       'aceptado', 'fechaAceptacion',
@@ -685,6 +743,18 @@ app.get('/', (req, res) => {
 });
 
 /* ------------------------------------------------------------------ */
+/* GET /api/admin/email-defaults  — asuntos por defecto según idioma  */
+/* ------------------------------------------------------------------ */
+app.get('/api/admin/email-defaults', requireAdmin, (req, res) => {
+  const lang = (req.query.lang || 'es').toString().toLowerCase();
+  res.json({
+    lang,
+    initial:  emailStr(lang, 'initial_subject_default'),
+    pildoras: emailStr(lang, 'pildoras_subject_default'),
+  });
+});
+
+/* ------------------------------------------------------------------ */
 /* GET /api/admin/correo-preview/:id  — HTML del email para preview   */
 /* ------------------------------------------------------------------ */
 app.get('/api/admin/correo-preview/:id', requireAdmin, async (req, res) => {
@@ -692,8 +762,9 @@ app.get('/api/admin/correo-preview/:id', requireAdmin, async (req, res) => {
     const data = await readData();
     const p    = data.portadores.find(p => p.id === req.params.id);
     if (!p) return res.status(404).send('<p style="font-family:sans-serif;color:#dc2626;">Portador no encontrado</p>');
+    const lang = (req.query.lang || p.idioma || 'es').toString().toLowerCase();
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.send(buildInitialEmailHTML(p));
+    res.send(buildInitialEmailHTML(p, lang));
   } catch (err) {
     res.status(500).send('<p style="font-family:sans-serif;color:#dc2626;">Error: ' + err.message + '</p>');
   }
@@ -710,6 +781,7 @@ app.post('/api/admin/correo/:id', requireAdmin, async (req, res) => {
 
     const p       = data.portadores[idx];
     const subject = req.body.subject || '';
+    const lang    = (req.body.idioma || p.idioma || 'es').toString().toLowerCase();
 
     if (!p.email)  return res.status(400).json({ error: 'El portador no tiene email registrado' });
     if (!subject)  return res.status(400).json({ error: 'El asunto no puede estar vacío' });
@@ -717,7 +789,7 @@ app.post('/api/admin/correo/:id', requireAdmin, async (req, res) => {
     await sendMail({
       to:      p.email,
       subject,
-      html:    buildInitialEmailHTML(p),
+      html:    buildInitialEmailHTML(p, lang),
     });
 
     /* Registrar envío solo si el SMTP no lanzó error */
@@ -777,8 +849,9 @@ app.get('/api/admin/pildora-preview/:id', requireAdmin, async (req, res) => {
     const data = await readData();
     const p    = data.portadores.find(p => p.id === req.params.id);
     if (!p) return res.status(404).send('<p style="font-family:sans-serif;color:#dc2626;">Portador no encontrado</p>');
+    const lang = (req.query.lang || p.idioma || 'es').toString().toLowerCase();
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.send(buildPildorasEmailHTML(p));
+    res.send(buildPildorasEmailHTML(p, lang));
   } catch (err) {
     res.status(500).send('<p style="font-family:sans-serif;color:#dc2626;">Error: ' + err.message + '</p>');
   }
@@ -795,6 +868,7 @@ app.post('/api/admin/pildora-email/:id', requireAdmin, async (req, res) => {
 
     const p       = data.portadores[idx];
     const subject = req.body.subject || '';
+    const lang    = (req.body.idioma || p.idioma || 'es').toString().toLowerCase();
 
     if (!p.email)  return res.status(400).json({ error: 'El portador no tiene email registrado' });
     if (!subject)  return res.status(400).json({ error: 'El asunto no puede estar vacío' });
@@ -802,7 +876,7 @@ app.post('/api/admin/pildora-email/:id', requireAdmin, async (req, res) => {
     await sendMail({
       to:      p.email,
       subject,
-      html:    buildPildorasEmailHTML(p),
+      html:    buildPildorasEmailHTML(p, lang),
     });
 
     data.portadores[idx].pildorasEmailEnviado = true;
