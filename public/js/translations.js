@@ -367,7 +367,7 @@ const TRANSLATIONS = {
     'm1.b.body':   'Necessito més temps per assimilar aquesta informació. No és una porta que es tanci — sé que puc tornar quan ho senti. Per ara, prefereixo seguir al meu propi ritme.',
 
     'm1.c.header': 'Tinc dubtes i prefereixo parlar amb algú primer',
-    'm1.c.body':   'Abans de prendre cap decisió, m\'agradaria poder parlar amb l\'equip del programa. Tinc preguntes que no sé com respondre'm sol/a, i necessito escoltar una veu humana abans de continuar.',
+    'm1.c.body':   'Abans de prendre cap decisió, m\'agradaria poder parlar amb l\'equip del programa. Tinc preguntes que no sé com respondre\'m sol/a, i necessito escoltar una veu humana abans de continuar.',
 
     /* ---- Cierres momento 1 ---- */
     'closure.b.title': 'El teu ritme és el ritme correcte',
