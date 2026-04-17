@@ -589,6 +589,15 @@ const TRANSLATIONS = {
     'm1.c.header': 'Teño dúbidas e prefiro falar con alguén primeiro',
     'm1.c.body':   'Antes de tomar calquera decisión, gustaríame poder falar co equipo do programa. Teño preguntas que non sei como responderme só/a, e necesito escoitar unha voz humana antes de continuar.',
 
+    /* ---- portadores-paso-1.html (Check 2.1) ---- */
+    'm2.c1.title':    'Algo importante que queremos confirmar contigo',
+    'm2.c1.prose':    'Dentro do grupo de portadores asintomáticos — persoas que, coma ti, conviven cunha mutación xenética sen ter desenvolvido síntomas — a investigación actual permitiu identificar dúas situacións claramente distintas. Isto é relativamente recente e non todo o mundo que chega aquí o sabe aínda. Por iso queremos preguntarte:',
+    'm2.c1.question': 'Sabías que existen dous tipos de portadores asintomáticos, con situacións biolóxicas diferentes aínda que ambos estean sen síntomas?',
+    'm2.c1.exp.p1':   '<strong>Os portadores en fase inactiva:</strong> o proceso biolóxico asociado á mutación non mostra sinais de actividade detectable hoxe. Isto asóciase cun horizonte temporal máis amplo. O reloxo biolóxico, por así dicilo, aínda non arrancou de forma medible.',
+    'm2.c1.exp.p2':   '<strong>Os portadores en fase activa silente:</strong> existe unha actividade biolóxica incipiente que as técnicas especializadas poden comezar a detectar, aínda que a persoa non sinta absolutamente nada. O proceso comezou de forma moi silandeira, e precisamente por iso é tan valioso sabelo: porque este é o grupo que con maior probabilidade poderá acceder aos primeiros ensaios clínicos preventivos.',
+    'm2.c1.exp.p3':   'Coñecer en cal dos dous grupos te atopas é voluntario, posible, e algo que o programa pode axudarche a descubrir.',
+    'm2.c1.exp.retry': 'Volve á pregunta cando queiras:',
+
     /* ---- Cierres momento 1 ---- */
     'closure.b.title': 'O teu ritmo é o ritmo correcto',
     'closure.b.text':  'Non hai ningunha présa. O importante é que saibas que esta información seguirá aquí cando a necesites, e que o equipo do programa está dispoñible se nalgún momento queres retomar esta conversa. Coidarte tamén significa darte o tempo que precisas.',
