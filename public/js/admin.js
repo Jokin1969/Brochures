@@ -426,35 +426,40 @@
 
   /* ---- Celda Idioma (doble clic → select) ---- */
   var IDIOMAS = [
-    ['es', '🇪🇸 ES', 'Español'],
-    ['eu', '🏴 EU', 'Euskera'],
-    ['ca', '🏴 CA', 'Català'],
-    ['gl', '🏴 GL', 'Galego'],
-    ['en', '🇺🇸 EN', 'English'],
+    { code: 'es', label: 'ES', name: 'Español' },
+    { code: 'eu', label: 'EU', name: 'Euskera' },
+    { code: 'ca', label: 'CA', name: 'Català' },
+    { code: 'gl', label: 'GL', name: 'Galego' },
+    { code: 'en', label: 'EN', name: 'English' },
   ];
+  var FLAG_STYLE = 'width:16px;height:11px;vertical-align:-2px;margin-right:5px;';
 
-  function idiomaLabel(val) {
+  function idiomaRow(val) {
     var v = val || 'es';
-    var row = IDIOMAS.find(function (x) { return x[0] === v; });
-    return row ? row[1] : '🇪🇸 ES';
+    return IDIOMAS.find(function (x) { return x.code === v; }) || IDIOMAS[0];
+  }
+
+  function idiomaHtml(val) {
+    var r = idiomaRow(val);
+    return '<img src="/assests/flags/' + r.code + '.png" alt="" style="' + FLAG_STYLE + '">' + r.label;
   }
 
   function idiomaCell(p) {
     var td = document.createElement('td');
     td.className = 'col-idioma cell-editable';
-    td.textContent = idiomaLabel(p.idioma);
+    td.innerHTML = idiomaHtml(p.idioma);
 
     td.addEventListener('dblclick', function () {
       if (td.querySelector('select')) return;
       var prev = p.idioma || 'es';
-      td.textContent = '';
+      td.innerHTML = '';
       var sel = document.createElement('select');
       sel.className = 'cell-input';
       IDIOMAS.forEach(function (opt) {
         var o = document.createElement('option');
-        o.value = opt[0];
-        o.textContent = opt[1] + ' ' + opt[2];
-        if (opt[0] === prev) o.selected = true;
+        o.value = opt.code;
+        o.textContent = opt.label + ' — ' + opt.name;
+        if (opt.code === prev) o.selected = true;
         sel.appendChild(o);
       });
       td.appendChild(sel);
@@ -462,7 +467,7 @@
 
       function save() {
         var val = sel.value;
-        if (val === prev) { td.textContent = idiomaLabel(prev); return; }
+        if (val === prev) { td.innerHTML = idiomaHtml(prev); return; }
         fetch(API + '/' + p.id, {
           method: 'PUT',
           headers: getHeaders(),
@@ -471,12 +476,12 @@
         .then(function (r) { return r.json(); })
         .then(function (updated) {
           p.idioma = updated.idioma;
-          td.textContent = idiomaLabel(p.idioma);
+          td.innerHTML = idiomaHtml(p.idioma);
           td.classList.add('cell-saved');
           setTimeout(function () { td.classList.remove('cell-saved'); }, 700);
         })
         .catch(function () {
-          td.textContent = idiomaLabel(prev);
+          td.innerHTML = idiomaHtml(prev);
           toast('Error al guardar', 'error');
         });
       }
@@ -484,7 +489,7 @@
       sel.addEventListener('change', save);
       sel.addEventListener('blur',   save);
       sel.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') { td.textContent = idiomaLabel(prev); }
+        if (e.key === 'Escape') { td.innerHTML = idiomaHtml(prev); }
       });
     });
 
