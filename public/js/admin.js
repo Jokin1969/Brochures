@@ -213,6 +213,9 @@
     /* ---- Género (editable select) ---- */
     tr.appendChild(generoCell(p));
 
+    /* ---- Idioma (editable select) ---- */
+    tr.appendChild(idiomaCell(p));
+
     /* ---- Email status ---- */
     tr.appendChild(mailStatusCell(p));
 
@@ -415,6 +418,73 @@
       sel.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') { e.preventDefault(); sel.blur(); }
         if (e.key === 'Escape') { td.textContent = generoLabel(prev); }
+      });
+    });
+
+    return td;
+  }
+
+  /* ---- Celda Idioma (doble clic → select) ---- */
+  var IDIOMAS = [
+    ['es', '🇪🇸 ES', 'Español'],
+    ['eu', '🏴 EU', 'Euskera'],
+    ['ca', '🏴 CA', 'Català'],
+    ['gl', '🏴 GL', 'Galego'],
+    ['en', '🇺🇸 EN', 'English'],
+  ];
+
+  function idiomaLabel(val) {
+    var v = val || 'es';
+    var row = IDIOMAS.find(function (x) { return x[0] === v; });
+    return row ? row[1] : '🇪🇸 ES';
+  }
+
+  function idiomaCell(p) {
+    var td = document.createElement('td');
+    td.className = 'col-idioma cell-editable';
+    td.textContent = idiomaLabel(p.idioma);
+
+    td.addEventListener('dblclick', function () {
+      if (td.querySelector('select')) return;
+      var prev = p.idioma || 'es';
+      td.textContent = '';
+      var sel = document.createElement('select');
+      sel.className = 'cell-input';
+      IDIOMAS.forEach(function (opt) {
+        var o = document.createElement('option');
+        o.value = opt[0];
+        o.textContent = opt[1] + ' ' + opt[2];
+        if (opt[0] === prev) o.selected = true;
+        sel.appendChild(o);
+      });
+      td.appendChild(sel);
+      sel.focus();
+
+      function save() {
+        var val = sel.value;
+        if (val === prev) { td.textContent = idiomaLabel(prev); return; }
+        fetch(API + '/' + p.id, {
+          method: 'PUT',
+          headers: getHeaders(),
+          body: JSON.stringify({ idioma: val })
+        })
+        .then(function (r) { return r.json(); })
+        .then(function (updated) {
+          p.idioma = updated.idioma;
+          td.textContent = idiomaLabel(p.idioma);
+          td.classList.add('cell-saved');
+          setTimeout(function () { td.classList.remove('cell-saved'); }, 700);
+        })
+        .catch(function () {
+          td.textContent = idiomaLabel(prev);
+          toast('Error al guardar', 'error');
+        });
+      }
+
+      sel.addEventListener('change', save);
+      sel.addEventListener('blur',   save);
+      sel.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { td.textContent = idiomaLabel(prev); }
       });
     });
 
@@ -638,6 +708,7 @@
       document.getElementById('new-dni').value       = '';
       document.getElementById('new-email').value     = '';
       document.getElementById('new-genero').value    = '';
+      document.getElementById('new-idioma').value    = 'es';
       document.getElementById('modal-nuevo').style.display = 'flex';
       document.getElementById('new-txpr').focus();
     });
@@ -655,6 +726,7 @@
       dni:        document.getElementById('new-dni').value.trim(),
       email:      document.getElementById('new-email').value.trim(),
       genero:     document.getElementById('new-genero').value,
+      idioma:     document.getElementById('new-idioma').value || 'es',
     };
 
     fetch(API, {
