@@ -256,7 +256,44 @@ const EMAIL_STRINGS = {
     pildoras_unsub_note: 'Recibes este email porque no seu momento solicitaches expresamente ser informado/a cando houbese novas píldoras de información dispoñibles. Se xa non desexas recibir este tipo de comunicacións, podes indicárnolo aquí:',
     pildoras_unsub_btn:  'Non desexo seguir recibindo estas notificacións',
   },
-  en: {},
+  en: {
+    /* ---- Common ---- */
+    eyebrow:                  'Preclinical follow-up program',
+    h1:                       'Care for today,<br>prepare for tomorrow',
+    salute_f:                 'Dear {nombre},',
+    salute_m:                 'Dear {nombre},',
+    salute_nb:                'Dear {nombre},',
+    fallback_f:               'carrier',
+    fallback_m:               'carrier',
+    fallback_nb:              'carrier',
+    sig_castilla_role:        'Research Professor',
+    sig_castilla_role_sub:    'Head of the prion laboratory',
+    sig_kortazar_role:        'Head of Neurology Service',
+    sig_kortazar_institution: 'Hospital Universitario Araba',
+    footer_ethics:            'Program approved by the Basque Country Research Ethics Committee &nbsp;&middot;&nbsp; Code PI2025164',
+
+    /* ---- Initial email ---- */
+    initial_subject_default:  'Something is changing. We want to tell you.',
+    initial_doc_title:        'Care for today, prepare for tomorrow',
+    initial_p1: 'We\'re reaching out because we believe there\'s something you deserve to know.',
+    initial_p2: 'For years, being a carrier of a mutation in the prion protein gene has meant, for many people, living with an uncertainty that\'s hard to name. Knowing without being able to do anything. Waiting without knowing when.',
+    initial_p3: 'That is changing.',
+    initial_p4: 'Not all at once, not with empty promises — but with real science, with research advancing faster than ever, and with clinical trials that, for the first time, are also designed for people like you: people who don\'t yet have symptoms, but who want to be prepared when the moment to act arrives.',
+    initial_p5: 'We\'ve launched a preclinical follow-up program. It\'s not just another study. It\'s accompaniment — yours, at your own pace, with real information and with a team that has spent years devoted to this and that will be with you at every step.',
+    initial_p6: 'We\'re not asking anything of you yet. Just that you take a look.',
+    initial_cta: 'I want to learn about the program &rarr;',
+
+    /* ---- Info update email ---- */
+    pildoras_subject_default: 'New info update available',
+    pildoras_doc_title:       'New info update available',
+    pildoras_subtitle:        'New info update available',
+    pildoras_p1: 'We have a new update for you.',
+    pildoras_p2: 'In the follow-up program we regularly publish <strong>Info updates</strong> &mdash; short, clear, and rigorous updates on clinical trials, new therapies, and scientific findings relevant to people like you.',
+    pildoras_p3: 'There\'s a new update available. Come in whenever you want and read it at your own pace.',
+    pildoras_cta: 'See the new update &rarr;',
+    pildoras_unsub_note: 'You\'re receiving this email because you explicitly asked to be notified whenever new info updates were available. If you no longer wish to receive this type of communication, you can let us know here:',
+    pildoras_unsub_btn:  'I no longer wish to receive these notifications',
+  },
 };
 
 /* Accede a una cadena con fallback a castellano si falta/está vacía */
