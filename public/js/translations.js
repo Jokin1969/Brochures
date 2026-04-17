@@ -301,6 +301,17 @@ const TRANSLATIONS = {
     'm2.c2.exp.p3':   '<strong>Fase aktibo isila:</strong> jarduera biologikoaren hasierako seinaleak, sintomarik gabe. Lehen entsegu prebentiboetarako lehentasunezko taldea.',
     'm2.c2.exp.retry': 'Argi duzunean:',
 
+    /* ---- portadores-paso-3.html (Check 2.3) ---- */
+    'm2.c3.title':    'Jakitea ahalbidetzen duten probak',
+    'm2.c3.prose.p1': 'Bi taldeetatik zeinean zauden zehaztea ez da erraza. Gaur egun ez dago proba bakar, azkar eta behin betikorik hori erantzuten duenik. Daukaguna da tresna espezializatuak — horietako batzuek ohikoak ez diren lagin biologikoak behar dituzte, hala nola likido zefalorrakideoaren azterketa jakin batzuk edo prion-jardueraren seinaleak sentikortasun handiagoarekin detektatzeko beste batzuk.',
+    'm2.c3.prose.p2': 'Horrek esan nahi du prozesuak denbora, bisitak eta, zenbait kasutan, egin aurretik xehetasunez azaltzea merezi duten prozedurak eskatzen dituela. Programako taldeak erabaki bakoitzean lagunduko dizu, eta ezer ez da egingo zure ulermenik eta zure baimenik gabe.',
+    'm2.c3.question': 'Ulertzen al duzu zure egoera ezagutzeak proba espezializatuak eskatzen dituela, beti errazak ez direnak, eta emaitzak zure bizitzan benetako ondorioak izan ditzakeela?',
+    'm2.c3.yes':      'Bai, ulertzen dut eta jarraitu nahi dut',
+    'm2.c3.no':       'Pentsatu behar dut edo hau hobeto ulertu aurretik jarraitu nahi dut',
+    'm2.c3.exp.p1':   'Hausnarketa merezi duen erabakia da, eta oso ondo dago hori aitortzea. Garrantzitsuena da inork ez dizula probarik egiteko eskatuko aurretik xehetasunez azaldu gabe zertan datzan, zer informazio ematen duen, eta emaitza hori ezagutzeak zuretzat zer suposa dezakeen.',
+    'm2.c3.exp.p2':   'Baimen informatua ez da inprimaki bat — taldearekin benetako elkarrizketa bat da. Prest zaudela sentitzen duzunean, galdera hemen egongo da.',
+    'm2.c3.exp.retry': 'Prest zaudenean:',
+
     /* ---- Cierres momento 1 ---- */
     'closure.b.title': 'Zure erritmoa da erritu egokia',
     'closure.b.text':  'Ez dago presarik. Garrantzitsua da jakitea informazio hau hemen egongo dela behar duzunean, eta programako taldea eskuragarri dagoela elkarrizketari berriro heldu nahi diozunean. Zure burua zaintzeak denbora ematea ere esan nahi du.',
