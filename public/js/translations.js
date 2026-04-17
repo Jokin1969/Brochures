@@ -456,6 +456,19 @@ const TRANSLATIONS = {
     'm2.c1.exp.p3':   'Conèixer en quin dels dos grups et trobes és voluntari, possible, i una cosa que el programa pot ajudar-te a descobrir.',
     'm2.c1.exp.retry': 'Torna a la pregunta quan vulguis:',
 
+    /* ---- portadores-paso-2.html (Check 2.2) ---- */
+    'm2.c2.title':    'La diferència entre els dos tipus, i el que significa per a tu',
+    'm2.c2.prose.p1': 'Saber que hi ha dos tipus és un primer pas. Però volem assegurar-nos que la diferència entre ells té un sentit real per a tu, no només com a concepte abstracte.',
+    'm2.c2.prose.p2': '<strong>Si estàs en fase inactiva:</strong> els marcadors biològics no mostren activitat detectable avui. Això no significa que el procés no vagi a començar en algun moment (pot ser en qüestió de dies, setmanes o mesos), però sí que probablement disposes d\'un marge de temps ampli fins al desenvolupament de símptomes visibles de malaltia. Aquest marge és precisament el que fa possible planificar i estar en primera línia quan arribin les teràpies.',
+    'm2.c2.prose.p3': '<strong>Si estàs en fase activa silenciosa:</strong> els marcadors mostren senyals primerencs d\'activitat, tot i que la teva vida quotidiana no ho reflecteix en absolut. Lluny de ser només una mala notícia, ja que podria implicar que els símptomes de la malaltia podrien aparèixer en un horitzó temporal més proper (tot i que encara desconegut), és la informació més valuosa que pots tenir avui — perquè et situa exactament en el grup per al qual s\'estan intentant dissenyar els primers assaigs clínics preventius. El moment d\'actuar és ara, i el programa és aquí per a cada pas.',
+    'm2.c2.question': 'Entens la diferència entre les dues situacions i el que podria implicar per al teu cas concret?',
+    'm2.c2.yes':      'Sí, entenc la diferència i el que implica',
+    'm2.c2.no':       'Necessito rellegir-ho o no m\'ha quedat del tot clar',
+    'm2.c2.exp.p1':   'No passa res. Pren-te el temps que necessitis. Aquí tens de nou els dos perfils de manera resumida:',
+    'm2.c2.exp.p2':   '<strong>Fase inactiva:</strong> marcadors sense activitat detectable avui. Horitzó temporal ampli. Temps per planificar.',
+    'm2.c2.exp.p3':   '<strong>Fase activa silenciosa:</strong> senyals primerencs d\'activitat biològica, sense símptomes. El grup prioritari per als primers assaigs preventius.',
+    'm2.c2.exp.retry': 'Quan ho tinguis clar:',
+
     /* ---- Cierres momento 1 ---- */
     'closure.b.title': 'El teu ritme és el ritme correcte',
     'closure.b.text':  'No hi ha cap pressa. El que importa és que sàpigues que aquesta informació estarà aquí quan la necessitis, i que l\'equip del programa està disponible si en algun moment vols reprendre aquesta conversa. Cuidar-te també significa donar-te el temps que necessites.',
