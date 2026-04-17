@@ -716,6 +716,52 @@ const TRANSLATIONS = {
 
     'm1.c.header': 'I have questions and would rather talk to someone first',
     'm1.c.body':   'Before making any decision, I\'d like to talk with the program team. I have questions I can\'t answer on my own, and I need to hear a human voice before continuing.',
+
+    /* ---- Moment 1 closures ---- */
+    'closure.b.title': 'Your pace is the right pace',
+    'closure.b.text':  'There\'s no rush at all. What matters is knowing that this information will be here when you need it, and that the program team is available whenever you\'d like to pick up the conversation. Taking care of yourself also means giving yourself the time you need.',
+
+    'closure.c.title': 'Talking is always a good first step',
+    'closure.c.text':  'Having questions doesn\'t mean you\'re lost — it means you\'re taking this seriously. The program team is here precisely for that. Don\'t hesitate to reach out through whichever channel feels most comfortable for you.',
+
+    'closure.contacts.label': 'How to find us',
+
+    /* ---- Footer ---- */
+    'footer.text':   '© Joaquín Castilla 2026',
+    'footer.ethics': 'Program approved by the Basque Country Research Ethics Committee · Code PI2025164',
+
+    /* ---- Next steps button ---- */
+    'btn.siguientes-pasos': 'What are the next steps?',
+
+    /* ---- pildoras.html (Info updates) ---- */
+    'pildoras.hero.title':      'Info<br>updates',
+    'pildoras.hero.sub':        'Short, rigorous updates on what matters',
+    'pildoras.p1.title':        'Coming soon',
+    'pildoras.p1.text':         'Info updates will be available soon. They will be short, rigorous updates on the most relevant advances in prion diseases, clinical trials, and new therapies. Come back and visit us.',
+    'pildoras.p1.btn':          'Read more',
+    'pildoras.subscribe.title': 'Get Info updates in your inbox',
+    'pildoras.subscribe.text':  'If you\'re part of the follow-up program, you can enable email notifications to get an alert whenever we publish a new update.',
+    'pildoras.subscribe.btn':   'Enable my notifications',
+    'pildoras.modal.title':     'Who are you?',
+    'pildoras.modal.desc':      'Enter your ID number to enable notifications. Only participants registered in the program can enable them.',
+    'pildoras.modal.label':     'ID number',
+    'pildoras.modal.btn':       'Enable',
+    'pildoras.modal.notfound':  'We couldn\'t find your ID number in the program. If you think this is a mistake, please contact the team.',
+
+    /* ---- Moment 3 (participation) ---- */
+    'm3.a1.text':   'Nothing that happens within the program is subject to any obligation. You can decide at any time to stop participating, without affecting your medical care or your relationship with the team. You owe nothing to anyone here, and we demand nothing from you either.',
+    'm3.a2.text':   'As a participant in the program, you\'ll have access to an application designed specifically for asymptomatic carriers. Over time, and if you wish, it will let you record aspects such as sleep quality, mood, cognitive function, and other relevant indicators — with the option for your live-in partner, if you have one, to contribute to that log as well, which aims to better understand the asymptomatic phase and the onset and/or progression of the disease.',
+
+    /* ---- Sleep follow-up step ---- */
+    'seguimiento.sueno.title': 'Sleep study',
+    'seguimiento.sueno.text':  'Using polysomnography, we record what happens during sleep: movements, breathing, brain activity, and behavior. Certain sleep alterations — particularly those related to REM phase — can appear subtly before any other sign is detectable, and tracking them over time is part of the early-detection protocol.',
+
+    /* ---- portadores-baja-pildoras.html ---- */
+    'baja.title':       'We\'ve recorded your preference',
+    'baja.text':        'From now on you won\'t receive any more emails about new Info updates. If at some point you change your mind, you can re-enable them from the Info updates section of the program.',
+    'baja.link':        'Go to Info updates',
+    'baja.error.title': 'Invalid link',
+    'baja.error.text':  'This link is invalid or has already been used. If you\'d like to manage your preferences, please contact the team.',
   },
 };
 
