@@ -15,6 +15,10 @@
 
     <nav class="lang-switcher" aria-label="Idioma">
         <button class="lang-btn lang-btn--active" data-lang="es">🇪🇸 ES</button>
+        <button class="lang-btn" data-lang="eu">🏴 EU</button>
+        <button class="lang-btn" data-lang="ca">🏴 CA</button>
+        <button class="lang-btn" data-lang="gl">🏴 GL</button>
+        <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
     </nav>
 
     <section class="hero">
@@ -93,6 +97,13 @@
     document.addEventListener('DOMContentLoaded', function () {
         requestAnimationFrame(function () { document.body.classList.add('loaded'); });
         if (typeof applyTranslations === 'function') applyTranslations();
+
+        document.querySelectorAll('.lang-btn[data-lang]').forEach(function (btn) {
+            btn.classList.toggle('lang-btn--active', btn.dataset.lang === (localStorage.getItem('pg-lang') || 'es'));
+            btn.addEventListener('click', function () {
+                if (typeof setLang === 'function') setLang(this.dataset.lang);
+            });
+        });
 
         setTimeout(function () {
             var main = document.querySelector('.pg-main');
