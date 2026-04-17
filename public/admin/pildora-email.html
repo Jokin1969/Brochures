@@ -31,6 +31,10 @@
         .correo-status--error { background: var(--red-pale); color: #991b1b; display: block; }
         .loading-state { text-align: center; padding: 64px 24px; color: var(--text-3); font-size: 0.9rem; }
         .pildora-badge { display: inline-flex; align-items: center; gap: 5px; background: var(--green-pale); color: var(--green); font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 100px; margin-left: 8px; vertical-align: middle; }
+        .lang-pill { border: 1px solid var(--border); background: var(--white); color: var(--text-2); padding: 5px 11px; font-size: 0.82rem; font-family: inherit; border-radius: 100px; cursor: pointer; transition: border-color 0.15s, background 0.15s, color 0.15s; }
+        .lang-pill:hover { border-color: var(--text-3); }
+        .lang-pill--active { background: var(--blue); color: var(--white); border-color: var(--blue); cursor: default; }
+        .lang-pill--active:hover { border-color: var(--blue); }
     </style>
 </head>
 <body>
@@ -63,6 +67,17 @@
                 <span class="correo-to-label">Para:</span>
                 <span class="correo-to-value" id="to-name"></span>
                 <span class="correo-to-email" id="to-email"></span>
+            </div>
+
+            <div class="correo-field">
+                <label>Idioma:</label>
+                <div id="lang-switcher" style="display:flex;gap:6px;flex-wrap:wrap;">
+                    <button type="button" class="lang-pill" data-lang="es">🇪🇸 ES</button>
+                    <button type="button" class="lang-pill" data-lang="eu">🏴 EU</button>
+                    <button type="button" class="lang-pill" data-lang="ca">🏴 CA</button>
+                    <button type="button" class="lang-pill" data-lang="gl">🏴 GL</button>
+                    <button type="button" class="lang-pill" data-lang="en">🇺🇸 EN</button>
+                </div>
             </div>
 
             <div class="correo-field">
@@ -103,7 +118,9 @@
     return;
   }
 
-  var SUBJECT_DEFAULT = 'Nueva píldora de información disponible';
+  var currentLang     = 'es';
+  var lastAutoSubject = '';
+  var portadorData    = null;
 
   fetch('/api/admin/portadores', { headers: { 'Authorization': 'Bearer ' + pwd } })
   .then(function (r) {
@@ -117,15 +134,23 @@
       document.getElementById('loading-state').textContent = 'Portador no encontrado (ID: ' + portadorId + ').';
       return;
     }
+    portadorData = p;
+    currentLang  = p.idioma || 'es';
 
     var nombre = [p.nombre, p.apellidos].filter(Boolean).join(' ') || 'Portador ' + p.id;
     document.getElementById('correo-portador-label').textContent = nombre + ' · ' + (p.email || 'sin email');
     document.getElementById('to-name').textContent  = nombre;
     document.getElementById('to-email').textContent = p.email || '';
-    document.getElementById('field-subject').value  = SUBJECT_DEFAULT;
+
+    document.querySelectorAll('#lang-switcher .lang-pill').forEach(function (btn) {
+      btn.classList.toggle('lang-pill--active', btn.dataset.lang === currentLang);
+      btn.addEventListener('click', function () {
+        if (btn.dataset.lang === currentLang) return;
+        changeLang(btn.dataset.lang);
+      });
+    });
 
     var frame = document.getElementById('preview-frame');
-    frame.src = '/api/admin/pildora-preview/' + portadorId + '?password=' + encodeURIComponent(pwd);
     frame.addEventListener('load', function () {
       try {
         var h = frame.contentDocument && frame.contentDocument.body
@@ -133,6 +158,8 @@
         if (h > 200) frame.style.minHeight = (h + 32) + 'px';
       } catch (e) {}
     });
+
+    applyLang(currentLang);
 
     document.getElementById('loading-state').style.display = 'none';
     document.getElementById('correo-panel').style.display   = 'block';
@@ -144,6 +171,46 @@
   .catch(function (err) {
     document.getElementById('loading-state').textContent = 'Error al cargar datos: ' + err.message;
   });
+
+  function changeLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('#lang-switcher .lang-pill').forEach(function (btn) {
+      btn.classList.toggle('lang-pill--active', btn.dataset.lang === lang);
+    });
+    applyLang(lang);
+
+    if (portadorData && portadorData.idioma !== lang) {
+      fetch('/api/admin/portadores/' + portadorId, {
+        method:  'PUT',
+        headers: { 'Authorization': 'Bearer ' + pwd, 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ idioma: lang })
+      })
+      .then(function (r) { if (r.ok) { portadorData.idioma = lang; } })
+      .catch(function () {});
+    }
+  }
+
+  function applyLang(lang) {
+    var frame = document.getElementById('preview-frame');
+    frame.src = '/api/admin/pildora-preview/' + portadorId
+              + '?password=' + encodeURIComponent(pwd)
+              + '&lang=' + encodeURIComponent(lang);
+
+    var subjectInp = document.getElementById('field-subject');
+    var userEdited = subjectInp.value !== '' && subjectInp.value !== lastAutoSubject;
+
+    fetch('/api/admin/email-defaults?lang=' + encodeURIComponent(lang),
+          { headers: { 'Authorization': 'Bearer ' + pwd } })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) {
+      if (!d) return;
+      if (!userEdited) {
+        subjectInp.value = d.pildoras || '';
+        lastAutoSubject  = subjectInp.value;
+      }
+    })
+    .catch(function () {});
+  }
 
   function sendEmail(id) {
     var btn      = document.getElementById('btn-send');
@@ -160,7 +227,7 @@
     fetch('/api/admin/pildora-email/' + id, {
       method:  'POST',
       headers: { 'Authorization': 'Bearer ' + pwd, 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ subject: subject }),
+      body:    JSON.stringify({ subject: subject, idioma: currentLang }),
     })
     .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
     .then(function (res) {
