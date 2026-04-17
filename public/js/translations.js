@@ -279,6 +279,15 @@ const TRANSLATIONS = {
     'm1.c.header': 'Zalantzak ditut eta lehenengo norbaitrekin hitz egin nahiago dut',
     'm1.c.body':   'Edozein erabaki hartu aurretik, programako taldearekin hitz egin nahi nuke. Galderak ditut erantzuten ez dakidanak, eta jarraitu aurretik giza ahotsa entzutea behar dut.',
 
+    /* ---- portadores-paso-1.html (Check 2.1) ---- */
+    'm2.c1.title':    'Zurekin baieztatu nahi dugun zerbait garrantzitsua',
+    'm2.c1.prose':    'Eramaile asintomatikoen taldean — zuk bezala, sintomak garatu gabe mutazio genetiko batekin bizi diren pertsonetan — egungo ikerketak argi eta garbi bereiz daitezkeen bi egoera identifikatzea ahalbidetu du. Hau nahiko berria da, eta hona iristen den guztiak ez du oraindik jakiten. Horregatik galdetu nahi dizugu:',
+    'm2.c1.question': 'Ba al zenekien bi eramaile asintomatiko mota daudela, egoera biologiko desberdinekin, nahiz eta biak sintomarik gabe egon?',
+    'm2.c1.exp.p1':   '<strong>Fase inaktiboko eramaileak:</strong> mutazioari lotutako prozesu biologikoak gaur egun ez du jarduera detektagarriaren zantzurik erakusten. Hori denbora-horizonte zabalago batekin lotzen da. Erloju biologikoa, nolabait esateko, oraindik ez da modu neurgarrian abiatu.',
+    'm2.c1.exp.p2':   '<strong>Fase aktibo isileko eramaileak:</strong> teknika espezializatuak detektatzen hasi ahal diren jarduera biologiko goiztiar bat dago, nahiz eta pertsonak absolutuki ezer ez sentitu. Prozesua oso isilik hasi da, eta hain zuzen horregatik da hain baliotsua jakitea: talde hau baita probabilitate handienaz lehen entsegu kliniko prebentiboetan sartu ahal izango dena.',
+    'm2.c1.exp.p3':   'Bi taldeetatik zeinean zauden jakitea borondatezkoa da, posiblea, eta programak aurkitzen lagun diezazukeen zerbait.',
+    'm2.c1.exp.retry': 'Itzuli galderara nahi duzunean:',
+
     /* ---- Cierres momento 1 ---- */
     'closure.b.title': 'Zure erritmoa da erritu egokia',
     'closure.b.text':  'Ez dago presarik. Garrantzitsua da jakitea informazio hau hemen egongo dela behar duzunean, eta programako taldea eskuragarri dagoela elkarrizketari berriro heldu nahi diozunean. Zure burua zaintzeak denbora ematea ere esan nahi du.',
