@@ -153,11 +153,44 @@
         }
         .pildora-expanded-body { font-size: 0.985rem; line-height: 1.75; color: var(--text); }
         .pildora-expanded-body p { margin: 0 0 16px 0; }
+        .pildora-expanded-body h3 {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 1.15rem; font-weight: 600;
+            color: var(--text);
+            margin: 28px 0 12px 0;
+            line-height: 1.35;
+        }
+        .pildora-expanded-body h3:first-child { margin-top: 0; }
         .pildora-expanded-body ul { list-style: none; padding: 0; margin: 14px 0; }
         .pildora-expanded-body li { padding: 10px 0 10px 22px; position: relative; line-height: 1.65; }
         .pildora-expanded-body li::before {
             content: '•'; position: absolute; left: 4px; top: 8px;
             font-size: 1.2rem; color: var(--text-3);
+        }
+        .pildora-expanded-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.95rem;
+            background: rgba(255,255,255,.5);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .pildora-expanded-body th,
+        .pildora-expanded-body td {
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0,0,0,.08);
+            vertical-align: top;
+            line-height: 1.55;
+        }
+        .pildora-expanded-body thead th {
+            font-weight: 600; color: var(--text);
+            background: rgba(255,255,255,.45);
+        }
+        .pildora-expanded-body tbody tr:last-child td { border-bottom: none; }
+        @media (max-width: 520px) {
+            .pildora-expanded-body table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
         }
 
         .pildora-expanded-conclusion {

@@ -40,4 +40,10 @@ const PILDORAS = [
     fecha:     '2026-04-19',
     destacada: true,
   },
+  {
+    id:        'rmn',
+    categoria: 'pruebas',
+    fecha:     '2026-04-19',
+    destacada: false,
+  },
 ];
