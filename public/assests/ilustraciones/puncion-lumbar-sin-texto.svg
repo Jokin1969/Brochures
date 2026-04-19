@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 400" role="img" aria-labelledby="pl-title pl-desc">
+  <title id="pl-title">Schematic illustration of a lumbar puncture</title>
+  <desc id="pl-desc">Side silhouette of a curled-up person, showing the lower lumbar area where the puncture is performed, below the end of the spinal cord.</desc>
+
+  <!-- Silueta de perfil, estilo línea limpia -->
+  <g fill="none" stroke="#4A7C5F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="120" cy="85" r="32"/>
+    <path d="M 120 117 C 125 135, 135 150, 145 165 C 155 185, 165 210, 172 235 C 178 258, 182 280, 184 300"/>
+    <path d="M 92 110 C 95 135, 105 160, 120 185 C 135 210, 148 235, 155 260 C 160 278, 162 290, 160 300"/>
+    <path d="M 92 150 C 75 165, 65 185, 70 210 C 75 230, 90 245, 115 250"/>
+    <path d="M 160 300 C 140 310, 115 315, 90 312 C 70 310, 55 305, 45 295"/>
+    <path d="M 184 300 C 170 315, 150 325, 125 328 C 100 330, 80 325, 65 315"/>
+  </g>
+
+  <!-- Columna vertebral, discreta -->
+  <g fill="none" stroke="#4A7C5F" stroke-width="1.4" stroke-dasharray="3 3" opacity="0.55">
+    <path d="M 130 120 C 138 145, 150 175, 162 210 C 172 240, 178 265, 182 285"/>
+  </g>
+
+  <!-- Indicador de zona de punción -->
+  <g>
+    <circle cx="182" cy="280" r="6" fill="#4A7C5F"/>
+    <circle cx="182" cy="280" r="12" fill="none" stroke="#4A7C5F" stroke-width="1.4" opacity="0.5"/>
+    <circle cx="182" cy="280" r="20" fill="none" stroke="#4A7C5F" stroke-width="1" opacity="0.25"/>
+  </g>
+
+  <!-- Indicador sutil del fin de la médula -->
+  <g opacity="0.35">
+    <line x1="170" y1="230" x2="200" y2="230" stroke="#4A7C5F" stroke-width="1" stroke-dasharray="2 2"/>
+  </g>
+</svg>

@@ -12,18 +12,26 @@
 /*   pildoras.<id>.desarrollo      (acepta HTML básico: <p>, <ul>, etc.) */
 /*   pildoras.<id>.conclusion                                             */
 /*                                                                         */
+/* Campo opcional `ilustracion`: objeto con ruta por idioma (usa la clave */
+/* `default` como fallback). La ilustración se muestra en la vista       */
+/* expandida, entre el resumen y el desarrollo. Ejemplo:                 */
+/*                                                                         */
+/*   ilustracion: {                                                       */
+/*     es:      '/assests/ilustraciones/foo.svg',                        */
+/*     default: '/assests/ilustraciones/foo-sin-texto.svg',              */
+/*   }                                                                    */
+/*                                                                         */
+/* Mecanismo de *lazy linking* (ver render en portadores-pildoras.html): */
+/* en el texto de `desarrollo`, los términos escritos como               */
+/*   <strong>RT-QuIC</strong>  o  <strong>PMCA</strong>                  */
+/* se convierten automáticamente en enlaces a las píldoras `rt-quic` /   */
+/* `pmca` *si y solo si* esas píldoras existen en el array PILDORAS.    */
+/* Mientras no existan, los términos se renderizan como negrita simple.  */
+/* Para activar el enlace, basta con añadir la nueva entrada al array.   */
+/*                                                                         */
 /* Para añadir una píldora nueva:                                         */
 /*   1) añade una entrada al array PILDORAS,                              */
 /*   2) añade las 5 claves traducidas a los 5 idiomas en translations.js.*/
-/*                                                                         */
-/* Plantilla:                                                              */
-/*                                                                         */
-/*   {                                                                     */
-/*     id:        'biopsia-piel',                                         */
-/*     categoria: 'pruebas',         // pruebas | ciencia | horizonte    */
-/*     fecha:     '2026-05-10',      // ISO YYYY-MM-DD                   */
-/*     destacada: false,             // true = ancho completo, arriba    */
-/*   }                                                                    */
 /*                                                                         */
 /* CATEGORÍAS                                                              */
 /*   pruebas     — procedimientos del seguimiento                         */
@@ -45,5 +53,15 @@ const PILDORAS = [
     categoria: 'pruebas',
     fecha:     '2026-04-19',
     destacada: false,
+  },
+  {
+    id:        'puncion-lumbar',
+    categoria: 'pruebas',
+    fecha:     '2026-04-19',
+    destacada: false,
+    ilustracion: {
+      es:      '/assests/ilustraciones/puncion-lumbar.svg',
+      default: '/assests/ilustraciones/puncion-lumbar-sin-texto.svg',
+    },
   },
 ];

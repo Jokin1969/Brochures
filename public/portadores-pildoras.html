@@ -193,6 +193,26 @@
             .pildora-expanded-body table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
         }
 
+        .pildora-illustration {
+            display: block;
+            margin: 32px auto;
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+        }
+
+        .pildora-link {
+            color: inherit;
+            font-weight: 600;
+            text-decoration: underline;
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 3px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .pildora-link:hover { opacity: 0.75; }
+        .pildora-link:focus-visible { outline: 2px solid var(--text-2); outline-offset: 2px; border-radius: 2px; }
+
         .pildora-expanded-conclusion {
             margin-top: 24px;
             padding: 20px 22px;
@@ -464,6 +484,34 @@
         }
         function categoryLabel(cat) { return tr('pildoras.filters.' + cat); }
 
+        function currentLang() { return localStorage.getItem('pg-lang') || 'es'; }
+
+        function illustrationSrc(p) {
+            if (!p || !p.ilustracion) return '';
+            return p.ilustracion[currentLang()] || p.ilustracion.default || '';
+        }
+
+        /* Lazy linking: convierte <strong>Término</strong> en enlace clicable
+           si la píldora destino existe en PILDORAS. Mientras no exista, el
+           término se queda como negrita simple. */
+        var LAZY_LINK_TERMS = [
+            { term: 'RT-QuIC', id: 'rt-quic' },
+            { term: 'PMCA',    id: 'pmca'    }
+        ];
+        function applyLazyLinks(html) {
+            if (!html) return html;
+            var ids = (typeof PILDORAS !== 'undefined' && Array.isArray(PILDORAS))
+                ? PILDORAS.map(function (p) { return p.id; })
+                : [];
+            LAZY_LINK_TERMS.forEach(function (t) {
+                if (ids.indexOf(t.id) === -1) return;
+                var escaped = t.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                var re = new RegExp('<strong>(' + escaped + ')</strong>', 'g');
+                html = html.replace(re, '<a class="pildora-link" role="button" tabindex="0" data-open-pildora="' + t.id + '">$1</a>');
+            });
+            return html;
+        }
+
         function sortedPildoras() {
             var list = (typeof PILDORAS !== 'undefined' && Array.isArray(PILDORAS)) ? PILDORAS.slice() : [];
             list.sort(function (a, b) {
@@ -513,6 +561,11 @@
             var conclusion = tr('pildoras.' + p.id + '.conclusion');
             var closeLabel = tr('pildoras.close');
 
+            var illSrc = illustrationSrc(p);
+            var illHtml = illSrc
+                ? '<img class="pildora-illustration" src="' + escapeHtml(illSrc) + '" alt="">'
+                : '';
+
             card.classList.add('pildora-card--expanded');
             card.setAttribute('aria-expanded', 'true');
             card.removeAttribute('role');
@@ -526,13 +579,30 @@
                     '</button>' +
                 '</div>' +
                 '<p class="pildora-expanded-lede">' + escapeHtml(lede) + '</p>' +
-                '<div class="pildora-expanded-body">' + body + '</div>' +
+                illHtml +
+                '<div class="pildora-expanded-body">' + applyLazyLinks(body) + '</div>' +
                 '<div class="pildora-expanded-conclusion">' + escapeHtml(conclusion) + '</div>';
 
             var closeBtn = card.querySelector('[data-action="close"]');
             if (closeBtn) closeBtn.addEventListener('click', function (e) {
                 e.stopPropagation();
                 collapseCard();
+            });
+
+            card.querySelectorAll('[data-open-pildora]').forEach(function (link) {
+                var targetId = link.getAttribute('data-open-pildora');
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    expandCard(targetId);
+                });
+                link.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        expandCard(targetId);
+                    }
+                });
             });
         }
 
