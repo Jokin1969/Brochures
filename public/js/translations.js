@@ -245,6 +245,7 @@ const TRANSLATIONS = {
     'pildoras.filters.pruebas':   'Pruebas que te harán',
     'pildoras.filters.ciencia':   'La ciencia detrás',
     'pildoras.filters.horizonte': 'En el horizonte',
+    'pildoras.filters.experiencia': 'El programa por dentro',
 
     /* Acciones de la vista expandida */
     'pildoras.close':            'Cerrar',
@@ -470,6 +471,7 @@ const TRANSLATIONS = {
     'pildoras.filters.pruebas':   'Egingo dizkizuten probak',
     'pildoras.filters.ciencia':   'Atzeko zientzia',
     'pildoras.filters.horizonte': 'Zerumugan',
+    'pildoras.filters.experiencia': 'Programa, barrutik',
 
     /* Acciones de la vista expandida */
     'pildoras.close':            'Itxi',
@@ -724,6 +726,7 @@ const TRANSLATIONS = {
     'pildoras.filters.pruebas':   'Proves que et faran',
     'pildoras.filters.ciencia':   'La ciència al darrere',
     'pildoras.filters.horizonte': 'A l\'horitzó',
+    'pildoras.filters.experiencia': 'El programa per dins',
 
     /* Acciones de la vista expandida */
     'pildoras.close':            'Tancar',
@@ -978,6 +981,7 @@ const TRANSLATIONS = {
     'pildoras.filters.pruebas':   'Probas que che farán',
     'pildoras.filters.ciencia':   'A ciencia detrás',
     'pildoras.filters.horizonte': 'No horizonte',
+    'pildoras.filters.experiencia': 'O programa por dentro',
 
     /* Acciones de la vista expandida */
     'pildoras.close':            'Pechar',
@@ -1153,6 +1157,7 @@ const TRANSLATIONS = {
     'pildoras.filters.pruebas':   'Tests you\'ll have',
     'pildoras.filters.ciencia':   'The science behind',
     'pildoras.filters.horizonte': 'On the horizon',
+    'pildoras.filters.experiencia': 'Inside the program',
 
     /* Expanded view actions */
     'pildoras.close':            'Close',

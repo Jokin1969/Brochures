@@ -13,13 +13,15 @@
     <style>
         /* ---- Paleta por categoría ---- */
         :root {
-            --cat-pruebas-bg:      #D4E4D8;
-            --cat-pruebas-accent:  #4A7C5F;
-            --cat-ciencia-bg:      #D6DBEE;
-            --cat-ciencia-accent:  #5B6BA8;
-            --cat-horizonte-bg:    #F4E4C1;
-            --cat-horizonte-accent:#A67C3D;
-            --cat-bienvenida-bg:   #FDFBF7;
+            --cat-pruebas-bg:        #D4E4D8;
+            --cat-pruebas-accent:    #4A7C5F;
+            --cat-ciencia-bg:        #D6DBEE;
+            --cat-ciencia-accent:    #5B6BA8;
+            --cat-horizonte-bg:      #F4E4C1;
+            --cat-horizonte-accent:  #A67C3D;
+            --cat-experiencia-bg:    #E1D6EC;
+            --cat-experiencia-accent:#7A5BA3;
+            --cat-bienvenida-bg:     #FDFBF7;
         }
 
         /* ---- Layout ---- */
@@ -43,9 +45,10 @@
         .pildoras-chip:hover { background: #f8fafc; transform: translateY(-1px); }
         .pildoras-chip:focus-visible { outline: 2px solid var(--text-2); outline-offset: 2px; }
         .pildoras-chip--active { background: var(--text); color: #fff; border-color: var(--text); }
-        .pildoras-chip--pruebas.pildoras-chip--active   { background: var(--cat-pruebas-accent);   border-color: var(--cat-pruebas-accent); }
-        .pildoras-chip--ciencia.pildoras-chip--active   { background: var(--cat-ciencia-accent);   border-color: var(--cat-ciencia-accent); }
-        .pildoras-chip--horizonte.pildoras-chip--active { background: var(--cat-horizonte-accent); border-color: var(--cat-horizonte-accent); }
+        .pildoras-chip--pruebas.pildoras-chip--active     { background: var(--cat-pruebas-accent);     border-color: var(--cat-pruebas-accent); }
+        .pildoras-chip--ciencia.pildoras-chip--active     { background: var(--cat-ciencia-accent);     border-color: var(--cat-ciencia-accent); }
+        .pildoras-chip--horizonte.pildoras-chip--active   { background: var(--cat-horizonte-accent);   border-color: var(--cat-horizonte-accent); }
+        .pildoras-chip--experiencia.pildoras-chip--active { background: var(--cat-experiencia-accent); border-color: var(--cat-experiencia-accent); }
 
         /* ---- Rejilla ---- */
         .pildoras-grid {
@@ -75,9 +78,10 @@
         .pildora-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
         .pildora-card:focus-visible { outline: 2px solid var(--text-2); outline-offset: 2px; }
         .pildora-card[hidden] { display: none; }
-        .pildora-card--pruebas   { background: var(--cat-pruebas-bg); }
-        .pildora-card--ciencia   { background: var(--cat-ciencia-bg); }
-        .pildora-card--horizonte { background: var(--cat-horizonte-bg); }
+        .pildora-card--pruebas     { background: var(--cat-pruebas-bg); }
+        .pildora-card--ciencia     { background: var(--cat-ciencia-bg); }
+        .pildora-card--horizonte   { background: var(--cat-horizonte-bg); }
+        .pildora-card--experiencia { background: var(--cat-experiencia-bg); }
         .pildora-card--bienvenida {
             grid-column: 1 / -1;
             background: var(--cat-bienvenida-bg);
@@ -87,7 +91,7 @@
         .pildora-card--bienvenida::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #4A7C5F 0%, #5B6BA8 50%, #A67C3D 100%);
+            background: linear-gradient(90deg, #4A7C5F 0%, #5B6BA8 33%, #A67C3D 66%, #7A5BA3 100%);
             border-radius: 20px 20px 0 0;
         }
 
@@ -100,9 +104,10 @@
             align-self: flex-start;
             letter-spacing: 0.02em;
         }
-        .pildora-card--pruebas   .pildora-tag { color: var(--cat-pruebas-accent); }
-        .pildora-card--ciencia   .pildora-tag { color: var(--cat-ciencia-accent); }
-        .pildora-card--horizonte .pildora-tag { color: var(--cat-horizonte-accent); }
+        .pildora-card--pruebas     .pildora-tag { color: var(--cat-pruebas-accent); }
+        .pildora-card--ciencia     .pildora-tag { color: var(--cat-ciencia-accent); }
+        .pildora-card--horizonte   .pildora-tag { color: var(--cat-horizonte-accent); }
+        .pildora-card--experiencia .pildora-tag { color: var(--cat-experiencia-accent); }
 
         .pildora-title {
             font-family: 'Lora', Georgia, serif;
@@ -222,10 +227,11 @@
             font-size: 0.985rem; line-height: 1.65;
             color: var(--text);
         }
-        .pildora-card--bienvenida.pildora-card--expanded .pildora-expanded-conclusion { border-left-color: #5B6BA8; }
-        .pildora-card--pruebas.pildora-card--expanded   .pildora-expanded-conclusion { border-left-color: var(--cat-pruebas-accent); }
-        .pildora-card--ciencia.pildora-card--expanded   .pildora-expanded-conclusion { border-left-color: var(--cat-ciencia-accent); }
-        .pildora-card--horizonte.pildora-card--expanded .pildora-expanded-conclusion { border-left-color: var(--cat-horizonte-accent); }
+        .pildora-card--bienvenida.pildora-card--expanded   .pildora-expanded-conclusion { border-left-color: #5B6BA8; }
+        .pildora-card--pruebas.pildora-card--expanded     .pildora-expanded-conclusion { border-left-color: var(--cat-pruebas-accent); }
+        .pildora-card--ciencia.pildora-card--expanded     .pildora-expanded-conclusion { border-left-color: var(--cat-ciencia-accent); }
+        .pildora-card--horizonte.pildora-card--expanded   .pildora-expanded-conclusion { border-left-color: var(--cat-horizonte-accent); }
+        .pildora-card--experiencia.pildora-card--expanded .pildora-expanded-conclusion { border-left-color: var(--cat-experiencia-accent); }
 
         @media (max-width: 640px) {
             .pildora-card--expanded { padding: 28px 24px; }
@@ -387,10 +393,11 @@
 
         <!-- Filtros por categoría -->
         <div class="pildoras-filters" id="pildoras-filters" role="tablist" aria-label="Filtros de categoría">
-            <button type="button" class="pildoras-chip pildoras-chip--active" data-filter="todas"     data-i18n="pildoras.filters.todas">Todas</button>
-            <button type="button" class="pildoras-chip pildoras-chip--pruebas"   data-filter="pruebas"   data-i18n="pildoras.filters.pruebas">Pruebas que te harán</button>
-            <button type="button" class="pildoras-chip pildoras-chip--ciencia"   data-filter="ciencia"   data-i18n="pildoras.filters.ciencia">La ciencia detrás</button>
-            <button type="button" class="pildoras-chip pildoras-chip--horizonte" data-filter="horizonte" data-i18n="pildoras.filters.horizonte">En el horizonte</button>
+            <button type="button" class="pildoras-chip pildoras-chip--active"     data-filter="todas"       data-i18n="pildoras.filters.todas">Todas</button>
+            <button type="button" class="pildoras-chip pildoras-chip--pruebas"     data-filter="pruebas"     data-i18n="pildoras.filters.pruebas">Pruebas que te harán</button>
+            <button type="button" class="pildoras-chip pildoras-chip--ciencia"     data-filter="ciencia"     data-i18n="pildoras.filters.ciencia">La ciencia detrás</button>
+            <button type="button" class="pildoras-chip pildoras-chip--horizonte"   data-filter="horizonte"   data-i18n="pildoras.filters.horizonte">En el horizonte</button>
+            <button type="button" class="pildoras-chip pildoras-chip--experiencia" data-filter="experiencia" data-i18n="pildoras.filters.experiencia">El programa por dentro</button>
         </div>
 
         <!-- Rejilla de píldoras (se rellena dinámicamente desde /js/pildoras-data.js + translations.js) -->
