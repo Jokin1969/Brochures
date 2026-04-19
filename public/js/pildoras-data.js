@@ -74,4 +74,10 @@ const PILDORAS = [
     fecha:     '2026-04-19',
     destacada: false,
   },
+  {
+    id:        'extraccion-sangre',
+    categoria: 'pruebas',
+    fecha:     '2026-04-19',
+    destacada: false,
+  },
 ];
