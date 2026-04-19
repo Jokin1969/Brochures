@@ -68,4 +68,10 @@ const PILDORAS = [
       default: '/assests/ilustraciones/puncion-lumbar.svg',
     },
   },
+  {
+    id:        'polisomnografia',
+    categoria: 'pruebas',
+    fecha:     '2026-04-19',
+    destacada: false,
+  },
 ];
