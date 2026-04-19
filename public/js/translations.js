@@ -460,6 +460,13 @@ const TRANSLATIONS = {
     'pildoras.bienvenida.desarrollo':   '<p>Zer gertatzen ari den jakiteak —zer egingo dizuten, lagin bat nola aztertzen den, zer terapia ari diren ikertzen— laguntzen du programaren barruan etxean bezala sentitzen. Horregatik sortu ditugu informazio-pilula hauek: testu laburrak, argiak eta beharrik gabeko teknizismorik gabeak, nahi duzun ordenan irakur ditzakezunak.</p><p>Pilulak hiru taldetan antolatu ditugu, bakoitza bere kolorearekin, bilatzen duzuna erraz aurki dezazun:</p><ul><li><strong>Egingo dizkizuten probak</strong> jarraipeneko prozedurei buruzko azalpenak biltzen ditu: zer diren, nolakoak diren barrutik, zer sentituko duzun.</li><li><strong>Atzeko zientzia</strong> kontatzen du zure laginekin zer gertatzen den kontsultan jada ez zaudenean: lehen ikusi ezin zena ikustea ahalbidetzen duten teknikak.</li><li><strong>Zerumugan</strong> munduan garatzen eta entseatzen ari diren tratamenduez hitz egiten du, eta gaixotasun hauen ikerketan bizi dugun une berezi honetaz.</li></ul><p>Ez dago denak irakurri beharrik, ezta jarraian irakurri beharrik, ezta oraintxe bertan irakurri beharrik ere. Hemen daude jakin-mina sortzen zaizunerako, zalantzaren bat agertzen zaizunerako, edo besterik gabe oholtza atzean gertatzen denera hurbildu nahi duzunerako.</p>',
     'pildoras.bienvenida.conclusion':   'Pilula bakoitza leiho txiki bat da. Ireki itzazu nahi duzunean. Eta bakarren bat irakurri ondoren galderaren bat gelditzen bazaizu, taldea beti dago beste aldean zurekin hitz egiteko.',
 
+    /* Píldora RMN — itzultzear (EU) */
+    'pildoras.rmn.titulo':       '[Itzultzear] Una mirada al cerebro, con la máxima nitidez',
+    'pildoras.rmn.resumenCorto': '[Itzultzear — euskarazko itzulpena laster.] La resonancia magnética nos permite mirar el cerebro con gran detalle, sin aguja, sin dolor y sin radiación.',
+    'pildoras.rmn.resumen':      '[Itzultzear — euskarazko itzulpena laster.]',
+    'pildoras.rmn.desarrollo':   '<p><em>Itzultzear — euskarazko itzulpen osoa laster. Bitartean, gaztelaniazko bertsiora jo dezakezu.</em></p>',
+    'pildoras.rmn.conclusion':   '[Itzultzear — euskarazko itzulpena laster.]',
+
     'pildoras.subscribe.title': 'Jaso pilulak zure emailean',
     'pildoras.subscribe.text':  'Jarraipen programaren parte bazara, email bidezko jakinarazpenak aktibatu ditzakezu píldora berri bat argitaratzen dugunean abisu bat jasotzeko.',
     'pildoras.subscribe.btn':   'Nire jakinarazpenak aktibatu',
@@ -685,6 +692,13 @@ const TRANSLATIONS = {
     'pildoras.bienvenida.resumen':      'Aquesta secció reuneix petites explicacions sobre les proves, les tècniques i les teràpies que formen part del programa. Són textos breus, pensats per llegir-se amb calma, quan tu vulguis i fins on tu vulguis.',
     'pildoras.bienvenida.desarrollo':   '<p>Saber què està passant —el que et faran, com s\'analitza una mostra, quines teràpies s\'estan estudiant— ajuda a sentir-se més a casa dins del programa. Per això hem creat aquestes píndoles d\'informació: textos curts, clars i sense tecnicismes innecessaris, que pots llegir en l\'ordre que prefereixis.</p><p>Hem organitzat les píndoles en tres grups, cadascun amb el seu color, perquè trobis fàcilment el que busques:</p><ul><li><strong>Proves que et faran</strong> reuneix explicacions sobre els procediments del seguiment: què són, com són per dins, què sentiràs.</li><li><strong>La ciència al darrere</strong> explica el que passa amb les teves mostres quan ja no ets a la consulta: les tècniques que permeten mirar el que abans no es podia veure.</li><li><strong>A l\'horitzó</strong> parla dels tractaments que s\'estan desenvolupant i assajant al món, i del moment tan especial que vivim en la investigació d\'aquestes malalties.</li></ul><p>No cal llegir-les totes, ni llegir-les seguides, ni llegir-les ja. Són aquí per quan tinguis curiositat, o quan et sorgeixi un dubte, o simplement quan et vingui de gust acostar-te una mica més al que passa entre bastidors.</p>',
     'pildoras.bienvenida.conclusion':   'Cada píndola és una petita finestra. Obre-les quan vulguis. I si després de llegir-ne alguna et queden preguntes, l\'equip sempre és a l\'altra banda per parlar-ne amb tu.',
+
+    /* Píndola RMN — pendent de traducció (CA) */
+    'pildoras.rmn.titulo':       '[Pendent de traducció] Una mirada al cerebro, con la máxima nitidez',
+    'pildoras.rmn.resumenCorto': '[Pendent de traducció — la versió catalana arribarà aviat.] La resonancia magnética nos permite mirar el cerebro con gran detalle, sin aguja, sin dolor y sin radiación.',
+    'pildoras.rmn.resumen':      '[Pendent de traducció — la versió catalana arribarà aviat.]',
+    'pildoras.rmn.desarrollo':   '<p><em>Pendent de traducció — la versió catalana completa arribarà aviat. Mentrestant, pots consultar la versió en castellà.</em></p>',
+    'pildoras.rmn.conclusion':   '[Pendent de traducció — la versió catalana arribarà aviat.]',
 
     'pildoras.subscribe.title': 'Rep les píndoles al teu email',
     'pildoras.subscribe.text':  'Si formes part del programa de seguiment, pots activar les notificacions per email per rebre un avís cada vegada que publiquem una nova píndola.',
@@ -912,6 +926,13 @@ const TRANSLATIONS = {
     'pildoras.bienvenida.desarrollo':   '<p>Saber o que está a pasar —o que che van facer, como se analiza unha mostra, que terapias se están a estudar— axuda a sentirse máis na casa dentro do programa. Por iso creamos estas pílulas de información: textos curtos, claros e sen tecnicismos innecesarios, que podes ler na orde que prefiras.</p><p>Organizamos as pílulas en tres grupos, cada un coa súa cor, para que atopes facilmente o que buscas:</p><ul><li><strong>Probas que che farán</strong> reúne explicacións sobre os procedementos do seguimento: que son, como son por dentro, que vas sentir.</li><li><strong>A ciencia detrás</strong> conta o que ocorre coas túas mostras cando xa non estás na consulta: as técnicas que permiten mirar o que antes non se podía ver.</li><li><strong>No horizonte</strong> fala dos tratamentos que están a ser desenvolvidos e ensaiados no mundo, e do momento tan especial que vivimos na investigación destas enfermidades.</li></ul><p>Non fai falta leelas todas, nin leelas seguidas, nin leelas xa. Están aquí para cando teñas curiosidade, ou cando che xurda unha dúbida, ou simplemente cando che apeteza achegarte un pouco máis ao que ocorre entre bastidores.</p>',
     'pildoras.bienvenida.conclusion':   'Cada pílula é unha pequena ventá. Ábreas cando queiras. E se despois de ler algunha che quedan preguntas, o equipo sempre está do outro lado para faladas contigo.',
 
+    /* Pílula RMN — pendente de tradución (GL) */
+    'pildoras.rmn.titulo':       '[Pendente de tradución] Una mirada al cerebro, con la máxima nitidez',
+    'pildoras.rmn.resumenCorto': '[Pendente de tradución — a versión galega chegará pronto.] La resonancia magnética nos permite mirar el cerebro con gran detalle, sin aguja, sin dolor y sin radiación.',
+    'pildoras.rmn.resumen':      '[Pendente de tradución — a versión galega chegará pronto.]',
+    'pildoras.rmn.desarrollo':   '<p><em>Pendente de tradución — a versión galega completa chegará pronto. Mentres tanto, podes consultar a versión en castelán.</em></p>',
+    'pildoras.rmn.conclusion':   '[Pendente de tradución — a versión galega chegará pronto.]',
+
     'pildoras.subscribe.title': 'Recibe as píldoras no teu email',
     'pildoras.subscribe.text':  'Se formas parte do programa de seguimento, podes activar as notificacións por email para recibir un aviso cada vez que publiquemos unha nova píldora.',
     'pildoras.subscribe.btn':   'Activar as miñas notificacións',
@@ -1058,6 +1079,13 @@ const TRANSLATIONS = {
     'pildoras.bienvenida.resumen':      'This section brings together short explanations about the tests, techniques, and therapies that are part of the program. They\'re brief texts, meant to be read calmly, whenever you want and as far as you want.',
     'pildoras.bienvenida.desarrollo':   '<p>Knowing what\'s happening —what they\'re going to do, how a sample is analyzed, what therapies are being studied— helps you feel more at home within the program. That\'s why we\'ve created these information capsules: short, clear texts without unnecessary jargon, which you can read in whatever order you prefer.</p><p>We\'ve organized the capsules into three groups, each with its own color, so you can easily find what you\'re looking for:</p><ul><li><strong>Tests you\'ll have</strong> brings together explanations about the procedures of the follow-up: what they are, what they\'re like from the inside, what you\'ll feel.</li><li><strong>The science behind</strong> tells you what happens with your samples once you\'re no longer at the clinic: the techniques that allow us to look at what couldn\'t be seen before.</li><li><strong>On the horizon</strong> talks about the treatments being developed and trialed around the world, and about the very special moment we\'re living through in the research of these diseases.</li></ul><p>You don\'t need to read them all, or read them in a row, or read them right now. They\'re here for when you\'re curious, when a question comes up, or simply when you feel like coming a little closer to what happens behind the scenes.</p>',
     'pildoras.bienvenida.conclusion':   'Each capsule is a small window. Open them whenever you want. And if, after reading one, you\'re left with questions, the team is always on the other side, ready to talk them through with you.',
+
+    /* MRI capsule — translation pending (EN) */
+    'pildoras.rmn.titulo':       '[Translation pending] Una mirada al cerebro, con la máxima nitidez',
+    'pildoras.rmn.resumenCorto': '[Translation pending — the English version will arrive soon.] Magnetic resonance lets us look at the brain in great detail, without needles, pain, or radiation.',
+    'pildoras.rmn.resumen':      '[Translation pending — the English version will arrive soon.]',
+    'pildoras.rmn.desarrollo':   '<p><em>Translation pending — the full English version will arrive soon. In the meantime, you can read the Spanish version.</em></p>',
+    'pildoras.rmn.conclusion':   '[Translation pending — the English version will arrive soon.]',
 
     'pildoras.subscribe.title': 'Get Info updates in your inbox',
     'pildoras.subscribe.text':  'If you\'re part of the follow-up program, you can enable email notifications to get an alert whenever we publish a new update.',
