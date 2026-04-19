@@ -239,9 +239,23 @@ const TRANSLATIONS = {
     /* ---- portadores-pildoras.html ---- */
     'pildoras.hero.title':       'Píldoras de<br>información',
     'pildoras.hero.sub':         'Actualizaciones breves y rigurosas sobre lo que importa',
-    'pildoras.p1.title':         'Próximamente',
-    'pildoras.p1.text':          'Las píldoras de información llegarán pronto. Serán actualizaciones breves y rigurosas sobre los avances más relevantes en enfermedades priónicas, ensayos clínicos y nuevas terapias. Vuelve a visitarnos.',
-    'pildoras.p1.btn':           'Leer más',
+
+    /* Filtros de categoría */
+    'pildoras.filters.todas':     'Todas',
+    'pildoras.filters.pruebas':   'Pruebas que te harán',
+    'pildoras.filters.ciencia':   'La ciencia detrás',
+    'pildoras.filters.horizonte': 'En el horizonte',
+
+    /* Acciones de la vista expandida */
+    'pildoras.close':            'Cerrar',
+
+    /* Píldora de bienvenida */
+    'pildoras.bienvenida.titulo':       'Un espacio para ti, a tu ritmo',
+    'pildoras.bienvenida.resumenCorto': 'Bienvenido a las píldoras de información: textos breves sobre las pruebas, la ciencia y las terapias del programa. Léelas a tu ritmo.',
+    'pildoras.bienvenida.resumen':      'Esta sección reúne pequeñas explicaciones sobre las pruebas, las técnicas y las terapias que forman parte del programa. Son textos breves, pensados para leerse con calma, cuando tú quieras y hasta donde tú quieras.',
+    'pildoras.bienvenida.desarrollo':   '<p>Saber lo que está pasando —lo que te van a hacer, cómo se analiza una muestra, qué terapias se están estudiando— ayuda a sentirse más en casa dentro del programa. Por eso hemos creado estas píldoras de información: textos cortos, claros y sin tecnicismos innecesarios, que puedes leer en el orden que prefieras.</p><p>Hemos organizado las píldoras en tres grupos, cada uno con su color, para que encuentres fácilmente lo que buscas:</p><ul><li><strong>Pruebas que te harán</strong> reúne explicaciones sobre los procedimientos del seguimiento: qué son, cómo son por dentro, qué vas a sentir.</li><li><strong>La ciencia detrás</strong> cuenta lo que ocurre con tus muestras cuando ya no estás en la consulta: las técnicas que permiten mirar lo que antes no se podía ver.</li><li><strong>En el horizonte</strong> habla de los tratamientos que están siendo desarrollados y ensayados en el mundo, y del momento tan especial que vivimos en la investigación de estas enfermedades.</li></ul><p>No hace falta leerlas todas, ni leerlas seguidas, ni leerlas ya. Están aquí para cuando tengas curiosidad, o cuando te surja una duda, o simplemente cuando te apetezca acercarte un poco más a lo que ocurre entre bastidores.</p>',
+    'pildoras.bienvenida.conclusion':   'Cada píldora es una pequeña ventana. Ábrelas cuando quieras. Y si después de leer alguna te quedan preguntas, el equipo está siempre al otro lado para hablarlas contigo.',
+
     'pildoras.subscribe.title':  'Recibe las píldoras en tu email',
     'pildoras.subscribe.text':   'Si formas parte del programa de seguimiento, puedes activar las notificaciones por email para recibir un aviso cada vez que publiquemos una nueva píldora.',
     'pildoras.subscribe.btn':    'Activar mis notificaciones',
@@ -422,9 +436,23 @@ const TRANSLATIONS = {
     'reflexion.back':        'Programara itzuli',
     'pildoras.hero.title':      'Informazio<br>pilulak',
     'pildoras.hero.sub':        'Garrantzitsua denaren inguruko eguneratze labur eta zorrotzak',
-    'pildoras.p1.title':        'Laster',
-    'pildoras.p1.text':         'Informazio pilulak laster iritsiko dira. Gaixotasun prionikoetan, entsegu klinikoetan eta terapia berrietan dauden aurrerapen garrantzitsuenei buruzko eguneratze labur eta zorrotzak izango dira. Bisitatu berriro.',
-    'pildoras.p1.btn':          'Gehiago irakurri',
+
+    /* Filtros de categoría */
+    'pildoras.filters.todas':     'Guztiak',
+    'pildoras.filters.pruebas':   'Egingo dizkizuten probak',
+    'pildoras.filters.ciencia':   'Atzeko zientzia',
+    'pildoras.filters.horizonte': 'Zerumugan',
+
+    /* Acciones de la vista expandida */
+    'pildoras.close':            'Itxi',
+
+    /* Píldora de bienvenida */
+    'pildoras.bienvenida.titulo':       'Zuretzako leku bat, zure erritmora',
+    'pildoras.bienvenida.resumenCorto': 'Ongi etorri informazio-pilulen atalera: testu laburrak programako probei, zientziari eta terapiei buruz. Irakurri zure erritmora.',
+    'pildoras.bienvenida.resumen':      'Atal honetan azalpen txikiak biltzen ditugu programako probei, teknikei eta terapiei buruz. Testu laburrak dira, lasai irakurtzeko prestatuak, nahi duzunean eta nahi duzun neurrian.',
+    'pildoras.bienvenida.desarrollo':   '<p>Zer gertatzen ari den jakiteak —zer egingo dizuten, lagin bat nola aztertzen den, zer terapia ari diren ikertzen— laguntzen du programaren barruan etxean bezala sentitzen. Horregatik sortu ditugu informazio-pilula hauek: testu laburrak, argiak eta beharrik gabeko teknizismorik gabeak, nahi duzun ordenan irakur ditzakezunak.</p><p>Pilulak hiru taldetan antolatu ditugu, bakoitza bere kolorearekin, bilatzen duzuna erraz aurki dezazun:</p><ul><li><strong>Egingo dizkizuten probak</strong> jarraipeneko prozedurei buruzko azalpenak biltzen ditu: zer diren, nolakoak diren barrutik, zer sentituko duzun.</li><li><strong>Atzeko zientzia</strong> kontatzen du zure laginekin zer gertatzen den kontsultan jada ez zaudenean: lehen ikusi ezin zena ikustea ahalbidetzen duten teknikak.</li><li><strong>Zerumugan</strong> munduan garatzen eta entseatzen ari diren tratamenduez hitz egiten du, eta gaixotasun hauen ikerketan bizi dugun une berezi honetaz.</li></ul><p>Ez dago denak irakurri beharrik, ezta jarraian irakurri beharrik, ezta oraintxe bertan irakurri beharrik ere. Hemen daude jakin-mina sortzen zaizunerako, zalantzaren bat agertzen zaizunerako, edo besterik gabe oholtza atzean gertatzen denera hurbildu nahi duzunerako.</p>',
+    'pildoras.bienvenida.conclusion':   'Pilula bakoitza leiho txiki bat da. Ireki itzazu nahi duzunean. Eta bakarren bat irakurri ondoren galderaren bat gelditzen bazaizu, taldea beti dago beste aldean zurekin hitz egiteko.',
+
     'pildoras.subscribe.title': 'Jaso pilulak zure emailean',
     'pildoras.subscribe.text':  'Jarraipen programaren parte bazara, email bidezko jakinarazpenak aktibatu ditzakezu píldora berri bat argitaratzen dugunean abisu bat jasotzeko.',
     'pildoras.subscribe.btn':   'Nire jakinarazpenak aktibatu',
@@ -634,9 +662,23 @@ const TRANSLATIONS = {
     'reflexion.back':        'Tornar al programa',
     'pildoras.hero.title':      'Píndoles<br>d\'informació',
     'pildoras.hero.sub':        'Actualitzacions breus i rigoroses sobre el que importa',
-    'pildoras.p1.title':        'Properament',
-    'pildoras.p1.text':         'Les píndoles d\'informació arribaran aviat. Seran actualitzacions breus i rigoroses sobre els avenços més rellevants en malalties priòniques, assajos clínics i noves teràpies. Torna a visitar-nos.',
-    'pildoras.p1.btn':          'Llegir més',
+
+    /* Filtros de categoría */
+    'pildoras.filters.todas':     'Totes',
+    'pildoras.filters.pruebas':   'Proves que et faran',
+    'pildoras.filters.ciencia':   'La ciència al darrere',
+    'pildoras.filters.horizonte': 'A l\'horitzó',
+
+    /* Acciones de la vista expandida */
+    'pildoras.close':            'Tancar',
+
+    /* Píndola de benvinguda */
+    'pildoras.bienvenida.titulo':       'Un espai per a tu, al teu ritme',
+    'pildoras.bienvenida.resumenCorto': 'Benvingut a les píndoles d\'informació: textos breus sobre les proves, la ciència i les teràpies del programa. Llegeix-les al teu ritme.',
+    'pildoras.bienvenida.resumen':      'Aquesta secció reuneix petites explicacions sobre les proves, les tècniques i les teràpies que formen part del programa. Són textos breus, pensats per llegir-se amb calma, quan tu vulguis i fins on tu vulguis.',
+    'pildoras.bienvenida.desarrollo':   '<p>Saber què està passant —el que et faran, com s\'analitza una mostra, quines teràpies s\'estan estudiant— ajuda a sentir-se més a casa dins del programa. Per això hem creat aquestes píndoles d\'informació: textos curts, clars i sense tecnicismes innecessaris, que pots llegir en l\'ordre que prefereixis.</p><p>Hem organitzat les píndoles en tres grups, cadascun amb el seu color, perquè trobis fàcilment el que busques:</p><ul><li><strong>Proves que et faran</strong> reuneix explicacions sobre els procediments del seguiment: què són, com són per dins, què sentiràs.</li><li><strong>La ciència al darrere</strong> explica el que passa amb les teves mostres quan ja no ets a la consulta: les tècniques que permeten mirar el que abans no es podia veure.</li><li><strong>A l\'horitzó</strong> parla dels tractaments que s\'estan desenvolupant i assajant al món, i del moment tan especial que vivim en la investigació d\'aquestes malalties.</li></ul><p>No cal llegir-les totes, ni llegir-les seguides, ni llegir-les ja. Són aquí per quan tinguis curiositat, o quan et sorgeixi un dubte, o simplement quan et vingui de gust acostar-te una mica més al que passa entre bastidors.</p>',
+    'pildoras.bienvenida.conclusion':   'Cada píndola és una petita finestra. Obre-les quan vulguis. I si després de llegir-ne alguna et queden preguntes, l\'equip sempre és a l\'altra banda per parlar-ne amb tu.',
+
     'pildoras.subscribe.title': 'Rep les píndoles al teu email',
     'pildoras.subscribe.text':  'Si formes part del programa de seguiment, pots activar les notificacions per email per rebre un avís cada vegada que publiquem una nova píndola.',
     'pildoras.subscribe.btn':   'Activar les meves notificacions',
@@ -846,9 +888,23 @@ const TRANSLATIONS = {
     'reflexion.back':        'Volver ao programa',
     'pildoras.hero.title':      'Píldoras de<br>información',
     'pildoras.hero.sub':        'Actualizacións breves e rigorosas sobre o que importa',
-    'pildoras.p1.title':        'Proximamente',
-    'pildoras.p1.text':         'As píldoras de información chegarán pronto. Serán actualizacións breves e rigorosas sobre os avances máis relevantes en enfermidades priónicas, ensaios clínicos e novas terapias. Volve a visitarnos.',
-    'pildoras.p1.btn':          'Ler máis',
+
+    /* Filtros de categoría */
+    'pildoras.filters.todas':     'Todas',
+    'pildoras.filters.pruebas':   'Probas que che farán',
+    'pildoras.filters.ciencia':   'A ciencia detrás',
+    'pildoras.filters.horizonte': 'No horizonte',
+
+    /* Acciones de la vista expandida */
+    'pildoras.close':            'Pechar',
+
+    /* Píldora de benvida */
+    'pildoras.bienvenida.titulo':       'Un espazo para ti, ao teu ritmo',
+    'pildoras.bienvenida.resumenCorto': 'Benvido ás pílulas de información: textos breves sobre as probas, a ciencia e as terapias do programa. Leas ao teu ritmo.',
+    'pildoras.bienvenida.resumen':      'Esta sección reúne pequenas explicacións sobre as probas, as técnicas e as terapias que forman parte do programa. Son textos breves, pensados para lerse con calma, cando ti queiras e ata onde ti queiras.',
+    'pildoras.bienvenida.desarrollo':   '<p>Saber o que está a pasar —o que che van facer, como se analiza unha mostra, que terapias se están a estudar— axuda a sentirse máis na casa dentro do programa. Por iso creamos estas pílulas de información: textos curtos, claros e sen tecnicismos innecesarios, que podes ler na orde que prefiras.</p><p>Organizamos as pílulas en tres grupos, cada un coa súa cor, para que atopes facilmente o que buscas:</p><ul><li><strong>Probas que che farán</strong> reúne explicacións sobre os procedementos do seguimento: que son, como son por dentro, que vas sentir.</li><li><strong>A ciencia detrás</strong> conta o que ocorre coas túas mostras cando xa non estás na consulta: as técnicas que permiten mirar o que antes non se podía ver.</li><li><strong>No horizonte</strong> fala dos tratamentos que están a ser desenvolvidos e ensaiados no mundo, e do momento tan especial que vivimos na investigación destas enfermidades.</li></ul><p>Non fai falta leelas todas, nin leelas seguidas, nin leelas xa. Están aquí para cando teñas curiosidade, ou cando che xurda unha dúbida, ou simplemente cando che apeteza achegarte un pouco máis ao que ocorre entre bastidores.</p>',
+    'pildoras.bienvenida.conclusion':   'Cada pílula é unha pequena ventá. Ábreas cando queiras. E se despois de ler algunha che quedan preguntas, o equipo sempre está do outro lado para faladas contigo.',
+
     'pildoras.subscribe.title': 'Recibe as píldoras no teu email',
     'pildoras.subscribe.text':  'Se formas parte do programa de seguimento, podes activar as notificacións por email para recibir un aviso cada vez que publiquemos unha nova píldora.',
     'pildoras.subscribe.btn':   'Activar as miñas notificacións',
@@ -979,9 +1035,23 @@ const TRANSLATIONS = {
     /* ---- pildoras.html (Info updates) ---- */
     'pildoras.hero.title':      'Info<br>updates',
     'pildoras.hero.sub':        'Short, rigorous updates on what matters',
-    'pildoras.p1.title':        'Coming soon',
-    'pildoras.p1.text':         'Info updates will be available soon. They will be short, rigorous updates on the most relevant advances in prion diseases, clinical trials, and new therapies. Come back and visit us.',
-    'pildoras.p1.btn':          'Read more',
+
+    /* Category filters */
+    'pildoras.filters.todas':     'All',
+    'pildoras.filters.pruebas':   'Tests you\'ll have',
+    'pildoras.filters.ciencia':   'The science behind',
+    'pildoras.filters.horizonte': 'On the horizon',
+
+    /* Expanded view actions */
+    'pildoras.close':            'Close',
+
+    /* Welcome capsule */
+    'pildoras.bienvenida.titulo':       'A space for you, at your own pace',
+    'pildoras.bienvenida.resumenCorto': 'Welcome to the information capsules: brief texts about the program\'s tests, science, and therapies. Read them at your own pace.',
+    'pildoras.bienvenida.resumen':      'This section brings together short explanations about the tests, techniques, and therapies that are part of the program. They\'re brief texts, meant to be read calmly, whenever you want and as far as you want.',
+    'pildoras.bienvenida.desarrollo':   '<p>Knowing what\'s happening —what they\'re going to do, how a sample is analyzed, what therapies are being studied— helps you feel more at home within the program. That\'s why we\'ve created these information capsules: short, clear texts without unnecessary jargon, which you can read in whatever order you prefer.</p><p>We\'ve organized the capsules into three groups, each with its own color, so you can easily find what you\'re looking for:</p><ul><li><strong>Tests you\'ll have</strong> brings together explanations about the procedures of the follow-up: what they are, what they\'re like from the inside, what you\'ll feel.</li><li><strong>The science behind</strong> tells you what happens with your samples once you\'re no longer at the clinic: the techniques that allow us to look at what couldn\'t be seen before.</li><li><strong>On the horizon</strong> talks about the treatments being developed and trialed around the world, and about the very special moment we\'re living through in the research of these diseases.</li></ul><p>You don\'t need to read them all, or read them in a row, or read them right now. They\'re here for when you\'re curious, when a question comes up, or simply when you feel like coming a little closer to what happens behind the scenes.</p>',
+    'pildoras.bienvenida.conclusion':   'Each capsule is a small window. Open them whenever you want. And if, after reading one, you\'re left with questions, the team is always on the other side, ready to talk them through with you.',
+
     'pildoras.subscribe.title': 'Get Info updates in your inbox',
     'pildoras.subscribe.text':  'If you\'re part of the follow-up program, you can enable email notifications to get an alert whenever we publish a new update.',
     'pildoras.subscribe.btn':   'Enable my notifications',
