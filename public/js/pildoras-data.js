@@ -80,4 +80,19 @@ const PILDORAS = [
     fecha:     '2026-04-19',
     destacada: false,
   },
+  {
+    id:             'dia-programa',
+    categoria:      'experiencia',
+    fecha:          '2026-04-19',
+    destacada:      false,
+    ilustracionWide: true,  /* timeline ancho: hasta 640px en escritorio */
+    ilustracion: {
+      es:      '/assests/ilustraciones/dia-programa.svg',
+      eu:      '/assests/ilustraciones/dia-programa.svg',  /* placeholder: versión ES hasta Prompt F2 */
+      ca:      '/assests/ilustraciones/dia-programa.svg',
+      gl:      '/assests/ilustraciones/dia-programa.svg',
+      en:      '/assests/ilustraciones/dia-programa.svg',
+      default: '/assests/ilustraciones/dia-programa.svg',
+    },
+  },
 ];

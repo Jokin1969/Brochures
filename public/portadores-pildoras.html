@@ -205,6 +205,14 @@
             width: 100%;
             height: auto;
         }
+        .pildora-illustration--wide { max-width: 640px; }
+        @media (max-width: 520px) {
+            .pildora-illustration--wide {
+                max-width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
 
         .pildora-link {
             color: inherit;
@@ -498,9 +506,18 @@
             return p.ilustracion[currentLang()] || p.ilustracion.default || '';
         }
 
-        /* Lazy linking: convierte <strong>Término</strong> en enlace clicable
-           si la píldora destino existe en PILDORAS. Mientras no exista, el
-           término se queda como negrita simple. */
+        /* Lazy linking: convierte en enlace clicable ciertos términos del desarrollo
+           si la píldora destino existe en PILDORAS. Mientras no exista, el término
+           se queda como negrita o cursiva (el wrapper original). Dos mecanismos:
+
+           1) Lista cerrada de términos siempre iguales entre idiomas
+              (siglas técnicas). Se escriben como <strong>TERM</strong> en las
+              traducciones y se detectan por coincidencia exacta.
+           2) Marcador genérico en la traducción:
+                <em class="lazy-pild" data-target="id-pildora">texto</em>
+              Sirve para frases que cambian por idioma (títulos traducidos,
+              nombres de apps, etc.) sin necesidad de mantener una lista de
+              variantes en el código. */
         var LAZY_LINK_TERMS = [
             { term: 'RT-QuIC', id: 'rt-quic' },
             { term: 'PMCA',    id: 'pmca'    }
@@ -510,12 +527,21 @@
             var ids = (typeof PILDORAS !== 'undefined' && Array.isArray(PILDORAS))
                 ? PILDORAS.map(function (p) { return p.id; })
                 : [];
+            /* 1) términos fijos en <strong> */
             LAZY_LINK_TERMS.forEach(function (t) {
                 if (ids.indexOf(t.id) === -1) return;
                 var escaped = t.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
                 var re = new RegExp('<strong>(' + escaped + ')</strong>', 'g');
                 html = html.replace(re, '<a class="pildora-link" role="button" tabindex="0" data-open-pildora="' + t.id + '">$1</a>');
             });
+            /* 2) marcadores <em class="lazy-pild" data-target="..."> */
+            html = html.replace(
+                /<em class="lazy-pild" data-target="([a-z0-9-]+)">([\s\S]*?)<\/em>/g,
+                function (match, target, text) {
+                    if (ids.indexOf(target) === -1) return match;
+                    return '<a class="pildora-link" role="button" tabindex="0" data-open-pildora="' + target + '">' + text + '</a>';
+                }
+            );
             return html;
         }
 
@@ -569,8 +595,9 @@
             var closeLabel = tr('pildoras.close');
 
             var illSrc = illustrationSrc(p);
+            var illClass = 'pildora-illustration' + (p.ilustracionWide ? ' pildora-illustration--wide' : '');
             var illHtml = illSrc
-                ? '<img class="pildora-illustration" src="' + escapeHtml(illSrc) + '" alt="">'
+                ? '<img class="' + illClass + '" src="' + escapeHtml(illSrc) + '" alt="">'
                 : '';
 
             card.classList.add('pildora-card--expanded');
