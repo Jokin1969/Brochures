@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-labelledby="dp-title dp-desc">
+  <title id="dp-title">Programako zure eguna: bisitaren kronograma</title>
+  <desc id="dp-desc">Bi zutabeko kronograma, 1. egunaren eta 2. egunaren uneak erakusten ditu, ospitalera iristetik alta jaso arte.</desc>
+
+  <rect x="0" y="0" width="640" height="460" fill="none"/>
+
+  <g font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="18" fill="#7A5BA3" text-anchor="middle">
+    <text x="160" y="36">1. eguna</text>
+    <text x="480" y="36">2. eguna</text>
+  </g>
+
+  <g font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#7A5BA3" opacity="0.7" text-anchor="middle">
+    <text x="160" y="54">Arratsaldea eta gaua</text>
+    <text x="480" y="54">Goizean</text>
+  </g>
+
+  <line x1="80" y1="80" x2="80" y2="420" stroke="#7A5BA3" stroke-width="2" opacity="0.35"/>
+  <line x1="400" y1="80" x2="400" y2="350" stroke="#7A5BA3" stroke-width="2" opacity="0.35"/>
+
+  <g>
+    <circle cx="80" cy="100" r="14" fill="#E1D6EC" stroke="#7A5BA3" stroke-width="2"/>
+    <path d="M 74 102 L 80 96 L 86 102 L 86 106 L 74 106 Z" fill="none" stroke="#7A5BA3" stroke-width="1.5" stroke-linejoin="round"/>
+    <text x="105" y="96" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3A3A3A">Iristea eta harrera</text>
+    <text x="105" y="112" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#7A5BA3" opacity="0.8">16:00ak aldera</text>
+  </g>
+
+  <g>
+    <circle cx="80" cy="175" r="14" fill="#E1D6EC" stroke="#7A5BA3" stroke-width="2"/>
+    <path d="M 73 174 Q 73 170 77 170 L 83 170 Q 87 170 87 174 L 87 177 Q 87 180 83 180 L 79 180 L 76 182 L 76 180 Q 73 180 73 177 Z" fill="none" stroke="#7A5BA3" stroke-width="1.3" stroke-linejoin="round"/>
+    <text x="105" y="171" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3A3A3A">Kortazar dk.-arekin elkarrizketa</text>
+    <text x="105" y="187" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#7A5BA3" opacity="0.8">berrikuspena eta egokitzapena</text>
+  </g>
+
+  <g>
+    <circle cx="80" cy="250" r="14" fill="#E1D6EC" stroke="#7A5BA3" stroke-width="2"/>
+    <path d="M 74 244 L 83 244 L 86 247 L 86 256 L 74 256 Z" fill="none" stroke="#7A5BA3" stroke-width="1.3" stroke-linejoin="round"/>
+    <line x1="77" y1="249" x2="83" y2="249" stroke="#7A5BA3" stroke-width="1"/>
+    <line x1="77" y1="252" x2="83" y2="252" stroke="#7A5BA3" stroke-width="1"/>
+    <text x="105" y="246" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3A3A3A">Informazio bidezko adostasunak</text>
+    <text x="105" y="262" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#7A5BA3" opacity="0.8">lasai eta zalantzak argitzeko tartearekin</text>
+  </g>
+
+  <g>
+    <circle cx="80" cy="325" r="14" fill="#E1D6EC" stroke="#7A5BA3" stroke-width="2"/>
+    <path d="M 80 319 Q 76 324 76 328 Q 76 332 80 332 Q 84 332 84 328 Q 84 324 80 319 Z" fill="none" stroke="#7A5BA3" stroke-width="1.3"/>
+    <text x="105" y="321" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3A3A3A">Odol-erauzketa</text>
+    <text x="105" y="337" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#7A5BA3" opacity="0.8">urte horretan egokitzen bada</text>
+  </g>
+
+  <g>
+    <circle cx="80" cy="400" r="14" fill="#E1D6EC" stroke="#7A5BA3" stroke-width="2"/>
+    <path d="M 84 395 Q 77 395 77 401 Q 77 407 84 407 Q 81 404 81 401 Q 81 398 84 395 Z" fill="none" stroke="#7A5BA3" stroke-width="1.3"/>
+    <text x="105" y="396" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3A3A3A">Gaueko polisomnografia</text>
+    <text x="105" y="412" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#7A5BA3" opacity="0.8">egokitzen bada (FIH eramaileentzat bakarrik)</text>
+  </g>
+
+  <g>
+    <circle cx="400" cy="100" r="14" fill="#E1D6EC" stroke="#7A5BA3" stroke-width="2"/>
+    <circle cx="400" cy="100" r="4" fill="none" stroke="#7A5BA3" stroke-width="1.3"/>
+    <line x1="400" y1="92" x2="400" y2="89" stroke="#7A5BA3" stroke-width="1.3"/>
+    <line x1="400" y1="111" x2="400" y2="108" stroke="#7A5BA3" stroke-width="1.3"/>
+    <line x1="392" y1="100" x2="389" y2="100" stroke="#7A5BA3" stroke-width="1.3"/>
+    <line x1="411" y1="100" x2="408" y2="100" stroke="#7A5BA3" stroke-width="1.3"/>
+    <text x="425" y="96" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3A3A3A">Sentsoreak kentzea</text>
+    <text x="425" y="112" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#7A5BA3" opacity="0.8">eta gosaria</text>
+  </g>
+
+  <g>
+    <circle cx="400" cy="175" r="14" fill="#E1D6EC" stroke="#7A5BA3" stroke-width="2"/>
+    <circle cx="400" cy="175" r="5" fill="none" stroke="#7A5BA3" stroke-width="1.3"/>
+    <circle cx="400" cy="175" r="2" fill="#7A5BA3"/>
+    <text x="425" y="171" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3A3A3A">Erresonantzia magnetikoa</text>
+    <text x="425" y="187" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#7A5BA3" opacity="0.8">urte horretan egokitzen bada</text>
+  </g>
+
+  <g>
+    <circle cx="400" cy="250" r="14" fill="#E1D6EC" stroke="#7A5BA3" stroke-width="2"/>
+    <rect x="397" y="244" width="6" height="12" rx="1" fill="none" stroke="#7A5BA3" stroke-width="1.3"/>
+    <line x1="397" y1="251" x2="403" y2="251" stroke="#7A5BA3" stroke-width="1"/>
+    <text x="425" y="246" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3A3A3A">Giltzurrun-zilborrestearen zulaketa</text>
+    <text x="425" y="262" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#7A5BA3" opacity="0.8">urte horretan egokitzen bada</text>
+  </g>
+
+  <g>
+    <circle cx="400" cy="325" r="14" fill="#E1D6EC" stroke="#7A5BA3" stroke-width="2"/>
+    <path d="M 393 324 Q 393 320 397 320 L 403 320 Q 407 320 407 324 L 407 327 Q 407 330 403 330 L 399 330 L 396 332 L 396 330 Q 393 330 393 327 Z" fill="none" stroke="#7A5BA3" stroke-width="1.3" stroke-linejoin="round"/>
+    <text x="425" y="321" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3A3A3A">Itxierako elkarrizketa</text>
+    <text x="425" y="337" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#7A5BA3" opacity="0.8">hurrengo urratsak eta emaitzak</text>
+  </g>
+
+  <g>
+    <circle cx="400" cy="400" r="14" fill="#7A5BA3"/>
+    <path d="M 395 400 L 399 404 L 406 397" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="425" y="396" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3A3A3A">Alta eta etxera itzulera</text>
+    <text x="425" y="412" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#7A5BA3" opacity="0.8">eguerdi aldera</text>
+  </g>
+</svg>
