@@ -332,8 +332,16 @@
 
     <main class="pildoras-wrap">
 
-        <!-- Pill cards (se rellenan dinámicamente desde /js/pildoras-data.js) -->
-        <div class="pill-list" id="pill-list"></div>
+        <!-- Filtros por categoría -->
+        <div class="pildoras-filters" id="pildoras-filters" role="tablist" aria-label="Filtros de categoría">
+            <button type="button" class="pildoras-chip pildoras-chip--active" data-filter="todas"     data-i18n="pildoras.filters.todas">Todas</button>
+            <button type="button" class="pildoras-chip pildoras-chip--pruebas"   data-filter="pruebas"   data-i18n="pildoras.filters.pruebas">Pruebas que te harán</button>
+            <button type="button" class="pildoras-chip pildoras-chip--ciencia"   data-filter="ciencia"   data-i18n="pildoras.filters.ciencia">La ciencia detrás</button>
+            <button type="button" class="pildoras-chip pildoras-chip--horizonte" data-filter="horizonte" data-i18n="pildoras.filters.horizonte">En el horizonte</button>
+        </div>
+
+        <!-- Rejilla de píldoras (se rellena dinámicamente desde /js/pildoras-data.js + translations.js) -->
+        <div class="pildoras-grid" id="pildoras-grid"></div>
 
         <!-- Subscription block -->
         <div class="subscribe-block" id="subscribe-block">
@@ -411,99 +419,167 @@
     (function () {
         'use strict';
 
-        /* ---- Renderizado dinámico de píldoras ---- */
-        var DATE_LOCALES = { es: 'es-ES', eu: 'eu-ES', ca: 'ca-ES', gl: 'gl-ES', en: 'en-US' };
+        /* ---- Estado ---- */
+        var activeFilter = 'todas';
+        var expandedId   = null;
 
-        function currentLang() {
-            return localStorage.getItem('pg-lang') || 'es';
+        function tr(key) {
+            return (typeof window.t === 'function') ? window.t(key) : key;
         }
-
-        function pickLangField(obj, lang) {
-            if (!obj) return '';
-            if (obj[lang] && String(obj[lang]).trim() !== '') return obj[lang];
-            return obj.es || '';
-        }
-
-        function formatPildoraDate(iso, lang) {
-            if (!iso) return '';
-            var d = new Date(iso + 'T00:00:00');
-            if (isNaN(d.getTime())) return iso;
-            try {
-                return d.toLocaleDateString(DATE_LOCALES[lang] || 'es-ES',
-                    { day: 'numeric', month: 'short', year: 'numeric' });
-            } catch (e) {
-                return iso;
-            }
-        }
-
         function escapeHtml(s) {
-            return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
         }
+        function categoryLabel(cat) { return tr('pildoras.filters.' + cat); }
 
-        function renderPildoras() {
-            var container = document.getElementById('pill-list');
-            if (!container) return;
-            var lang = currentLang();
-            container.innerHTML = '';
-
+        function sortedPildoras() {
             var list = (typeof PILDORAS !== 'undefined' && Array.isArray(PILDORAS)) ? PILDORAS.slice() : [];
-            /* Ordenar por fecha descendente (más reciente primero) */
             list.sort(function (a, b) {
-                return String(b.date || '').localeCompare(String(a.date || ''));
+                if (a.destacada && !b.destacada) return -1;
+                if (!a.destacada && b.destacada) return 1;
+                return String(b.fecha || '').localeCompare(String(a.fecha || ''));
             });
+            return list;
+        }
 
-            if (list.length === 0) {
-                /* Placeholder "próximamente" — usa las claves i18n existentes */
-                var t = (typeof window.t === 'function') ? window.t : function (k) { return k; };
-                var card = document.createElement('div');
-                card.className = 'pill-card pill-card--placeholder';
-                card.innerHTML =
-                    '<div class="pill-meta"><div class="pill-num">—</div></div>' +
-                    '<div class="pill-body">' +
-                        '<p class="pill-title" data-i18n="pildoras.p1.title">' + escapeHtml(t('pildoras.p1.title')) + '</p>' +
-                        '<p class="pill-text" data-i18n="pildoras.p1.text">' + escapeHtml(t('pildoras.p1.text')) + '</p>' +
-                    '</div>' +
-                    '<div class="pill-action">' +
-                        '<button class="btn-pill-read btn-pill-read--disabled" disabled data-i18n="pildoras.p1.btn">' + escapeHtml(t('pildoras.p1.btn')) + '</button>' +
-                    '</div>';
-                container.appendChild(card);
-                return;
-            }
+        function buildCollapsedCard(p) {
+            var card = document.createElement('div');
+            card.className = 'pildora-card pildora-card--' + p.categoria;
+            card.dataset.id = p.id;
+            card.dataset.categoria = p.categoria;
+            card.setAttribute('role', 'button');
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('aria-expanded', 'false');
 
-            /* Numeración cronológica: la más antigua es la #1 */
-            list.forEach(function (p, idx) {
-                var num  = list.length - idx;
-                var title = pickLangField(p.titles, lang);
-                var body  = pickLangField(p.bodies, lang);
-                var date  = formatPildoraDate(p.date, lang);
+            var tagHtml = (p.categoria !== 'bienvenida')
+                ? '<span class="pildora-tag">' + escapeHtml(categoryLabel(p.categoria)) + '</span>'
+                : '';
+            var title = tr('pildoras.' + p.id + '.titulo');
+            var short = tr('pildoras.' + p.id + '.resumenCorto');
+            card.innerHTML =
+                tagHtml +
+                '<h2 class="pildora-title">' + escapeHtml(title) + '</h2>' +
+                '<p class="pildora-summary">' + escapeHtml(short) + '</p>';
 
-                var card = document.createElement('div');
-                card.className = 'pill-card';
-                card.innerHTML =
-                    '<div class="pill-meta">' +
-                        '<div class="pill-num">' + num + '</div>' +
-                        (date ? '<div class="pill-date">' + escapeHtml(date) + '</div>' : '') +
-                    '</div>' +
-                    '<div class="pill-body">' +
-                        '<p class="pill-title">' + escapeHtml(title) + '</p>' +
-                        '<p class="pill-text">' + body +  /* body permite HTML básico */
-                        '</p>' +
-                    '</div>';
-                container.appendChild(card);
+            card.addEventListener('click', function () { expandCard(p.id); });
+            card.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    expandCard(p.id);
+                }
+            });
+            return card;
+        }
+
+        function renderExpandedInto(card, p) {
+            var tagHtml = (p.categoria !== 'bienvenida')
+                ? '<span class="pildora-tag">' + escapeHtml(categoryLabel(p.categoria)) + '</span>'
+                : '';
+            var title      = tr('pildoras.' + p.id + '.titulo');
+            var lede       = tr('pildoras.' + p.id + '.resumen');
+            var body       = tr('pildoras.' + p.id + '.desarrollo');
+            var conclusion = tr('pildoras.' + p.id + '.conclusion');
+            var closeLabel = tr('pildoras.close');
+
+            card.classList.add('pildora-card--expanded');
+            card.setAttribute('aria-expanded', 'true');
+            card.removeAttribute('role');
+            card.removeAttribute('tabindex');
+            card.innerHTML =
+                tagHtml +
+                '<div class="pildora-expanded-head">' +
+                    '<h2 class="pildora-expanded-title" tabindex="-1">' + escapeHtml(title) + '</h2>' +
+                    '<button type="button" class="pildora-close" aria-label="' + escapeHtml(closeLabel) + '" data-action="close">' +
+                        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+                    '</button>' +
+                '</div>' +
+                '<p class="pildora-expanded-lede">' + escapeHtml(lede) + '</p>' +
+                '<div class="pildora-expanded-body">' + body + '</div>' +
+                '<div class="pildora-expanded-conclusion">' + escapeHtml(conclusion) + '</div>';
+
+            var closeBtn = card.querySelector('[data-action="close"]');
+            if (closeBtn) closeBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                collapseCard();
             });
         }
+
+        function applyFilterState() {
+            document.querySelectorAll('#pildoras-grid .pildora-card').forEach(function (c) {
+                var cat = c.dataset.categoria;
+                c.hidden = !(activeFilter === 'todas' || cat === activeFilter || cat === 'bienvenida');
+            });
+            document.querySelectorAll('.pildoras-chip').forEach(function (chip) {
+                var active = chip.dataset.filter === activeFilter;
+                chip.classList.toggle('pildoras-chip--active', active);
+                chip.setAttribute('aria-selected', active ? 'true' : 'false');
+            });
+        }
+
+        function renderGrid() {
+            var grid = document.getElementById('pildoras-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            grid.classList.remove('pildoras-grid--has-expanded');
+
+            sortedPildoras().forEach(function (p) {
+                var card = buildCollapsedCard(p);
+                grid.appendChild(card);
+                if (expandedId === p.id) {
+                    renderExpandedInto(card, p);
+                    grid.classList.add('pildoras-grid--has-expanded');
+                }
+            });
+            applyFilterState();
+        }
+
+        function expandCard(id) {
+            if (expandedId === id) return;
+            expandedId = id;
+            var p = sortedPildoras().find(function (x) { return x.id === id; });
+            if (!p) return;
+            var grid = document.getElementById('pildoras-grid');
+            var card = grid.querySelector('.pildora-card[data-id="' + id + '"]');
+            if (!card) return;
+            renderExpandedInto(card, p);
+            grid.classList.add('pildoras-grid--has-expanded');
+            setTimeout(function () {
+                var titleEl = card.querySelector('.pildora-expanded-title');
+                if (titleEl) titleEl.focus();
+                card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 30);
+        }
+
+        function collapseCard() {
+            if (!expandedId) return;
+            var lastId = expandedId;
+            expandedId = null;
+            renderGrid();
+            var card = document.querySelector('.pildora-card[data-id="' + lastId + '"]');
+            if (card) card.focus();
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && expandedId) collapseCard();
+        });
 
         document.addEventListener('DOMContentLoaded', function () {
             requestAnimationFrame(function () { document.body.classList.add('loaded'); });
             if (typeof applyTranslations === 'function') applyTranslations();
 
-            renderPildoras();
+            renderGrid();
+
+            document.querySelectorAll('.pildoras-chip').forEach(function (chip) {
+                chip.addEventListener('click', function () {
+                    activeFilter = chip.dataset.filter;
+                    applyFilterState();
+                });
+            });
 
             document.querySelectorAll('.lang-btn').forEach(function (btn) {
                 btn.classList.toggle('lang-btn--active', btn.dataset.lang === (localStorage.getItem('pg-lang') || 'es'));
                 btn.addEventListener('click', function () {
                     if (typeof setLang === 'function') setLang(btn.dataset.lang);
-                    renderPildoras();
+                    renderGrid();
                 });
             });
 
