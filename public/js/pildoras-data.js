@@ -61,7 +61,11 @@ const PILDORAS = [
     destacada: false,
     ilustracion: {
       es:      '/assests/ilustraciones/puncion-lumbar.svg',
-      default: '/assests/ilustraciones/puncion-lumbar-sin-texto.svg',
+      eu:      '/assests/ilustraciones/puncion-lumbar-eu.svg',
+      ca:      '/assests/ilustraciones/puncion-lumbar-ca.svg',
+      gl:      '/assests/ilustraciones/puncion-lumbar-gl.svg',
+      en:      '/assests/ilustraciones/puncion-lumbar-en.svg',
+      default: '/assests/ilustraciones/puncion-lumbar.svg',
     },
   },
 ];
