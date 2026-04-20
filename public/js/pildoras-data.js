@@ -81,6 +81,12 @@ const PILDORAS = [
     destacada: false,
   },
   {
+    id:        'biopsia-piel',
+    categoria: 'pruebas',
+    fecha:     '2026-04-19',
+    destacada: false,
+  },
+  {
     id:             'dia-programa',
     categoria:      'experiencia',
     fecha:          '2026-04-19',
