@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <title>Programa de seguimiento preclínico — Versión para imprimir</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --text:         #0f172a;
+            --text-2:       #334155;
+            --text-3:       #64748b;
+            --border:       #e2e8f0;
+            --purple:       #7c3aed;
+            --purple-pale:  #ede9fe;
+            --blue:         #3b82f6;
+            --blue-pale:    #eff6ff;
+            --amber:        #d97706;
+            --amber-pale:   #fef3c7;
+            --teal:         #0d9488;
+            --teal-pale:    #ccfbf1;
+            --green:        #10b981;
+            --green-pale:   #ecfdf5;
+        }
+
+        @page {
+            size: A4;
+            margin: 18mm 16mm;
+        }
+
+        html, body {
+            font-family: 'Inter', -apple-system, Segoe UI, sans-serif;
+            color: var(--text);
+            background: #ffffff;
+            line-height: 1.55;
+            font-size: 10.5pt;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .pdf-bar {
+            position: sticky; top: 0; z-index: 10;
+            background: #fafbff; border-bottom: 1px solid var(--border);
+            padding: 12px 24px; display: flex; gap: 12px;
+            align-items: center; justify-content: space-between;
+            font-size: 0.85rem;
+        }
+        .pdf-bar-left  { color: var(--text-2); }
+        .pdf-bar-right { display: flex; gap: 8px; }
+        .pdf-bar button {
+            font-family: inherit; font-size: 0.85rem; font-weight: 600;
+            padding: 8px 16px; border-radius: 100px; border: none;
+            cursor: pointer; background: var(--purple); color: #fff;
+        }
+        .pdf-bar button.secondary { background: #fff; color: var(--text-2); border: 1px solid var(--border); }
+        @media print { .pdf-bar { display: none; } }
+
+        .doc {
+            max-width: 178mm;
+            margin: 0 auto;
+            padding: 8mm 0;
+        }
+        @media print { .doc { padding: 0; } }
+
+        /* ---- Cover ---- */
+        .cover {
+            position: relative;
+            padding: 42mm 8mm 30mm;
+            text-align: center;
+            page-break-after: always;
+            break-after: page;
+            overflow: hidden;
+            border-radius: 6mm;
+            background:
+                radial-gradient(1200px 400px at 50% -200px, rgba(124,58,237,.10), transparent 60%),
+                radial-gradient(900px 300px at 100% 100%, rgba(13,148,136,.10), transparent 60%),
+                linear-gradient(180deg, #fafbff 0%, #ffffff 100%);
+        }
+        .cover-eyebrow {
+            font-size: 0.78rem; font-weight: 600;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--purple); margin-bottom: 16px;
+        }
+        .cover-title {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 32pt; font-weight: 600;
+            line-height: 1.15; color: var(--text);
+            margin-bottom: 18px;
+        }
+        .cover-sub {
+            font-size: 12pt; color: var(--text-2);
+            line-height: 1.55; max-width: 120mm;
+            margin: 0 auto 36px;
+        }
+        .cover-divider {
+            width: 40mm; height: 3px;
+            background: linear-gradient(90deg, var(--purple), var(--blue), var(--teal));
+            border-radius: 3px; margin: 0 auto 36px;
+        }
+        .cover-ethics {
+            display: inline-block;
+            padding: 8px 18px; border-radius: 100px;
+            background: rgba(124,58,237,.08);
+            color: var(--purple);
+            font-size: 0.8rem; font-weight: 500;
+        }
+        .cover-url {
+            position: absolute; bottom: 10mm; left: 0; right: 0;
+            text-align: center; font-size: 0.78rem;
+            color: var(--text-3); letter-spacing: 0.04em;
+        }
+
+        /* ---- Opening ---- */
+        .opening {
+            background: #fafbff;
+            border-left: 3px solid var(--purple);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 8mm 0 10mm;
+        }
+        .opening p {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 11.5pt; line-height: 1.65;
+            color: var(--text); font-style: italic;
+        }
+
+        /* ---- Sections ---- */
+        .section {
+            margin-bottom: 10mm;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .section-header {
+            display: flex; align-items: flex-start; gap: 14px;
+            margin-bottom: 8mm;
+            padding-bottom: 4mm;
+            border-bottom: 1px solid var(--border);
+        }
+        .section-num {
+            flex-shrink: 0;
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.85rem;
+            color: #fff;
+        }
+        .num-purple { background: var(--purple); }
+        .num-blue   { background: var(--blue); }
+        .num-amber  { background: var(--amber); }
+        .num-teal   { background: var(--teal); }
+        .num-green  { background: var(--green); }
+        .section-title {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 16pt; font-weight: 600;
+            line-height: 1.2; color: var(--text);
+            margin-bottom: 2mm;
+        }
+        .section-sub {
+            font-size: 9.5pt; color: var(--text-3);
+            font-weight: 500;
+        }
+
+        .prose p {
+            margin-bottom: 3mm; color: var(--text);
+            font-size: 10.5pt; line-height: 1.6;
+        }
+        .prose strong { color: var(--text); }
+
+        .box {
+            background: #fafbff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 5mm 6mm;
+            margin: 4mm 0;
+        }
+        .box p {
+            font-family: 'Lora', Georgia, serif;
+            font-style: italic;
+            color: var(--text);
+            font-size: 10.5pt; line-height: 1.55;
+        }
+
+        /* ---- Facts list ---- */
+        .facts { list-style: none; margin: 5mm 0; }
+        .fact {
+            display: flex; align-items: flex-start; gap: 10px;
+            margin-bottom: 3mm;
+            page-break-inside: avoid;
+        }
+        .fact-dot {
+            flex-shrink: 0;
+            width: 9px; height: 9px; margin-top: 6px;
+            border-radius: 50%;
+        }
+        .dot-purple { background: var(--purple); }
+        .dot-blue   { background: var(--blue); }
+        .dot-teal   { background: var(--teal); }
+
+        /* ---- Benefits grid ---- */
+        .benefits {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4mm;
+            margin: 5mm 0;
+        }
+        .benefit {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 4mm 5mm;
+            page-break-inside: avoid;
+        }
+        .benefit h3 {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 11pt; font-weight: 600;
+            margin-bottom: 2mm; color: var(--text);
+        }
+        .benefit p {
+            font-size: 9.5pt; color: var(--text-2); line-height: 1.5;
+        }
+        .benefit-tag {
+            display: inline-block;
+            font-size: 0.7rem; font-weight: 600;
+            padding: 2px 8px; border-radius: 100px;
+            margin-bottom: 3mm;
+        }
+        .bt-purple { background: var(--purple-pale); color: var(--purple); }
+        .bt-blue   { background: var(--blue-pale);   color: var(--blue); }
+        .bt-teal   { background: var(--teal-pale);   color: var(--teal); }
+        .bt-green  { background: var(--green-pale);  color: var(--green); }
+
+        /* ---- Profile cards (sección 03) ---- */
+        .profiles {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4mm;
+            margin: 5mm 0;
+        }
+        .profile-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 5mm;
+            page-break-inside: avoid;
+        }
+        .profile-card--inactive { background: var(--green-pale); border-color: rgba(16,185,129,.3); }
+        .profile-card--active   { background: var(--amber-pale); border-color: rgba(217,119,6,.3); }
+        .profile-badge {
+            display: inline-block;
+            font-size: 9pt; font-weight: 700;
+            padding: 4px 10px; border-radius: 100px;
+            margin-bottom: 3mm;
+        }
+        .profile-badge--stable { background: var(--green); color: #fff; }
+        .profile-badge--alert  { background: var(--amber); color: #fff; }
+        .profile-card p { font-size: 9.5pt; color: var(--text-2); line-height: 1.5; }
+
+        .profile-note {
+            margin-top: 4mm;
+            padding: 3mm 4mm;
+            background: #fafbff;
+            border-left: 3px solid var(--amber);
+            border-radius: 0 8px 8px 0;
+            font-size: 9.5pt; color: var(--text-2);
+            font-style: italic; line-height: 1.5;
+        }
+
+        /* ---- Therapies (sección 04) ---- */
+        .therapy-legend {
+            background: #fafbff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 4mm 5mm;
+            margin: 4mm 0;
+            page-break-inside: avoid;
+        }
+        .therapy-legend-title {
+            font-weight: 600; font-size: 9.5pt;
+            margin-bottom: 3mm; color: var(--text);
+        }
+        .therapy-legend-list { list-style: none; }
+        .therapy-legend-list li {
+            font-size: 9pt; line-height: 1.5;
+            margin-bottom: 2mm; color: var(--text-2);
+        }
+        .t-badge {
+            display: inline-block;
+            font-size: 8.5pt; font-weight: 600;
+            padding: 2px 8px; border-radius: 100px;
+            margin-right: 4px;
+        }
+        .tb-adv { background: #fee2e2; color: #b91c1c; }
+        .tb-mid { background: #fef3c7; color: #92400e; }
+        .tb-res { background: #e0e7ff; color: #3730a3; }
+
+        .therapies { display: flex; flex-direction: column; gap: 4mm; margin: 4mm 0; }
+        .therapy {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 4mm 5mm;
+            page-break-inside: avoid;
+        }
+        .therapy h3 {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 11pt; font-weight: 600;
+            margin: 2mm 0; color: var(--text);
+        }
+        .therapy p {
+            font-size: 9.5pt; color: var(--text-2); line-height: 1.5;
+        }
+
+        /* ---- Steps (sección 05) ---- */
+        .steps { display: flex; flex-direction: column; gap: 4mm; margin: 5mm 0; }
+        .step {
+            display: flex; gap: 10px;
+            page-break-inside: avoid;
+        }
+        .step-dot {
+            flex-shrink: 0;
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            background: var(--green-pale);
+            color: var(--green);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.75rem;
+            margin-top: 2px;
+        }
+        .step h3 {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 11pt; font-weight: 600;
+            margin-bottom: 2mm; color: var(--text);
+        }
+        .step p {
+            font-size: 9.5pt; color: var(--text-2); line-height: 1.55;
+        }
+
+        /* ---- Footer ---- */
+        .doc-footer {
+            margin-top: 12mm;
+            padding-top: 6mm;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 8.5pt;
+            color: var(--text-3);
+            line-height: 1.55;
+        }
+        .doc-footer strong { color: var(--text-2); }
+
+        /* Evita saltos feos entre título y contenido de sección */
+        h2, h3 { page-break-after: avoid; break-after: avoid-page; }
+        p, li  { orphans: 3; widows: 3; }
+    </style>
+</head>
+<body>
+
+    <!-- Barra superior visible solo en pantalla -->
+    <div class="pdf-bar">
+        <span class="pdf-bar-left">Versión para imprimir · <a href="/portadores.html" style="color:inherit;">Volver a la web</a></span>
+        <span class="pdf-bar-right">
+            <button onclick="window.print()">Imprimir o guardar como PDF</button>
+        </span>
+    </div>
+
+    <main class="doc">
+
+        <!-- PORTADA -->
+        <section class="cover">
+            <p class="cover-eyebrow">Programa de seguimiento preclínico</p>
+            <h1 class="cover-title">Cuidar el presente,<br>preparar el futuro</h1>
+            <div class="cover-divider"></div>
+            <p class="cover-sub">
+                Programa de seguimiento para portadores asintomáticos de mutaciones
+                en el gen de la proteína del prion.
+            </p>
+            <span class="cover-ethics">Aprobado por el Comité de Ética · PI2025164</span>
+            <div class="cover-url">brochures-production-5c8c.up.railway.app</div>
+        </section>
+
+        <!-- APERTURA -->
+        <div class="opening">
+            <p>Tener información sobre tu genética es un acto de valentía. Esta guía está pensada para acompañarte: explicarte qué significa ser portador o portadora, por qué el seguimiento regular es una herramienta poderosa, y qué oportunidades trae el futuro próximo.</p>
+        </div>
+
+        <!-- 01 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-num num-purple">01</div>
+                <div>
+                    <h2 class="section-title">Entender tu punto de partida</h2>
+                    <p class="section-sub">Lo que significa ser portador o portadora</p>
+                </div>
+            </div>
+            <div class="prose">
+                <p>Eres portador o portadora de una variante genética (también llamada mutación, es un cambio en el ADN respecto a la mayoría de la población) que puede asociarse al desarrollo de una enfermedad priónica hereditaria. Esto significa que existe un riesgo incrementado, no una certeza. Muchas personas con esta condición genética viven décadas sin desarrollar síntoma alguno, y la ciencia avanza de forma acelerada hacia tratamientos preventivos.</p>
+            </div>
+            <div class="box">
+                <p>Ser portador o portadora no es lo mismo que tener la enfermedad. Es una condición que te da información valiosa — y esa información, bien utilizada, puede convertirse en una ventaja real.</p>
+            </div>
+            <ul class="facts">
+                <li class="fact">
+                    <span class="fact-dot dot-purple"></span>
+                    <p><strong>No todos los portadores y portadoras desarrollan síntomas.</strong> La penetrancia —es decir, la probabilidad de que la mutación acabe causando la enfermedad— es alta, aunque la edad de inicio varía considerablemente según la mutación específica y otros factores individuales que aún desconocemos.</p>
+                </li>
+                <li class="fact">
+                    <span class="fact-dot dot-blue"></span>
+                    <p><strong>El conocimiento es poder.</strong> Conocer tu estado genético te permite tomar decisiones informadas, planificar el futuro y acceder a programas de seguimiento especializados.</p>
+                </li>
+                <li class="fact">
+                    <span class="fact-dot dot-teal"></span>
+                    <p><strong>La ciencia no se detiene.</strong> Nunca ha habido más investigación activa en enfermedades priónicas que ahora. Estamos en un momento decisivo para el desarrollo de terapias preventivas.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 02 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-num num-blue">02</div>
+                <div>
+                    <h2 class="section-title">Por qué el seguimiento importa</h2>
+                    <p class="section-sub">Cuatro razones para formar parte de un programa de seguimiento preclínico</p>
+                </div>
+            </div>
+            <div class="prose">
+                <p>Los programas de seguimiento para portadores asintomáticos no son solo una herramienta de investigación y vigilancia médica. Son una plataforma de preparación activa — para ti y para todas aquellas personas que vendrán — de cara a las terapias preventivas en desarrollo.</p>
+            </div>
+            <div class="benefits">
+                <div class="benefit">
+                    <span class="benefit-tag bt-purple">Detección temprana</span>
+                    <p>Si se produjeran cambios biológicos sutiles, serían identificados en el momento más oportuno (antes de la aparición de síntomas) para intervenir con las herramientas disponibles.</p>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-tag bt-blue">Acceso prioritario</span>
+                    <p>Los participantes en programas de seguimiento serían los sujetos mejor posicionados para acceder a nuevas terapias preventivas cuando los ensayos clínicos abran sus puertas, ya que se contaría con más información que otros portadores.</p>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-tag bt-teal">Información real</span>
+                    <p>El seguimiento regular proporciona datos objetivos sobre tu salud cerebral, reemplazando la incertidumbre con conocimiento fundamentado. Es una información a la que puedes acceder o decidir no conocer aún.</p>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-tag bt-green">Contribución colectiva</span>
+                    <p>Tu participación ayuda a entender mejor la enfermedad y acelera el desarrollo de tratamientos para ti y para las generaciones futuras.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-num num-amber">03</div>
+                <div>
+                    <h2 class="section-title">Dos realidades dentro de un mismo perfil</h2>
+                    <p class="section-sub">No todos los portadores asintomáticos están en el mismo momento</p>
+                </div>
+            </div>
+            <div class="prose">
+                <p>Dentro del grupo de portadores asintomáticos, la investigación actual permite identificar dos situaciones claramente distintas, aunque en ambas la persona se encuentre sin síntomas clínicos:</p>
+            </div>
+            <div class="profiles">
+                <div class="profile-card profile-card--inactive">
+                    <span class="profile-badge profile-badge--stable">Portador/a en fase inactiva</span>
+                    <p>El proceso biológico asociado a la mutación no muestra señales de actividad detectable con las técnicas actuales. Esto se asocia con un horizonte temporal más amplio antes de que puedan aparecer los primeros síntomas.</p>
+                </div>
+                <div class="profile-card profile-card--active">
+                    <span class="profile-badge profile-badge--alert">Portador/a en fase activa silente</span>
+                    <p>Existe una actividad biológica incipiente —sin síntomas clínicos— que las técnicas especializadas pueden comenzar a detectar. Este perfil se asocia con un horizonte temporal más próximo, aunque desconocemos aún cuánto y si hay mucha variabilidad entre portadores desde la detección de actividad biológica hasta el desarrollo de los primeros signos. No obstante, es el grupo que con mayor probabilidad podrá acceder a los primeros ensayos clínicos preventivos.</p>
+                </div>
+            </div>
+            <p class="profile-note">Conocer en cuál de estas situaciones te encuentras es voluntario. El programa de seguimiento te ofrecerá la posibilidad de saberlo, siempre con acompañamiento y sin presión.</p>
+        </section>
+
+        <!-- 04 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-num num-teal">04</div>
+                <div>
+                    <h2 class="section-title">Lo que se avecina</h2>
+                    <p class="section-sub">Terapias en desarrollo y primeros ensayos clínicos</p>
+                </div>
+            </div>
+            <div class="prose">
+                <p>Nunca ha habido tantas estrategias terapéuticas activas al mismo tiempo en enfermedades priónicas. Varias ya han mostrado resultados prometedores en modelos animales, y algunas han empezado a dar el salto a los ensayos en personas. Esto no garantiza que todas funcionen en humanos, pero sí marca un cambio histórico: por primera vez existen varias vías reales avanzando en paralelo hacia futuros tratamientos preventivos y modificadores de la enfermedad.</p>
+            </div>
+            <div class="therapy-legend">
+                <p class="therapy-legend-title">Qué significa cada situación</p>
+                <ul class="therapy-legend-list">
+                    <li><span class="t-badge tb-adv">Ensayo clínico en marcha</span>Ya se está probando en personas.</li>
+                    <li><span class="t-badge tb-mid">Ensayo clínico registrado, pendiente de inicio</span>El estudio ya está definido y autorizado/registrado, pero aún no ha empezado a reclutar o administrar el tratamiento.</li>
+                    <li><span class="t-badge tb-res">Desarrollo preclínico</span>La terapia ha mostrado actividad en laboratorio y/o en animales, pero todavía no se ha probado en personas.</li>
+                </ul>
+            </div>
+            <div class="therapies">
+                <div class="therapy">
+                    <span class="t-badge tb-adv">Ensayo clínico en marcha (fase 1/2a)</span>
+                    <h3>Oligonucleótidos antisentido (ASOs)</h3>
+                    <p>Son moléculas diseñadas para reducir la producción de la proteína del prion. En modelos animales, bajar esta proteína ha retrasado el inicio de la enfermedad y ha prolongado la supervivencia. Esta estrategia ya se está evaluando en personas con enfermedad priónica sintomática en un ensayo clínico internacional.</p>
+                </div>
+                <div class="therapy">
+                    <span class="t-badge tb-mid">Ensayo clínico registrado, pendiente de inicio (fase 1)</span>
+                    <h3>ARN de interferencia (siRNA)</h3>
+                    <p>Estas moléculas "silencian" el mensaje genético que da lugar a la proteína del prion. En animales han conseguido reducciones profundas y duraderas de esta proteína, con efectos beneficiosos sobre la evolución de la enfermedad. Además, ya existe un primer ensayo clínico de fase 1 registrado para esta estrategia, aunque todavía no ha comenzado el reclutamiento.</p>
+                </div>
+                <div class="therapy">
+                    <span class="t-badge tb-res">Desarrollo preclínico</span>
+                    <h3>Pequeñas moléculas para la administración oral</h3>
+                    <p>Se están desarrollando compuestos capaces de reducir la cantidad de proteína del prion que la célula llega a producir. Su gran ventaja potencial es que podrían administrarse como tratamientos sencillos y prolongados. Los datos públicos comunicados hasta ahora muestran resultados prometedores en animales, pero esta vía todavía no ha pasado a ensayos clínicos.</p>
+                </div>
+                <div class="therapy">
+                    <span class="t-badge tb-res">Desarrollo preclínico</span>
+                    <h3>Terapias génicas</h3>
+                    <p>Incluyen estrategias de silenciamiento duradero y de edición molecular orientadas a apagar o reducir de forma estable el gen de la proteína del prion. En modelos animales ya han logrado una reducción amplia de la proteína y una prolongación significativa de la supervivencia. Algunos programas están avanzando hacia la clínica, pero por ahora siguen en fase preclínica.</p>
+                </div>
+            </div>
+            <div class="box">
+                <p>Estar inscrito en un programa de seguimiento te sitúa en primera línea para acceder a estos ensayos, en caso de que se realicen en España. La ventana de oportunidad se está abriendo — y quienes ya están en seguimiento serán los que más probabilidades tengan de cruzarla primeros.</p>
+            </div>
+        </section>
+
+        <!-- 05 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-num num-green">05</div>
+                <div>
+                    <h2 class="section-title">Qué incluye el seguimiento</h2>
+                    <p class="section-sub">El protocolo de visitas periódicas</p>
+                </div>
+            </div>
+            <div class="prose">
+                <p>El programa consta de visitas periódicas — generalmente anuales o bianuales — en un centro especializado. Cada visita está diseñada para ser lo más cómoda y eficiente posible, siempre con el apoyo de un equipo dedicado.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-dot">✓</div>
+                    <div>
+                        <h3>Evaluación neurológica y neuropsicológica</h3>
+                        <p>Exploración clínica detallada y batería de pruebas cognitivas para establecer y monitorizar tu línea de base individual.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-dot">✓</div>
+                    <div>
+                        <h3>Biomarcadores en sangre, líquido cefalorraquídeo y piel</h3>
+                        <p>Análisis de sangre y, cuando esté indicado, punción lumbar y/o microbiopsia de piel para medir proteínas específicas que reflejan el estado neurobiológico.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-dot">✓</div>
+                    <div>
+                        <h3>Estudio del sueño</h3>
+                        <p>Mediante polisomnografía, registramos lo que ocurre durante el sueño: movimientos, respiración, actividad cerebral y comportamiento. Algunas alteraciones del sueño — en particular las relacionadas con la fase REM — pueden aparecer especialmente en portadores de Insomnio Familiar Fatal, de forma sutil antes de que aparezcan los primeros síntomas.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-dot">✓</div>
+                    <div>
+                        <h3>Imágenes de alta resolución</h3>
+                        <p>Resonancia magnética nuclear del cerebro que permite detectar cambios estructurales o funcionales antes de que sean clínicamente evidentes.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-dot">✓</div>
+                    <div>
+                        <h3>Apoyo psicológico</h3>
+                        <p>Acompañamiento emocional y orientación especializada, disponible en cada visita y accesible entre visitas cuando sea necesario.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-dot">✓</div>
+                    <div>
+                        <h3>Información sobre las novedades en terapia</h3>
+                        <p>Actualización periódica sobre los ensayos clínicos disponibles o que están preparándose para los que podrías ser elegible, con orientación personalizada para cada oportunidad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <div class="doc-footer">
+            <p><strong>Programa de seguimiento preclínico</strong> · Portadores asintomáticos de mutaciones del gen PRNP</p>
+            <p>brochures-production-5c8c.up.railway.app · Comité de Ética de la Investigación del País Vasco · PI2025164</p>
+            <p style="margin-top:3mm;">© Joaquín Castilla 2026</p>
+        </div>
+
+    </main>
+
+    <script>
+        /* Si la URL trae ?auto=1, dispara el diálogo de impresión al cargar.
+           El usuario puede cancelar y seguir leyendo en pantalla, o elegir
+           'Guardar como PDF' desde el diálogo nativo del navegador. */
+        if (new URLSearchParams(location.search).get('auto') === '1') {
+            window.addEventListener('load', function () {
+                setTimeout(function () { window.print(); }, 300);
+            });
+        }
+    </script>
+</body>
+</html>
