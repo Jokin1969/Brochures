@@ -101,4 +101,10 @@ const PILDORAS = [
       default: '/assests/ilustraciones/dia-programa.svg',
     },
   },
+  {
+    id:        'rt-quic',
+    categoria: 'ciencia',
+    fecha:     '2026-04-20',
+    destacada: false,
+  },
 ];

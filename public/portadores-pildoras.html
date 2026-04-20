@@ -547,10 +547,10 @@
                 var re = new RegExp('<strong>(' + escaped + ')</strong>', 'g');
                 html = html.replace(re, '<a class="pildora-link" role="button" tabindex="0" data-open-pildora="' + t.id + '">$1</a>');
             });
-            /* 2) marcadores <em class="lazy-pild" data-target="..."> */
+            /* 2) marcadores <em|strong class="lazy-pild" data-target="..."> */
             html = html.replace(
-                /<em class="lazy-pild" data-target="([a-z0-9-]+)">([\s\S]*?)<\/em>/g,
-                function (match, target, text) {
+                /<(em|strong) class="lazy-pild" data-target="([a-z0-9-]+)">([\s\S]*?)<\/\1>/g,
+                function (match, tag, target, text) {
                     if (ids.indexOf(target) === -1) return match;
                     return '<a class="pildora-link" role="button" tabindex="0" data-open-pildora="' + target + '">' + text + '</a>';
                 }
@@ -698,6 +698,12 @@
             expandedId = id;
             var p = sortedPildoras().find(function (x) { return x.id === id; });
             if (!p) return;
+            /* Si la píldora destino está oculta por el filtro actual
+               (p. ej. lazy-link a otra categoría), pasa a 'Todas'. */
+            if (activeFilter !== 'todas' && p.categoria !== activeFilter && p.categoria !== 'bienvenida') {
+                activeFilter = 'todas';
+                applyFilterState();
+            }
             var grid = document.getElementById('pildoras-grid');
             var card = grid.querySelector('.pildora-card[data-id="' + id + '"]');
             if (!card) return;
