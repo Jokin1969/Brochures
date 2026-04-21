@@ -123,6 +123,12 @@ const PILDORAS = [
     destacada: false,
   },
   {
+    id:        'arni',
+    categoria: 'horizonte',
+    fecha:     '2026-04-21',
+    destacada: false,
+  },
+  {
     id:              'pmca',
     categoria:       'ciencia',
     fecha:           '2026-04-20',

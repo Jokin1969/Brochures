@@ -299,6 +299,20 @@
                 display: block; min-width: 0; margin-bottom: 2px;
             }
         }
+        /* Descripción secundaria opcional bajo el enlace (ARNi) */
+        .pildora-expanded-body .pildora-para-saber-mas .psm-desc {
+            display: block;
+            margin-top: 3px;
+            margin-left: 120px;
+            font-size: 0.86rem;
+            color: var(--text-3);
+            line-height: 1.45;
+        }
+        @media (max-width: 520px) {
+            .pildora-expanded-body .pildora-para-saber-mas .psm-desc {
+                margin-left: 0;
+            }
+        }
         .pildora-expanded-body .pildora-para-saber-mas a {
             color: var(--text-2);
             text-decoration: underline;
