@@ -107,4 +107,19 @@ const PILDORAS = [
     fecha:     '2026-04-20',
     destacada: false,
   },
+  {
+    id:              'pmca',
+    categoria:       'ciencia',
+    fecha:           '2026-04-20',
+    destacada:       false,
+    ilustracionWide: true,  /* ilustración horizontal: hasta 640px en escritorio */
+    ilustracion: {
+      es:      '/assests/ilustraciones/pmca-amplificacion.svg',
+      eu:      '/assests/ilustraciones/pmca-amplificacion.svg',  /* SVG sin texto, válido para los 5 idiomas */
+      ca:      '/assests/ilustraciones/pmca-amplificacion.svg',
+      gl:      '/assests/ilustraciones/pmca-amplificacion.svg',
+      en:      '/assests/ilustraciones/pmca-amplificacion.svg',
+      default: '/assests/ilustraciones/pmca-amplificacion.svg',
+    },
+  },
 ];
