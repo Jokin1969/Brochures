@@ -21,7 +21,7 @@
             --cat-horizonte-accent:  #A67C3D;
             --cat-experiencia-bg:    #E1D6EC;
             --cat-experiencia-accent:#7A5BA3;
-            --cat-bienvenida-bg:     #FDFBF7;
+            --cat-bienvenida-bg:     #FDF2C6;
         }
 
         /* ---- Layout ---- */
@@ -61,15 +61,28 @@
         }
         .pildoras-chip--active:hover { filter: none; }
 
-        /* ---- Rejilla ---- */
+        /* ---- Rejilla por bloques de categoría ----
+           .pildoras-grid apila los bloques verticalmente; cada
+           .pildoras-block agrupa las píldoras de una categoría:
+             - 1 tarjeta  → ocupa todo el ancho del bloque
+             - 2 o más    → rejilla de 2 columnas que se envuelve
+           En móvil (<=640px) cualquier bloque pasa a 1 columna. */
         .pildoras-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
             margin-bottom: 48px;
         }
-        @media (min-width: 900px) { .pildoras-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 640px) { .pildoras-grid { grid-template-columns: 1fr; } }
+        .pildoras-block {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .pildoras-block--multi { grid-template-columns: repeat(2, 1fr); }
+        @media (max-width: 640px) {
+            .pildoras-block--multi { grid-template-columns: 1fr; }
+        }
+        .pildoras-block[hidden] { display: none; }
 
         /* ---- Tarjeta colapsada ---- */
         .pildora-card {
@@ -94,12 +107,13 @@
         .pildora-card--horizonte   { background: var(--cat-horizonte-bg); }
         .pildora-card--experiencia { background: var(--cat-experiencia-bg); }
         .pildora-card--bienvenida {
-            grid-column: 1 / -1;
             justify-self: center;
             max-width: 620px;
+            min-height: 0;          /* se ajusta al contenido (2 líneas) */
+            padding-top: 26px;
+            padding-bottom: 22px;
             background: var(--cat-bienvenida-bg);
             position: relative; overflow: hidden;
-            padding-top: 30px;
         }
         .pildora-card--bienvenida::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0;
@@ -140,6 +154,8 @@
         .pildora-card--expanded:hover { transform: none; }
         .pildoras-grid--has-expanded .pildora-card:not(.pildora-card--expanded):not(.pildora-card--bienvenida) { display: none; }
         .pildoras-grid--has-expanded .pildora-card--bienvenida:not(.pildora-card--expanded) { opacity: 0.5; }
+        /* Esconder bloques que no contienen la tarjeta expandida (excepto el de bienvenida). */
+        .pildoras-grid--has-expanded .pildoras-block:not(.pildoras-block--bienvenida):not(:has(.pildora-card--expanded)) { display: none; }
 
         .pildora-expanded-head {
             display: flex; align-items: flex-start; justify-content: space-between;
@@ -665,9 +681,12 @@
         }
 
         function applyFilterState() {
-            document.querySelectorAll('#pildoras-grid .pildora-card').forEach(function (c) {
-                var cat = c.dataset.categoria;
-                c.hidden = !(activeFilter === 'todas' || cat === activeFilter || cat === 'bienvenida');
+            /* Filtrado a nivel de bloque: un bloque se muestra si es el de
+               bienvenida, si el filtro es 'todas', o si coincide con la
+               categoría activa. */
+            document.querySelectorAll('#pildoras-grid .pildoras-block').forEach(function (block) {
+                var cat = block.dataset.categoria;
+                block.hidden = !(activeFilter === 'todas' || cat === activeFilter || cat === 'bienvenida');
             });
             document.querySelectorAll('.pildoras-chip').forEach(function (chip) {
                 var active = chip.dataset.filter === activeFilter;
@@ -682,14 +701,35 @@
             grid.innerHTML = '';
             grid.classList.remove('pildoras-grid--has-expanded');
 
+            /* Agrupar la lista ordenada por categoría manteniendo el
+               orden interno (destacada → fecha desc). */
+            var byCategory = {};
             sortedPildoras().forEach(function (p) {
-                var card = buildCollapsedCard(p);
-                grid.appendChild(card);
-                if (expandedId === p.id) {
-                    renderExpandedInto(card, p);
-                    grid.classList.add('pildoras-grid--has-expanded');
-                }
+                if (!byCategory[p.categoria]) byCategory[p.categoria] = [];
+                byCategory[p.categoria].push(p);
             });
+
+            /* Emitir un bloque por categoría en el orden global
+               (bienvenida → experiencia → pruebas → ciencia → horizonte). */
+            Object.keys(CATEGORY_ORDER)
+                .sort(function (a, b) { return CATEGORY_ORDER[a] - CATEGORY_ORDER[b]; })
+                .forEach(function (cat) {
+                    var cards = byCategory[cat];
+                    if (!cards || !cards.length) return;
+                    var block = document.createElement('div');
+                    block.className = 'pildoras-block pildoras-block--' + cat;
+                    block.dataset.categoria = cat;
+                    if (cards.length > 1) block.classList.add('pildoras-block--multi');
+                    cards.forEach(function (p) {
+                        var card = buildCollapsedCard(p);
+                        block.appendChild(card);
+                        if (expandedId === p.id) {
+                            renderExpandedInto(card, p);
+                            grid.classList.add('pildoras-grid--has-expanded');
+                        }
+                    });
+                    grid.appendChild(block);
+                });
             applyFilterState();
         }
 
