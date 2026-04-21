@@ -155,4 +155,10 @@ const PILDORAS = [
     fecha:     '2026-04-21',
     destacada: false,
   },
+  {
+    id:        'charm',
+    categoria: 'horizonte',
+    fecha:     '2026-04-21',
+    destacada: false,
+  },
 ];
