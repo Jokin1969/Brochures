@@ -339,6 +339,34 @@
             line-height: 1.5;
         }
 
+        /* Cita textual adaptada — voz externa (p. ej. autores de un paper).
+           Blockquote con borde lateral, fondo tintado y marca de apertura
+           tipográfica. Se usa dentro del cuerpo de la píldora. */
+        .pildora-expanded-body blockquote.pildora-cita {
+            position: relative;
+            margin: 20px 0;
+            padding: 16px 20px 16px 34px;
+            background: rgba(0,0,0,.035);
+            border-left: 3px solid rgba(0,0,0,.22);
+            border-radius: 8px;
+            font-size: 0.97rem;
+            line-height: 1.65;
+            color: var(--text-2);
+        }
+        .pildora-expanded-body blockquote.pildora-cita::before {
+            content: "\201C";
+            position: absolute;
+            left: 10px;
+            top: 2px;
+            font-family: 'Lora', Georgia, serif;
+            font-size: 2rem;
+            line-height: 1;
+            color: rgba(0,0,0,.22);
+        }
+        .pildora-expanded-body blockquote.pildora-cita em {
+            font-style: italic;
+        }
+
         .pildora-expanded-conclusion {
             margin-top: 24px;
             padding: 20px 22px;

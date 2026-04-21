@@ -149,4 +149,10 @@ const PILDORAS = [
       default: '/assests/ilustraciones/pmca-amplificacion.svg',
     },
   },
+  {
+    id:        'sangamo',
+    categoria: 'horizonte',
+    fecha:     '2026-04-21',
+    destacada: false,
+  },
 ];
