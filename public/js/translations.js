@@ -547,11 +547,11 @@ const TRANSLATIONS = {
     'pildoras.biopsia-piel.conclusion':   'Azal-biopsia prioi-gaixotasunen ikerketa dagoen unearen adibide ona da: duela hamar urte ez zegoen aukera diagnostiko gisa, eta gaur egun jarraipen aurreklinikoa nola egiten den aldatzeko potentzial handiena duten tresnetako bat da. Oraina zorroztasunez eta etorkizuna jakin-minez begiratzen dituen programa baten parte da, eta hau bezalako zainketa txikiekin, etortzear dagoen medikuntza eraikiz doa.',
 
     /* RT-QuIC — itzultzear (EU, berridazketa berria) */
-    'pildoras.rt-quic.titulo':       '[Itzultzear] Una luz que se enciende cuando algo se está formando',
-    'pildoras.rt-quic.resumenCorto': '[Itzultzear — euskarazko itzulpena laster.] Prioien aztarna zuzenean ikusten duen teknika bat, zerbait sortzen hasten denean argia igortzen du.',
-    'pildoras.rt-quic.resumen':      '[Itzultzear — euskarazko itzulpena laster.]',
+    'pildoras.rt-quic.titulo':       'Zerbait sortzen ari denean pizten den argi bat',
+    'pildoras.rt-quic.resumenCorto': 'Prioien aztarna zuzenean ikusten duen teknika bat, zerbait sortzen hasten denean argia nola igortzen duen behatuz — gaur egun gaixotasuna iritsi baino lehen identifikatzeko tresna erabilgarrienetako bat.',
+    'pildoras.rt-quic.resumen':      'Bada teknika bat lagin biologiko batean prioien aztarna antzeman dezakeena, zuzenean ikusiz nola igortzen duen argia zerbait sortzen hasten denean. RT-QuIC du izena, eta urte gutxitan tresna erabilgarrienetako bat bihurtu da gaixotasuna iritsi baino lehen identifikatzeko, edo sintomak agertu ondoren diagnostikoak baieztatzeko.',
     'pildoras.rt-quic.desarrollo':   '<p><em>Itzultzear — euskarazko itzulpen osoa laster. Bitartean, gaztelaniazko bertsiora jo dezakezu.</em></p>',
-    'pildoras.rt-quic.conclusion':   '[Itzultzear — euskarazko itzulpena laster.]',
+    'pildoras.rt-quic.conclusion':   'RT-QuIC urte gutxitan diagnostiko prioikoaren panorama eraldatu duen tresnetako bat da. Eramaile asintomatiko batentzat, behaketa goiztiarraren aukera zehatza da, ohiko jarraipen medikoan integratua. Eta bere teknika ahizpekin batera, etorkizuneko entsegu prebentiboak eraikitzen ari diren oinarri zientifikoaren parte da. Jarraipenean dagoen eramaile bakoitzak, bere parte-hartzearekin, errealitate hori lehenago iristen laguntzen du — bere buruarentzat eta etorriko diren guztientzat.',
 
     /* PMCA pilula (kategoria: ciencia; RT-QuIC-en ahizpa teknikoa) */
     'pildoras.pmca.titulo':       'Tanta batean dagoen aztarna txikia',
