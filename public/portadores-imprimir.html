@@ -126,6 +126,8 @@
             font-family: 'Lora', Georgia, serif;
             font-size: 11.5pt; line-height: 1.65;
             color: var(--text); font-style: italic;
+            text-align: justify;
+            hyphens: auto; -webkit-hyphens: auto;
         }
 
         /* ---- Sections ---- */
@@ -167,6 +169,8 @@
         .prose p {
             margin-bottom: 3mm; color: var(--text);
             font-size: 10.5pt; line-height: 1.6;
+            text-align: justify;
+            hyphens: auto; -webkit-hyphens: auto;
         }
         .prose strong { color: var(--text); }
 
@@ -182,6 +186,8 @@
             font-style: italic;
             color: var(--text);
             font-size: 10.5pt; line-height: 1.55;
+            text-align: justify;
+            hyphens: auto; -webkit-hyphens: auto;
         }
 
         /* ---- Facts list ---- */
@@ -195,6 +201,10 @@
             flex-shrink: 0;
             width: 9px; height: 9px; margin-top: 6px;
             border-radius: 50%;
+        }
+        .fact p {
+            text-align: justify;
+            hyphens: auto; -webkit-hyphens: auto;
         }
         .dot-purple { background: var(--purple); }
         .dot-blue   { background: var(--blue); }
@@ -220,6 +230,8 @@
         }
         .benefit p {
             font-size: 9.5pt; color: var(--text-2); line-height: 1.5;
+            text-align: justify;
+            hyphens: auto; -webkit-hyphens: auto;
         }
         .benefit-tag {
             display: inline-block;
@@ -255,7 +267,11 @@
         }
         .profile-badge--stable { background: var(--green); color: #fff; }
         .profile-badge--alert  { background: var(--amber); color: #fff; }
-        .profile-card p { font-size: 9.5pt; color: var(--text-2); line-height: 1.5; }
+        .profile-card p {
+            font-size: 9.5pt; color: var(--text-2); line-height: 1.5;
+            text-align: justify;
+            hyphens: auto; -webkit-hyphens: auto;
+        }
 
         .profile-note {
             margin-top: 4mm;
@@ -265,6 +281,8 @@
             border-radius: 0 8px 8px 0;
             font-size: 9.5pt; color: var(--text-2);
             font-style: italic; line-height: 1.5;
+            text-align: justify;
+            hyphens: auto; -webkit-hyphens: auto;
         }
 
         /* ---- Therapies (sección 04) ---- */
@@ -309,6 +327,8 @@
         }
         .therapy p {
             font-size: 9.5pt; color: var(--text-2); line-height: 1.5;
+            text-align: justify;
+            hyphens: auto; -webkit-hyphens: auto;
         }
 
         /* ---- Steps (sección 05) ---- */
@@ -334,6 +354,8 @@
         }
         .step p {
             font-size: 9.5pt; color: var(--text-2); line-height: 1.55;
+            text-align: justify;
+            hyphens: auto; -webkit-hyphens: auto;
         }
 
         /* ---- Footer ---- */
@@ -375,7 +397,6 @@
                 en el gen de la proteína del prion.
             </p>
             <span class="cover-ethics">Aprobado por el Comité de Ética · PI2025164</span>
-            <div class="cover-url">brochures-production-5c8c.up.railway.app</div>
         </section>
 
         <!-- APERTURA -->
@@ -579,7 +600,7 @@
         <!-- FOOTER -->
         <div class="doc-footer">
             <p><strong>Programa de seguimiento preclínico</strong> · Portadores asintomáticos de mutaciones del gen PRNP</p>
-            <p>brochures-production-5c8c.up.railway.app · Comité de Ética de la Investigación del País Vasco · PI2025164</p>
+            <p>Comité de Ética de la Investigación del País Vasco · PI2025164</p>
             <p style="margin-top:3mm;">© Joaquín Castilla 2026</p>
         </div>
 
