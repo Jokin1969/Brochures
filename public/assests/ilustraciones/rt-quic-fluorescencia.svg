@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240" role="img" aria-labelledby="rtquic-title rtquic-desc">
+  <title id="rtquic-title">Curva de fluorescencia de un ensayo RT-QuIC</title>
+  <desc id="rtquic-desc">Esquema de una curva de fluorescencia de RT-QuIC: línea base plana, seguida de una fase de crecimiento sigmoideo y una meseta que indica la detección de actividad priónica.</desc>
+
+  <defs>
+    <style>
+      .axis { stroke: #6B8AAB; stroke-width: 1.2; fill: none; opacity: 0.7; }
+      .grid { stroke: #C8DAEC; stroke-width: 0.6; fill: none; opacity: 0.5; stroke-dasharray: 3 3; }
+      .curve { stroke: #4A7BA8; stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .glow { stroke: #A8C8E0; stroke-width: 6; fill: none; stroke-linecap: round; stroke-linejoin: round; opacity: 0.4; }
+      .threshold { stroke: #6B8AAB; stroke-width: 1; fill: none; opacity: 0.5; stroke-dasharray: 4 4; }
+      .axis-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11px; fill: #6B8AAB; opacity: 0.7; }
+    </style>
+  </defs>
+
+  <!-- Eje Y -->
+  <line class="axis" x1="60" y1="30" x2="60" y2="195"/>
+  <!-- Eje X -->
+  <line class="axis" x1="60" y1="195" x2="555" y2="195"/>
+
+  <!-- Líneas guía horizontales suaves -->
+  <line class="grid" x1="60" y1="60" x2="555" y2="60"/>
+  <line class="grid" x1="60" y1="100" x2="555" y2="100"/>
+  <line class="grid" x1="60" y1="140" x2="555" y2="140"/>
+
+  <!-- Línea de umbral discreta -->
+  <line class="threshold" x1="60" y1="155" x2="555" y2="155"/>
+
+  <!-- Halo / brillo bajo la curva (efecto luz) -->
+  <path class="glow" d="
+    M 70 185
+    L 180 184
+    L 240 182
+    Q 290 180, 320 165
+    Q 350 145, 370 110
+    Q 390 75, 420 55
+    Q 450 45, 555 42
+  "/>
+
+  <!-- Curva principal de fluorescencia -->
+  <path class="curve" d="
+    M 70 185
+    L 180 184
+    L 240 182
+    Q 290 180, 320 165
+    Q 350 145, 370 110
+    Q 390 75, 420 55
+    Q 450 45, 555 42
+  "/>
+
+  <!-- Etiquetas de eje (flechas universales sin idioma) -->
+  <text class="axis-label" x="58" y="25" text-anchor="end">↑</text>
+  <text class="axis-label" x="560" y="210" text-anchor="end">→</text>
+</svg>

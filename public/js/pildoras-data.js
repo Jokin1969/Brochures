@@ -102,10 +102,19 @@ const PILDORAS = [
     },
   },
   {
-    id:        'rt-quic',
-    categoria: 'ciencia',
-    fecha:     '2026-04-20',
-    destacada: false,
+    id:              'rt-quic',
+    categoria:       'ciencia',
+    fecha:           '2026-04-20',
+    destacada:       false,
+    ilustracionWide: true,
+    ilustracion: {
+      es:      '/assests/ilustraciones/rt-quic-fluorescencia.svg',
+      eu:      '/assests/ilustraciones/rt-quic-fluorescencia.svg',
+      ca:      '/assests/ilustraciones/rt-quic-fluorescencia.svg',
+      gl:      '/assests/ilustraciones/rt-quic-fluorescencia.svg',
+      en:      '/assests/ilustraciones/rt-quic-fluorescencia.svg',
+      default: '/assests/ilustraciones/rt-quic-fluorescencia.svg',
+    },
   },
   {
     id:              'pmca',
