@@ -59,14 +59,6 @@ const PILDORAS = [
     categoria: 'pruebas',
     fecha:     '2026-04-19',
     destacada: false,
-    ilustracion: {
-      es:      '/assests/ilustraciones/puncion-lumbar.svg',
-      eu:      '/assests/ilustraciones/puncion-lumbar-eu.svg',
-      ca:      '/assests/ilustraciones/puncion-lumbar-ca.svg',
-      gl:      '/assests/ilustraciones/puncion-lumbar-gl.svg',
-      en:      '/assests/ilustraciones/puncion-lumbar-en.svg',
-      default: '/assests/ilustraciones/puncion-lumbar.svg',
-    },
   },
   {
     id:        'polisomnografia',
@@ -108,12 +100,12 @@ const PILDORAS = [
     destacada:       false,
     ilustracionWide: true,
     ilustracion: {
-      es:      '/assests/ilustraciones/rt-quic-fluorescencia.svg',
-      eu:      '/assests/ilustraciones/rt-quic-fluorescencia.svg',
-      ca:      '/assests/ilustraciones/rt-quic-fluorescencia.svg',
-      gl:      '/assests/ilustraciones/rt-quic-fluorescencia.svg',
-      en:      '/assests/ilustraciones/rt-quic-fluorescencia.svg',
-      default: '/assests/ilustraciones/rt-quic-fluorescencia.svg',
+      es:      '/assests/images/rt_quic.png',
+      eu:      '/assests/images/rt_quic.png',
+      ca:      '/assests/images/rt_quic.png',
+      gl:      '/assests/images/rt_quic.png',
+      en:      '/assests/images/rt_quic.png',
+      default: '/assests/images/rt_quic.png',
     },
   },
   {
@@ -141,12 +133,12 @@ const PILDORAS = [
     destacada:       false,
     ilustracionWide: true,  /* ilustración horizontal: hasta 640px en escritorio */
     ilustracion: {
-      es:      '/assests/ilustraciones/pmca-amplificacion.svg',
-      eu:      '/assests/ilustraciones/pmca-amplificacion.svg',  /* SVG sin texto, válido para los 5 idiomas */
-      ca:      '/assests/ilustraciones/pmca-amplificacion.svg',
-      gl:      '/assests/ilustraciones/pmca-amplificacion.svg',
-      en:      '/assests/ilustraciones/pmca-amplificacion.svg',
-      default: '/assests/ilustraciones/pmca-amplificacion.svg',
+      es:      '/assests/images/pmca.png',
+      eu:      '/assests/images/pmca.png',
+      ca:      '/assests/images/pmca.png',
+      gl:      '/assests/images/pmca.png',
+      en:      '/assests/images/pmca.png',
+      default: '/assests/images/pmca.png',
     },
   },
   {
