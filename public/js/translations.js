@@ -252,6 +252,7 @@ const TRANSLATIONS = {
     'pildoras.filters.horizonte': 'En el horizonte',
     'pildoras.filters.experiencia': 'El programa por dentro',
     'pildoras.filters.tu-parte':    'Tu parte en la historia',
+    'pildoras.menu.desdeCasa':      'Desde casa',
 
     /* Acciones de la vista expandida */
     'pildoras.close':            'Cerrar',
@@ -553,6 +554,7 @@ const TRANSLATIONS = {
     'pildoras.filters.horizonte': 'Zerumugan',
     'pildoras.filters.experiencia': 'Programa, barrutik',
     'pildoras.filters.tu-parte':    'Zure zatia istorioan',
+    'pildoras.menu.desdeCasa':      'Etxetik',
 
     /* Acciones de la vista expandida */
     'pildoras.close':            'Itxi',
@@ -888,6 +890,7 @@ const TRANSLATIONS = {
     'pildoras.filters.horizonte': 'A l\'horitzó',
     'pildoras.filters.experiencia': 'El programa per dins',
     'pildoras.filters.tu-parte':    'La teva part en la història',
+    'pildoras.menu.desdeCasa':      'Des de casa',
 
     /* Acciones de la vista expandida */
     'pildoras.close':            'Tancar',
@@ -1223,6 +1226,7 @@ const TRANSLATIONS = {
     'pildoras.filters.horizonte': 'No horizonte',
     'pildoras.filters.experiencia': 'O programa por dentro',
     'pildoras.filters.tu-parte':    'A túa parte na historia',
+    'pildoras.menu.desdeCasa':      'Desde a casa',
 
     /* Acciones de la vista expandida */
     'pildoras.close':            'Pechar',
@@ -1479,6 +1483,7 @@ const TRANSLATIONS = {
     'pildoras.filters.horizonte': 'On the horizon',
     'pildoras.filters.experiencia': 'Inside the program',
     'pildoras.filters.tu-parte':    'Your part in the story',
+    'pildoras.menu.desdeCasa':      'From home',
 
     /* Expanded view actions */
     'pildoras.close':            'Close',
