@@ -153,4 +153,10 @@ const PILDORAS = [
     fecha:     '2026-04-21',
     destacada: false,
   },
+  {
+    id:        'historia-natural-app',
+    categoria: 'tu-parte',
+    fecha:     '2026-04-24',
+    destacada: false,
+  },
 ];
