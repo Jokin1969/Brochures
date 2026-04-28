@@ -173,16 +173,21 @@
             margin: 0; flex: 1;
         }
         .pildora-close {
-            background: rgba(255,255,255,.55);
-            border: none; cursor: pointer;
-            width: 36px; height: 36px; border-radius: 50%;
+            background: transparent;
+            border: 1px solid rgba(0,0,0,.18); cursor: pointer;
+            padding: 5px 16px; border-radius: 20px;
             display: inline-flex; align-items: center; justify-content: center;
-            color: var(--text-2);
-            transition: background 0.2s, color 0.2s;
-            font-family: inherit; flex-shrink: 0;
+            color: var(--text-2); font-size: 0.85rem;
+            transition: background 0.2s, border-color 0.2s, color 0.2s;
+            font-family: inherit; flex-shrink: 0; white-space: nowrap;
         }
-        .pildora-close:hover { background: rgba(255,255,255,.9); color: var(--text); }
+        .pildora-close:hover { background: rgba(0,0,0,.05); border-color: rgba(0,0,0,.3); color: var(--text); }
         .pildora-close:focus-visible { outline: 2px solid var(--text-2); outline-offset: 2px; }
+        .pildora-close-bottom-wrap {
+            display: flex; justify-content: center;
+            margin-top: 32px; padding-top: 24px;
+            border-top: 1px solid rgba(0,0,0,.08);
+        }
 
         .pildora-expanded-lede {
             font-style: italic;
@@ -797,18 +802,24 @@
                 '<div class="pildora-expanded-head">' +
                     '<h2 class="pildora-expanded-title" tabindex="-1">' + escapeHtml(title) + '</h2>' +
                     '<button type="button" class="pildora-close" aria-label="' + escapeHtml(closeLabel) + '" data-action="close">' +
-                        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+                        escapeHtml(closeLabel) +
                     '</button>' +
                 '</div>' +
                 '<p class="pildora-expanded-lede">' + applyLazyLinks(lede) + '</p>' +
                 illHtml +
                 '<div class="pildora-expanded-body">' + applyLazyLinks(body) + '</div>' +
-                '<div class="pildora-expanded-conclusion">' + applyLazyLinks(conclusion) + '</div>';
+                '<div class="pildora-expanded-conclusion">' + applyLazyLinks(conclusion) + '</div>' +
+                '<div class="pildora-close-bottom-wrap">' +
+                    '<button type="button" class="pildora-close" aria-label="' + escapeHtml(closeLabel) + '" data-action="close">' +
+                        escapeHtml(closeLabel) +
+                    '</button>' +
+                '</div>';
 
-            var closeBtn = card.querySelector('[data-action="close"]');
-            if (closeBtn) closeBtn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                collapseCard();
+            card.querySelectorAll('[data-action="close"]').forEach(function (closeBtn) {
+                closeBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    collapseCard();
+                });
             });
 
             card.querySelectorAll('[data-open-pildora]').forEach(function (link) {
