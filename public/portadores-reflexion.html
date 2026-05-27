@@ -270,6 +270,7 @@
         <button class="lang-btn" data-lang="ca"><img src="/assests/flags/ca.png" alt="" style="width:16px;height:11px;vertical-align:-2px;margin-right:5px;">CA</button>
         <button class="lang-btn" data-lang="gl"><img src="/assests/flags/gl.png" alt="" style="width:16px;height:11px;vertical-align:-2px;margin-right:5px;">GL</button>
         <button class="lang-btn" data-lang="en"><img src="/assests/flags/en.png" alt="" style="width:16px;height:11px;vertical-align:-2px;margin-right:5px;">EN</button>
+        <button class="lang-btn" data-lang="pt"><img src="/assests/flags/pt.png" alt="" style="width:16px;height:11px;vertical-align:-2px;margin-right:5px;">PT</button>
     </nav>
 
     <section class="hero">
@@ -437,15 +438,15 @@
         window.goBack = function () {
             var params = new URLSearchParams(window.location.search);
             var from   = params.get('from');
+            var lang   = localStorage.getItem('pg-lang') || 'es';
+            var base   = (lang !== 'es') ? '/' + lang : '';
 
             if (from === 'paso2') {
-                /* Return to portadores-paso-2.html, scroll to answer area */
                 sessionStorage.setItem('reflexion-return', 'paso2');
                 window.location.href = '/portadores-paso-2.html';
             } else {
-                /* Default: return to portadores.html, scroll to section 03 */
                 sessionStorage.setItem('reflexion-return', 'portadores');
-                window.location.href = '/portadores.html#section-03';
+                window.location.href = base + '/portadores.html#section-03';
             }
         };
 

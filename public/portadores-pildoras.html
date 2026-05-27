@@ -562,6 +562,7 @@
         <button class="lang-btn" data-lang="ca"><img src="/assests/flags/ca.png" alt="" style="width:16px;height:11px;vertical-align:-2px;margin-right:5px;">CA</button>
         <button class="lang-btn" data-lang="gl"><img src="/assests/flags/gl.png" alt="" style="width:16px;height:11px;vertical-align:-2px;margin-right:5px;">GL</button>
         <button class="lang-btn" data-lang="en"><img src="/assests/flags/en.png" alt="" style="width:16px;height:11px;vertical-align:-2px;margin-right:5px;">EN</button>
+        <button class="lang-btn" data-lang="pt"><img src="/assests/flags/pt.png" alt="" style="width:16px;height:11px;vertical-align:-2px;margin-right:5px;">PT</button>
     </nav>
 
     <section class="hero">
@@ -962,8 +963,17 @@
                 btn.addEventListener('click', function () {
                     if (typeof setLang === 'function') setLang(btn.dataset.lang);
                     renderGrid();
+                    var lang2 = localStorage.getItem('pg-lang') || 'es';
+                    var backLink = document.querySelector('a.back');
+                    if (backLink) backLink.href = (lang2 !== 'es' ? '/' + lang2 : '') + '/portadores.html';
                 });
             });
+
+            (function () {
+                var lang0 = localStorage.getItem('pg-lang') || 'es';
+                var backLink = document.querySelector('a.back');
+                if (backLink) backLink.href = (lang0 !== 'es' ? '/' + lang0 : '') + '/portadores.html';
+            }());
 
             /* Read tracking from email */
             var params = new URLSearchParams(window.location.search);

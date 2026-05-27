@@ -1741,6 +1741,340 @@ const TRANSLATIONS = {
     'reflexion.closing':     'Being in one group or the other doesn\'t change who you are, but it can significantly change how you plan, how you decide, and how you take advantage of the opportunities for follow-up, support, and early access to new therapies.',
     'reflexion.back':        'Back to the program',
   },
+
+  pt: {
+    /* ---- Navegação ---- */
+    'nav.back':     'Voltar',
+    'nav.prev':     'Anterior',
+    'nav.next':     'Seguinte',
+    'nav.continue': 'Continuar',
+
+    /* ---- Hero ---- */
+    'hero.eyebrow': 'Programa de acompanhamento pré-clínico',
+    'hero.title':   'A sua participação\ncomeça aqui',
+    'hero.sub':     'Um processo pensado para si, ao seu ritmo e sem pressão.',
+
+    /* ---- Momento 0 ---- */
+    'm0.intro': 'Antes de continuar, queremos garantir que teve oportunidade de ler todas as informações do programa ao seu ritmo. O que vem a seguir não é uma formalidade — é uma conversa consigo mesmo sobre algo importante.',
+    'm0.btn':   'Li o programa e quero continuar',
+
+    /* ---- Momento 1 ---- */
+    'm1.title': 'Uma primeira pergunta, sem pressa',
+    'm1.sub':   'Não há resposta certa ou errada. Pedimos apenas que escolha aquela que melhor reflete como se sente agora. Pode mudar de ideias em qualquer momento.',
+
+    'm1.a.header': 'Sim, quero explorar a minha participação',
+    'm1.a.body':   'Li a informação com atenção e, embora ainda possa ter dúvidas, sinto que quero dar este passo. Compreendo que não é um compromisso definitivo — é o início de uma conversa mais profunda com a equipa e comigo mesmo/a.',
+
+    'm1.b.header': 'Ainda não me sinto preparado/a',
+    'm1.b.body':   'Preciso de mais tempo para assimilar esta informação. Não é uma porta que se fecha — sei que posso voltar quando me sentir pronto/a. Por agora, prefiro ir ao meu ritmo.',
+
+    'm1.c.header': 'Tenho dúvidas e prefiro falar primeiro com alguém',
+    'm1.c.body':   'Antes de tomar qualquer decisão, gostaria de falar com a equipa do programa. Tenho perguntas que não consigo responder sozinho/a e preciso de ouvir uma voz humana antes de continuar.',
+
+    /* ---- portadores-paso-1.html (Verificação 2.1) ---- */
+    'm2.c1.title':    'Algo importante que queremos confirmar consigo',
+    'm2.c1.prose':    'No grupo de portadores assintomáticos — pessoas que, como você, convivem com uma mutação genética sem ter desenvolvido sintomas —, a investigação atual permitiu identificar duas situações claramente distintas. Isto é relativamente recente e nem toda a gente que chega até aqui já tem conhecimento disso. Por isso queremos perguntar-lhe:',
+    'm2.c1.question': 'Sabia que existem dois tipos de portadores assintomáticos, com situações biológicas diferentes embora ambos sem sintomas?',
+    'm2.c1.exp.p1':   '<strong>Portadores em fase inativa:</strong> o processo biológico associado à mutação não apresenta hoje sinais de atividade detetável. Isto está associado a um horizonte temporal mais alargado. O relógio biológico, por assim dizer, ainda não começou a marcar de forma mensurável.',
+    'm2.c1.exp.p2':   '<strong>Portadores em fase ativa silenciosa:</strong> existe uma atividade biológica incipiente que técnicas especializadas conseguem começar a detetar, embora a pessoa não sinta absolutamente nada. O processo começou muito silenciosamente, e é precisamente por isso que é tão valioso saber: porque este é o grupo com mais probabilidade de poder aceder aos primeiros ensaios clínicos preventivos.',
+    'm2.c1.exp.p3':   'Saber em qual dos dois grupos se encontra é voluntário, possível, e algo com que o programa pode ajudá-lo/a a descobrir.',
+    'm2.c1.exp.retry': 'Volte à pergunta quando quiser:',
+    'm2.c1.ans.yes1':  'Sim, já sabia',
+    'm2.c1.ans.yes2':  'Não sabia, mas compreendi agora ao ler o programa, e está claro para mim',
+    'm2.c1.ans.no':    'Não sabia e ainda não está claro para mim',
+
+    /* ---- portadores-paso-2.html (Verificação 2.2) ---- */
+    'm2.c2.title':    'A diferença entre os dois tipos e o que significa para si',
+    'm2.c2.prose.p1': 'Saber que existem dois tipos é um primeiro passo. Mas queremos garantir que a diferença entre eles tem um significado real para si, não apenas como conceito abstrato.',
+    'm2.c2.prose.p2': '<strong>Se está em fase inativa:</strong> os marcadores biológicos não mostram atividade detetável hoje. Isso não significa que o processo não possa começar nalgum momento (possivelmente em dias, semanas ou meses), mas significa que provavelmente tem uma ampla margem de tempo antes de os sintomas da doença se tornarem visíveis. Essa margem é precisamente o que torna possível planear com antecedência e estar na primeira linha quando as terapias chegarem.',
+    'm2.c2.prose.p3': '<strong>Se está em fase ativa silenciosa:</strong> os marcadores mostram sinais precoces de atividade, embora a sua vida quotidiana não reflita isso de forma alguma. Longe de ser apenas uma má notícia — pode significar que os sintomas da doença apareçam num horizonte mais próximo (ainda que desconhecido) — é a informação mais valiosa que pode ter hoje, porque o/a coloca precisamente no grupo para o qual estão a ser desenhados os primeiros ensaios clínicos preventivos. O momento de agir é agora, e o programa está aqui para cada passo.',
+    'm2.c2.question': 'Compreende a diferença entre as duas situações e o que pode significar para o seu caso específico?',
+    'm2.c2.yes':      'Sim, compreendo a diferença e o que significa',
+    'm2.c2.no':       'Preciso de ler de novo ou não está completamente claro para mim',
+    'm2.c2.exp.p1':   'Sem problema. Tome o tempo que precisar. Aqui estão os dois perfis resumidos novamente:',
+    'm2.c2.exp.p2':   '<strong>Fase inativa:</strong> marcadores sem atividade detetável hoje. Horizonte temporal alargado. Tempo para planear com antecedência.',
+    'm2.c2.exp.p3':   '<strong>Fase ativa silenciosa:</strong> sinais precoces de atividade biológica, sem sintomas. O grupo prioritário para os primeiros ensaios preventivos.',
+    'm2.c2.exp.retry': 'Quando tiver claro:',
+
+    /* ---- portadores-paso-3.html (Verificação 2.3) ---- */
+    'm2.c3.title':    'Os exames que tornam possível saber',
+    'm2.c3.prose.p1': 'Saber em qual dos dois grupos se encontra não é simples. Não existe hoje um único exame rápido e definitivo que responda a essa questão. O que temos são instrumentos especializados — alguns deles requerem amostras biológicas que não são as habituais, como determinadas análises ao líquido cefalorraquidiano, ou outros que conseguem detetar sinais de atividade priónica com maior sensibilidade.',
+    'm2.c3.prose.p2': 'Isto significa que o processo requer tempo, consultas e, nalguns casos, procedimentos que merecem ser explicados em detalhe antes de serem realizados. A equipa do programa estará presente em cada decisão, e nada será feito sem a sua compreensão e consentimento.',
+    'm2.c3.question': 'Compreende que saber a sua situação requer exames especializados, que nem sempre são simples, e que o resultado pode ter implicações reais na sua vida?',
+    'm2.c3.yes':      'Sim, compreendo e quero continuar',
+    'm2.c3.no':       'Preciso de pensar ou de compreender melhor isto antes de avançar',
+    'm2.c3.exp.p1':   'Esta é uma decisão que merece reflexão, e é bom reconhecê-lo. O importante é que ninguém lhe pedirá que faça qualquer exame sem primeiro explicar em detalhe o que envolve, que informação fornece e o que pode significar para si saber esse resultado.',
+    'm2.c3.exp.p2':   'O consentimento informado não é um formulário — é uma conversa real com a equipa. Quando se sentir pronto/a, a pergunta ainda estará aqui.',
+    'm2.c3.exp.retry': 'Quando estiver pronto/a:',
+
+    /* ---- Fechos do Momento 1 ---- */
+    'closure.b.title': 'O seu ritmo é o ritmo certo',
+    'closure.b.text':  'Não há nenhuma pressa. O que importa é saber que esta informação estará aqui quando precisar e que a equipa do programa está disponível sempre que quiser retomar a conversa. Cuidar de si também significa dar-se o tempo que precisa.',
+
+    'closure.c.title': 'Falar é sempre um bom primeiro passo',
+    'closure.c.text':  'Ter dúvidas não significa estar perdido/a — significa que está a levar isto a sério. A equipa do programa está aqui precisamente para isso. Não hesite em contactar pelo canal que lhe parecer mais confortável.',
+
+    'closure.contacts.label': 'Como encontrar-nos',
+
+    /* ---- Rodapé ---- */
+    'footer.text':   '© Joaquín Castilla 2026',
+    'footer.ethics': 'Programa aprovado pelo Comité de Ética da Investigação do País Basco · Código PI2025164',
+
+    /* ---- Botão próximos passos ---- */
+    'btn.siguientes-pasos': 'Quais são os próximos passos?',
+
+    /* ---- pildoras.html (Pílulas de informação) ---- */
+    'pildoras.hero.title':      'Pílulas de<br>informação',
+    'pildoras.hero.sub':        'Atualizações breves e rigorosas sobre o que importa',
+
+    /* Filtros de categorias */
+    'pildoras.filters.todas':       'Todas',
+    'pildoras.filters.pruebas':     'Exames que lhe farão',
+    'pildoras.filters.ciencia':     'A ciência por detrás',
+    'pildoras.filters.horizonte':   'No horizonte',
+    'pildoras.filters.experiencia': 'Por dentro do programa',
+    'pildoras.filters.tu-parte':    'O seu papel na história',
+    'pildoras.menu.desdeCasa':      'A partir de casa',
+
+    /* Ações na vista expandida */
+    'pildoras.close': 'Fechar',
+
+    /* Pílula de boas-vindas */
+    'pildoras.bienvenida.titulo':       'Um espaço para si, ao seu ritmo',
+    'pildoras.bienvenida.resumenCorto': 'Bem-vindo/a às pílulas de informação: textos breves sobre os exames, a ciência e as terapias do programa. Leia-os ao seu ritmo.',
+    'pildoras.bienvenida.resumen':      'Esta secção reúne explicações curtas sobre os exames, técnicas e terapias que fazem parte do programa. São textos breves, pensados para ser lidos com calma, quando quiser e até onde quiser.',
+    'pildoras.bienvenida.conclusion':   'Cada pílula é uma pequena janela. Abra-as quando quiser. E se, depois de ler uma, ficar com dúvidas, a equipa está sempre do outro lado, pronta para as conversar.',
+
+    /* Pílula RM (categoria: exames) */
+    'pildoras.rmn.titulo':       'Um olhar ao cérebro, com a maior clareza',
+    'pildoras.rmn.resumenCorto': 'A ressonância magnética permite observar o cérebro em grande detalhe, sem agulha, sem dor e sem radiação. Contamos-lhe como é, o que acrescenta ao seguimento e com que frequência se repete.',
+    'pildoras.rmn.resumen':      'A ressonância magnética —RM— é um dos exames mais conhecidos da medicina moderna. Consiste em obter uma imagem muito detalhada do cérebro pelo exterior, sem agulha, sem dor, sem radiação. No programa utilizamo-la porque é uma forma não invasiva e segura de observar como o seu cérebro está ao longo do tempo.',
+    'pildoras.rmn.conclusion':   'A RM é, de todos os exames do programa, provavelmente o mais fácil de realizar: deita-se, espera e sai. O seu valor não está no que faz sentir durante o exame, mas no que deixa para trás: uma série de imagens do seu cérebro ao longo do tempo que, se alguma vez forem necessárias, serão ouro. E se nunca forem necessárias, melhor ainda.',
+
+    /* Pílula punção lombar (categoria: exames) */
+    'pildoras.puncion-lumbar.titulo':       'Escutar o líquido que banha o cérebro',
+    'pildoras.puncion-lumbar.resumenCorto': 'Uma punção lombar permite obter uma pequena amostra do líquido que rodeia o cérebro e a medula espinhal — uma das fontes de informação mais valiosas da neurologia. Contamos-lhe como é, que informação fornece e por que vale a pena.',
+    'pildoras.puncion-lumbar.resumen':      'O líquido cefalorraquidiano —LCR— é um líquido transparente que banha o cérebro e a medula espinhal. Por estar em contacto direto com o sistema nervoso, transporta pistas moleculares dissolvidas que em nenhuma outra parte do corpo se encontram com tanta clareza. Uma punção lombar é o procedimento que permite obter uma pequena amostra deste líquido para análise.',
+    'pildoras.puncion-lumbar.conclusion':   'Uma punção lombar é provavelmente o exame mais temido do programa, mas na prática costuma ser muito menos desconfortável do que as pessoas imaginam. Em contrapartida, oferece algo único: uma janela direta para o sistema nervoso que nenhum outro exame consegue abrir. Cada amostra que nos dá é uma peça pequena mas extraordinariamente valiosa do trabalho conjunto que estamos a fazer, e uma forma concreta de cuidar de si no presente e de se preparar para o que está para vir.',
+
+    /* Pílula polissonografia (categoria: exames) */
+    'pildoras.polisomnografia.titulo':       'O que o seu cérebro conta enquanto dorme',
+    'pildoras.polisomnografia.resumenCorto': 'A polissonografia é um estudo do sono que nos permite observar como funciona o seu cérebro durante a noite. Em portadores de IFF, é um dos exames mais sensíveis do programa. Contamos-lhe como é e por que vale a pena.',
+    'pildoras.polisomnografia.resumen':      'A polissonografia é um exame que regista o que acontece no seu corpo durante uma noite de sono: a atividade elétrica do cérebro, os movimentos oculares, a respiração, o ritmo cardíaco, o tónus muscular. É um dos exames mais valiosos no seguimento de portadores de Insónia Fatal Familiar, porque as alterações relacionadas com esta mutação aparecem no sono muito antes de aparecerem em qualquer outra parte.',
+    'pildoras.polisomnografia.conclusion':   'A polissonografia é um exame singular no programa: não é feito por todos os portadores, e realizá-lo implica abdicar de uma noite de sono em casa. Em contrapartida, oferece algo que nenhum outro exame pode dar: uma janela para o trabalho silencioso que o seu cérebro realiza todas as noites e a possibilidade de detetar uma mudança subtil mais cedo do que ninguém, caso alguma vez ocorra. É, de certa forma, deixar que o seu cérebro fale por si enquanto descansa.',
+
+    /* Pílula colheita de sangue (categoria: exames) */
+    'pildoras.extraccion-sangre.titulo':       'A amostra que ganha valor com o tempo',
+    'pildoras.extraccion-sangre.resumenCorto': 'Uma colheita de sangue de poucos minutos permite-nos medir hoje coisas que há dez anos não conseguíamos, e amanhã permitirá medir coisas que ainda não existem. Contamos-lhe o que é analisado e por que este exame é provavelmente o que mais está a mudar.',
+    'pildoras.extraccion-sangre.resumen':      'Uma colheita de sangue é o exame mais simples do programa. Todos já fizemos alguma análise ao sangue, por isso não dedicaremos muito espaço a descrevê-la. O que é interessante não é o exame em si, mas o que se pode fazer com a amostra: o campo dos biomarcadores sanguíneos está a atravessar uma transformação acelerada, e uma simples colheita anual permite participar nesse progresso com um esforço mínimo da sua parte.',
+    'pildoras.extraccion-sangre.conclusion':   'A colheita de sangue é o mais humilde dos exames do programa, mas talvez o que melhor encarna o espírito do seguimento: algo pequeno, sustentado no tempo, que cresce em valor pela constância mais do que pela intensidade. Hoje o seu sangue diz o que a ciência sabe medir. Amanhã dirá o que a ciência ainda está a aprender. E o programa está aqui para garantir que essa conversa não se interrompa.',
+
+    /* Pílula biópsia de pele (categoria: exames) */
+    'pildoras.biopsia-piel.titulo':       'Uma pequena janela na pele',
+    'pildoras.biopsia-piel.resumenCorto': 'Uma biópsia de pele de apenas alguns milímetros permite-nos detetar, de forma minimamente invasiva, sinais moleculares que anteriormente só podíamos procurar no líquido cefalorraquidiano. Contamos-lhe como é, o que acrescenta e por que a fazemos junto com a punção lombar.',
+    'pildoras.biopsia-piel.resumen':      'Há apenas alguns anos, descobrimos que a pele contém pistas moleculares do sistema nervoso central que podem ser detetadas com técnicas altamente sensíveis. Uma biópsia de pele é um pequeno procedimento ambulatório que nos permite aceder a essa informação sem ter de entrar no sistema nervoso. No programa, fazemo-la em paralelo com a punção lombar, porque cada amostra traz uma perspetiva complementar à outra.',
+    'pildoras.biopsia-piel.conclusion':   'A biópsia de pele é um bom exemplo de onde está hoje a investigação sobre doenças priónicas: há dez anos não existia como opção diagnóstica e hoje é uma das ferramentas com mais potencial para mudar a forma como se faz o seguimento pré-clínico. Faz parte de um programa que olha para o presente com rigor e para o futuro com curiosidade, e que, com pequenas atenções como esta, está a construir silenciosamente a medicina do que está para vir.',
+
+    /* Pílula RT-QuIC (categoria: ciência) */
+    'pildoras.rt-quic.titulo':       'Uma luz que se acende quando algo está a formar-se',
+    'pildoras.rt-quic.resumenCorto': 'Uma técnica capaz de detetar o rasto dos priões observando, em tempo real, como algo emite luz quando começa a formar-se — uma das ferramentas mais úteis hoje para identificar a doença antes de chegar.',
+    'pildoras.rt-quic.resumen':      'Existe uma técnica que consegue detetar o rasto dos priões numa amostra biológica observando, em tempo real, como emite luz quando algo está a começar a formar-se. Chama-se RT-QuIC e, em apenas alguns anos, tornou-se uma das ferramentas mais úteis para identificar a doença antes de chegar ou para confirmar diagnósticos quando os sintomas já apareceram.',
+    'pildoras.rt-quic.conclusion':   'O RT-QuIC é uma das ferramentas que mais transformou o diagnóstico das doenças priónicas nos últimos anos. Para um portador assintomático, pode oferecer uma oportunidade real de deteção precoce no âmbito de um seguimento médico regular. Além disso, juntamente com outras técnicas relacionadas, faz parte do fundamento científico sobre o qual estão a ser construídos os futuros ensaios preventivos. Cada pessoa em seguimento contribui, através da sua participação, para aproximar essa realidade — para si e para os que poderão beneficiar no futuro.',
+
+    /* Pílula PMCA (categoria: ciência) */
+    'pildoras.pmca.titulo':       'Um rasto minúsculo numa única gota',
+    'pildoras.pmca.resumenCorto': 'Uma técnica capaz de detetar o rasto dos priões em quantidades quase inimaginavelmente pequenas, a partir de amostras tão acessíveis como sangue ou urina, anos antes de qualquer sintoma aparecer.',
+    'pildoras.pmca.resumen':      'Existe uma técnica capaz de detetar o rasto dos priões em quantidades quase inimaginavelmente pequenas — a partir de uma amostra tão acessível como sangue ou urina, e anos antes de qualquer sintoma aparecer. Chama-se PMCA e é uma das portas que a ciência está a abrir para um seguimento mais precoce e menos invasivo.',
+    'pildoras.pmca.conclusion':   'O PMCA é uma das razões pelas quais o seguimento pré-clínico tem hoje um significado que não tinha há uma década. É uma técnica que está a avançar rapidamente, aproximando o rastreio de amostras cada vez menos invasivas, e que faz parte da paisagem científica que tornará possíveis os ensaios preventivos do futuro. Cada portador em seguimento contribui, através da sua participação, para aproximar essa realidade — para si e para os que virão a seguir.',
+
+    /* Pílula ASOs (categoria: horizonte) */
+    'pildoras.asos.titulo':       'Uma porta que começa a abrir-se',
+    'pildoras.asos.resumenCorto': 'Está em curso um ensaio clínico com o primeiro fármaco desenhado para ir à raiz das doenças priónicas. Ainda não é uma cura, nem está disponível para portadores assintomáticos, mas é uma porta que começa a abrir-se.',
+    'pildoras.asos.resumen':      'Está em curso um ensaio clínico com o primeiro fármaco desenhado para ir à raiz do problema: reduzir, no cérebro, a produção da proteína que se dobra mal nas doenças priónicas. Ainda não é uma cura e ainda não está disponível para portadores assintomáticos. Mas é a primeira vez que algo assim está a ser testado em pessoas — e isso, num campo onde durante décadas não havia nada, é uma porta que começa a abrir-se.',
+    'pildoras.asos.conclusion':   'Os ASOs não são uma cura, nem uma promessa de cura a curto prazo. São, pela primeira vez, uma estratégia especificamente desenhada contra a origem do processo patológico, que chegou à fase de ser testada em pessoas com resultados preliminares que permitem continuar a avançar. Para os portadores assintomáticos de hoje, isto significa duas coisas: que a investigação está viva e a produzir resultados reais, e que o seguimento que se faz agora é precisamente o que prepara o terreno para poder aceder, quando chegar o momento, aos ensaios preventivos que ainda estão por vir. Cada portador em seguimento contribui, através da sua participação, para aproximar essa realidade — para si e para os que virão a seguir.',
+
+    /* Pílula ARNi / Prionsiran (categoria: horizonte) */
+    'pildoras.arni.titulo':       'Uma segunda tentativa no alvo',
+    'pildoras.arni.resumenCorto': 'O Prionsiran é o primeiro fármaco académico divalente de siRNA contra a doença priónica. Desenvolvido no laboratório de Sonia Vallabh e Eric Minikel, acabou de obter a autorização da FDA para ser testado em pessoas.',
+    'pildoras.arni.resumen':      'Em abril de 2025, uma pequena equipa académica conseguiu algo incomum: desenharam um fármaco de raiz, demonstraram o seu potencial em modelos animais e obtiveram a autorização da agência reguladora americana para testá-lo em pessoas — tudo sem uma empresa farmacêutica por trás. O fármaco chama-se <strong>Prionsiran</strong>, utiliza uma tecnologia diferente dos ASOs e persegue o mesmo objetivo: reduzir a proteína priónica no cérebro. É uma segunda tentativa no mesmo alvo, desenhada pelas mesmas pessoas que impulsionaram a primeira.',
+    'pildoras.arni.conclusion':   'O Prionsiran não é uma cura, nem uma promessa de cura a curto prazo. É, por agora, um fármaco experimental que está a começar a ser testado em pessoas, com um design ambicioso — dose única, efeito prolongado, redução profunda da proteína priónica — e uma história por detrás que diz muito sobre o que a ciência pode fazer quando se organiza em torno das pessoas que quer ajudar. Para os portadores assintomáticos de hoje, significa o mesmo que os ASOs: que a investigação está viva, que as portas estão a abrir-se uma após outra, e que o seguimento que se faz agora prepara o terreno para poder aceder, quando chegar o momento, aos ensaios preventivos que ainda estão por vir. Cada portador em seguimento contribui, através da sua participação, para aproximar essa realidade — para si e para os que virão a seguir.',
+
+    /* Pílula Gate Bio / MG-813 (categoria: horizonte) */
+    'pildoras.gatebio.titulo':       'O sonho de um comprimido',
+    'pildoras.gatebio.resumenCorto': 'A Gate Bioscience está a desenvolver um comprimido oral experimental para reduzir a proteína priónica no cérebro. O seu composto líder, MG-813, ainda está em fase pré-clínica — mas é o tipo de horizonte que muda a forma como imaginamos o futuro.',
+    'pildoras.gatebio.resumen':      'Imagine um comprimido. Um comprimido que toma em casa, com um copo de água, que reduz a proteína priónica no cérebro antes que possa causar dano. Ainda não existe, mas uma empresa chamada <strong>Gate Bioscience</strong> está a trabalhar para o tornar realidade. A sua abordagem é radicalmente diferente dos fármacos atualmente em ensaios clínicos: sem punção lombar, sem injeção, sem doses únicas medidas em microgramas. Um comprimido oral. A possibilidade ainda está longe, mas vale a pena conhecê-la, porque é o tipo de horizonte que muda a forma como imaginamos o futuro.',
+    'pildoras.gatebio.conclusion':   'O MG-813 não é uma cura, nem uma realidade imediata. É uma aposta diferente, com um mecanismo diferente, com um horizonte diferente — e precisamente por ser diferente, importa. O mesmo inimigo, três armas diferentes a avançar em paralelo. Um horizonte amplo. E para os portadores assintomáticos de hoje, mais uma razão para manter uma esperança razoável: que quando chegar o momento da prevenção real, não haverá uma única opção disponível, mas várias. Cada portador em seguimento contribui, através da sua participação, para aproximar essa realidade — para si e para os que virão a seguir.',
+
+    /* Pílula Sangamo / ST-506 (categoria: horizonte) */
+    'pildoras.sangamo.titulo':       'Silenciar o gene, apenas uma vez',
+    'pildoras.sangamo.resumenCorto': 'A Sangamo Therapeutics está a desenvolver uma terapia génica (ST-506) que poderia silenciar o gene da proteína priónica com uma única injeção intravenosa. Os dados pré-clínicos são os mais duradouros de todo o campo, e o primeiro ensaio em pessoas está previsto para meados de 2026 no Reino Unido.',
+    'pildoras.sangamo.resumen':      'Entre todas as terapias que estão a ser desenvolvidas para as doenças priónicas, a da <strong>Sangamo Therapeutics</strong> tem uma característica distintiva: uma única dose, administrada por via intravenosa — não por punção lombar —, poderia silenciar o gene responsável pela proteína priónica durante anos. Os dados em animais são os mais duradouros de todo o campo: o efeito manteve-se estável durante mais de 17 meses após uma única administração. A empresa planeia iniciar o primeiro ensaio em pessoas no Reino Unido em meados de 2026. É a aposta de terapia génica mais próxima da clínica.',
+    'pildoras.sangamo.conclusion':   'O ST-506 é, hoje, a terapia génica contra a doença priónica <strong>mais próxima de ser testada em pessoas</strong> e, ao mesmo tempo, pelas suas características particulares — dose única, via intravenosa, efeito profundo e duradouro —, uma das apostas que a própria equipa de investigação considera potencialmente mais adequada para os portadores assintomáticos do futuro. Se os prazos da Sangamo se mantiverem, as primeiras pessoas tratadas poderiam recebê-la em 2026 ou 2027. E embora os portadores assintomáticos não sejam os primeiros a aceder — nunca somos, por boas razões —, o simples facto de uma terapia génica de dose única estar prestes a ser testada em pessoas com doença priónica é, em si mesmo, uma mudança de cenário. Há cinco anos, esta conversa não existia. Cada portador em seguimento contribui, através da sua participação, para aproximar essa realidade — para si e para os que virão a seguir.',
+
+    /* Pílula CHARM (categoria: horizonte) */
+    'pildoras.charm.titulo':       'Silenciar sem cortar',
+    'pildoras.charm.resumenCorto': 'O CHARM é um editor epigenético que silencia o gene da proteína priónica deixando uma marca química e depois desativa-se. Desenhado pelos laboratórios de Weissman, Deverman, Vallabh e Minikel, publicado na Science em junho de 2024; em fase pré-clínica.',
+    'pildoras.charm.resumen':      'Existe uma terapia ainda mais promissora do que a <strong class="lazy-pild" data-target="sangamo">Sangamo</strong> e também baseada em silenciar o gene sem o modificar — mas vai um passo mais longe com uma decisão de design elegante: depois de o gene ter sido silenciado, o próprio fármaco desativa-se. É o que deixa a pegada mais leve, o que menos interfere com a célula a longo prazo, e o que nasceu da colaboração mais improvável: o laboratório de uma portadora assintomática que está, literalmente, a tentar ultrapassar a sua própria doença. Chama-se <strong>CHARM</strong> e é uma das ideias mais brilhantes que o campo produziu nos últimos anos.',
+    'pildoras.charm.conclusion':   'O CHARM não é uma terapia disponível, nem a mais próxima de ser testada em pessoas. Mas é, de longe, uma das ideias mais elegantes que o campo produziu: uma forma de silenciar o gene <em>PRNP</em> sem deixar uma pegada permanente na célula, desenhado com a auto-desativação incorporada desde o início. E nasceu, não por acaso, de um laboratório com uma urgência pessoal que poucos laboratórios têm: o de uma portadora assintomática que está a tentar ultrapassar a sua própria doença, e que abriu não um, mas vários caminhos paralelos para maximizar as probabilidades de que pelo menos um chegue a tempo. Cada portador em seguimento contribui, através da sua participação, para aproximar essa realidade — para si e para os que virão a seguir.',
+
+    /* Pílula "É assim que é vir ao programa" (categoria: experiência) */
+    'pildoras.dia-programa.titulo':       'É assim que é vir ao programa',
+    'pildoras.dia-programa.resumenCorto': 'Uma vez por ano, dois dias no Hospital Universitário Araba. Contamos-lhe como será essa visita, desde o momento em que chega até regressar a casa, e o que acontece nos meses seguintes.',
+    'pildoras.dia-programa.resumen':      'O programa centra-se numa visita anual de um a dois dias ao Hospital Universitário Araba, em Vitória-Gasteiz. Durante esses dois dias, realizam-se todos os exames programados para esse ano com base na sua cadência pessoal. Esta pílula é o seu mapa antecipado: o que viverá desde a chegada até à partida e como mantemos contacto nos meses seguintes.',
+    'pildoras.dia-programa.conclusion':   'Vir ao programa é mais simples do que pode parecer à primeira vista. São dois dias concentrados, com todo o cuidado posto em que se sinta acompanhado/a, e depois uma presença discreta mas constante da equipa ao longo do resto do ano. Não é uma consulta médica de rotina: é uma forma de cuidar de si no presente, com um olhar sereno para o que possa estar por vir.',
+
+    /* Cabeçalho da secção "O seu papel na história" */
+    'pildoras.secciones.tu-parte.titulo':    'O seu papel na história',
+    'pildoras.secciones.tu-parte.subtitulo': 'Há uma parte do programa que só você, juntamente com a pessoa que o/a acompanha, pode completar. Aqui contamos-lhe sobre ela.',
+
+    /* Pílula da Aplicação de História Natural (categoria: o-seu-papel) */
+    'pildoras.historia-natural-app.titulo':       'O que só você pode contar',
+    'pildoras.historia-natural-app.resumenCorto': 'A Aplicação de História Natural captura o que nenhum exame clínico consegue: as subtis mudanças quotidianas, vistas de dentro da sua vida e pela pessoa que o/a acompanha, ao longo do tempo.',
+    'pildoras.historia-natural-app.resumen':      'Há coisas que nenhuma RM consegue ver. Nenhuma punção lombar as consegue medir. Nenhuma análise ao sangue as consegue detetar. São as pequenas mudanças quotidianas — na forma como dorme, como se concentra, como se sente, como se comporta — que só podem ser observadas de dentro da sua vida. Por si mesmo/a, e pela pessoa que o/a conhece e vê todos os dias. Para recolher essa informação, desenvolvemos uma aplicação móvel desenhada especificamente para portadores assintomáticos. Chama-se Aplicação de História Natural, e é um dos instrumentos mais originais do programa. Porque há uma parte da história que só você pode contar.',
+    'pildoras.historia-natural-app.conclusion':   'A Aplicação de História Natural é, de certa forma, a parte mais silenciosa do programa. Não há agulhas, nem máquinas, nem imagens espetaculares. Apenas perguntas breves, respondidas com calma, em casa. E no entanto, é provável que esta seja a parte que, daqui a alguns anos, nos permita compreender melhor como a doença realmente começa — porque as primeiras mudanças estão lá, na vida quotidiana, antes de qualquer biomarcador as conseguir captar. Você é, juntamente com a pessoa que o/a acompanha, a única pessoa que pode contribuir com essa informação. Cada portador em seguimento contribui, através da sua participação, para aproximar essa realidade — para si e para os que virão a seguir.',
+
+    'pildoras.subscribe.title': 'Receba as pílulas de informação na sua caixa de entrada',
+    'pildoras.subscribe.text':  'Se faz parte do programa de acompanhamento, pode ativar as notificações por email para receber um aviso sempre que publicarmos uma nova atualização.',
+    'pildoras.subscribe.btn':   'Ativar as minhas notificações',
+    'pildoras.modal.title':     'Quem é você?',
+    'pildoras.modal.desc':      'Introduza o seu número de identificação para ativar as notificações. Só os participantes registados no programa os podem ativar.',
+    'pildoras.modal.label':     'Número de identificação',
+    'pildoras.modal.btn':       'Ativar',
+    'pildoras.modal.notfound':  'Não encontrámos o seu número de identificação no programa. Se acha que há um erro, por favor contacte a equipa.',
+
+    /* ---- portadores-compromiso.html (Momento 3 + final) ---- */
+    'm3.title':     'O que isto significa na prática',
+    'm3.sub':       'Quatro coisas que queremos que saiba antes de continuar.',
+    'm3.confirmed': '✓ Confirmado',
+    'm3.a1.header': 'A sua participação é completamente voluntária',
+    'm3.a1.text':   'Nada do que acontece dentro do programa está sujeito a qualquer obrigação. Pode decidir a qualquer momento parar de participar, sem que isso afete os seus cuidados médicos ou a sua relação com a equipa. Não deve nada a ninguém aqui, e nós também não exigimos nada de si.',
+    'm3.a1.btn':    'Compreendido, e aceito',
+    'm3.a2.header': 'Terá acesso à aplicação de seguimento',
+    'm3.a2.text':   'Como participante do programa, terá acesso a uma aplicação desenhada especificamente para portadores assintomáticos. Ao longo do tempo, e se desejar, permitirá registar aspetos como a qualidade do sono, o estado de ânimo, a função cognitiva e outros indicadores relevantes — com a opção de a sua pessoa de convivência, se tiver uma, contribuir também para esse registo, que visa compreender melhor a fase assintomática e o início e/ou progressão da doença.',
+    'm3.a2.btn':    'Compreendido, e interessa-me',
+    'm3.a3.header': 'A sua participação coloca-o/a numa posição favorável',
+    'm3.a3.text':   'As pessoas que fazem parte do programa de seguimento são as que melhor conhecemos, as que mais dados temos, e as que podemos contactar em primeiro lugar quando abrem novos ensaios clínicos. Não podemos garantir-lhe o acesso — os critérios de cada ensaio são estabelecidos pelo próprio ensaio — mas podemos dizer-lhe que estar aqui é a melhor forma de estar preparado/a quando esse momento chegar.',
+    'm3.a3.btn':    'Compreendido',
+    'm3.a4.header': 'Esta é uma relação a longo prazo',
+    'm3.a4.text':   'O programa não é uma visita única nem um questionário que se responde uma vez. É um acompanhamento contínuo — com visitas periódicas, atualizações de informação, pílulas de informação e contacto humano real. Comprometemo-nos a estar presentes durante o tempo que quiser que estejamos.',
+    'm3.a4.btn':    'Compreendido, e quero participar',
+    'final.eyebrow':           'Próximo passo',
+    'final.text':              'Deu um passo importante — não só em direção ao programa, mas em direção a si mesmo/a. A equipa entrará em contacto consigo brevemente para explicar os próximos passos com calma e sem pressa. Se entretanto tiver alguma dúvida, aqui está como encontrar-nos.',
+    'final.contacts.label':    'Como encontrar-nos',
+    'contacts.castilla.role':        'Professor de investigação',
+    'contacts.castilla.roleSub':     'Responsável pelo laboratório de priões',
+    'contacts.castilla.institution': 'CIC bioGUNE',
+    'contacts.kortazar.role':        'Chefe do serviço de Neurologia',
+    'contacts.kortazar.institution': 'Hospital Universitário Araba (Txagorritxu)',
+    'final.form.eyebrow':      'Próximo passo',
+    'final.form.title':        'Um último passo para que possamos contactá-lo/a',
+    'final.form.text':         'Se gostaria que a equipa do programa entrasse em contacto consigo, partilhe o seu número de identificação. Isso permitir-nos-á identificá-lo/a no nosso sistema e confirmar o seu desejo de participar. Os seus dados estão protegidos e só serão acessíveis à equipa de investigação.',
+    'final.form.label.dni':    'Número de identificação',
+    'final.form.dni.hint':     '8 dígitos seguidos de uma letra',
+    'final.form.btn':          'Confirmar a minha vontade de participar',
+    'final.notfound.title':    'Não encontrámos o seu número de identificação',
+    'final.notfound.text':     'Não encontrámos o seu número de identificação no nosso sistema. Pode não estar ainda registado/a. Por favor, contacte a equipa diretamente para que possamos adicioná-lo/a.',
+
+    /* ---- Passo de seguimento do sono ---- */
+    'seguimiento.sueno.title': 'Estudo do sono',
+    'seguimiento.sueno.text':  'Através da polissonografia, registamos o que acontece durante o sono: movimentos, respiração, atividade cerebral e comportamento. Certas alterações do sono — particularmente as relacionadas com a fase REM — podem aparecer subtilmente antes de qualquer outro sinal ser detetável, e o seu acompanhamento ao longo do tempo faz parte do protocolo de deteção precoce.',
+
+    /* ---- portadores-baja-pildoras.html ---- */
+    'baja.title':       'Registámos a sua preferência',
+    'baja.text':        'A partir de agora não receberá mais emails sobre novas pílulas de informação. Se alguma vez mudar de ideia, pode reativá-las a partir da secção de pílulas de informação do programa.',
+    'baja.link':        'Ir às pílulas de informação',
+    'baja.error.title': 'Link inválido',
+    'baja.error.text':  'Este link é inválido ou já foi utilizado. Se desejar gerir as suas preferências, por favor contacte a equipa.',
+
+    /* ---- portadores-reflexion.html — entrada teaser ---- */
+    'reflexion.teaser.text': 'Está a perguntar-se se vale a pena saber em que grupo se encontra?',
+    'reflexion.teaser.sub':  'Reunimos situações concretas que podem ajudá-lo/a a refletir.',
+    'reflexion.teaser.btn':  'Quero refletir sobre isto',
+
+    /* ---- portadores-reflexion.html — cabeçalho ---- */
+    'reflexion.hero.title': 'O valor de saber',
+    'reflexion.hero.sub':   'Não há resposta certa. Mas há situações concretas que podem ajudá-lo/a a decidir se quer saber onde está agora.',
+
+    /* ---- portadores-reflexion.html — cartão 1: fase inativa ---- */
+    'reflexion.c1.label': 'Seguimento padrão',
+    'reflexion.c1.title': 'Se o seguimento o/a coloca em fase inativa',
+    'reflexion.c1.sub':   '15 situações em que esta informação pode fazer uma diferença real na sua vida quotidiana.',
+    'reflexion.c1.s1.h':  'Está a pensar em aceitar um trabalho exigente ou uma mudança para uma nova cidade.',
+    'reflexion.c1.s1.b':  'Saber que não há atividade detetável pode dar-lhe mais tranquilidade para assumir esse projeto sem sentir que está a perder uma janela crítica.',
+    'reflexion.c1.s2.h':  'Quer começar uma família ou expandir a que já tem.',
+    'reflexion.c1.s2.b':  'Pode ajudá-lo/a a viver essa fase com menos sentido de urgência e mais espaço para decidir com calma.',
+    'reflexion.c1.s3.h':  'Passou anos a ler cada lapso ou falha de memória como um sinal de alerta.',
+    'reflexion.c1.s3.b':  'Ter dados objetivos pode reduzir a hipervigilância e devolver-lhe confiança na vida quotidiana.',
+    'reflexion.c1.s4.h':  'Tem dificuldade em fazer planos a médio ou longo prazo.',
+    'reflexion.c1.s4.b':  'Esta informação pode dar-lhe permissão emocional para voltar a pensar em anos, não apenas em meses.',
+    'reflexion.c1.s5.h':  'Tem uma personalidade muito ansiosa e evita pensar no assunto.',
+    'reflexion.c1.s5.b':  'Saber que está numa fase sem atividade pode transformar o seguimento numa fonte de alívio em vez de ameaça.',
+    'reflexion.c1.s6.h':  'Adiou decisões financeiras importantes.',
+    'reflexion.c1.s6.b':  'Comprar casa, iniciar um negócio ou reorganizar poupanças pode parecer mais viável quando o cenário não aponta para a imediação.',
+    'reflexion.c1.s7.h':  'A sua família vive com medo constante por causa de histórias anteriores.',
+    'reflexion.c1.s7.b':  'Esta classificação pode reduzir a tensão coletiva e ajudar a separar a sua situação atual das histórias familiares do passado.',
+    'reflexion.c1.s8.h':  'Quer continuar a cuidar dos outros sem se sentir "à beira do precipício".',
+    'reflexion.c1.s8.b':  'Se é cuidador/a, mãe, pai ou âncora familiar, pode dar-lhe mais calma para continuar a desempenhar esse papel.',
+    'reflexion.c1.s9.h':  'Está a considerar viajar, mudar para o estrangeiro ou passar uma longa temporada fora.',
+    'reflexion.c1.s9.b':  'Estar em fase inativa pode dar-lhe mais liberdade para o fazer sem sentir que se afasta precisamente quando não deveria.',
+    'reflexion.c1.s10.h': 'Precisa de recuperar uma identidade que não gire apenas em torno do risco genético.',
+    'reflexion.c1.s10.b': 'Pode ajudá-lo/a a passar de alguém em espera a alguém que está a viver.',
+    'reflexion.c1.s11.h': 'Está preocupado/a em entrar num programa e sair mais ansioso/a do que entrou.',
+    'reflexion.c1.s11.b': 'Para algumas pessoas, uma classificação de inatividade confirma que o seguimento não os encaixota — caminha ao seu lado.',
+    'reflexion.c1.s12.h': 'É difícil explicar a sua situação ao/à seu/sua parceiro/a ou aos seus filhos.',
+    'reflexion.c1.s12.b': 'Ter uma forma concreta e menos alarmante de descrever onde está pode tornar possíveis conversas mais calmas.',
+    'reflexion.c1.s13.h': 'Sente-se culpado/a por pensar em projetos pessoais.',
+    'reflexion.c1.s13.b': 'Esta informação pode ajudá-lo/a a dar-se permissão para estudar para um concurso, começar algo, estudar, ou simplesmente desfrutar da vida sem sentir que está a olhar para o lado.',
+    'reflexion.c1.s14.h': 'Precisa de distinguir risco genético de doença real.',
+    'reflexion.c1.s14.b': 'Ser colocado/a em fase inativa reforça essa distinção de forma muito tangível.',
+    'reflexion.c1.s15.h': 'Quer estar dentro do sistema, mas sem viver em alerta máximo.',
+    'reflexion.c1.s15.b': 'Esta situação permite sentir-se protegido/a, informado/a e acompanhado/a, sem que tudo seja lido como urgência.',
+
+    /* ---- portadores-reflexion.html — cartão 2: fase ativa silenciosa ---- */
+    'reflexion.c2.label': 'Seguimento de alerta',
+    'reflexion.c2.title': 'Se o seguimento o/a coloca em fase ativa silenciosa',
+    'reflexion.c2.sub':   '18 situações em que esta informação pode fazer uma diferença real na sua vida quotidiana.',
+    'reflexion.c2.s1.h':  'Prefere uma verdade incómoda a uma incerteza interminável.',
+    'reflexion.c2.s1.b':  'Mesmo que sejam notícias mais difíceis, dá-lhe um mapa claro a partir do qual agir.',
+    'reflexion.c2.s2.h':  'Quer maximizar as suas hipóteses de aceder a ensaios preventivos.',
+    'reflexion.c2.s2.b':  'Esta situação pode colocá-lo/a precisamente no grupo com maior probabilidade de beneficiar antes de os sintomas aparecerem.',
+    'reflexion.c2.s3.h':  'A ideia de descobrir tarde demais é angustiante.',
+    'reflexion.c2.s3.b':  'Saber agora pode ser difícil, mas evita chegar a um ponto em que as oportunidades já se foram.',
+    'reflexion.c2.s4.h':  'Precisa de priorizar decisões familiares importantes.',
+    'reflexion.c2.s4.b':  'Pode ajudá-lo/a a antecipar conversas, organizar apoio e decidir que assuntos não quer deixar pendentes.',
+    'reflexion.c2.s5.h':  'Está clinicamente bem, e é precisamente por isso que quer agir enquanto ainda está.',
+    'reflexion.c2.s5.b':  'A vantagem é poder preparar-se a partir de uma posição de força, não de declínio.',
+    'reflexion.c2.s6.h':  'Vive longe de um centro especializado.',
+    'reflexion.c2.s6.b':  'Esta informação pode justificar aproximar-se mais cedo, reorganizar visitas ou tratar da logística sem esperar que apareçam problemas evidentes.',
+    'reflexion.c2.s7.h':  'O seu trabalho requer muita planificação.',
+    'reflexion.c2.s7.b':  'Pode antecipar projetos, delegações, transições ou mudanças de ritmo de forma ordenada em vez de apressada.',
+    'reflexion.c2.s8.h':  'Está preocupado/a em deixar pendências administrativas ou financeiras por resolver.',
+    'reflexion.c2.s8.b':  'Ter informação mais precisa pode ajudá-lo/a a organizar documentos, seguros, questões patrimoniais ou decisões legais com tempo e clareza.',
+    'reflexion.c2.s9.h':  'O/A seu/sua parceiro/a precisa de compreender melhor o momento que ambos estão a atravessar.',
+    'reflexion.c2.s9.b':  'A classificação pode fornecer uma linguagem partilhada para falar do presente sem entrar ainda num cenário de sintomas.',
+    'reflexion.c2.s10.h': 'Sente que tem vivido há algum tempo numa névoa de suspeitas.',
+    'reflexion.c2.s10.b': 'Para algumas pessoas, nomear a situação reduz o sofrimento da ambiguidade, mesmo quando o conteúdo não é o que esperavam.',
+    'reflexion.c2.s11.h': 'Quer ter um papel ativo na investigação com significado imediato.',
+    'reflexion.c2.s11.b': 'Estar nesta fase pode transformar o seu seguimento numa contribuição especialmente valiosa para acelerar as terapias preventivas.',
+    'reflexion.c2.s12.h': 'Precisa de reorganizar as prioridades de vida.',
+    'reflexion.c2.s12.b': 'Pode ajudá-lo/a a decidir o que quer fazer agora: passar mais tempo com certas pessoas, viajar, fechar capítulos ou abrir novos.',
+    'reflexion.c2.s13.h': 'A sua família viveu casos anteriores e teme repetir a história de chegar tarde demais.',
+    'reflexion.c2.s13.b': 'A vantagem é quebrar esse padrão através de vigilância precoce e preparação.',
+    'reflexion.c2.s14.h': 'É mais fácil para si enfrentar o que é difícil quando sabe o que fazer a seguir.',
+    'reflexion.c2.s14.b': 'A utilidade desta informação reside no facto de ativar passos concretos: mais seguimento, mais foco e mais preparação.',
+    'reflexion.c2.s15.h': 'Quer estar na primeira linha das novidades terapêuticas.',
+    'reflexion.c2.s15.b': 'O seguimento é a via para receber informação personalizada sobre opções disponíveis ou que estão a chegar.',
+    'reflexion.c2.s16.h': 'Teme que não fazer nada possa ser pior do que saber.',
+    'reflexion.c2.s16.b': 'Neste grupo, conhecer a sua situação pode transformar o sentimento de passividade num de ação informada.',
+    'reflexion.c2.s17.h': 'Precisa de decidir a quem contar e como.',
+    'reflexion.c2.s17.b': 'Saber onde está pode ajudá-lo/a a comunicar de forma mais honesta e concreta com as pessoas da sua rede de apoio.',
+    'reflexion.c2.s18.h': 'Quer aproveitar ao máximo o tempo útil, não reagir tarde.',
+    'reflexion.c2.s18.b': 'Esse pode ser o valor mais positivo desta situação: ainda está assintomático/a, mas já não está às escuras.',
+
+    /* ---- portadores-reflexion.html — fecho e voltar ---- */
+    'reflexion.closing':     'Estar num grupo ou noutro não muda quem é, mas pode mudar significativamente como planeia, como decide e como aproveita as oportunidades de seguimento, apoio e acesso precoce a novas terapias.',
+    'reflexion.back':        'Voltar ao programa',
+  },
 };
 
 /* Idioma activo (por defecto español) */
