@@ -294,6 +294,44 @@ const EMAIL_STRINGS = {
     pildoras_unsub_note: 'You\'re receiving this email because you explicitly asked to be notified whenever new info updates were available. If you no longer wish to receive this type of communication, you can let us know here:',
     pildoras_unsub_btn:  'I no longer wish to receive these notifications',
   },
+  pt: {
+    /* ---- Comuns ---- */
+    eyebrow:                  'Programa de acompanhamento pré-clínico',
+    h1:                       'Cuidar o presente,<br>preparar o futuro',
+    salute_f:                 'Estimada {nombre},',
+    salute_m:                 'Estimado {nombre},',
+    salute_nb:                'Estimado/a {nombre},',
+    fallback_f:               'portadora',
+    fallback_m:               'portador',
+    fallback_nb:              'portador/a',
+    sig_castilla_role:        'Professor de investigação',
+    sig_castilla_role_sub:    'Responsável pelo laboratório de priões',
+    sig_kortazar_role:        'Chefe do serviço de Neurologia',
+    sig_kortazar_institution: 'Hospital Universitário Araba',
+    footer_ethics:            'Programa aprovado pelo Comité de Ética da Investigação do País Basco &nbsp;&middot;&nbsp; Código PI2025164',
+
+    /* ---- Correio inicial ---- */
+    initial_subject_default:  'Algo está a mudar. Queremos contar-lhe.',
+    initial_doc_title:        'Cuidar o presente, preparar o futuro',
+    initial_p1: 'Estamos a contactá-lo/a porque acreditamos que há algo que merece saber.',
+    initial_p2: 'Durante anos, ser portador ou portadora de uma mutação no gene da proteína do prião significou, para muitas pessoas, viver com uma incerteza difícil de nomear. Saber sem poder fazer nada. Esperar sem saber quando.',
+    initial_p3: 'Isso está a mudar.',
+    initial_p4: 'Não de repente, não com promessas vazias — mas com ciência real, com investigação que avança mais rápido do que nunca e com ensaios clínicos que, pela primeira vez, também estão pensados para pessoas como você: pessoas que ainda não têm sintomas, mas que querem estar preparadas quando chegue o momento de agir.',
+    initial_p5: 'Lançámos um programa de acompanhamento pré-clínico. Não é mais um estudo. É um acompanhamento — seu, ao seu ritmo, com informação real e com uma equipa que há anos se dedica a isto e que estará consigo em cada passo.',
+    initial_p6: 'Ainda não lhe pedimos nada. Apenas que dê uma vista de olhos.',
+    initial_cta: 'Quero conhecer o programa &rarr;',
+
+    /* ---- Correio de pílula ---- */
+    pildoras_subject_default: 'Nova pílula de informação disponível',
+    pildoras_doc_title:       'Nova pílula de informação disponível',
+    pildoras_subtitle:        'Nova pílula de informação disponível',
+    pildoras_p1: 'Temos uma nova atualização para si.',
+    pildoras_p2: 'No programa de acompanhamento publicamos periodicamente <strong>Pílulas de informação</strong> &mdash; atualizações breves, claras e rigorosas sobre ensaios clínicos, novas terapias e descobertas científicas relevantes para pessoas como você.',
+    pildoras_p3: 'Há uma nova pílula disponível. Entre quando quiser e leia ao seu ritmo.',
+    pildoras_cta: 'Ver a nova pílula &rarr;',
+    pildoras_unsub_note: 'Recebe este email porque no seu momento solicitou expressamente ser informado/a quando houvesse novas pílulas de informação disponíveis. Se já não deseja receber este tipo de comunicações, pode indicar-nos aqui:',
+    pildoras_unsub_btn:  'Não desejo continuar a receber estas notificações',
+  },
 };
 
 /* Accede a una cadena con fallback a castellano si falta/está vacía */
