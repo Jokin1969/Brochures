@@ -15,6 +15,7 @@ const TRANSLATIONS = {
     'hero.sub':     'Un proceso pensado para ti, a tu ritmo y sin presión.',
 
     /* ---- Momento 0 ---- */
+    'm0.title': 'Antes de continuar',
     'm0.intro': 'Antes de continuar, queremos asegurarnos de que has tenido la oportunidad de leer con calma toda la información del programa. Lo que viene a continuación no es un trámite — es una conversación contigo mismo/a sobre algo importante.',
     'm0.btn':   'He leído el programa y quiero continuar',
 
@@ -396,6 +397,7 @@ const TRANSLATIONS = {
     'hero.sub':     'Zuretzat pentsatutako prozesua, zure erritmoan eta presarik gabe.',
 
     /* ---- Momento 0 ---- */
+    'm0.title': 'Jarraitu aurretik',
     'm0.intro': 'Jarraitu aurretik, ziurtatu nahi dugu programako informazio guztia lasai irakurtzeko aukera izan duzula. Datorrena ez da tramite bat — zure buruarekin elkarrizketa bat da, gauza garrantzitsu bati buruz.',
     'm0.btn':   'Programa irakurri dut eta jarraitu nahi dut',
 
@@ -732,6 +734,7 @@ const TRANSLATIONS = {
     'hero.sub':     'Un procés pensat per a tu, al teu ritme i sense pressa.',
 
     /* ---- Momento 0 ---- */
+    'm0.title': 'Abans de continuar',
     'm0.intro': 'Abans de continuar, volem assegurar-nos que has tingut l\'oportunitat de llegir amb calma tota la informació del programa. El que ve a continuació no és un tràmit — és una conversa amb tu mateix/a sobre alguna cosa important.',
     'm0.btn':   'He llegit el programa i vull continuar',
 
@@ -1068,6 +1071,7 @@ const TRANSLATIONS = {
     'hero.sub':     'Un proceso pensado para ti, ao teu ritmo e sen presión.',
 
     /* ---- Momento 0 ---- */
+    'm0.title': 'Antes de continuar',
     'm0.intro': 'Antes de continuar, queremos asegurarnos de que tiveches a oportunidade de ler con calma toda a información do programa. O que vén a continuación non é un trámite — é unha conversa contigo mesmo/a sobre algo importante.',
     'm0.btn':   'Lin o programa e quero continuar',
 
@@ -1404,6 +1408,7 @@ const TRANSLATIONS = {
     'hero.sub':     'A process designed for you, at your own pace and without pressure.',
 
     /* ---- Moment 0 ---- */
+    'm0.title': 'Before continuing',
     'm0.intro': 'Before continuing, we want to make sure you\'ve had the chance to read through all the program information at your own pace. What comes next isn\'t a formality — it\'s a conversation with yourself about something important.',
     'm0.btn':   'I\'ve read the program and want to continue',
 
@@ -1755,6 +1760,7 @@ const TRANSLATIONS = {
     'hero.sub':     'Um processo pensado para si, ao seu ritmo e sem pressão.',
 
     /* ---- Momento 0 ---- */
+    'm0.title': 'Antes de continuar',
     'm0.intro': 'Antes de continuar, queremos garantir que teve oportunidade de ler todas as informações do programa ao seu ritmo. O que vem a seguir não é uma formalidade — é uma conversa consigo mesmo sobre algo importante.',
     'm0.btn':   'Li o programa e quero continuar',
 
