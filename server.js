@@ -332,6 +332,44 @@ const EMAIL_STRINGS = {
     pildoras_unsub_note: 'Recebe este email porque no seu momento solicitou expressamente ser informado/a quando houvesse novas pílulas de informação disponíveis. Se já não deseja receber este tipo de comunicações, pode indicar-nos aqui:',
     pildoras_unsub_btn:  'Não desejo continuar a receber estas notificações',
   },
+  de: {
+    /* ---- Gemeinschaftlich ---- */
+    eyebrow:                  'Präklinisches Nachsorgeprogramm',
+    h1:                       'Die Gegenwart schützen,<br>die Zukunft vorbereiten',
+    salute_f:                 'Sehr geehrte {nombre},',
+    salute_m:                 'Sehr geehrter {nombre},',
+    salute_nb:                'Sehr geehrte/r {nombre},',
+    fallback_f:               'Trägerin',
+    fallback_m:               'Träger',
+    fallback_nb:              'Träger/Trägerin',
+    sig_castilla_role:        'Forschungsprofessor',
+    sig_castilla_role_sub:    'Leiter des Prionlabors',
+    sig_kortazar_role:        'Chefarzt der Neurologie',
+    sig_kortazar_institution: 'Universitätsklinikum Araba',
+    footer_ethics:            'Programm genehmigt vom Ethikausschuss für Forschung des Baskenlandes &nbsp;&middot;&nbsp; Code PI2025164',
+
+    /* ---- Erstes E-Mail ---- */
+    initial_subject_default:  'Etwas ändert sich. Wir möchten es Ihnen erzählen.',
+    initial_doc_title:        'Die Gegenwart schützen, die Zukunft vorbereiten',
+    initial_p1: 'Wir nehmen Kontakt mit Ihnen auf, weil wir glauben, dass es etwas gibt, das Sie verdienen zu wissen.',
+    initial_p2: 'Jahrelang bedeutete es für viele Menschen, Träger einer Mutation im Prionprotein-Gen zu sein, mit einer schwer zu benennenden Ungewissheit zu leben. Zu wissen, ohne handeln zu können. Zu warten, ohne zu wissen, wann.',
+    initial_p3: 'Das ändert sich.',
+    initial_p4: 'Nicht plötzlich, nicht mit leeren Versprechen — aber mit echter Wissenschaft, mit Forschung, die schneller voranschreitet als je zuvor, und mit klinischen Studien, die zum ersten Mal auch für Menschen wie Sie gedacht sind: Menschen, die noch keine Symptome haben, aber bereit sein möchten, wenn der Moment zum Handeln kommt.',
+    initial_p5: 'Wir haben ein präklinisches Nachsorgeprogramm ins Leben gerufen. Es ist nicht noch eine weitere Studie. Es ist eine Begleitung — Ihre Begleitung, in Ihrem Tempo, mit echten Informationen und mit einem Team, das sich seit Jahren damit beschäftigt und bei jedem Schritt an Ihrer Seite sein wird.',
+    initial_p6: 'Wir bitten Sie noch um nichts. Nur darum, einen Blick zu werfen.',
+    initial_cta: 'Ich möchte das Programm kennenlernen &rarr;',
+
+    /* ---- Kapseln-E-Mail ---- */
+    pildoras_subject_default: 'Neue Informationskapsel verfügbar',
+    pildoras_doc_title:       'Neue Informationskapsel verfügbar',
+    pildoras_subtitle:        'Neue Informationskapsel verfügbar',
+    pildoras_p1: 'Wir haben eine neue Aktualisierung für Sie.',
+    pildoras_p2: 'Im Nachsorgeprogramm veröffentlichen wir regelmäßig <strong>Informationskapseln</strong> &mdash; kurze, klare und präzise Aktualisierungen über klinische Studien, neue Therapien und wissenschaftliche Erkenntnisse, die für Menschen wie Sie relevant sind.',
+    pildoras_p3: 'Es ist eine neue Kapsel verfügbar. Schauen Sie rein, wann immer Sie möchten, und lesen Sie in Ihrem Tempo.',
+    pildoras_cta: 'Neue Kapsel ansehen &rarr;',
+    pildoras_unsub_note: 'Sie erhalten diese E-Mail, weil Sie ausdrücklich darum gebeten haben, informiert zu werden, wenn neue Informationskapseln verfügbar sind. Wenn Sie diese Art von Mitteilungen nicht mehr erhalten möchten, können Sie uns das hier mitteilen:',
+    pildoras_unsub_btn:  'Ich möchte diese Benachrichtigungen nicht länger erhalten',
+  },
 };
 
 /* Accede a una cadena con fallback a castellano si falta/está vacía */
