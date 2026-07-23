@@ -408,6 +408,44 @@ const EMAIL_STRINGS = {
     pildoras_unsub_note: 'Riceve questa email perché a suo tempo ha richiesto espressamente di essere informato/a quando fossero disponibili nuove capsule informative. Se non desidera più ricevere questo tipo di comunicazioni, può indicarcelo qui:',
     pildoras_unsub_btn:  'Non desidero continuare a ricevere queste notifiche',
   },
+  fr: {
+    /* ---- Commun ---- */
+    eyebrow:                  'Programme de suivi préclinique',
+    h1:                       'Protéger le présent,<br>préparer l\'avenir',
+    salute_f:                 'Chère {nombre},',
+    salute_m:                 'Cher {nombre},',
+    salute_nb:                'Bonjour {nombre},',
+    fallback_f:               'porteuse',
+    fallback_m:               'porteur',
+    fallback_nb:              'porteur/porteuse',
+    sig_castilla_role:        'Professeur de recherche',
+    sig_castilla_role_sub:    'Responsable du laboratoire des prions',
+    sig_kortazar_role:        'Cheffe du service de Neurologie',
+    sig_kortazar_institution: 'Hôpital Universitaire Araba',
+    footer_ethics:            'Programme approuvé par le Comité d\'Éthique de la Recherche du Pays basque &nbsp;&middot;&nbsp; Code PI2025164',
+
+    /* ---- Premier e-mail ---- */
+    initial_subject_default:  'Quelque chose change. Nous voulons vous le raconter.',
+    initial_doc_title:        'Protéger le présent, préparer l\'avenir',
+    initial_p1: 'Nous prenons contact avec vous parce que nous pensons qu\'il y a quelque chose que vous méritez de savoir.',
+    initial_p2: 'Pendant des années, pour de nombreuses personnes, être porteur d\'une mutation du gène de la protéine prionique a signifié vivre avec une incertitude difficile à nommer. Savoir sans pouvoir agir. Attendre sans savoir quand.',
+    initial_p3: 'Cela change.',
+    initial_p4: 'Pas soudainement, pas avec des promesses vaines — mais avec une science réelle, avec une recherche qui progresse plus vite que jamais, et avec des essais cliniques pensés, pour la première fois, aussi pour des personnes comme vous : des personnes qui n\'ont pas encore de symptômes, mais qui souhaitent être prêtes quand viendra le moment d\'agir.',
+    initial_p5: 'Nous avons lancé un programme de suivi préclinique. Ce n\'est pas un énième essai. C\'est un accompagnement — votre accompagnement, à votre rythme, avec des informations réelles et avec une équipe qui s\'y consacre depuis des années et qui sera à vos côtés à chaque pas.',
+    initial_p6: 'Nous ne vous demandons encore rien. Seulement d\'y jeter un œil.',
+    initial_cta: 'Je veux découvrir le programme &rarr;',
+
+    /* ---- E-mail capsules ---- */
+    pildoras_subject_default: 'Nouvelle capsule d\'information disponible',
+    pildoras_doc_title:       'Nouvelle capsule d\'information disponible',
+    pildoras_subtitle:        'Nouvelle capsule d\'information disponible',
+    pildoras_p1: 'Nous avons une nouvelle mise à jour pour vous.',
+    pildoras_p2: 'Dans le programme de suivi, nous publions régulièrement des <strong>capsules d\'information</strong> &mdash; des mises à jour brèves, claires et précises sur les essais cliniques, les nouvelles thérapies et les découvertes scientifiques pertinentes pour des personnes comme vous.',
+    pildoras_p3: 'Une nouvelle capsule est disponible. Consultez-la quand vous le voulez, et lisez à votre rythme.',
+    pildoras_cta: 'Voir la nouvelle capsule &rarr;',
+    pildoras_unsub_note: 'Vous recevez cet e-mail parce que vous avez demandé expressément à être informé(e) lorsque de nouvelles capsules d\'information seraient disponibles. Si vous ne souhaitez plus recevoir ce type de communications, vous pouvez nous l\'indiquer ici :',
+    pildoras_unsub_btn:  'Je ne souhaite plus recevoir ces notifications',
+  },
 };
 
 /* Accede a una cadena con fallback a castellano si falta/está vacía */
