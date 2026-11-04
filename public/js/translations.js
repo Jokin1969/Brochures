@@ -382,6 +382,11 @@ const TRANSLATIONS = {
     'baja.link':        'Ir a las Píldoras de información',
     'baja.error.title': 'Enlace no válido',
     'baja.error.text':  'Este enlace no es válido o ya ha sido utilizado. Si deseas gestionar tus preferencias, contacta con el equipo.',
+    'welcome.title':        'Bienvenido/a',
+    'pildoras.modal.retry': 'Volver a intentar',
+    'page.pildoras':         'Píldoras de información',
+    'page.compromiso':       'Mis compromisos',
+    'page.baja':             'Preferencias de notificaciones',
   },
 
   eu: {
@@ -719,6 +724,11 @@ const TRANSLATIONS = {
     'baja.link':        'Informazio Píldoretara joan',
     'baja.error.title': 'Esteka ez da baliozkoa',
     'baja.error.text':  'Esteka hau ez da baliozkoa edo jada erabili da. Lehentasunak kudeatu nahi badituzu, jarri harremanetan taldearekin.',
+    'welcome.title':        'Ongi etorri',
+    'pildoras.modal.retry': 'Saiatu berriro',
+    'page.pildoras':         'Informazio pilulak',
+    'page.compromiso':       'Nire konpromisoak',
+    'page.baja':             'Jakinarazpenen hobespenak',
   },
 
   ca: {
@@ -1056,6 +1066,11 @@ const TRANSLATIONS = {
     'baja.link':        'Anar a les Píndoles d\'informació',
     'baja.error.title': 'Enllaç no vàlid',
     'baja.error.text':  'Aquest enllaç no és vàlid o ja ha estat utilitzat. Si vols gestionar les teves preferències, contacta amb l\'equip.',
+    'welcome.title':        'Benvingut/da',
+    'pildoras.modal.retry': 'Tornar-ho a provar',
+    'page.pildoras':         'Píndoles d\'informació',
+    'page.compromiso':       'Els meus compromisos',
+    'page.baja':             'Preferències de notificacions',
   },
 
   gl: {
@@ -1393,6 +1408,11 @@ const TRANSLATIONS = {
     'baja.link':        'Ir ás Píldoras de información',
     'baja.error.title': 'Ligazón non válida',
     'baja.error.text':  'Esta ligazón non é válida ou xa foi utilizada. Se desexas xestionar as túas preferencias, contacta co equipo.',
+    'welcome.title':        'Benvido/a',
+    'pildoras.modal.retry': 'Volver a intentar',
+    'page.pildoras':         'Píldoras de información',
+    'page.compromiso':       'Os meus compromisos',
+    'page.baja':             'Preferencias de notificacións',
   },
 
   en: {
@@ -1745,6 +1765,11 @@ const TRANSLATIONS = {
     /* ---- portadores-reflexion.html — closing & back ---- */
     'reflexion.closing':     'Being in one group or the other doesn\'t change who you are, but it can significantly change how you plan, how you decide, and how you take advantage of the opportunities for follow-up, support, and early access to new therapies.',
     'reflexion.back':        'Back to the program',
+    'welcome.title':        'Welcome',
+    'pildoras.modal.retry': 'Try again',
+    'page.pildoras':         'Information capsules',
+    'page.compromiso':       'My commitments',
+    'page.baja':             'Notification preferences',
   },
 
   pt: {
@@ -2110,6 +2135,11 @@ const TRANSLATIONS = {
     /* ---- portadores-reflexion.html — fecho e voltar ---- */
     'reflexion.closing':     'Estar num grupo ou noutro não muda quem é, mas pode mudar significativamente como planeia, como decide e como aproveita as oportunidades de seguimento, apoio e acesso precoce a novas terapias.',
     'reflexion.back':        'Voltar ao programa',
+    'welcome.title':        'Bem-vindo/a',
+    'pildoras.modal.retry': 'Tentar novamente',
+    'page.pildoras':         'Cápsulas de informação',
+    'page.compromiso':       'Os meus compromissos',
+    'page.baja':             'Preferências de notificações',
   },
 
   de: {
@@ -2479,6 +2509,11 @@ const TRANSLATIONS = {
     'pildoras.modal.label':      'Ausweisnummer',
     'pildoras.modal.btn':        'Aktivieren',
     'pildoras.modal.notfound':   'Wir haben Ihre Ausweisnummer nicht im Programm gefunden. Wenn Sie glauben, dass ein Fehler vorliegt, kontaktieren Sie bitte das Team.',
+    'welcome.title':        'Willkommen',
+    'pildoras.modal.retry': 'Erneut versuchen',
+    'page.pildoras':         'Informationskapseln',
+    'page.compromiso':       'Meine Zusagen',
+    'page.baja':             'Benachrichtigungseinstellungen',
   },
 
   it: {
@@ -2848,6 +2883,11 @@ const TRANSLATIONS = {
     'pildoras.modal.label':      'Documento',
     'pildoras.modal.btn':        'Attiva',
     'pildoras.modal.notfound':   'Non abbiamo trovato il Suo documento nel programma. Se ritiene che ci sia un errore, contatti l\'équipe.',
+    'welcome.title':        'Benvenuto/a',
+    'pildoras.modal.retry': 'Riprova',
+    'page.pildoras':         'Capsule informative',
+    'page.compromiso':       'I miei impegni',
+    'page.baja':             'Preferenze di notifica',
   },
 
   fr: {
@@ -3218,6 +3258,11 @@ const TRANSLATIONS = {
     'pildoras.modal.label':      'Pièce d\'identité',
     'pildoras.modal.btn':        'Activer',
     'pildoras.modal.notfound':   'Nous n\'avons pas trouvé votre pièce d\'identité dans le programme. Si vous pensez qu\'il y a une erreur, contactez l\'équipe.',
+    'welcome.title':        'Bienvenue',
+    'pildoras.modal.retry': 'Réessayer',
+    'page.pildoras':         'Capsules d\'information',
+    'page.compromiso':       'Mes engagements',
+    'page.baja':             'Préférences de notification',
   },
 
   sk: {
@@ -3588,6 +3633,11 @@ const TRANSLATIONS = {
     'pildoras.modal.label':      'Doklad',
     'pildoras.modal.btn':        'Aktivovať',
     'pildoras.modal.notfound':   'Nenašli sme váš doklad v programe. Ak si myslíte, že ide o chybu, kontaktujte tím.',
+    'welcome.title':        'Vitajte',
+    'pildoras.modal.retry': 'Skúsiť znova',
+    'page.pildoras':         'Informačné kapsuly',
+    'page.compromiso':       'Moje záväzky',
+    'page.baja':             'Nastavenia upozornení',
   },
 
   he: {
@@ -3958,6 +4008,11 @@ const TRANSLATIONS = {
     'pildoras.modal.label':      'תעודת זהות',
     'pildoras.modal.btn':        'הפעל',
     'pildoras.modal.notfound':   'לא מצאנו את תעודת הזהות שלך בתוכנית. אם לדעתך יש טעות, צור קשר עם הצוות.',
+    'welcome.title':        'ברוך הבא',
+    'pildoras.modal.retry': 'לנסות שוב',
+    'page.pildoras':         'כמוסות מידע',
+    'page.compromiso':       'ההתחייבויות שלי',
+    'page.baja':             'העדפות התראות',
   },
 };
 
@@ -3985,6 +4040,12 @@ function applyTranslations() {
   });
   document.documentElement.lang = currentLang;
   document.documentElement.dir = RTL_LANGS.includes(currentLang) ? 'rtl' : 'ltr';
+  // Título de la pestaña del navegador, si la página declara una clave
+  var titleKey = document.documentElement.getAttribute('data-title-i18n');
+  if (titleKey) {
+    var titleVal = t(titleKey);
+    if (titleVal) document.title = titleVal;
+  }
 }
 
 function setLang(lang) {
