@@ -357,3 +357,15 @@ body {
     .pildoras { padding: 44px 24px; }
     .lang-switcher { top: auto; bottom: 20px; right: 20px; }
 }
+
+/* ===== Soporte RTL (hebreo, árabe…) ===== */
+[dir="rtl"] .back { left: auto; right: 20px; }
+[dir="rtl"] .back svg { transform: scaleX(-1); }
+[dir="rtl"] .lang-switcher { right: auto; left: 20px; }
+[dir="rtl"] .profile-card { border-left: none; }
+[dir="rtl"] .profile-card--inactive { border-right: 4px solid var(--green); }
+[dir="rtl"] .profile-card--active   { border-right: 4px solid var(--amber); }
+[dir="rtl"] .therapy { align-items: flex-start; }
+@media (max-width: 640px) {
+    [dir="rtl"] .lang-switcher { right: auto; left: 20px; }
+}
