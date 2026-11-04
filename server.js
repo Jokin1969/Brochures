@@ -484,6 +484,44 @@ const EMAIL_STRINGS = {
     pildoras_unsub_note: 'Tento e-mail dostávate, pretože ste svojho času výslovne požiadali o informovanie, keď budú dostupné nové informačné kapsuly. Ak už nechcete dostávať tento typ oznámení, môžete nám to oznámiť tu:',
     pildoras_unsub_btn:  'Nechcem naďalej dostávať tieto upozornenia',
   },
+  he: {
+    /* ---- משותף ---- */
+    eyebrow:                  'תוכנית מעקב טרום-קלינית',
+    h1:                       'להגן על ההווה,<br>להכין את העתיד',
+    salute_f:                 'שלום {nombre},',
+    salute_m:                 'שלום {nombre},',
+    salute_nb:                'שלום {nombre},',
+    fallback_f:               'נשאית',
+    fallback_m:               'נשא',
+    fallback_nb:              'נשא/נשאית',
+    sig_castilla_role:        'פרופסור חוקר',
+    sig_castilla_role_sub:    'ראש מעבדת הפריונים',
+    sig_kortazar_role:        'מנהלת מחלקת הנוירולוגיה',
+    sig_kortazar_institution: 'בית החולים האוניברסיטאי אראבה',
+    footer_ethics:            'התוכנית אושרה על ידי ועדת האתיקה למחקר של חבל הבאסקים &nbsp;&middot;&nbsp; קוד PI2025164',
+
+    /* ---- דוא"ל ראשון ---- */
+    initial_subject_default:  'משהו משתנה. ברצוננו לספר לך על כך.',
+    initial_doc_title:        'להגן על ההווה, להכין את העתיד',
+    initial_p1: 'אנו יוצרים איתך קשר משום שאנו מאמינים שיש דבר שמגיע לך לדעת.',
+    initial_p2: 'במשך שנים, עבור אנשים רבים, להיות נשא של מוטציה בגן של חלבון הפריון פירושו היה לחיות עם אי-ודאות שקשה לתת לה שם. לדעת מבלי יכולת לפעול. להמתין מבלי לדעת מתי.',
+    initial_p3: 'זה משתנה.',
+    initial_p4: 'לא בבת אחת, לא בהבטחות ריקות — אלא במדע אמיתי, במחקר המתקדם מהר מאי פעם, ובניסויים קליניים שתוכננו, בפעם הראשונה, גם עבור אנשים כמוך: אנשים שעדיין אין להם תסמינים, אך רוצים להיות מוכנים כאשר יגיע הרגע לפעול.',
+    initial_p5: 'השקנו תוכנית מעקב טרום-קלינית. אין זה עוד מחקר. זהו ליווי — הליווי שלך, בקצב שלך, עם מידע אמיתי ועם צוות העוסק בכך שנים ושיהיה לצידך בכל צעד.',
+    initial_p6: 'איננו מבקשים ממך עדיין דבר. רק להעיף מבט.',
+    initial_cta: 'ברצוני להכיר את התוכנית &larr;',
+
+    /* ---- דוא"ל כמוסות ---- */
+    pildoras_subject_default: 'כמוסת מידע חדשה זמינה',
+    pildoras_doc_title:       'כמוסת מידע חדשה זמינה',
+    pildoras_subtitle:        'כמוסת מידע חדשה זמינה',
+    pildoras_p1: 'יש לנו עדכון חדש עבורך.',
+    pildoras_p2: 'בתוכנית המעקב אנו מפרסמים באופן קבוע <strong>כמוסות מידע</strong> &mdash; עדכונים קצרים, ברורים ומדויקים על ניסויים קליניים, טיפולים חדשים וגילויים מדעיים הרלוונטיים לאנשים כמוך.',
+    pildoras_p3: 'זמינה כמוסה חדשה. עיין בה מתי שתרצה, וקרא בקצב שלך.',
+    pildoras_cta: 'צפה בכמוסה החדשה &larr;',
+    pildoras_unsub_note: 'אתה מקבל דוא"ל זה משום שבשעתו ביקשת במפורש לקבל עדכון כאשר יהיו זמינות כמוסות מידע חדשות. אם אינך רוצה עוד לקבל מסרים מסוג זה, תוכל להודיע לנו כאן:',
+    pildoras_unsub_btn:  'אינני רוצה להמשיך לקבל התראות אלה',
+  },
 };
 
 /* Accede a una cadena con fallback a castellano si falta/está vacía */
@@ -532,7 +570,7 @@ function buildInitialEmailHTML(p, lang = 'es') {
   const S        = (k) => emailStr(lang, k);
 
   return `<!DOCTYPE html>
-<html lang="${lang}" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="${lang}" dir="${["he","ar"].includes(lang) ? "rtl" : "ltr"}" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -741,7 +779,7 @@ function buildPildorasEmailHTML(p, lang = 'es') {
   const S         = (k) => emailStr(lang, k);
 
   return `<!DOCTYPE html>
-<html lang="${lang}" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="${lang}" dir="${["he","ar"].includes(lang) ? "rtl" : "ltr"}" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

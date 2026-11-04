@@ -692,3 +692,10 @@ body.pg-fade-in.loaded { opacity: 1; }
     .paso-nav { flex-direction: column-reverse; align-items: stretch; }
     .btn-paso-prev { justify-content: center; }
 }
+
+/* ===== Soporte RTL (hebreo, árabe…) ===== */
+[dir="rtl"] .choice-card,
+[dir="rtl"] .check-btn,
+[dir="rtl"] .contact-cards,
+[dir="rtl"] .aceptar-form { text-align: right; }
+[dir="rtl"] .m2-card { border-left: none; border-right: 4px solid var(--amber); }
