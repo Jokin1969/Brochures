@@ -446,6 +446,44 @@ const EMAIL_STRINGS = {
     pildoras_unsub_note: 'Vous recevez cet e-mail parce que vous avez demandé expressément à être informé(e) lorsque de nouvelles capsules d\'information seraient disponibles. Si vous ne souhaitez plus recevoir ce type de communications, vous pouvez nous l\'indiquer ici :',
     pildoras_unsub_btn:  'Je ne souhaite plus recevoir ces notifications',
   },
+  sk: {
+    /* ---- Spoločné ---- */
+    eyebrow:                  'Program predklinického sledovania',
+    h1:                       'Chrániť prítomnosť,<br>pripraviť budúcnosť',
+    salute_f:                 'Vážená {nombre},',
+    salute_m:                 'Vážený {nombre},',
+    salute_nb:                'Dobrý deň, {nombre},',
+    fallback_f:               'nositeľka',
+    fallback_m:               'nositeľ',
+    fallback_nb:              'nositeľ/nositeľka',
+    sig_castilla_role:        'Výskumný profesor',
+    sig_castilla_role_sub:    'Vedúci laboratória priónov',
+    sig_kortazar_role:        'Primárka neurológie',
+    sig_kortazar_institution: 'Fakultná nemocnica Araba',
+    footer_ethics:            'Program schválený Etickou komisiou pre výskum Baskicka &nbsp;&middot;&nbsp; Kód PI2025164',
+
+    /* ---- Prvý e-mail ---- */
+    initial_subject_default:  'Niečo sa mení. Chceme vám o tom povedať.',
+    initial_doc_title:        'Chrániť prítomnosť, pripraviť budúcnosť',
+    initial_p1: 'Kontaktujeme vás, pretože veríme, že existuje niečo, čo si zaslúžite vedieť.',
+    initial_p2: 'Pre mnohých ľudí roky znamenalo byť nositeľom mutácie génu priónovej bielkoviny žiť s neistotou, ktorú je ťažké pomenovať. Vedieť bez možnosti konať. Čakať bez vedomia kedy.',
+    initial_p3: 'To sa mení.',
+    initial_p4: 'Nie náhle, nie s prázdnymi sľubmi — ale so skutočnou vedou, s výskumom, ktorý napreduje rýchlejšie než kedykoľvek predtým, a s klinickými štúdiami navrhnutými, po prvýkrát, aj pre ľudí ako vy: ľudí, ktorí ešte nemajú príznaky, ale chcú byť pripravení, keď príde čas konať.',
+    initial_p5: 'Spustili sme program predklinického sledovania. Nie je to ďalšia štúdia. Je to sprevádzanie — vaše sprevádzanie, vaším tempom, so skutočnými informáciami a s tímom, ktorý sa tým zaoberá roky a bude pri vás pri každom kroku.',
+    initial_p6: 'Zatiaľ od vás nič nežiadame. Len aby ste sa pozreli.',
+    initial_cta: 'Chcem spoznať program &rarr;',
+
+    /* ---- E-mail kapsuly ---- */
+    pildoras_subject_default: 'Dostupná nová informačná kapsula',
+    pildoras_doc_title:       'Dostupná nová informačná kapsula',
+    pildoras_subtitle:        'Dostupná nová informačná kapsula',
+    pildoras_p1: 'Máme pre vás novú aktualizáciu.',
+    pildoras_p2: 'V programe sledovania pravidelne zverejňujeme <strong>informačné kapsuly</strong> &mdash; krátke, jasné a presné aktualizácie o klinických štúdiách, nových terapiách a vedeckých objavoch relevantných pre ľudí ako vy.',
+    pildoras_p3: 'Je dostupná nová kapsula. Pozrite si ju, kedykoľvek budete chcieť, a čítajte vaším tempom.',
+    pildoras_cta: 'Pozrieť novú kapsulu &rarr;',
+    pildoras_unsub_note: 'Tento e-mail dostávate, pretože ste svojho času výslovne požiadali o informovanie, keď budú dostupné nové informačné kapsuly. Ak už nechcete dostávať tento typ oznámení, môžete nám to oznámiť tu:',
+    pildoras_unsub_btn:  'Nechcem naďalej dostávať tieto upozornenia',
+  },
 };
 
 /* Accede a una cadena con fallback a castellano si falta/está vacía */

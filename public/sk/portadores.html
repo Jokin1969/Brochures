@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asymptomatickí nositelia — Brochures</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/portadores.css">
+    <link rel="stylesheet" href="/css/portadores-programa.css">
+    <style>
+        .pdf-download-wrap {
+            display: flex; justify-content: center;
+            margin: 24px 0;
+        }
+        .btn-pdf-download {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 13px 26px;
+            border-radius: 100px;
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+            color: #fff; text-decoration: none;
+            font-family: inherit; font-size: 0.92rem; font-weight: 600;
+            letter-spacing: 0.01em;
+            box-shadow: 0 4px 14px rgba(124,58,237,.28);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+        }
+        .btn-pdf-download:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(124,58,237,.35);
+            filter: brightness(1.05);
+        }
+        .btn-pdf-download:focus-visible {
+            outline: 2px solid #7c3aed; outline-offset: 3px;
+        }
+        .btn-pdf-download svg { flex-shrink: 0; }
+        .btn-pdf-download .hint {
+            display: block; font-size: 0.72rem; font-weight: 500;
+            opacity: 0.85; margin-top: 2px;
+        }
+        .btn-pdf-download-inner { display: flex; flex-direction: column; line-height: 1.2; }
+    </style>
+</head>
+<body>
+
+    <nav class="lang-switcher" aria-label="Jazyk">
+        <a href="/portadores.html" class="lang-btn" title="Español"><img src="/assests/flags/es.png" alt="ES"></a>
+        <a href="/eu/portadores.html" class="lang-btn" title="Euskera"><img src="/assests/flags/eu.png" alt="EU"></a>
+        <a href="/ca/portadores.html" class="lang-btn" title="Català"><img src="/assests/flags/ca.png" alt="CA"></a>
+        <a href="/gl/portadores.html" class="lang-btn" title="Galego"><img src="/assests/flags/gl.png" alt="GL"></a>
+        <a href="/en/portadores.html" class="lang-btn" title="English"><img src="/assests/flags/en.png" alt="EN"></a>
+        <a href="/pt/portadores.html" class="lang-btn" title="Português"><img src="/assests/flags/pt.png" alt="PT"></a>
+        <a href="/de/portadores.html" class="lang-btn" title="Deutsch"><img src="/assests/flags/de.png" alt="DE"></a>
+        <a href="/it/portadores.html" class="lang-btn" title="Italiano"><img src="/assests/flags/it.png" alt="IT"></a>
+        <a href="/fr/portadores.html" class="lang-btn" title="Français"><img src="/assests/flags/fr.png" alt="FR"></a>
+        <span class="lang-btn lang-btn--active" title="Slovenčina"><img src="/assests/flags/sk.png" alt="SK"></span>
+    </nav>
+
+    <a href="/" class="back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 4l-4 4 4 4"/>
+        </svg>
+        Domov
+    </a>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow">Program predklinického sledovania</p>
+            <h1 class="hero-title">Chrániť prítomnosť,<br>pripraviť budúcnosť</h1>
+            <p class="hero-subtitle">
+                Program sledovania pre asymptomatických nositeľov
+                mutácií génu priónovej bielkoviny
+            </p>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 88" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;">
+                <path d="M0 88 L0 44 Q360 0 720 44 Q1080 88 1440 44 L1440 88 Z" fill="#fafbff"/>
+            </svg>
+        </div>
+    </section>
+
+    <main class="content">
+
+        <div class="opening">
+            <p class="opening-text">
+                Mať informácie o svojej genetike je prejav odvahy.
+                Táto stránka je navrhnutá tak, aby vás sprevádzala: vysvetliť vám, čo znamená
+                byť nositeľom alebo nositeľkou, prečo je pravidelné sledovanie
+                účinným nástrojom a aké možnosti ponúka blízka budúcnosť
+            </p>
+        </div>
+
+        <!-- Stiahnuť PDF (hore) -->
+        <div class="pdf-download-wrap">
+            <a class="btn-pdf-download" href="/assets/pdfs/programa-es.pdf" download="Program-predklinickeho-sledovania.pdf">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span class="btn-pdf-download-inner">
+                    <span>Stiahnuť tieto informácie v PDF</span>
+                    <span class="hint">Na pokojné prečítanie alebo zdieľanie s vašou rodinou</span>
+                </span>
+            </a>
+        </div>
+
+        <!-- 01 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-num num-purple">01</div>
+                <div>
+                    <h2 class="section-title">Pochopiť váš východiskový bod</h2>
+                    <p class="section-sub">Čo znamená byť nositeľom alebo nositeľkou</p>
+                </div>
+            </div>
+            <div class="prose">
+                <p>Ste nositeľom alebo nositeľkou genetického variantu (nazývaného aj mutácia – zmena DNA oproti väčšine populácie), ktorý môže byť spojený s rozvojom dedičného priónového ochorenia. Znamená to, že existuje zvýšené riziko, nie istota. Mnoho ľudí s touto genetickou predispozíciou žije desaťročia bez toho, aby sa u nich rozvinul akýkoľvek príznak, a veda napreduje rýchlym tempom smerom k preventívnym liečbam.</p>
+            </div>
+            <div class="box">
+                <p>Byť nositeľom alebo nositeľkou nie je to isté ako mať chorobu.
+                Je to predispozícia, ktorá vám poskytuje cenné informácie &mdash; a tieto informácie
+                sa, ak sa dobre využijú, môžu premeniť na skutočnú výhodu.</p>
+            </div>
+            <ul class="facts">
+                <li class="fact">
+                    <span class="fact-dot dot-purple"></span>
+                    <p><strong>Nie u všetkých nositeľov sa rozvinú príznaky.</strong> Penetrancia &mdash; teda pravdepodobnosť, že mutácia nakoniec spustí chorobu &mdash; je vysoká, hoci vek nástupu sa značne líši v závislosti od konkrétnej mutácie a ďalších individuálnych faktorov, ktoré ešte nepoznáme.</p>
+                </li>
+                <li class="fact">
+                    <span class="fact-dot dot-blue"></span>
+                    <p><strong>Vedieť je sila.</strong> Poznanie vášho genetického stavu vám umožňuje robiť informované rozhodnutia, plánovať budúcnosť a získať prístup k špecializovaným programom sledovania.</p>
+                </li>
+                <li class="fact">
+                    <span class="fact-dot dot-teal"></span>
+                    <p><strong>Veda neustáva.</strong> Nikdy nebolo toľko aktívneho výskumu priónových ochorení ako dnes. Nachádzame sa v rozhodujúcom okamihu pre vývoj preventívnych terapií.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 02 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-num num-blue">02</div>
+                <div>
+                    <h2 class="section-title">Prečo je sledovanie dôležité</h2>
+                    <p class="section-sub">Štyri dôvody na účasť v programe predklinického sledovania</p>
+                </div>
+            </div>
+            <div class="prose">
+                <p>Programy sledovania pre asymptomatických nositeľov nie sú len
+                nástrojom výskumu a lekárskeho dohľadu. Sú platformou aktívnej prípravy
+                &mdash; pre vás a pre všetkých ľudí, ktorí prídu po vás &ndash; vzhľadom na preventívne terapie vo vývoji.</p>
+            </div>
+            <div class="benefits">
+                <div class="benefit">
+                    <div class="benefit-icon bi-purple">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3>Včasné zachytenie</h3>
+                    <p>Včasné zachytenie: ak by sa objavili jemné biologické zmeny, boli by zachytené v najpriaznivejšom momente (pred objavením sa príznakov), aby bolo možné zasiahnuť dostupnými prostriedkami.</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon bi-blue">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3>Prednostný prístup</h3>
+                    <p>Prednostný prístup: účastníci programov sledovania by boli v najlepšej pozícii na prístup k novým preventívnym terapiám, keď klinické štúdie otvoria svoje dvere, pretože by sme o nich mali viac informácií než o iných nositeľoch.</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon bi-teal">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <h3>Skutočné informácie</h3>
+                    <p>Pravidelné sledovanie poskytuje objektívne údaje o zdraví vášho mozgu a nahrádza neistotu podloženým poznaním. Sú to informácie, ku ktorým môžete získať prístup alebo ktoré ešte nemusíte chcieť poznať.</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon bi-green">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Kolektívny prínos</h3>
+                    <p>Vaša účasť pomáha lepšie pochopiť chorobu a urýchľuje vývoj liečby pre vás a pre budúce generácie.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 -->
+        <section class="section" id="section-03">
+            <div class="section-header">
+                <div class="section-num num-amber">03</div>
+                <div>
+                    <h2 class="section-title">Dve reality v rámci jedného profilu</h2>
+                    <p class="section-sub">Nie všetci asymptomatickí nositelia sú v tom istom momente</p>
+                </div>
+            </div>
+            <div class="prose">
+                <p>V rámci skupiny asymptomatických nositeľov súčasný výskum umožňuje identifikovať dve jasne odlišné situácie, aj keď v oboch prípadoch človek nemá klinické príznaky:</p>
+            </div>
+            <div class="profile-cards">
+                <div class="profile-card profile-card--inactive">
+                    <h3 class="profile-badge profile-badge--stable">Nositeľ/nositeľka v neaktívnej fáze</h3>
+                    <p>Biologický proces spojený s mutáciou nevykazuje súčasnými technikami žiadne známky zistiteľnej aktivity. Spája sa to so širším časovým horizontom pred možným objavením sa prvých príznakov.</p>
+                </div>
+                <div class="profile-card profile-card--active">
+                    <h3 class="profile-badge profile-badge--alert">Nositeľ/nositeľka v tichej aktívnej fáze</h3>
+                    <p>Existuje začínajúca biologická aktivita &mdash;bez klinických príznakov&mdash; ktorú špecializované techniky dokážu začať zachytávať. Tento profil sa spája s bližším časovým horizontom, hoci ešte nevieme, o koľko ani či existuje veľká variabilita medzi nositeľmi od zachytenia biologickej aktivity po rozvoj prvých príznakov. Táto skupina má však najväčšiu pravdepodobnosť získať prístup k prvým preventívnym klinickým štúdiám.</p>
+                </div>
+            </div>
+            <p class="profile-note">Zistiť, v ktorej z týchto situácií sa nachádzate, je dobrovoľné. Program sledovania vám ponúka možnosť to vedieť — vždy so sprevádzaním a bez nátlaku.</p>
+        </section>
+
+        <!-- Teaser reflexia -->
+        <div class="reflexion-teaser">
+            <div class="reflexion-teaser-texts">
+                <p class="reflexion-teaser-main">Pýtate sa, či sa oplatí vedieť, v ktorej skupine ste?</p>
+                <p class="reflexion-teaser-sub">Premysleli sme konkrétne situácie, ktoré vám môžu pomôcť pri premýšľaní.</p>
+            </div>
+            <a href="/portadores-reflexion.html?from=portadores" class="reflexion-teaser-btn">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v.5"/></svg>
+                Chcem o tom premýšľať
+            </a>
+        </div>
+
+        <!-- 04 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-num num-teal">04</div>
+                <div>
+                    <h2 class="section-title">Čo sa črtá na obzore</h2>
+                    <p class="section-sub">Terapie vo vývoji a prvé klinické štúdie</p>
+                </div>
+            </div>
+            <div class="prose">
+                <p>Nikdy nebolo súčasne aktívnych toľko terapeutických stratégií pri priónových ochoreniach. Viaceré už preukázali sľubné výsledky na zvieracích modeloch a niektoré začali robiť skok k štúdiám na ľuďoch. Nezaručuje to, že všetky budú u ľudí fungovať, ale znamená to historickú zmenu: po prvýkrát existuje viacero skutočných ciest, ktoré paralelne pracujú na budúcich preventívnych liečbach a liečbach modifikujúcich chorobu.</p>
+            </div>
+            <div class="therapy-legend">
+                <p class="therapy-legend-title">Čo znamená každá situácia</p>
+                <ul class="therapy-legend-list">
+                    <li><span class="t-badge tb-adv">Prebiehajúca klinická štúdia</span><br>Už sa testuje na ľuďoch.</li>
+                    <li><span class="t-badge tb-mid">Registrovaná klinická štúdia, čaká sa na začiatok</span><br>Štúdia je definovaná a schválená/registrovaná, ale ešte nezačala nábor ani liečbu.</li>
+                    <li><span class="t-badge tb-res">Predklinický vývoj</span><br>Terapia preukázala aktivitu v laboratóriu a/alebo na zvieratách, ale ešte nebola testovaná na ľuďoch.</li>
+                </ul>
+            </div>
+            <div class="therapies">
+                <div class="therapy">
+                    <span class="t-badge tb-adv">Prebiehajúca klinická štúdia (Fáza 1/2a)</span>
+                    <div>
+                        <h3>Antisense oligonukleotidy (ASO)</h3>
+                        <p>Sú to molekuly vyvinuté na zníženie produkcie priónovej bielkoviny. Na zvieracích modeloch zníženie tejto bielkoviny oddialilo nástup choroby a predĺžilo prežívanie. Táto stratégia sa už hodnotí v medzinárodnej klinickej štúdii u ľudí so symptomatickým priónovým ochorením.</p>
+                    </div>
+                </div>
+                <div class="therapy">
+                    <span class="t-badge tb-mid">Registrovaná klinická štúdia, čaká sa na začiatok (Fáza 1)</span>
+                    <div>
+                        <h3>RNA interferencia (siRNA)</h3>
+                        <p>Tieto molekuly „umlčia" genetickú správu, ktorá vedie k priónovej bielkovine. U zvierat sa dosiahli hlboké a trvácne zníženia tejto bielkoviny s pozitívnymi účinkami na priebeh choroby. Okrem toho už existuje prvá registrovaná klinická štúdia Fázy 1 pre túto stratégiu, hoci nábor ešte nezačal.</p>
+                    </div>
+                </div>
+                <div class="therapy">
+                    <span class="t-badge tb-res">Predklinický vývoj</span>
+                    <div>
+                        <h3>Malé molekuly na perorálne podanie</h3>
+                        <p>Vyvíjajú sa zlúčeniny schopné znížiť množstvo priónovej bielkoviny, ktoré bunka produkuje. Ich veľkou potenciálnou výhodou je, že by sa mohli podávať ako jednoduché dlhodobé liečby. Doteraz zverejnené údaje ukazujú sľubné výsledky u zvierat, ale táto cesta ešte neprešla ku klinickým štúdiám.</p>
+                    </div>
+                </div>
+                <div class="therapy">
+                    <span class="t-badge tb-res">Predklinický vývoj</span>
+                    <div>
+                        <h3>Génové terapie</h3>
+                        <p>Zahŕňajú stratégie trvalého umlčania a molekulárnej úpravy zamerané na trvalé vypnutie alebo zníženie génu priónovej bielkoviny. Na zvieracích modeloch sa už dosiahlo rozsiahle zníženie bielkoviny a významné predĺženie prežívania. Niektoré programy napredujú smerom ku klinike, ale v súčasnosti sú ešte v predklinickej fáze.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="box" style="margin-top:28px;">
+                <p>Byť zapísaný v programe sledovania vás stavia do prvej línie na účasť v týchto štúdiách, ak sa budú konať v Španielsku. Okno príležitostí sa otvára
+                &mdash; a tí, ktorí sú už v sledovaní, budú mať najväčšiu šancu prejsť ním ako prví.</p>
+            </div>
+        </section>
+
+        <!-- 05 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-num num-green">05</div>
+                <div>
+                    <h2 class="section-title">Čo zahŕňa sledovanie</h2>
+                    <p class="section-sub">Protokol pravidelných návštev</p>
+                </div>
+            </div>
+            <div class="prose">
+                <p>Program pozostáva z pravidelných návštev &mdash; zvyčajne ročných alebo polročných &mdash;
+                v špecializovanom centre. Každá návšteva je navrhnutá tak, aby bola čo najpohodlnejšia
+                a najefektívnejšia, vždy s podporou vyhradeného tímu.</p>
+            </div>
+            <div class="steps">
+                <div class="step"><div class="step-track"><div class="step-dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg></div><div class="step-line"></div></div><div class="step-body"><h3>Neurologické a neuropsychologické vyšetrenie</h3><p>Podrobné klinické vyšetrenie a batéria kognitívnych testov na určenie a sledovanie vašej individuálnej východiskovej hodnoty.</p></div></div>
+                <div class="step"><div class="step-track"><div class="step-dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg></div><div class="step-line"></div></div><div class="step-body"><h3>Biomarkery v krvi, mozgovomiechovom moku a koži</h3><p>Analýza krvi a v prípade indikácie lumbálna punkcia a/alebo kožná biopsia punchom na meranie špecifických bielkovín, ktoré odrážajú neurobiologický stav.</p></div></div>
+                <div class="step"><div class="step-track"><div class="step-dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg></div><div class="step-line"></div></div><div class="step-body"><h3>Štúdia spánku</h3><p>Prostredníctvom polysomnografie zaznamenávame, čo sa deje počas spánku: pohyby, dýchanie, mozgovú aktivitu a správanie. Niektoré poruchy spánku – najmä tie spojené s REM fázou – sa môžu prejaviť jemným spôsobom, najmä u nositeľov Fatálnej familiárnej insomnie, skôr než sa objavia prvé príznaky.</p></div></div>
+                <div class="step"><div class="step-track"><div class="step-dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg></div><div class="step-line"></div></div><div class="step-body"><h3>Zobrazovanie s vysokým rozlíšením</h3><p>Magnetická rezonancia mozgu, ktorá umožňuje zachytiť štrukturálne alebo funkčné zmeny skôr, než sú klinicky rozpoznateľné.</p></div></div>
+                <div class="step"><div class="step-track"><div class="step-dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg></div><div class="step-line"></div></div><div class="step-body"><h3>Psychologická podpora</h3><p>Emocionálne sprevádzanie a špecializované poradenstvo, dostupné pri každej návšteve a prístupné medzi návštevami v prípade potreby.</p></div></div>
+                <div class="step"><div class="step-track"><div class="step-dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg></div></div><div class="step-body"><h3>Informácie o terapeutických novinkách</h3><p>Pravidelná aktualizácia o dostupných alebo pripravovaných klinických štúdiách, pre ktoré by ste mohli byť vhodní, s personalizovaným poradenstvom pri každej príležitosti.</p></div></div>
+            </div>
+        </section>
+
+        <!-- Stiahnuť PDF (dole) -->
+        <div class="pdf-download-wrap">
+            <a class="btn-pdf-download" href="/assets/pdfs/programa-es.pdf" download="Program-predklinickeho-sledovania.pdf">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span class="btn-pdf-download-inner">
+                    <span>Stiahnuť tieto informácie v PDF</span>
+                    <span class="hint">Na pokojné prečítanie alebo zdieľanie s vašou rodinou</span>
+                </span>
+            </a>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta">
+            <h2>Máte otázky?</h2>
+            <p>Ak sa chcete o programe dozvedieť viac, môžete preskúmať informačné kapsuly alebo sa priamo obrátiť na tím sledovania.</p>
+            <a href="/portadores-pildoras.html" class="btn-siguiente" style="text-decoration:none;" onclick="localStorage.setItem('pg-lang','sk')">
+                Pozrieť informačné kapsuly
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </a>
+        </div>
+
+        <!-- Informačné kapsuly -->
+        <section class="pildoras" id="pildoras">
+            <p class="pildoras-eyebrow">Aktualizácie</p>
+            <h2>Informačné kapsuly</h2>
+            <p class="pildoras-sub">Zostaňte informovaní o dôležitých pokrokoch</p>
+            <p class="pildoras-body">Oblasť priónových ochorení sa rýchlo vyvíja. Informačné kapsuly sú pravidelné aktualizácie &mdash;krátke, jasné a presné&mdash; o klinických štúdiách, nových terapiách a vedeckých objavoch relevantných pre ľudí ako vy.</p>
+            <a href="/portadores-pildoras.html" class="btn-subscribe" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;" onclick="localStorage.setItem('pg-lang','sk')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                Pozrieť informačné kapsuly
+            </a>
+        </section>
+
+        <!-- Prechod na portadores-programa.html -->
+        <div class="next-step">
+            <h2 class="next-step-title">Chcete urobiť ďalší krok?</h2>
+            <p class="next-step-text">Ak ste si prečítali program a chcete preskúmať svoju účasť, pokračujte tu.</p>
+            <button id="btn-siguiente" class="btn-siguiente" onclick="irAPrograma()">
+                Preskúmať moju účasť
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </button>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p><a href="/">Program predklinického sledovania</a> &nbsp;&middot;&nbsp; &copy; Joaquín Castilla 2026</p>
+    </footer>
+
+    <script src="/sk/portadores.js"></script>
+    <script>
+    (function () {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('ref') === 'email' && params.get('id')) {
+            fetch('/api/portadores/leido/' + encodeURIComponent(params.get('id')))
+              .catch(function () {});
+        }
+    })();
+    </script>
+    <script>
+    function irAPrograma() {
+        localStorage.setItem('pg-lang', 'sk');
+        var btn = document.getElementById('btn-siguiente');
+        if (btn) btn.disabled = true;
+        document.body.style.transition = 'opacity 0.45s ease';
+        document.body.style.opacity   = '0';
+        setTimeout(function () {
+            window.location.href = '/portadores-programa.html';
+        }, 460);
+    }
+    </script>
+</body>
+</html>
