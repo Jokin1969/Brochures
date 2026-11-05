@@ -382,6 +382,9 @@
         function apply(lang) {
             document.documentElement.lang = lang;
             document.documentElement.dir = RTL.indexOf(lang) !== -1 ? 'rtl' : 'ltr';
+            // La tarjeta del programa enlaza a la página en el idioma elegido
+            var cc = document.getElementById('card-carriers');
+            if (cc) cc.setAttribute('href', lang === 'es' ? '/portadores.html' : '/' + lang + '/portadores.html');
             document.querySelectorAll('[data-i18n]').forEach(function (el) {
                 var v = t(el.getAttribute('data-i18n'), lang);
                 if (v != null) el.textContent = v;

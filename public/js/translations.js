@@ -4040,6 +4040,10 @@ function applyTranslations() {
   });
   document.documentElement.lang = currentLang;
   document.documentElement.dir = RTL_LANGS.includes(currentLang) ? 'rtl' : 'ltr';
+  // Enlaces a la página de portadores en el idioma activo (mantiene el idioma al cambiar de bloque)
+  document.querySelectorAll('[data-carriers-link]').forEach(function (a) {
+    a.setAttribute('href', currentLang === 'es' ? '/portadores.html' : '/' + currentLang + '/portadores.html');
+  });
   // Título de la pestaña del navegador, si la página declara una clave
   var titleKey = document.documentElement.getAttribute('data-title-i18n');
   if (titleKey) {
